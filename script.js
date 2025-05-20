@@ -288,3 +288,24 @@ window.addEventListener('load', function() {
     //     preloader.style.display = 'none';
     // }
 });
+// ハンバーガーメニュー機能
+document.addEventListener('DOMContentLoaded', function() {
+    const navbarToggle = document.getElementById('navbar-toggle');
+    const navbarMenu = document.getElementById('navbar-menu');
+    
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', function() {
+            navbarToggle.classList.toggle('active');
+            navbarMenu.classList.toggle('active');
+        });
+    }
+    
+    // メニュー内のリンクをクリックしたらメニューを閉じる
+    const navLinks = document.querySelectorAll('.navbar-nav a');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            navbarToggle.classList.remove('active');
+            navbarMenu.classList.remove('active');
+        });
+    });
+});
