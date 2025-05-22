@@ -4,364 +4,523 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Re'forma | ボディリフォーメーションサロン</title>
+    <meta name="description" content="整えて、育てて、共につくる。あなたのからだの再創造を。Re'formaは理学療法士による専門的なボディケアサロンです。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./reforma-logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- ナビゲーションバー -->
-    <nav class="navbar">
+    <!-- ナビゲーション -->
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="navbar-brand">
-                <img src="images/reforma-logo.png" alt="Re'forma ロゴ" class="logo">
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Re'forma. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- スクロールトップボタン -->
-    <button id="scroll-top" class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="script.js"></script>
-</body>
-</html><ul class="navbar-nav" id="navbar-menu">
+            <a href="#home" class="navbar-brand">
+                <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="logo" 
+                     onerror="console.log('Logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-fallback" style="display: none;">Re'forma</div>
+            </a>
+            
+            <button class="navbar-toggle" id="navbar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-nav" id="navbar-nav">
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#services">サービス</a></li>
                 <li><a href="#apps">アプリ</a></li>
                 <li><a href="#about">Re'formaについて</a></li>
                 <li><a href="#testimonials">お客様の声</a></li>
-                <li><a href="#reservation" class="reservation-btn">ご予約</a></li>
+                <li><a href="#reservation">ご予約</a></li>
+                <li><a href="#reservation" class="reservation-btn">予約する</a></li>
             </ul>
-            <div class="navbar-toggle" id="navbar-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
     <!-- ヒーローセクション -->
-    <section id="home" class="hero-section">
+    <section class="hero-section" id="home">
         <div class="hero-slider">
             <div class="hero-slide active">
                 <div class="overlay"></div>
-                <img src="images/hero-1.jpg" alt="Re'forma サロン">
                 <div class="hero-content">
-                    <div class="hero-logo" data-aos="fade-in">
-                        <img src="images/reforma-logo.png" alt="Re'forma ロゴ" class="main-logo">
+                    <!-- ロゴセクション -->
+                    <div class="hero-logo">
+                        <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
+                             onerror="console.log('Main logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">Re'forma</div>
                     </div>
                     
+                    <!-- メインコンテンツ -->
                     <div class="concept-container">
-                        <h2 class="concept-title" data-aos="fade-up" data-aos-delay="200">
-                            整えて、育てて、共につくる。<br>
-                            あなたのからだの "再創造" を。
-                        </h2>
+                        <h1 class="concept-title">整えて、育てて、共につくる。<br>あなたのからだの "再創造" を。</h1>
                         
-                        <div class="concept-brief" data-aos="fade-up" data-aos-delay="400">
-                            <p>ここは、身体と向き合うための、特別な場所。</p>
-                            <p>Re'Forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創りあげていく空間を目指しています。</p>
-                            <button id="read-more-btn" class="read-more-btn" data-aos="fade-up" data-aos-delay="500">
-                                <span>もっと詳しく</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
+                        <div class="concept-brief">
+                            <p>ここは、身体と向き合うための、特別な場所。<br>
+                            Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
                         </div>
                         
-                        <div id="concept-details" class="concept-details hidden">
-                            <div class="concept-description" data-aos="fade-up">
+                        <button class="read-more-btn" id="readMoreBtn">
+                            <span>もっと詳しく</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="concept-details" id="conceptDetails">
+                            <div class="concept-description">
                                 <p>痛みや不調の奥にある本当の原因に向き合い、「どうすれば今よりも動きやすく、心地よく過ごせるか」を、一緒に考え、じっくりと対話を重ねていきましょう。</p>
+                                <p>そしてRe'formaは、施術だけで終わらないことを大切にしています。</p>
+                                <p>ご自身の"からだ"と工夫に対話し、セルフケアができる力を育むことも、当サロンの大切な役割です。</p>
                             </div>
                             
-                            <div class="concept-additional" data-aos="fade-up">
-                                <p>そしてRe'Formaは、施術だけで終わらないことを大切にしています。</p>
-                                <p>ご自身の "からだ" と丁寧に対話し、セルフケアができる力を育むことも、当サロンの大切な役割です。</p>
-                                <p>あなた自身が、ご自身の "からだ" のプロになれるように——<br>
-                                自分の感覚を信じ、整えられる力を身につけるための、<br>
-                                知恵と習慣を、二人三脚で丁寧にサポートします。</p>
-                                <p>ひとりでは辿り着けない、新たな自分へ。<br>
-                                あなたの "からだの再創造" を、共に歩んでいきましょう。</p>
+                            <div class="concept-additional">
+                                <p>あなた自身が、ご自身の"からだ"のプロになれるように——</p>
+                                <p>自分の感覚を信じ、整えられる力を身につけるための、<br>知識と習慣を、二人三脚で丁寧にサポートします。</p>
+                                <p>ひとりでは辿り着けない、新たな自分へ。</p>
+                                <p>あなたの"からだの再創造"を、共に歩んでいきましょう。</p>
                             </div>
-                            <button id="read-less-btn" class="read-less-btn">
+                            
+                            <button class="read-less-btn" id="readLessBtn">
                                 <span>閉じる</span>
                                 <i class="fas fa-chevron-up"></i>
                             </button>
                         </div>
+                        
+                        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
                     </div>
-                    
-                    <a href="#reservation" class="btn btn-primary" data-aos="fade-up" data-aos-delay="800">今すぐ予約する</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- サービスセクション -->
-    <section id="services" class="services-section">
+    <section class="services-section" id="services">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>サービス<span class="accent">.</span></h2>
+            <div class="section-header">
+                <h2>サービス<span class="accent">案内</span></h2>
                 <p>あなたのニーズに合わせたパーソナルケア</p>
             </div>
-
+            
             <div class="service-options">
-                <div class="service-option" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-option">
                     <div class="service-icon">
                         <i class="fas fa-home"></i>
                     </div>
-                    <h3>訪問サービス</h3>
-                    <p>ご自宅や指定の場所でプロフェッショナルな施術を提供いたします。移動時間なし、日常の空間で、リラックスして施術を受けていただけます。</p>
+                    <h3>出張サービス</h3>
+                    <p>お客様のご自宅やご希望の場所まで出張いたします。慣れ親しんだ環境でリラックスして施術を受けていただけます。</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> プライバシーの確保</li>
-                        <li><i class="fas fa-check"></i> 移動時間の節約</li>
-                        <li><i class="fas fa-check"></i> お好きな環境で施術</li>
+                        <li><i class="fas fa-check"></i>完全プライベート空間</li>
+                        <li><i class="fas fa-check"></i>移動時間不要</li>
+                        <li><i class="fas fa-check"></i>専用機材持参</li>
                     </ul>
                 </div>
-
-                <div class="service-option" data-aos="fade-up" data-aos-delay="400">
+                
+                <div class="service-option">
                     <div class="service-icon">
-                        <i class="fas fa-building"></i>
+                        <i class="fas fa-spa"></i>
                     </div>
-                    <h3>専用スペース施術</h3>
-                    <p>プライベートな専用スペースで施術を受けたい方向けのサービスです。専門的な設備が整った環境で、特別な時間をお過ごしいただけます。</p>
+                    <h3>サロン施術</h3>
+                    <p>専用サロンスペースでの施術です。落ち着いた空間で、より集中的なケアを提供いたします。</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 専門的な設備完備</li>
-                        <li><i class="fas fa-check"></i> プライベート空間</li>
-                        <li><i class="fas fa-check"></i> 環境を変えてリフレッシュ</li>
+                        <li><i class="fas fa-check"></i>専門機器完備</li>
+                        <li><i class="fas fa-check"></i>静寂な環境</li>
+                        <li><i class="fas fa-check"></i>アフターケア充実</li>
                     </ul>
                 </div>
             </div>
-
-            <div class="service-menu" data-aos="fade-up">
-                <h3>施術メニュー</h3>
-                <div class="menu-tabs">
-                    <button class="menu-tab active" data-tab="tab1">整体コース</button>
-                    <button class="menu-tab" data-tab="tab2">野球動作指導</button>
-                    <button class="menu-tab" data-tab="tab3">出張サービス</button>
-                </div>
-
-                <div class="menu-content active" id="tab1">
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>初回体験コース</h4>
-                            <span class="price">¥5,500（30分）</span>
-                        </div>
-                        <p>カウンセリング+部分調整でまずはお試し</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>ベーシック整体コース</h4>
-                            <span class="price">¥8,000（45分）</span>
-                        </div>
-                        <p>日常の疲労・不調のケアに。気になる箇所を中心に調整</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>スタンダード整体コース</h4>
-                            <span class="price">¥11,000（60分）</span>
-                        </div>
-                        <p>姿勢・身体の使い方を見直す、根本改善型アプローチ</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>プレミアム整体コース</h4>
-                            <span class="price">¥18,000（90分）</span>
-                        </div>
-                        <p>深層筋や全身の運動にアプローチする特別コース</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>スペシャル整体コース</h4>
-                            <span class="price">¥22,000（120分）</span>
-                        </div>
-                        <p>全身の機能を総合的に整える120分</p>
-                    </div>
-                </div>
-
-                <div class="menu-content" id="tab2">
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>初回フォームチェック</h4>
-                            <span class="price">¥5,500（30分）</span>
-                        </div>
-                        <p>投球または打撃フォームの簡易評価とフィードバック</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>ベーシック動作指導</h4>
-                            <span class="price">¥8,000（45分）</span>
-                        </div>
-                        <p>投球または打撃フォームの改善と反復練習サポート</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>動作分析＆指導コース</h4>
-                            <span class="price">¥11,000（60分）</span>
-                        </div>
-                        <p>動作分析+身体評価+フォーム修正の60分集中型</p>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>トータルパフォーマンスコース</h4>
-                            <span class="price">¥18,000（90分）</span>
-                        </div>
-                        <p>分析・指導・施術を統合した最上級のパフォーマンス向上支援</p>
-                    </div>
-                </div>
-
-                <div class="menu-content" id="tab3">
-                    <div class="menu-item">
-                        <div class="menu-name">
-                            <h4>出張サービス</h4>
-                            <span class="price">各コース料金+出張費</span>
-                        </div>
-                        <p>これまでに施術を受けられた方を対象に、状況に応じて出張対応も承っております。体調やご事情により通うのが難しい方も、ぜひお気軽にご相談ください。</p>
-                        <p>※エリアや時間帯によってはご希望に添えない場合がございます。</p>
-                    </div>
-                </div>
+            
+            <!-- 施術メニュー部分の修正版 -->
+<div class="service-menu">
+    <h3>施術メニュー</h3>
+    <div class="menu-tabs">
+        <button class="menu-tab active" data-tab="bodycare">ボディケア</button>
+        <button class="menu-tab" data-tab="personal">野球動作指導</button>
+    </div>
+    
+    <!-- ボディケアメニュー -->
+    <div class="menu-content active" id="bodycare">
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>初回体験コース</h4>
+                <span class="price">¥5,500</span>
             </div>
+            <p>30分 - カウンセリング+部分調整でまずはお試し</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>ベーシック整体コース</h4>
+                <span class="price">¥8,000</span>
+            </div>
+            <p>45分 - 日常の疲労・不調のケアに。気になる箇所を中心に調整</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>スタンダード整体コース</h4>
+                <span class="price">¥11,000</span>
+            </div>
+            <p>60分 - 姿勢・身体の使い方を見直す、根本改善型アプローチ</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>プレミアム整体コース</h4>
+                <span class="price">¥18,000</span>
+            </div>
+            <p>90分 - 深層筋や全身の連動にアプローチする特別コース</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>スペシャル整体コース</h4>
+                <span class="price">¥22,000</span>
+            </div>
+            <p>120分 - 全身の機能を総合的に整える120分</p>
+        </div>
+    </div>
+    
+    <!-- 野球動作指導メニュー -->
+    <div class="menu-content" id="personal">
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>初回フォームチェック</h4>
+                <span class="price">¥5,500</span>
+            </div>
+            <p>30分 - 投球または打撃フォームの簡易評価とフィードバック</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>ベーシック動作指導</h4>
+                <span class="price">¥8,000</span>
+            </div>
+            <p>45分 - 投球または打撃フォームの改善と反復練習サポート</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>動作分析&指導コース</h4>
+                <span class="price">¥11,000</span>
+            </div>
+            <p>60分 - 動作分析+身体評価+フォーム修正の60分集中型</p>
+        </div>
+        <div class="menu-item">
+            <div class="menu-name">
+                <h4>トータルパフォーマンスコース</h4>
+                <span class="price">¥18,000</span>
+            </div>
+            <p>90分 - 分析・指導・施術を統合した最上級のパフォーマンス向上支援</p>
+        </div>
+        
+        <div class="special-notice">
+            <h4>出張ご希望の方へ</h4>
+            <p>これまでに施術を受けられた方を対象に、状況に応じて出張対応も承っております。体調やご事情により通うのが難しい方も、ぜひお気軽にご相談ください。</p>
+            <p class="note">※エリアや時間帯によってはご希望に添えない場合がございます。</p>
+        </div>
+    </div>
+</div>
 
-            <div class="service-area" data-aos="fade-up">
-                <h3>施術エリア</h3>
+<style>
+/* 出張案内のスタイル */
+.special-notice {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
+    border-radius: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.special-notice h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.special-notice p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.special-notice .note {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* メニュー項目のスタイル改善 */
+.menu-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+    transform: translateX(5px);
+}
+
+.menu-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.menu-name h4 {
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.menu-item p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* タブのスタイル改善 */
+.menu-tab {
+    padding: 12px 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #777;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 25px 25px 0 0;
+}
+
+.menu-tab:hover {
+    color: var(--primary-color);
+    background-color: rgba(212, 163, 115, 0.1);
+}
+
+.menu-tab.active {
+    color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.menu-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+    .menu-tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .menu-tab {
+        width: 100%;
+        text-align: left;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .menu-tab.active::after {
+        display: none;
+    }
+    
+    .menu-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .price {
+        align-self: flex-end;
+    }
+    
+    .special-notice {
+        padding: 20px;
+    }
+}
+</style>
+            
+            <div class="service-area">
+                <h3>対応エリア</h3>
                 <div class="area-map">
-                    <img src="images/service-area-map.jpg" alt="サービスエリアマップ">
+                    <img src="/api/placeholder/800/300" alt="対応エリア地図" />
                 </div>
                 <div class="area-info">
-                    <p>対応エリア：○○市、△△市、□□区 など</p>
+                    <p><strong>対応エリア：</strong>○○市、△△市、□□区 など</p>
                     <p>※エリアにより出張料が異なります。詳しくはお問い合わせください。</p>
                 </div>
             </div>
-
-            <div class="cta-box" data-aos="fade-up">
-                <h3>まずはお気軽にご相談ください</h3>
-                <p>ご希望や不安なことなど、お気軽にお問い合わせください。</p>
-                <a href="#reservation" class="btn btn-secondary">お問い合わせ・ご予約</a>
+            
+            <div class="cta-box">
+                <h3>ご希望や不安なことなど、お気軽にお問い合わせください。</h3>
+                <a href="#reservation" class="btn btn-secondary">お問い合わせ</a>
             </div>
         </div>
     </section>
 
-    <!-- アプリ紹介セクション -->
-    <section id="apps" class="apps-section">
+    <!-- アプリセクション -->
+    <section class="apps-section" id="apps">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>アプリで毎日をサポート<span class="accent">.</span></h2>
-                <p>Re'formaが開発するアプリで、サロン体験をさらに充実させましょう</p>
+            <div class="section-header">
+                <h2>Re'forma<span class="accent">アプリ</span></h2>
+                <p>サロン体験をさらに充実させる、専用アプリをご紹介します</p>
             </div>
-
+            
             <div class="apps-container">
-                <div class="app-card" data-aos="fade-right">
+                <!-- Diet Storyアプリ -->
+                <div class="app-card">
                     <div class="app-image">
-                        <img src="images/kokoro-note-app.jpg" alt="こころノートアプリ">
+                        <img src="./ダイエットストーリー.PNG" alt="Diet Story アプリ" class="app-logo"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMjgwIiBmaWxsPSIjZjRkNDZiIiByeD0iMjAiLz4KPHN2ZyB4PSI3MCIgeT0iNzAiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmZmYiPgo8cGF0aCBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptLTIgMTVsLTUtNSAxLjQxLTEuNDFMMTAgMTQuMTdsNy41OS03LjU5TDE5IDhsLTkgOXoiLz4KPC9zdmc+Cjx0ZXh0IHg9IjE0MCIgeT0iMjMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkRpZXQgU3Rvcnk8L3RleHQ+Cjwvc3ZnPg==';">
+                    </div>
+                    <div class="app-details">
+                        <h3>Diet Story</h3>
+                        <p class="app-description">あなたのダイエット成功をストーリーとして記録。食事記録、運動記録、体重変化をグラフ化し、達成感を高めます。</p>
+                        <ul class="app-features">
+                            <li><i class="fas fa-chart-line"></i>体重・体脂肪率の変化をグラフで可視化</li>
+                            <li><i class="fas fa-camera"></i>食事写真の自動記録とカロリー計算</li>
+                            <li><i class="fas fa-trophy"></i>目標達成時の達成感を演出する機能</li>
+                            <li><i class="fas fa-heart"></i>モチベーション維持のための応援メッセージ</li>
+                        </ul>
+                        <div class="app-download">
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                App Store
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- こころノートアプリ -->
+                <div class="app-card">
+                    <div class="app-image">
+                        <img src="./こころノート.png" alt="こころノート アプリ" class="app-logo"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMjgwIiBmaWxsPSIjZTllZGM5IiByeD0iMjAiLz4KPHN2ZyB4PSI3MCIgeT0iNzAiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmZmYiPgo8cGF0aCBkPSJNMTIgMkw2IDhWMjBIMThWOEwxMiAyWk0xMiA1TDE2IDE0SDEyVjlIOVYxNEg4VjE2SDE2VjE4SDhWMjBIMTZWMThIMTZWMTRIMTZWOUwxMiA1WiIvPgo8L3N2Zz4KPHRleHQgeD0iMTQwIiB5PSIyMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2NjYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiI+44GT44GT44KN44OO44O844OIPC90ZXh0Pgo8L3N2Zz4=';">
                     </div>
                     <div class="app-details">
                         <h3>こころノート</h3>
-                        <p>毎日の心の健康をサポートする、あなただけのデジタル日記アプリ。感情の記録や気づきを簡単に残せます。</p>
+                        <p class="app-description">毎日の心の健康をサポートする、あなただけのデジタル日記アプリ。感情の記録や気づきを簡単に残せます。</p>
                         <ul class="app-features">
-                            <li><i class="fas fa-check"></i> 感情トラッキング</li>
-                            <li><i class="fas fa-check"></i> 心の変化を可視化</li>
-                            <li><i class="fas fa-check"></i> 専門家のアドバイス</li>
+                            <li><i class="fas fa-heart"></i>感情の変化を色とグラフで記録</li>
+                            <li><i class="fas fa-moon"></i>睡眠の質と心の状態の関連性を分析</li>
+                            <li><i class="fas fa-leaf"></i>マインドフルネス・瞑想ガイド機能</li>
+                            <li><i class="fas fa-lock"></i>プライバシー完全保護の安心設計</li>
                         </ul>
                         <div class="app-download">
-                            <a href="#" class="app-btn"><i class="fab fa-apple"></i> App Store</a>
-                            <a href="#" class="app-btn"><i class="fab fa-google-play"></i> Google Play</a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-apple"></i>
+                                App Store
+                            </a>
+                            <a href="#" class="app-btn">
+                                <i class="fab fa-google-play"></i>
+                                Google Play
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="app-card" data-aos="fade-left">
-                    <div class="app-details">
-                        <h3>ダイエットストーリー</h3>
-                        <p>あなたのダイエット成功をストーリーとして記録。食事記録、運動記録、体重変化をグラフ化し、達成感を高めます。</p>
-                        <ul class="app-features">
-                            <li><i class="fas fa-check"></i> 食事写真の記録</li>
-                            <li><i class="fas fa-check"></i> 体重変化のグラフ</li>
-                            <li><i class="fas fa-check"></i> コミュニティサポート</li>
-                        </ul>
-                        <div class="app-download">
-                            <a href="#" class="app-btn"><i class="fab fa-apple"></i> App Store</a>
-                            <a href="#" class="app-btn"><i class="fab fa-google-play"></i> Google Play</a>
-                        </div>
+            <!-- アプリ連携セクション -->
+            <div class="app-integration">
+                <h3>Re'formaとアプリの連携</h3>
+                <p>施術とアプリを組み合わせることで、さらに効果的なヘルスケアを実現します</p>
+                
+                <div class="integration-points">
+                    <div class="point">
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>施術後のセルフケア</h4>
+                        <p>アプリでセルフケア方法をサポート。施術効果を長期間維持できます。</p>
                     </div>
-                    <div class="app-image">
-                        <img src="images/diet-story-app.jpg" alt="ダイエットストーリーアプリ">
+                    <div class="point">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>美容と健康の変化を記録</h4>
+                        <p>身体の変化や気持ちの変化を記録し、成長を実感できます。</p>
                     </div>
-                </div>
-
-                <div class="app-integration" data-aos="fade-up">
-                    <h3>サロン体験との連携</h3>
-                    <p>Re'formaの施術とアプリを組み合わせることで、さらに効果的なヘルスケアを実現します。</p>
-                    <div class="integration-points">
-                        <div class="point">
-                            <i class="fas fa-sync-alt"></i>
-                            <h4>施術効果の持続</h4>
-                            <p>施術後のセルフケアをアプリでサポート</p>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>進捗の可視化</h4>
-                            <p>美容と健康の変化を記録</p>
-                        </div>
-                        <div class="point">
-                            <i class="fas fa-user-friends"></i>
-                            <h4>専門家サポート</h4>
-                            <p>アプリ内で施術者からのアドバイス</p>
-                        </div>
+                    <div class="point">
+                        <i class="fas fa-comment-medical"></i>
+                        <h4>施術者からのアドバイス</h4>
+                        <p>アプリ内で個別のアドバイスを受け取り、より効果的なケアを実現。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 施術者プロフィールセクション -->
-    <section id="about" class="about-section">
+    <!-- Re'formaについてセクション -->
+    <section class="about-section" id="about">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Re'formaについて<span class="accent">.</span></h2>
-                <p>あなたの身体と向き合うプロフェッショナル</p>
+            <div class="section-header">
+                <h2>あなたの身体と向き合う<span class="accent">プロフェッショナル</span></h2>
             </div>
-
-            <div class="profile-container" data-aos="fade-up">
+            
+            <div class="profile-container">
                 <div class="profile-image">
-                    <img src="images/therapist-profile.jpg" alt="施術者プロフィール">
+                    <img src="/api/placeholder/400/500" alt="PT TOM プロフィール写真" />
                 </div>
                 <div class="profile-content">
-                    <h3>Re'forma 代表</h3>
-                    <p class="profile-name">PT TOM</p>
+                    <h3>理学療法士</h3>
+                    <h2 class="profile-name">PT TOM</h2>
                     <div class="profile-credentials">
                         <span class="credential">理学療法士</span>
-                        <span class="credential">ボディケアスペシャリスト</span>
-                        <span class="credential">野球動作指導・介護予防指導</span>
+                        <span class="credential">認定資格保有</span>
                     </div>
-                    <p class="profile-message">
-                        お客様一人ひとりの身体や体質、生活習慣に合わせたオーダーメイドの施術を心がけています。
-                        ここは、身体と向き合うための、特別な場所。Re'Forma（リフォルマ）では、理学療法士として培った知識と経験を活かし、単なる「施術を受ける場所」ではなく、あなたと共に"からだ"を見つめ、育て、再び創りあげていく空間を目指しています。
-                        痛みや不調の奥にある本当の原因に向き合い、「どうすれば今よりも動きやすく、心地よく過ごせるか」を、一緒に考え、じっくりと対話を重ねていきましょう。
-                    </p>
+                    <div class="profile-message">
+                        <p>理学療法士として培った専門知識と経験を活かし、お一人おひとりの身体の特性に合わせたケアを提供しています。</p>
+                        <p>「痛みを取るだけでなく、なぜその痛みが生まれるのか」を根本から考え、持続可能な健康づくりをサポートします。</p>
+                        <p>あなたの身体が本来持つ力を引き出し、より良い生活へと導くお手伝いをさせていただきます。</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="philosophy" data-aos="fade-up">
-                <h3>サロン理念</h3>
+            
+            <div class="philosophy">
+                <h3>Re'formaの想い</h3>
                 <div class="philosophy-points">
                     <div class="philosophy-point">
                         <i class="fas fa-heart"></i>
-                        <h4>心地よい時間を大切に</h4>
+                        <h4>寄り添うケア</h4>
                         <p>忙しい日常の中で、ゆっくりと自分と向き合う贅沢な時間を</p>
                     </div>
                     <div class="philosophy-point">
-                        <i class="fas fa-star"></i>
-                        <h4>内側からの美しさを</h4>
+                        <i class="fas fa-leaf"></i>
+                        <h4>根本改善</h4>
                         <p>表面だけでなく、からだの内側から輝く健康美を目指します</p>
                     </div>
                     <div class="philosophy-point">
-                        <i class="fas fa-hands-helping"></i>
-                        <h4>持続可能なケアを</h4>
+                        <i class="fas fa-infinity"></i>
+                        <h4>持続可能</h4>
                         <p>一時的な効果ではなく、長く続けられるケア方法をご提案</p>
                     </div>
                 </div>
@@ -370,42 +529,42 @@
     </section>
 
     <!-- お客様の声セクション -->
-    <section id="testimonials" class="testimonials-section">
+    <section class="testimonials-section" id="testimonials">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>お客様の声<span class="accent">.</span></h2>
+            <div class="section-header">
+                <h2>お客様の<span class="accent">声</span></h2>
                 <p>実際にRe'formaをご利用いただいた方々からのフィードバック</p>
             </div>
-
-            <div class="testimonials-slider" data-aos="fade-up">
+            
+            <div class="testimonials-slider">
                 <div class="testimonial active">
                     <div class="testimonial-content">
-                        <p>"自宅で施術を受けられるので、サロンに行く時間がない私にとってはとても助かっています。プライベートな空間でリラックスできる点も最高です。"</p>
+                        <p>「長年の肩こりが嘘のように楽になりました。TOMさんの施術は本当に丁寧で、アフターケアまでしっかりサポートしていただけます。」</p>
                     </div>
                     <div class="testimonial-author">
-                        <p><strong>K.S様</strong> / 30代女性</p>
+                        <strong>30代女性・会社員</strong>
                     </div>
                 </div>
-
+                
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"こころノートアプリを使い始めてから、日々の感情の変化に気づけるようになりました。施術と併用することで、心も体も整う感覚があります。"</p>
+                        <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
                     </div>
                     <div class="testimonial-author">
-                        <p><strong>M.T様</strong> / 40代女性</p>
+                        <strong>40代女性・主婦</strong>
                     </div>
                 </div>
-
+                
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>"専用スペースでの施術も利用しましたが、プライバシーがしっかり守られていて安心しました。施術の質も高く、リピート確定です。"</p>
+                        <p>「理学療法士としての専門知識に基づいたアドバイスがとても参考になります。根本的な改善を実感できています。」</p>
                     </div>
                     <div class="testimonial-author">
-                        <p><strong>Y.K様</strong> / 35代女性</p>
+                        <strong>50代男性・自営業</strong>
                     </div>
                 </div>
             </div>
-
+            
             <div class="testimonial-dots">
                 <span class="testimonial-dot active" data-slide="0"></span>
                 <span class="testimonial-dot" data-slide="1"></span>
@@ -414,43 +573,44 @@
         </div>
     </section>
 
-    <!-- 予約セクション -->
-    <section id="reservation" class="reservation-section">
+    <!-- ご予約セクション -->
+    <section class="reservation-section" id="reservation">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>ご予約<span class="accent">.</span></h2>
+            <div class="section-header">
+                <h2>ご<span class="accent">予約</span></h2>
                 <p>あなたに合ったサービスとお時間をお選びください</p>
             </div>
-
-            <div class="reservation-container" data-aos="fade-up">
+            
+            <div class="reservation-container">
                 <div class="reservation-options">
                     <div class="option-tabs">
-                        <button class="option-tab active" data-option="visit">訪問サービス</button>
-                        <button class="option-tab" data-option="space">専用スペース施術</button>
+                        <button class="option-tab active" data-option="home">出張サービス</button>
+                        <button class="option-tab" data-option="salon">サロン施術</button>
                     </div>
-
-                    <div class="option-details active" id="visit-details">
-                        <h3>訪問サービスについて</h3>
-                        <p>ご自宅や指定の場所で施術を行います。リラックスできる環境をご用意ください。</p>
+                    
+                    <div class="option-details active" id="home">
+                        <h3>出張サービス</h3>
+                        <p>お客様のご自宅やご希望の場所での施術です。</p>
                         <ul class="preparation-list">
-                            <li><i class="fas fa-check"></i> 施術スペース（2m×2m程度）</li>
-                            <li><i class="fas fa-check"></i> タオル（大小各1枚）</li>
-                            <li><i class="fas fa-check"></i> 着替えやすい服装</li>
+                            <li><i class="fas fa-check"></i>施術用のスペース（畳2畳程度）をご用意ください</li>
+                            <li><i class="fas fa-check"></i>タオル類はこちらで準備いたします</li>
+                            <li><i class="fas fa-check"></i>駐車スペースがあると助かります</li>
                         </ul>
                     </div>
-
-                    <div class="option-details" id="space-details">
-                        <h3>専用スペース施術について</h3>
-                        <p>プライベートな専用スペースで施術を行います。すべての設備を完備しています。</p>
+                    
+                    <div class="option-details" id="salon">
+                        <h3>サロン施術</h3>
+                        <p>専用サロンスペースでの施術です。</p>
                         <div class="space-address">
-                            <p><i class="fas fa-map-marker-alt"></i> 住所：○○県○○市○○町1-2-3 △△ビル2F</p>
-                            <p><i class="fas fa-subway"></i> アクセス：○○線○○駅から徒歩5分</p>
+                            <p><i class="fas fa-map-marker-alt"></i>〒XXX-XXXX 住所詳細</p>
+                            <p><i class="fas fa-car"></i>駐車場：2台分完備</p>
+                            <p><i class="fas fa-train"></i>最寄り駅：○○駅より徒歩5分</p>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="reservation-form">
-                    <h3>予約方法</h3>
+                    <h3>ご予約方法</h3>
                     <p>以下のいずれかの方法でご予約いただけます。LINE公式アカウントからのご予約が便利です。</p>
                     
                     <div class="reservation-methods">
@@ -458,24 +618,24 @@
                             <i class="fab fa-line"></i>
                             <h4>LINE公式アカウント</h4>
                             <p>24時間いつでも予約可能。予約状況の確認や変更も簡単にできます。</p>
-                            <a href="https://line.me/R/ti/p/@051ctvyr" class="line-btn">LINEで予約する</a>
+                            <a href="https://line.me/R/ti/p/@051ctvyr" class="btn line-btn" target="_blank">LINEで予約</a>
                         </div>
                         
                         <div class="reservation-method phone-reservation">
-                            <i class="fas fa-phone-alt"></i>
+                            <i class="fas fa-phone"></i>
                             <h4>お電話でのご予約</h4>
                             <p>営業時間内にお電話でご予約いただけます。</p>
-                            <a href="tel:000-1234-5678" class="btn btn-secondary">000-1234-5678</a>
                             <p class="reception-hours">受付時間：10:00〜19:00（水曜定休）</p>
+                            <a href="tel:0120-XXX-XXX" class="btn btn-secondary">電話をかける</a>
                         </div>
                     </div>
                     
                     <div class="reservation-notes">
-                        <h4>ご予約時のお願い</h4>
+                        <h4>ご予約時の注意事項</h4>
                         <ul>
-                            <li>ご予約は施術日の2日前までにお願いいたします。</li>
-                            <li>当日のキャンセルはキャンセル料が発生する場合があります。</li>
-                            <li>体調不良や怪我などがある場合は、事前にお知らせください。</li>
+                            <li>初回の方は、事前にカウンセリングのお時間をいただきます</li>
+                            <li>キャンセルは前日までにご連絡ください</li>
+                            <li>当日キャンセルの場合は、キャンセル料が発生する場合があります</li>
                         </ul>
                     </div>
                 </div>
@@ -488,22 +648,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/reforma-logo.png" alt="Re'forma ロゴ" class="logo">
-                    <p>あなたの身体を整え、育てる<br>ボディリフォーメーションサロン</p>
+                    <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="logo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="logo-fallback" style="display: none;">Re'forma</div>
+                    <p>整えて、育てて、共につくる。<br>あなたのからだの"再創造"を。</p>
                 </div>
+                
                 <div class="footer-contact">
                     <h3>お問い合わせ</h3>
-                    <p><i class="fas fa-phone"></i> 000-1234-5678</p>
-                    <p><i class="fas fa-envelope"></i> info@reforma-salon.jp</p>
+                    <p><i class="fab fa-line"></i>LINE: @051ctvyr</p>
+                    <p><i class="fas fa-phone"></i>TEL: 0120-XXX-XXX</p>
+                    <p><i class="fas fa-clock"></i>営業時間: 10:00〜19:00（水曜定休）</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-line"></i></a>
                     </div>
                 </div>
+                
                 <div class="footer-nav">
-                    <h3>ナビゲーション</h3>
+                    <h3>メニュー</h3>
                     <ul>
                         <li><a href="#home">ホーム</a></li>
                         <li><a href="#services">サービス</a></li>
@@ -514,3 +678,19 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Re'forma. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- スクロールトップボタン -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
