@@ -102,6 +102,7 @@ function initializeMenuTabs() {
     const menuContents = document.querySelectorAll('.menu-content');
     
     console.log('メニュータブを初期化中...', menuTabs.length, 'タブ見つかりました');
+    console.log('メニューコンテンツを確認中...', menuContents.length, 'コンテンツ見つかりました');
     
     menuTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
@@ -109,21 +110,42 @@ function initializeMenuTabs() {
             const targetId = tab.getAttribute('data-tab');
             console.log('メニュータブクリック:', targetId);
             
-            // すべてのタブとコンテンツから active クラスを削除
+            // すべてのタブから active クラスを削除
             menuTabs.forEach(t => t.classList.remove('active'));
+            // すべてのコンテンツから active クラスを削除
             menuContents.forEach(c => c.classList.remove('active'));
             
-            // クリックされたタブと対応するコンテンツに active クラスを追加
+            // クリックされたタブに active クラスを追加
             tab.classList.add('active');
+            
+            // 対応するコンテンツに active クラスを追加
             const targetContent = document.getElementById(targetId);
             if (targetContent) {
                 targetContent.classList.add('active');
-                console.log('コンテンツ表示:', targetId);
+                console.log('コンテンツ表示成功:', targetId);
+                
+                // 強制的にコンテンツを表示（フォールバック）
+                targetContent.style.display = 'block';
+                
+                // 他のコンテンツを非表示
+                menuContents.forEach(c => {
+                    if (c.id !== targetId) {
+                        c.style.display = 'none';
+                    }
+                });
             } else {
                 console.error('コンテンツが見つかりません:', targetId);
             }
         });
     });
+    
+    // 初期状態の設定
+    const firstTab = document.querySelector('.menu-tab.active');
+    const firstContent = document.querySelector('.menu-content.active');
+    if (firstTab && firstContent) {
+        firstContent.style.display = 'block';
+        console.log('メニュー初期状態設定完了');
+    }
 }
 
 // 予約オプションタブの動作修正
@@ -132,6 +154,7 @@ function initializeOptionTabs() {
     const optionDetails = document.querySelectorAll('.option-details');
     
     console.log('予約タブを初期化中...', optionTabs.length, 'タブ見つかりました');
+    console.log('予約詳細を確認中...', optionDetails.length, '詳細見つかりました');
     
     optionTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
@@ -139,21 +162,57 @@ function initializeOptionTabs() {
             const targetOption = tab.getAttribute('data-option');
             console.log('予約タブクリック:', targetOption);
             
-            // すべてのタブと詳細から active クラスを削除
+            // すべてのタブから active クラスを削除
             optionTabs.forEach(t => t.classList.remove('active'));
-            optionDetails.forEach(d => d.classList.remove('active'));
             
-            // クリックされたタブと対応する詳細に active クラスを追加
+            // クリックされたタブに active クラスを追加
             tab.classList.add('active');
+            
+            // すべての詳細を非表示にする
+            optionDetails.forEach(d => {
+                d.classList.remove('active');
+                d.style.display = 'none';
+            });
+            
+            // 対応する詳細を表示
             const targetDetail = document.getElementById(targetOption);
             if (targetDetail) {
-                targetDetail.classList.add('active');
-                console.log('詳細表示:', targetOption);
+                // 少し遅延させて確実に表示
+                setTimeout(() => {
+                    targetDetail.classList.add('active');
+                    targetDetail.style.display = 'block';
+                    targetDetail.style.visibility = 'visible';
+                    targetDetail.style.opacity = '1';
+                    console.log('詳細表示成功:', targetOption);
+                }, 50);
             } else {
                 console.error('詳細が見つかりません:', targetOption);
             }
         });
     });
+    
+    // 初期状態の設定を強化
+    setTimeout(() => {
+        const firstTab = document.querySelector('.option-tab.active');
+        const firstDetail = document.querySelector('.option-details.active');
+        if (firstTab && firstDetail) {
+            firstDetail.style.display = 'block';
+            firstDetail.style.visibility = 'visible';
+            firstDetail.style.opacity = '1';
+            console.log('初期状態設定完了');
+        }
+        
+        // 全ての詳細要素を確認して初期設定
+        optionDetails.forEach((detail, index) => {
+            if (detail.classList.contains('active')) {
+                detail.style.display = 'block';
+                detail.style.visibility = 'visible';
+                detail.style.opacity = '1';
+            } else {
+                detail.style.display = 'none';
+            }
+        });
+    }, 100);
 }
 
 // お客様の声スライダーの動作
