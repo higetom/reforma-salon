@@ -1,348 +1,319 @@
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS (Animate On Scroll)
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
+// DOM要素の取得
+const navbar = document.getElementById('navbar');
+const navbarToggle = document.getElementById('navbar-toggle');
+const navbarNav = document.getElementById('navbar-nav');
+const readMoreBtn = document.getElementById('readMoreBtn');
+const readLessBtn = document.getElementById('readLessBtn');
+const conceptDetails = document.getElementById('conceptDetails');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+// ナビゲーションスクロール効果
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // スクロールトップボタンの表示/非表示
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+
+// ハンバーガーメニューの動作
+if (navbarToggle && navbarNav) {
+    navbarToggle.addEventListener('click', () => {
+        navbarToggle.classList.toggle('active');
+        navbarNav.classList.toggle('show');
     });
+}
 
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarMenu = document.getElementById('navbar-menu');
-    const scrollTopBtn = document.getElementById('scroll-top');
-
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-            if (scrollTopBtn) scrollTopBtn.classList.add('show');
-        } else {
-            navbar.classList.remove('scrolled');
-            if (scrollTopBtn) scrollTopBtn.classList.remove('show');
+// ナビゲーションリンクのクリック時にメニューを閉じる
+document.querySelectorAll('.navbar-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navbarToggle && navbarNav) {
+            navbarToggle.classList.remove('active');
+            navbarNav.classList.remove('show');
         }
     });
+});
 
-    // Mobile menu toggle - 修正版
-    if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // トグル状態を切り替え
-            navbarToggle.classList.toggle('active');
-            navbarMenu.classList.toggle('show');
-            
-            console.log('Menu toggled:', navbarMenu.classList.contains('show')); // デバッグ用
-        });
-
-        // メニューリンクがクリックされたときにメニューを閉じる
-        const navLinks = navbarMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navbarToggle.classList.remove('active');
-                navbarMenu.classList.remove('show');
-            });
-        });
-
-        // 外側をクリックしたときにメニューを閉じる
-        document.addEventListener('click', function(event) {
-            if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
-                navbarToggle.classList.remove('active');
-                navbarMenu.classList.remove('show');
-            }
-        });
-
-        // ESCキーでメニューを閉じる
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                navbarToggle.classList.remove('active');
-                navbarMenu.classList.remove('show');
-            }
-        });
-    }
-
-    // Scroll to top button
-    if (scrollTopBtn) {
-        scrollTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // Hero slider functionality
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    const heroDots = document.querySelectorAll('.hero-dot');
-    const prevSlideBtn = document.querySelector('.prev-slide');
-    const nextSlideBtn = document.querySelector('.next-slide');
-    let currentSlide = 0;
-    let slideInterval;
-
-    // Function to change slides
-    function changeSlide(index) {
-        // Remove active class from all slides and dots
-        heroSlides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-        heroDots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-
-        // Add active class to the current slide and dot
-        currentSlide = (index + heroSlides.length) % heroSlides.length;
-        if (heroSlides[currentSlide]) heroSlides[currentSlide].classList.add('active');
-        if (heroDots[currentSlide]) heroDots[currentSlide].classList.add('active');
-
-        // Reset the auto slide interval
-        resetSlideInterval();
-    }
-
-    // Auto slide functionality
-    function startSlideInterval() {
-        if (heroSlides.length > 1) {
-            slideInterval = setInterval(() => {
-                changeSlide(currentSlide + 1);
-            }, 5000); // Change slide every 5 seconds
-        }
-    }
-
-    function resetSlideInterval() {
-        clearInterval(slideInterval);
-        startSlideInterval();
-    }
-
-    // Initialize slider only if slides exist
-    if (heroSlides.length > 0) {
-        startSlideInterval();
-    }
-
-    // Previous and Next buttons
-    if (prevSlideBtn) {
-        prevSlideBtn.addEventListener('click', () => {
-            changeSlide(currentSlide - 1);
-        });
-    }
-
-    if (nextSlideBtn) {
-        nextSlideBtn.addEventListener('click', () => {
-            changeSlide(currentSlide + 1);
-        });
-    }
-
-    // Dot navigation
-    heroDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            changeSlide(index);
-        });
-    });
-
-    // Service menu tabs
-    const menuTabs = document.querySelectorAll('.menu-tab');
-    const menuContents = document.querySelectorAll('.menu-content');
-
-    menuTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs and contents
-            menuTabs.forEach(t => t.classList.remove('active'));
-            menuContents.forEach(c => c.classList.remove('active'));
-
-            // Add active class to the clicked tab
-            tab.classList.add('active');
-
-            // Show the corresponding content
-            const tabId = tab.getAttribute('data-tab');
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
-        });
-    });
-
-    // Reservation option tabs
-    const optionTabs = document.querySelectorAll('.option-tab');
-    const optionDetails = document.querySelectorAll('.option-details');
-
-    optionTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove active class from all tabs and details
-            optionTabs.forEach(t => t.classList.remove('active'));
-            optionDetails.forEach(d => d.classList.remove('active'));
-
-            // Add active class to the clicked tab
-            tab.classList.add('active');
-
-            // Show the corresponding details
-            const optionType = tab.getAttribute('data-option');
-            const targetDetails = document.getElementById(`${optionType}-details`);
-            if (targetDetails) {
-                targetDetails.classList.add('active');
-            }
-        });
-    });
-
-    // Testimonial slider
-    const testimonials = document.querySelectorAll('.testimonial');
-    const testimonialDots = document.querySelectorAll('.testimonial-dot');
-    let currentTestimonial = 0;
-    let testimonialInterval;
-
-    // Function to change testimonials
-    function changeTestimonial(index) {
-        // Remove active class from all testimonials and dots
-        testimonials.forEach(testimonial => {
-            testimonial.classList.remove('active');
-        });
-        testimonialDots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-
-        // Add active class to the current testimonial and dot
-        currentTestimonial = (index + testimonials.length) % testimonials.length;
-        if (testimonials[currentTestimonial]) testimonials[currentTestimonial].classList.add('active');
-        if (testimonialDots[currentTestimonial]) testimonialDots[currentTestimonial].classList.add('active');
-    }
-
-    // Auto testimonial rotation
-    function startTestimonialInterval() {
-        if (testimonials.length > 1) {
-            testimonialInterval = setInterval(() => {
-                changeTestimonial(currentTestimonial + 1);
-            }, 8000); // Change testimonial every 8 seconds
-        }
-    }
-
-    // Initialize testimonial slider
-    if (testimonials.length > 0) {
-        startTestimonialInterval();
-    }
-
-    // Testimonial dot navigation
-    testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            changeTestimonial(index);
-            clearInterval(testimonialInterval);
-            startTestimonialInterval();
-        });
-    });
-
-    // もっと読むボタン機能 - 修正版
-    const readMoreBtn = document.getElementById('read-more-btn');
-    const readLessBtn = document.getElementById('read-less-btn');
-    const conceptDetails = document.getElementById('concept-details');
-
-    if (readMoreBtn && readLessBtn && conceptDetails) {
-        readMoreBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            conceptDetails.classList.remove('hidden');
-            readMoreBtn.style.display = 'none';
-            
-            // スムーズにスクロール
-            setTimeout(() => {
-                conceptDetails.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'nearest' 
-                });
-            }, 100);
-        });
+// もっと詳しくボタンの動作修正
+if (readMoreBtn && conceptDetails) {
+    // 初期状態で詳細を非表示
+    conceptDetails.classList.add('hidden');
+    
+    readMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('もっと詳しくボタンがクリックされました');
         
-        readLessBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            conceptDetails.classList.add('hidden');
-            
-            setTimeout(() => {
+        // 詳細を表示
+        conceptDetails.classList.remove('hidden');
+        readMoreBtn.style.display = 'none';
+        
+        // スムーズなスクロール
+        setTimeout(() => {
+            conceptDetails.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 300);
+    });
+}
+
+// 閉じるボタンの動作修正
+if (readLessBtn && conceptDetails) {
+    readLessBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('閉じるボタンがクリックされました');
+        
+        // 詳細を非表示
+        conceptDetails.classList.add('hidden');
+        
+        // もっと詳しくボタンを再表示
+        setTimeout(() => {
+            if (readMoreBtn) {
                 readMoreBtn.style.display = 'flex';
-                // 「もっと詳しく」ボタンの位置にスムーズにスクロール
                 readMoreBtn.scrollIntoView({ 
                     behavior: 'smooth', 
-                    block: 'nearest' 
+                    block: 'center' 
                 });
-            }, 500); // アニメーション完了後にもっと読むボタンを表示
-        });
-    }
+            }
+        }, 500);
+    });
+}
 
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+// スクロールトップボタンの動作
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// サービスメニュータブの動作修正
+function initializeMenuTabs() {
+    const menuTabs = document.querySelectorAll('.menu-tab');
+    const menuContents = document.querySelectorAll('.menu-content');
     
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    console.log('メニュータブを初期化中...', menuTabs.length, 'タブ見つかりました');
+    
+    menuTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
             e.preventDefault();
+            const targetId = tab.getAttribute('data-tab');
+            console.log('メニュータブクリック:', targetId);
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // すべてのタブとコンテンツから active クラスを削除
+            menuTabs.forEach(t => t.classList.remove('active'));
+            menuContents.forEach(c => c.classList.remove('active'));
             
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Close mobile menu if open
-                if (navbarMenu && navbarMenu.classList.contains('show')) {
-                    navbarMenu.classList.remove('show');
-                    if (navbarToggle) navbarToggle.classList.remove('active');
-                }
-                
-                const navbarHeight = navbar ? navbar.offsetHeight : 80;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            // クリックされたタブと対応するコンテンツに active クラスを追加
+            tab.classList.add('active');
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                console.log('コンテンツ表示:', targetId);
+            } else {
+                console.error('コンテンツが見つかりません:', targetId);
             }
         });
     });
+}
 
-    // Dynamically set active navigation link based on scroll position
-    function setActiveNavLink() {
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.navbar-nav a');
-        
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const navbarHeight = navbar ? navbar.offsetHeight : 80;
-            const sectionTop = section.offsetTop - navbarHeight - 100;
-            const sectionBottom = sectionTop + section.offsetHeight;
+// 予約オプションタブの動作修正
+function initializeOptionTabs() {
+    const optionTabs = document.querySelectorAll('.option-tab');
+    const optionDetails = document.querySelectorAll('.option-details');
+    
+    console.log('予約タブを初期化中...', optionTabs.length, 'タブ見つかりました');
+    
+    optionTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetOption = tab.getAttribute('data-option');
+            console.log('予約タブクリック:', targetOption);
             
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                currentSection = '#' + section.getAttribute('id');
+            // すべてのタブと詳細から active クラスを削除
+            optionTabs.forEach(t => t.classList.remove('active'));
+            optionDetails.forEach(d => d.classList.remove('active'));
+            
+            // クリックされたタブと対応する詳細に active クラスを追加
+            tab.classList.add('active');
+            const targetDetail = document.getElementById(targetOption);
+            if (targetDetail) {
+                targetDetail.classList.add('active');
+                console.log('詳細表示:', targetOption);
+            } else {
+                console.error('詳細が見つかりません:', targetOption);
             }
         });
-        
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === currentSection) {
-                item.classList.add('active');
-            }
-        });
+    });
+}
+
+// お客様の声スライダーの動作
+let currentTestimonial = 0;
+let testimonialInterval;
+
+function initializeTestimonials() {
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    
+    if (testimonials.length === 0) {
+        console.log('お客様の声要素が見つかりません');
+        return;
     }
     
-    window.addEventListener('scroll', setActiveNavLink);
+    console.log('お客様の声を初期化中...', testimonials.length, '件見つかりました');
+    
+    function showTestimonial(index) {
+        // すべての証言とドットから active クラスを削除
+        testimonials.forEach(t => t.classList.remove('active'));
+        testimonialDots.forEach(d => d.classList.remove('active'));
+        
+        // 指定されたインデックスの証言とドットに active クラスを追加
+        if (testimonials[index] && testimonialDots[index]) {
+            testimonials[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+        }
+    }
+    
+    // ドットクリック時の動作
+    testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentTestimonial = index;
+            showTestimonial(currentTestimonial);
+            // 自動スライドをリセット
+            clearInterval(testimonialInterval);
+            startAutoSlide();
+        });
+    });
+    
+    // 自動スライド機能
+    function autoSlideTestimonials() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function startAutoSlide() {
+        testimonialInterval = setInterval(autoSlideTestimonials, 5000);
+    }
+    
+    // 初期表示
+    showTestimonial(0);
+    startAutoSlide();
+}
 
-    // リサイズ時にモバイルメニューを閉じる
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
-            if (navbarToggle) navbarToggle.classList.remove('active');
-            if (navbarMenu) navbarMenu.classList.remove('show');
+// スムーズスクロール機能
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href.length <= 1) return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            const offsetTop = target.offsetTop - 80; // ナビゲーションの高さを考慮
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
         }
     });
-
-    // デバッグ用：要素の存在確認
-    console.log('Navbar toggle:', navbarToggle);
-    console.log('Navbar menu:', navbarMenu);
-    console.log('Read more btn:', readMoreBtn);
-    console.log('Read less btn:', readLessBtn);
-    console.log('Concept details:', conceptDetails);
 });
 
-// Loading animation (optional)
-window.addEventListener('load', function() {
-    // Hide preloader if you decide to add one
-    // const preloader = document.querySelector('.preloader');
-    // if (preloader) {
-    //     preloader.style.display = 'none';
-    // }
+// スクロール連動アニメーション
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// アニメーション対象要素を監視
+document.querySelectorAll('.fade-in-up, .service-option, .app-card, .philosophy-point').forEach(el => {
+    observer.observe(el);
+});
+
+// ページ読み込み完了時の処理
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('ページ読み込み完了 - 初期化開始');
     
-    // 初期化完了のログ
-    console.log('Site loaded successfully');
+    // 各機能を初期化
+    initializeMenuTabs();
+    initializeOptionTabs();
+    initializeTestimonials();
+    
+    // ロゴ読み込みエラー時の処理
+    const logos = document.querySelectorAll('img[src*="reforma-logo"]');
+    logos.forEach(logo => {
+        logo.addEventListener('error', function() {
+            console.log('Logo failed to load, showing fallback');
+            this.style.display = 'none';
+            const fallback = this.nextElementSibling;
+            if (fallback && fallback.classList.contains('logo-fallback')) {
+                fallback.style.display = 'flex';
+            }
+        });
+    });
+    
+    // アプリロゴ読み込みエラー時の処理
+    const appLogos = document.querySelectorAll('.app-logo');
+    appLogos.forEach(logo => {
+        logo.addEventListener('error', function() {
+            console.log('App logo failed to load');
+        });
+    });
+    
+    console.log('すべての初期化が完了しました');
 });
+
+// 画面リサイズ時の処理
+window.addEventListener('resize', () => {
+    // モバイルメニューが開いている場合は閉じる
+    if (window.innerWidth > 992) {
+        if (navbarToggle && navbarNav) {
+            navbarToggle.classList.remove('active');
+            navbarNav.classList.remove('show');
+        }
+    }
+});
+
+// パフォーマンス最適化: デバウンス関数
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// スクロールイベントのデバウンス
+const debouncedScroll = debounce(() => {
+    // パフォーマンス重視のスクロール処理があればここに追加
+}, 10);
+
+window.addEventListener('scroll', debouncedScroll);
+
+// エラーハンドリング
+window.addEventListener('error', (e) => {
+    console.error('JavaScript エラー:', e.error);
+});
+
+// デバッグ用
+console.log('Re\'forma JavaScript 読み込み完了');
