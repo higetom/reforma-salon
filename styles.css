@@ -251,9 +251,10 @@ section {
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Hero Section styles */
+/* Hero Section styles - 拡張版 */
 .hero-section {
-    height: 100vh;
+    height: 120vh; /* 100vh から 120vh に拡張 */
+    min-height: 800px; /* 最小高さを確保 */
     position: relative;
     overflow: hidden;
 }
@@ -300,15 +301,15 @@ section {
 
 .hero-content {
     position: absolute;
-    top: 45%;
+    top: 50%; /* 中央に配置 */
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
     color: white;
-    max-width: 800px;
+    max-width: 900px; /* 幅を拡張 */
     width: 90%;
-    padding: 30px;
-    text-align: center;
+    padding: 40px; /* パディングを増加 */
+    text-align: center; /* 中央寄せを確実に */
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     backdrop-filter: blur(5px);
@@ -319,50 +320,52 @@ section {
 
 .hero-logo {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px; /* スペースを拡張 */
 }
 
 .main-logo {
-    max-width: 350px;
+    max-width: 400px; /* ロゴサイズを拡張 */
     height: auto;
 }
 
 .concept-container {
-    max-width: 720px;
-    margin: 0 auto 30px;
+    max-width: 800px;
+    margin: 0 auto 40px; /* 中央寄せを確実に */
+    text-align: center; /* 中央寄せを確実に */
 }
 
 .concept-title {
     font-family: var(--heading-font);
-    font-size: 2.4rem;
+    font-size: 2.8rem; /* サイズを拡張 */
     font-weight: 500;
     letter-spacing: 0.08em;
-    line-height: 1.7;
-    margin-bottom: 40px;
+    line-height: 1.6;
+    margin-bottom: 50px; /* スペースを拡張 */
     color: white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
 .concept-brief {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .concept-description p,
 .concept-additional p,
 .concept-brief p {
     font-family: var(--concept-font);
-    font-size: 1.15rem;
+    font-size: 1.2rem; /* サイズを拡張 */
     font-weight: 400;
     letter-spacing: var(--elegant-spacing);
-    line-height: 2;
-    margin-bottom: 24px;
+    line-height: 2.2; /* 行間を拡張 */
+    margin-bottom: 28px; /* スペースを拡張 */
     color: white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    text-align: center; /* 中央寄せを確実に */
 }
 
 .concept-additional {
-    margin-bottom: 50px;
+    margin-bottom: 60px; /* スペースを拡張 */
 }
 
 /* もっと読むボタンのスタイル */
@@ -371,13 +374,13 @@ section {
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 30px;
-    padding: 8px 20px;
+    padding: 12px 24px; /* サイズを拡張 */
     color: white;
-    font-size: 0.9rem;
+    font-size: 1rem; /* サイズを拡張 */
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin: 20px auto 0;
+    margin: 30px auto 0; /* 中央寄せとスペース拡張 */
     transition: all 0.3s ease;
 }
 
@@ -397,7 +400,8 @@ section {
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.5s ease;
     opacity: 1;
-    padding: 0 15px;
+    padding: 0 20px; /* パディングを拡張 */
+    text-align: center; /* 中央寄せを確実に */
 }
 
 .concept-details.hidden {
@@ -408,8 +412,8 @@ section {
 }
 
 .read-less-btn {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 40px; /* スペースを拡張 */
+    margin-bottom: 30px;
 }
 
 /* スクロールインジケーター - 完全削除 */
@@ -1222,8 +1226,8 @@ section {
 
 /* Responsive Styles */
 @media screen and (max-width: 1200px) {
-    .hero-content h1 {
-        font-size: 3rem;
+    .concept-title {
+        font-size: 2.4rem;
     }
 }
 
@@ -1232,13 +1236,22 @@ section {
         padding: 80px 0;
     }
 
+    .hero-section {
+        height: 100vh; /* モバイルでは元の高さに戻す */
+        min-height: 700px;
+    }
+
     .concept-title {
         font-size: 2rem;
     }
 
     .hero-content {
-        left: 5%;
-        max-width: 500px;
+        padding: 30px;
+        max-width: 95%;
+    }
+
+    .main-logo {
+        max-width: 280px;
     }
 
     .service-options,
@@ -1314,33 +1327,51 @@ section {
         font-size: 2rem;
     }
 
+    .hero-section {
+        height: 100vh;
+        min-height: 600px;
+    }
+
     .concept-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem; /* さらに調整 */
         margin-bottom: 30px;
+        line-height: 1.5;
     }
 
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
-        font-size: 1rem;
-        margin-bottom: 15px;
+        font-size: 1.1rem; /* サイズ調整 */
+        margin-bottom: 20px;
+        line-height: 2;
     }
 
     .concept-container {
-        margin-bottom: 40px;
-    }
-
-    .hero-logo {
         margin-bottom: 30px;
     }
 
+    .hero-logo {
+        margin-bottom: 40px;
+    }
+
     .main-logo {
-        max-width: 200px;
+        max-width: 220px;
     }
 
     .hero-content {
-        padding: 20px;
+        padding: 25px;
         top: 50%;
+    }
+
+    .read-more-btn,
+    .read-less-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin: 25px auto 0;
+    }
+
+    .concept-details {
+        padding: 0 10px;
     }
 
     .service-menu {
@@ -1377,21 +1408,24 @@ section {
     .app-btn {
         width: 100%;
     }
-
-    /* モバイルでのコンセプトテキスト調整 */
-    .hero-text, .concept-text, .main-concept {
-        font-size: 1.8rem;
-        line-height: 1.4;
-        padding: 0 15px;
-        margin: 0 auto;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
 }
 
 @media screen and (max-width: 576px) {
+    .hero-section {
+        height: 90vh;
+        min-height: 550px;
+    }
+
     .concept-title {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 1rem;
+        line-height: 1.8;
     }
 
     .section-header h2 {
@@ -1412,6 +1446,14 @@ section {
 
     .container {
         padding: 0 1rem;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .main-logo {
+        max-width: 180px;
     }
 }
 
