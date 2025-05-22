@@ -24,11 +24,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Mobile menu toggle
-    if (navbarToggle) {
-        navbarToggle.addEventListener('click', function() {
+    // Mobile menu toggle - 修正版
+    if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // トグル状態を切り替え
+            navbarToggle.classList.toggle('active');
             navbarMenu.classList.toggle('show');
-            this.classList.toggle('active');
+            
+            console.log('Menu toggled:', navbarMenu.classList.contains('show')); // デバッグ用
+        });
+
+        // メニューリンクがクリックされたときにメニューを閉じる
+        const navLinks = navbarMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('show');
+            });
+        });
+
+        // 外側をクリックしたときにメニューを閉じる
+        document.addEventListener('click', function(event) {
+            if (!navbarToggle.contains(event.target) && !navbarMenu.contains(event.target)) {
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('show');
+            }
+        });
+
+        // ESCキーでメニューを閉じる
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('show');
+            }
         });
     }
 
@@ -62,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add active class to the current slide and dot
         currentSlide = (index + heroSlides.length) % heroSlides.length;
-        heroSlides[currentSlide].classList.add('active');
-        heroDots[currentSlide].classList.add('active');
+        if (heroSlides[currentSlide]) heroSlides[currentSlide].classList.add('active');
+        if (heroDots[currentSlide]) heroDots[currentSlide].classList.add('active');
 
         // Reset the auto slide interval
         resetSlideInterval();
@@ -71,9 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto slide functionality
     function startSlideInterval() {
-        slideInterval = setInterval(() => {
-            changeSlide(currentSlide + 1);
-        }, 5000); // Change slide every 5 seconds
+        if (heroSlides.length > 1) {
+            slideInterval = setInterval(() => {
+                changeSlide(currentSlide + 1);
+            }, 5000); // Change slide every 5 seconds
+        }
     }
 
     function resetSlideInterval() {
@@ -81,8 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
         startSlideInterval();
     }
 
-    // Initialize slider
-    startSlideInterval();
+    // Initialize slider only if slides exist
+    if (heroSlides.length > 0) {
+        startSlideInterval();
+    }
 
     // Previous and Next buttons
     if (prevSlideBtn) {
@@ -119,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show the corresponding content
             const tabId = tab.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         });
     });
 
@@ -138,7 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show the corresponding details
             const optionType = tab.getAttribute('data-option');
-            document.getElementById(`${optionType}-details`).classList.add('active');
+            const targetDetails = document.getElementById(`${optionType}-details`);
+            if (targetDetails) {
+                targetDetails.classList.add('active');
+            }
         });
     });
 
@@ -160,19 +201,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add active class to the current testimonial and dot
         currentTestimonial = (index + testimonials.length) % testimonials.length;
-        testimonials[currentTestimonial].classList.add('active');
-        testimonialDots[currentTestimonial].classList.add('active');
+        if (testimonials[currentTestimonial]) testimonials[currentTestimonial].classList.add('active');
+        if (testimonialDots[currentTestimonial]) testimonialDots[currentTestimonial].classList.add('active');
     }
 
     // Auto testimonial rotation
     function startTestimonialInterval() {
-        testimonialInterval = setInterval(() => {
-            changeTestimonial(currentTestimonial + 1);
-        }, 8000); // Change testimonial every 8 seconds
+        if (testimonials.length > 1) {
+            testimonialInterval = setInterval(() => {
+                changeTestimonial(currentTestimonial + 1);
+            }, 8000); // Change testimonial every 8 seconds
+        }
     }
 
     // Initialize testimonial slider
-    startTestimonialInterval();
+    if (testimonials.length > 0) {
+        startTestimonialInterval();
+    }
 
     // Testimonial dot navigation
     testimonialDots.forEach((dot, index) => {
@@ -183,34 +228,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // もっと読むボタン機能
+    // もっと読むボタン機能 - 修正版
     const readMoreBtn = document.getElementById('read-more-btn');
     const readLessBtn = document.getElementById('read-less-btn');
     const conceptDetails = document.getElementById('concept-details');
 
     if (readMoreBtn && readLessBtn && conceptDetails) {
-        readMoreBtn.addEventListener('click', function() {
+        readMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             conceptDetails.classList.remove('hidden');
             readMoreBtn.style.display = 'none';
+            
+            // スムーズにスクロール
+            setTimeout(() => {
+                conceptDetails.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
+            }, 100);
         });
         
-        readLessBtn.addEventListener('click', function() {
+        readLessBtn.addEventListener('click', function(e) {
+            e.preventDefault();
             conceptDetails.classList.add('hidden');
+            
             setTimeout(() => {
                 readMoreBtn.style.display = 'flex';
+                // 「もっと詳しく」ボタンの位置にスムーズにスクロール
+                readMoreBtn.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest' 
+                });
             }, 500); // アニメーション完了後にもっと読むボタンを表示
-        });
-    }
-
-    // LINE公式アカウント予約ボタン
-    const lineReservationBtn = document.getElementById('line-reservation-btn');
-    
-    if (lineReservationBtn) {
-        lineReservationBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // LINE公式アカウントが完成したら以下のURLを実際のものに変更してください
-            // 例: window.open('https://lin.ee/yourAccountID', '_blank');
-            alert('LINE公式アカウントは現在準備中です。完成次第、予約が可能になります。');
         });
     }
 
@@ -227,12 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Close mobile menu if open
-                if (navbarMenu.classList.contains('show')) {
+                if (navbarMenu && navbarMenu.classList.contains('show')) {
                     navbarMenu.classList.remove('show');
-                    navbarToggle.classList.remove('active');
+                    if (navbarToggle) navbarToggle.classList.remove('active');
                 }
                 
-                const navbarHeight = navbar.offsetHeight;
+                const navbarHeight = navbar ? navbar.offsetHeight : 80;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
                 
                 window.scrollTo({
@@ -251,7 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentSection = '';
         
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - navbar.offsetHeight - 100;
+            const navbarHeight = navbar ? navbar.offsetHeight : 80;
+            const sectionTop = section.offsetTop - navbarHeight - 100;
             const sectionBottom = sectionTop + section.offsetHeight;
             
             if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
@@ -269,15 +319,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', setActiveNavLink);
 
-    // Add floating message if needed (uncomment to use)
-    /*
-    const body = document.querySelector('body');
-    const floatingBadge = document.createElement('a');
-    floatingBadge.classList.add('floating-badge');
-    floatingBadge.href = "#reservation";
-    floatingBadge.innerHTML = '<i class="fas fa-calendar-check"></i> 今すぐ予約';
-    body.appendChild(floatingBadge);
-    */
+    // リサイズ時にモバイルメニューを閉じる
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            if (navbarToggle) navbarToggle.classList.remove('active');
+            if (navbarMenu) navbarMenu.classList.remove('show');
+        }
+    });
+
+    // デバッグ用：要素の存在確認
+    console.log('Navbar toggle:', navbarToggle);
+    console.log('Navbar menu:', navbarMenu);
+    console.log('Read more btn:', readMoreBtn);
+    console.log('Read less btn:', readLessBtn);
+    console.log('Concept details:', conceptDetails);
 });
 
 // Loading animation (optional)
@@ -287,25 +342,7 @@ window.addEventListener('load', function() {
     // if (preloader) {
     //     preloader.style.display = 'none';
     // }
-});
-// ハンバーガーメニュー機能
-document.addEventListener('DOMContentLoaded', function() {
-    const navbarToggle = document.getElementById('navbar-toggle');
-    const navbarMenu = document.getElementById('navbar-menu');
     
-    if (navbarToggle && navbarMenu) {
-        navbarToggle.addEventListener('click', function() {
-            navbarToggle.classList.toggle('active');
-            navbarMenu.classList.toggle('active');
-        });
-    }
-    
-    // メニュー内のリンクをクリックしたらメニューを閉じる
-    const navLinks = document.querySelectorAll('.navbar-nav a');
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-            navbarToggle.classList.remove('active');
-            navbarMenu.classList.remove('active');
-        });
-    });
+    // 初期化完了のログ
+    console.log('Site loaded successfully');
 });
