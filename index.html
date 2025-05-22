@@ -17,16 +17,30 @@
             <div class="navbar-brand">
                 <img src="images/reforma-logo.png" alt="Re'forma ロゴ" class="logo">
             </div>
-            <div class="navbar-menu" id="navbar-menu">
-                <ul class="navbar-nav">
-                    <li><a href="#home">ホーム</a></li>
-                    <li><a href="#services">サービス</a></li>
-                    <li><a href="#apps">アプリ</a></li>
-                    <li><a href="#about">Re'formaについて</a></li>
-                    <li><a href="#testimonials">お客様の声</a></li>
-                    <li><a href="#reservation" class="reservation-btn">ご予約</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Re'forma. All Rights Reserved.</p>
             </div>
+        </div>
+    </footer>
+
+    <!-- スクロールトップボタン -->
+    <button id="scroll-top" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html><ul class="navbar-nav" id="navbar-menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#services">サービス</a></li>
+                <li><a href="#apps">アプリ</a></li>
+                <li><a href="#about">Re'formaについて</a></li>
+                <li><a href="#testimonials">お客様の声</a></li>
+                <li><a href="#reservation" class="reservation-btn">ご予約</a></li>
+            </ul>
             <div class="navbar-toggle" id="navbar-toggle">
                 <span></span>
                 <span></span>
@@ -35,26 +49,23 @@
         </div>
     </nav>
 
-    <!-- ヒーローセクション (チラシスタイル・もっと読むボタン付き) -->
+    <!-- ヒーローセクション -->
     <section id="home" class="hero-section">
         <div class="hero-slider">
             <div class="hero-slide active">
                 <div class="overlay"></div>
                 <img src="images/hero-1.jpg" alt="Re'forma サロン">
                 <div class="hero-content">
-                    <!-- ロゴ部分 -->
                     <div class="hero-logo" data-aos="fade-in">
                         <img src="images/reforma-logo.png" alt="Re'forma ロゴ" class="main-logo">
                     </div>
                     
-                    <!-- コンセプト文（もっと読むボタン付き） -->
                     <div class="concept-container">
                         <h2 class="concept-title" data-aos="fade-up" data-aos-delay="200">
                             整えて、育てて、共につくる。<br>
                             あなたのからだの "再創造" を。
                         </h2>
                         
-                        <!-- 簡潔版（常に表示） -->
                         <div class="concept-brief" data-aos="fade-up" data-aos-delay="400">
                             <p>ここは、身体と向き合うための、特別な場所。</p>
                             <p>Re'Forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創りあげていく空間を目指しています。</p>
@@ -64,7 +75,6 @@
                             </button>
                         </div>
                         
-                        <!-- 詳細版（最初は非表示） -->
                         <div id="concept-details" class="concept-details hidden">
                             <div class="concept-description" data-aos="fade-up">
                                 <p>痛みや不調の奥にある本当の原因に向き合い、「どうすれば今よりも動きやすく、心地よく過ごせるか」を、一緒に考え、じっくりと対話を重ねていきましょう。</p>
@@ -86,16 +96,10 @@
                         </div>
                     </div>
                     
-                    <!-- 予約ボタン -->
                     <a href="#reservation" class="btn btn-primary" data-aos="fade-up" data-aos-delay="800">今すぐ予約する</a>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-    <p>詳細はスクロール</p>
-    <i class="fas fa-chevron-down"></i>
-</div>
-
     </section>
 
     <!-- サービスセクション -->
@@ -226,7 +230,6 @@
             <div class="service-area" data-aos="fade-up">
                 <h3>施術エリア</h3>
                 <div class="area-map">
-                    <!-- 地図が入ります（実際の実装ではGoogle Mapsなどを埋め込み） -->
                     <img src="images/service-area-map.jpg" alt="サービスエリアマップ">
                 </div>
                 <div class="area-info">
@@ -455,8 +458,7 @@
                             <i class="fab fa-line"></i>
                             <h4>LINE公式アカウント</h4>
                             <p>24時間いつでも予約可能。予約状況の確認や変更も簡単にできます。</p>
-                            <!-- LINE公式アカウントが完成したら下記のURLを変更してください -->
-                            <a href="#" class="btn btn-primary line-btn" id="line-reservation-btn">LINEで予約する</a>
+                            <a href="https://line.me/R/ti/p/@051ctvyr" class="line-btn">LINEで予約する</a>
                         </div>
                         
                         <div class="reservation-method phone-reservation">
@@ -512,20 +514,3 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Re'forma. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- スクロールトップボタン -->
-    <button id="scroll-top" class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
