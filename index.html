@@ -93,9 +93,13 @@
                                 <span>閉じる</span>
                                 <i class="fas fa-chevron-up"></i>
                             </button>
+                            
+                            <!-- 予約ボタンを詳細セクション内に移動 -->
+                            <a href="#reservation" class="btn btn-primary reservation-in-details">ご予約はこちら</a>
                         </div>
                         
-                        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
+                        <!-- 通常表示の予約ボタン -->
+                        <a href="#reservation" class="btn btn-primary main-reservation-btn">ご予約はこちら</a>
                     </div>
                 </div>
             </div>
@@ -405,19 +409,19 @@
                 
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
+                        <p>「息子の投球フォーム指導をお願いしました。3ヶ月で球速が10キロもアップし、コントロールも格段に良くなりました。理学療法士の専門的な視点からの指導で、怪我の心配もなく安心してお任せできます。」</p>
                     </div>
                     <div class="testimonial-author">
-                        <strong>40代女性・主婦</strong>
+                        <strong>40代男性・会社員（息子さんの野球指導）</strong>
                     </div>
                 </div>
                 
                 <div class="testimonial">
                     <div class="testimonial-content">
-                        <p>「理学療法士としての専門知識に基づいたアドバイスがとても参考になります。根本的な改善を実感できています。」</p>
+                        <p>「20年以上悩み続けていた首の痛みが、3回の施術でほぼ改善されました。根本的な原因を見つけて治療してくださったおかげで、今では痛みを忘れて生活できています。本当にありがとうございます。」</p>
                     </div>
                     <div class="testimonial-author">
-                        <strong>50代男性・自営業</strong>
+                        <strong>50代女性・主婦</strong>
                     </div>
                 </div>
             </div>
@@ -430,7 +434,7 @@
         </div>
     </section>
 
-    <!-- ご予約セクション - 修正版 -->
+    <!-- ご予約セクション -->
     <section class="reservation-section" id="reservation">
         <div class="container">
             <div class="section-header">
@@ -445,18 +449,18 @@
                         <button class="option-tab" data-option="salon">サロン施術</button>
                     </div>
                     
-                    <!-- 出張サービスの詳細 -->
                     <div class="option-details active" id="home">
                         <h3>出張サービス</h3>
-                        <p>お客様のご自宅やご希望の場所での施術です。</p>
+                        <p>お客様のご自宅やご希望の場所での施術です。慣れ親しんだ環境でリラックスして施術を受けていただけます。</p>
                         <ul class="preparation-list">
                             <li><i class="fas fa-check"></i>施術用のスペース（畳2畳程度）をご用意ください</li>
                             <li><i class="fas fa-check"></i>タオル類はこちらで準備いたします</li>
                             <li><i class="fas fa-check"></i>駐車スペースがあると助かります</li>
+                            <li><i class="fas fa-check"></i>完全プライベート空間でリラックス</li>
+                            <li><i class="fas fa-check"></i>移動時間が不要で効率的</li>
                         </ul>
                     </div>
                     
-                    <!-- サロン施術の詳細 -->
                     <div class="option-details" id="salon">
                         <h3>サロン施術</h3>
                         <p>専用サロンスペースでの施術です。</p>
@@ -470,22 +474,14 @@
                 
                 <div class="reservation-form">
                     <h3>ご予約方法</h3>
-                    <p>以下のいずれかの方法でご予約いただけます。LINE公式アカウントからのご予約が便利です。</p>
+                    <p>LINE公式アカウントからのご予約をお願いいたします。24時間いつでも予約可能で、予約状況の確認や変更も簡単にできます。</p>
                     
                     <div class="reservation-methods">
-                        <div class="reservation-method line-reservation">
+                        <div class="reservation-method line-reservation-main">
                             <i class="fab fa-line"></i>
                             <h4>LINE公式アカウント</h4>
                             <p>24時間いつでも予約可能。予約状況の確認や変更も簡単にできます。</p>
-                            <a href="https://line.me/R/ti/p/@051ctvyr" class="btn line-btn" target="_blank">LINEで予約</a>
-                        </div>
-                        
-                        <div class="reservation-method phone-reservation">
-                            <i class="fas fa-phone"></i>
-                            <h4>お電話でのご予約</h4>
-                            <p>営業時間内にお電話でご予約いただけます。</p>
-                            <p class="reception-hours">受付時間：10:00〜19:00（水曜定休）</p>
-                            <a href="tel:0120-XXX-XXX" class="btn btn-secondary">電話をかける</a>
+                            <a href="https://line.me/R/ti/p/@051ctvyr" class="btn line-btn-large" target="_blank">LINEで予約する</a>
                         </div>
                     </div>
                     
@@ -516,7 +512,6 @@
                 <div class="footer-contact">
                     <h3>お問い合わせ</h3>
                     <p><i class="fab fa-line"></i>LINE: @051ctvyr</p>
-                    <p><i class="fas fa-phone"></i>TEL: 0120-XXX-XXX</p>
                     <p><i class="fas fa-clock"></i>営業時間: 10:00〜19:00（水曜定休）</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
