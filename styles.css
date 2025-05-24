@@ -1,423 +1,2478 @@
-// DOM要素の取得
-const navbar = document.getElementById('navbar');
-const navbarToggle = document.getElementById('navbar-toggle');
-const navbarNav = document.getElementById('navbar-nav');
-const readMoreBtn = document.getElementById('readMoreBtn');
-const readLessBtn = document.getElementById('readLessBtn');
-const conceptDetails = document.getElementById('conceptDetails');
-const scrollTopBtn = document.getElementById('scrollTop');
+/* Re'forma サロン - CSS完全版（改善版） */
 
-// ナビゲーションスクロール効果
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    // スクロールトップボタンの表示/非表示
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('show');
-    } else {
-        scrollTopBtn.classList.remove('show');
-    }
-});
-
-// ハンバーガーメニューの動作
-if (navbarToggle && navbarNav) {
-    navbarToggle.addEventListener('click', () => {
-        navbarToggle.classList.toggle('active');
-        navbarNav.classList.toggle('show');
-    });
+/* Base Styles */
+:root {
+    --primary-color: #d4a373;
+    --secondary-color: #faedcd;
+    --accent-color: #e9edc9;
+    --dark-color: #10151f;
+    --light-color: #fefefe;
+    --gray-color: #f5f5f5;
+    --text-color: #4a4a4a;
+    --heading-font: 'Montserrat', 'Noto Sans JP', sans-serif;
+    --body-font: 'Noto Sans JP', 'Montserrat', sans-serif;
+    --serif-font: 'Noto Serif JP', serif;
+    --concept-font: 'Noto Sans JP', sans-serif;
+    --elegant-spacing: 0.05em;
 }
 
-// ナビゲーションリンクのクリック時にメニューを閉じる
-document.querySelectorAll('.navbar-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (navbarToggle && navbarNav) {
-            navbarToggle.classList.remove('active');
-            navbarNav.classList.remove('show');
-        }
-    });
-});
-
-// もっと詳しくボタンの動作修正 - 改善点1の解決
-if (readMoreBtn && conceptDetails) {
-    // 初期状態で詳細を非表示
-    conceptDetails.classList.add('hidden');
-    
-    readMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('もっと詳しくボタンがクリックされました');
-        
-        // 詳細を表示
-        conceptDetails.classList.remove('hidden');
-        readMoreBtn.style.display = 'none';
-        
-        // スムーズなスクロール
-        setTimeout(() => {
-            conceptDetails.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }, 300);
-    });
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-// 閉じるボタンの動作修正 - 改善点1の解決
-if (readLessBtn && conceptDetails) {
-    readLessBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('閉じるボタンがクリックされました');
-        
-        // 詳細を非表示
-        conceptDetails.classList.add('hidden');
-        
-        // もっと詳しくボタンを再表示
-        setTimeout(() => {
-            if (readMoreBtn) {
-                readMoreBtn.style.display = 'flex';
-                readMoreBtn.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }
-        }, 500);
-    });
+html {
+    scroll-behavior: smooth;
 }
 
-// スクロールトップボタンの動作
-if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+body {
+    font-family: var(--body-font);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
 }
 
-// サービスメニュータブの動作修正
-function initializeMenuTabs() {
-    const menuTabs = document.querySelectorAll('.menu-tab');
-    const menuContents = document.querySelectorAll('.menu-content');
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2 .accent {
+    color: var(--primary-color);
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:hover {
+    background-color: #c99362;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 163, 115, 0.5);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ナビゲーション基本設定 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(16, 21, 31, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    height: 70px;
+    background-color: rgba(16, 21, 31, 0.98);
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand .logo {
+    height: 50px;
+    transition: height 0.3s ease;
+}
+
+.navbar.scrolled .navbar-brand .logo {
+    height: 40px;
+}
+
+.navbar-brand .logo-fallback {
+    height: 50px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #c4915c, #d4a373, #e9c46a);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    font-family: var(--heading-font);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .navbar-brand .logo-fallback {
+    height: 40px;
+    font-size: 1rem;
+    padding: 6px 16px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav li {
+    margin: 0 15px;
+}
+
+.navbar-nav li a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--light-color);
+    padding: 8px 0;
+    position: relative;
+}
+
+.navbar-nav li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav li a:hover::after,
+.navbar-nav li a.active::after {
+    width: 100%;
+}
+
+.reservation-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.reservation-btn:hover {
+    background-color: #c99362;
+    transform: translateY(-2px);
+}
+
+/* ハンバーガーメニュー設定 */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.navbar-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--light-color);
+    margin: 3px 0;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.navbar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* レスポンシブナビゲーション */
+@media screen and (max-width: 992px) {
+    .navbar-toggle {
+        display: flex;
+    }
     
-    console.log('メニュータブを初期化中...', menuTabs.length, 'タブ見つかりました');
-    console.log('メニューコンテンツを確認中...', menuContents.length, 'コンテンツ見つかりました');
-    
-    menuTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = tab.getAttribute('data-tab');
-            console.log('メニュータブクリック:', targetId);
-            
-            // すべてのタブから active クラスを削除
-            menuTabs.forEach(t => t.classList.remove('active'));
-            // すべてのコンテンツから active クラスを削除
-            menuContents.forEach(c => c.classList.remove('active'));
-            
-            // クリックされたタブに active クラスを追加
-            tab.classList.add('active');
-            
-            // 対応するコンテンツに active クラスを追加
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-                console.log('コンテンツ表示成功:', targetId);
-                
-                // 強制的にコンテンツを表示（フォールバック）
-                targetContent.style.display = 'block';
-                
-                // 他のコンテンツを非表示
-                menuContents.forEach(c => {
-                    if (c.id !== targetId) {
-                        c.style.display = 'none';
-                    }
-                });
-            } else {
-                console.error('コンテンツが見つかりません:', targetId);
-            }
-        });
-    });
-    
-    // 初期状態の設定
-    const firstTab = document.querySelector('.menu-tab.active');
-    const firstContent = document.querySelector('.menu-content.active');
-    if (firstTab && firstContent) {
-        firstContent.style.display = 'block';
-        console.log('メニュー初期状態設定完了');
+    .navbar-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(16, 21, 31, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 999;
+    }
+
+    .navbar-nav.show {
+        display: flex;
+    }
+
+    .navbar-nav li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav li a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.1rem;
     }
 }
 
-// 予約オプションタブの動作修正 - 改善点3の完全解決
-function initializeOptionTabs() {
-    const optionTabs = document.querySelectorAll('.option-tab');
-    const optionDetails = document.querySelectorAll('.option-details');
-    
-    console.log('予約タブを初期化中...', optionTabs.length, 'タブ見つかりました');
-    console.log('予約詳細を確認中...', optionDetails.length, '詳細見つかりました');
-    
-    // 初期状態を確実に設定
-    function setInitialState() {
-        // 最初のタブ（出張サービス）をアクティブに設定
-        if (optionTabs.length > 0) {
-            optionTabs[0].classList.add('active');
-            const homeDetail = document.getElementById('home');
-            
-            if (homeDetail) {
-                homeDetail.classList.add('active');
-                homeDetail.style.display = 'block';
-                homeDetail.style.visibility = 'visible';
-                homeDetail.style.opacity = '1';
-                console.log('出張サービス初期状態設定完了');
-            }
-        }
-        
-        // その他の詳細を非表示
-        optionDetails.forEach((detail, index) => {
-            if (detail.id !== 'home') {
-                detail.classList.remove('active');
-                detail.style.display = 'none';
-                detail.style.visibility = 'hidden';
-                detail.style.opacity = '0';
-            }
-        });
-    }
-    
-    // タブクリック処理
-    optionTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetOption = tab.getAttribute('data-option');
-            console.log('予約タブクリック:', targetOption);
-            
-            // すべてのタブから active クラスを削除
-            optionTabs.forEach(t => t.classList.remove('active'));
-            
-            // クリックされたタブに active クラスを追加
-            tab.classList.add('active');
-            
-            // すべての詳細を一旦非表示
-            optionDetails.forEach(d => {
-                d.classList.remove('active');
-                d.style.display = 'none';
-                d.style.visibility = 'hidden';
-                d.style.opacity = '0';
-            });
-            
-            // 対応する詳細を表示
-            const targetDetail = document.getElementById(targetOption);
-            if (targetDetail) {
-                setTimeout(() => {
-                    targetDetail.classList.add('active');
-                    targetDetail.style.display = 'block';
-                    targetDetail.style.visibility = 'visible';
-                    targetDetail.style.opacity = '1';
-                    
-                    // 内部要素も確実に表示
-                    const innerElements = targetDetail.querySelectorAll('h3, p, ul, li, .space-address');
-                    innerElements.forEach(el => {
-                        el.style.display = el.tagName === 'LI' ? 'flex' : 'block';
-                        el.style.visibility = 'visible';
-                        el.style.opacity = '1';
-                    });
-                    
-                    console.log('詳細表示成功:', targetOption);
-                    
-                    // 出張サービスタブをクリックした場合の特別処理
-                    if (targetOption === 'home') {
-                        console.log('出張サービスタブがクリックされました');
-                    }
-                }, 50);
-            } else {
-                console.error('詳細が見つかりません:', targetOption);
-            }
-        });
-    });
-    
-    // 初期状態を設定
-    setTimeout(setInitialState, 100);
+/* Hero Section - 改善版 */
+.hero-section {
+    height: 300vh;
+    min-height: 2000px;
+    position: relative;
+    overflow: hidden;
 }
 
-// お客様の声スライダーの動作 - 改善点1の解決
-let currentTestimonial = 0;
-let testimonialInterval;
-
-function initializeTestimonials() {
-    const testimonials = document.querySelectorAll('.testimonial');
-    const testimonialDots = document.querySelectorAll('.testimonial-dot');
-    
-    if (testimonials.length === 0) {
-        console.log('お客様の声要素が見つかりません');
-        return;
-    }
-    
-    console.log('お客様の声を初期化中...', testimonials.length, '件見つかりました');
-    
-    function showTestimonial(index) {
-        // すべての証言とドットから active クラスを削除
-        testimonials.forEach((t, i) => {
-            t.classList.remove('active');
-            // 重なりを防ぐため、非アクティブなものは完全に非表示
-            if (i !== index) {
-                t.style.visibility = 'hidden';
-                t.style.opacity = '0';
-                t.style.zIndex = '1';
-            }
-        });
-        
-        testimonialDots.forEach(d => d.classList.remove('active'));
-        
-        // 指定されたインデックスの証言とドットに active クラスを追加
-        if (testimonials[index] && testimonialDots[index]) {
-            setTimeout(() => {
-                testimonials[index].style.visibility = 'visible';
-                testimonials[index].style.zIndex = '10';
-                testimonials[index].classList.add('active');
-                testimonialDots[index].classList.add('active');
-            }, 100);
-        }
-    }
-    
-    // ドットクリック時の動作
-    testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentTestimonial = index;
-            showTestimonial(currentTestimonial);
-            // 自動スライドをリセット
-            clearInterval(testimonialInterval);
-            startAutoSlide();
-        });
-    });
-    
-    // 自動スライド機能
-    function autoSlideTestimonials() {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    }
-    
-    function startAutoSlide() {
-        testimonialInterval = setInterval(autoSlideTestimonials, 6000); // 6秒間隔に変更
-    }
-    
-    // 初期表示
-    showTestimonial(0);
-    startAutoSlide();
-    
-    // 画面がアクティブでない時は自動スライドを停止
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            clearInterval(testimonialInterval);
-        } else {
-            startAutoSlide();
-        }
-    });
+.hero-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-// スムーズスクロール機能
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#' || href.length <= 1) return;
-        
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-            const offsetTop = target.offsetTop - 80; // ナビゲーションの高さを考慮
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// スクロール連動アニメーション
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// アニメーション対象要素を監視
-document.querySelectorAll('.fade-in-up, .service-option, .app-card, .philosophy-point').forEach(el => {
-    observer.observe(el);
-});
-
-// ページ読み込み完了時の処理
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('ページ読み込み完了 - 初期化開始');
-    
-    // 各機能を初期化
-    initializeMenuTabs();
-    initializeOptionTabs();
-    initializeTestimonials();
-    
-    // ロゴ読み込みエラー時の処理
-    const logos = document.querySelectorAll('img[src*="reforma-logo"]');
-    logos.forEach(logo => {
-        logo.addEventListener('error', function() {
-            console.log('Logo failed to load, showing fallback');
-            this.style.display = 'none';
-            const fallback = this.nextElementSibling;
-            if (fallback && fallback.classList.contains('logo-fallback')) {
-                fallback.style.display = 'flex';
-            }
-        });
-    });
-    
-    // アプリロゴ読み込みエラー時の処理
-    const appLogos = document.querySelectorAll('.app-logo');
-    appLogos.forEach(logo => {
-        logo.addEventListener('error', function() {
-            console.log('App logo failed to load');
-        });
-    });
-    
-    console.log('すべての初期化が完了しました');
-});
-
-// 画面リサイズ時の処理
-window.addEventListener('resize', () => {
-    // モバイルメニューが開いている場合は閉じる
-    if (window.innerWidth > 992) {
-        if (navbarToggle && navbarNav) {
-            navbarToggle.classList.remove('active');
-            navbarNav.classList.remove('show');
-        }
-    }
-});
-
-// パフォーマンス最適化: デバウンス関数
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 1;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
 }
 
-// スクロールイベントのデバウンス
-const debouncedScroll = debounce(() => {
-    // パフォーマンス重視のスクロール処理があればここに追加
-}, 10);
+.hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
 
-window.addEventListener('scroll', debouncedScroll);
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-// エラーハンドリング
-window.addEventListener('error', (e) => {
-    console.error('JavaScript エラー:', e.error);
-});
+.hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(212, 163, 115, 0.15) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(233, 196, 106, 0.12) 1px, transparent 1px),
+        radial-gradient(circle at 40% 60%, rgba(212, 163, 115, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+    background-size: 300px 300px, 250px 250px, 400px 400px, 350px 350px;
+    animation: enhancedParticleFloat 25s ease-in-out infinite;
+    z-index: 1;
+}
 
-// デバッグ用
-console.log('Re\'forma JavaScript 読み込み完了');
+@keyframes enhancedParticleFloat {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg); 
+        opacity: 0.7;
+    }
+    25% { 
+        transform: translate(30px, -30px) rotate(90deg); 
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-20px, 20px) rotate(180deg); 
+        opacity: 0.8;
+    }
+    75% { 
+        transform: translate(15px, -15px) rotate(270deg); 
+        opacity: 0.9;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.92) 0%, 
+        rgba(0, 0, 0, 0.88) 25%, 
+        rgba(0, 0, 0, 0.85) 50%, 
+        rgba(0, 0, 0, 0.88) 75%, 
+        rgba(0, 0, 0, 0.92) 100%
+    );
+    z-index: 2;
+}
+
+.hero-content {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 3;
+    color: white;
+    max-width: 1000px;
+    width: 90%;
+    padding: 80px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    letter-spacing: var(--elegant-spacing);
+    font-family: var(--concept-font);
+    min-height: 220vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 50px;
+    animation: enhancedContentFadeIn 2.5s ease-out;
+}
+
+@keyframes enhancedContentFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 50px);
+        backdrop-filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+        backdrop-filter: blur(20px);
+    }
+}
+
+.hero-logo {
+    text-align: center;
+    flex-shrink: 0;
+    padding: 50px 0;
+    animation: enhancedLogoFloat 8s ease-in-out infinite;
+}
+
+@keyframes enhancedLogoFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        filter: drop-shadow(0 15px 30px rgba(212, 163, 115, 0.3));
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.02); 
+        filter: drop-shadow(0 20px 40px rgba(212, 163, 115, 0.5));
+    }
+}
+
+.main-logo {
+    max-width: 380px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(212, 163, 115, 0.4);
+    transition: all 0.4s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 25px 60px rgba(212, 163, 115, 0.6);
+}
+
+.hero-logo .logo-fallback {
+    max-width: 380px;
+    height: 140px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #c4915c, #d4a373, #e9c46a, #f4d46b);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: white;
+    font-family: var(--heading-font);
+    letter-spacing: 4px;
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 50px rgba(212, 163, 115, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.hero-logo .logo-fallback::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.8s ease;
+}
+
+.hero-logo .logo-fallback:hover::before {
+    left: 100%;
+}
+
+.hero-logo .logo-fallback:hover {
+    transform: scale(1.08);
+    box-shadow: 0 25px 60px rgba(212, 163, 115, 0.6);
+}
+
+.concept-container {
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+.concept-title {
+    font-family: var(--heading-font);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    margin-bottom: 0;
+    color: white;
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    animation: enhancedTitleSlideIn 2s ease-out 0.5s both;
+    position: relative;
+}
+
+.concept-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4a373, transparent);
+    animation: titleUnderlineGrow 2s ease-out 1.5s both;
+}
+
+@keyframes enhancedTitleSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
+    }
+}
+
+@keyframes titleUnderlineGrow {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+.concept-brief {
+    margin-bottom: 0;
+    animation: enhancedTextFadeIn 2s ease-out 1s both;
+}
+
+.concept-description p,
+.concept-additional p,
+.concept-brief p {
+    font-family: var(--concept-font);
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: var(--elegant-spacing);
+    line-height: 2.2;
+    margin-bottom: 25px;
+    color: white;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    opacity: 0.95;
+}
+
+@keyframes enhancedTextFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 0.95;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+}
+
+.concept-additional {
+    margin-bottom: 0;
+    animation: enhancedTextFadeIn 2s ease-out 1.3s both;
+}
+
+.read-more-btn,
+.read-less-btn {
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.4), rgba(212, 163, 115, 0.2));
+    border: 2px solid rgba(212, 163, 115, 0.9);
+    border-radius: 60px;
+    padding: 18px 45px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-shrink: 0;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 0 12px 35px rgba(212, 163, 115, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: enhancedButtonGlow 4s ease-in-out infinite;
+    min-width: 200px;
+}
+
+@keyframes enhancedButtonGlow {
+    0%, 100% { 
+        box-shadow: 0 12px 35px rgba(212, 163, 115, 0.4);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 15px 45px rgba(212, 163, 115, 0.7);
+        transform: scale(1.02);
+    }
+}
+
+.read-more-btn::before,
+.read-less-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.read-more-btn:hover::before,
+.read-less-btn:hover::before {
+    left: 100%;
+}
+
+.read-more-btn:hover,
+.read-less-btn:hover {
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.7), rgba(212, 163, 115, 0.5));
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(212, 163, 115, 0.8);
+    border-color: #f4e4a7;
+}
+
+.read-more-btn span,
+.read-less-btn span {
+    margin-right: 12px;
+}
+
+.read-more-btn i,
+.read-less-btn i {
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn:hover i {
+    transform: translateY(3px);
+}
+
+.read-less-btn:hover i {
+    transform: translateY(-3px);
+}
+
+.concept-details {
+    max-height: 4000px;
+    overflow: hidden;
+    transition: max-height 1.2s ease, opacity 1.2s ease, padding 1.2s ease;
+    opacity: 1;
+    padding: 80px 50px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7));
+    border-radius: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.reservation-method {
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* LINEメイン予約スタイル - 改善点3の解決 */
+.line-reservation-main {
+    background-color: #06C755;
+    color: white;
+}
+
+.line-reservation-main h4, 
+.line-reservation-main p {
+    color: white;
+}
+
+.line-reservation-main i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.line-reservation-main h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+/* LINEボタンを大きく、わかりやすく */
+.line-btn-large {
+    background-color: white;
+    color: #06C755;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-btn-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 199, 85, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.line-btn-large:hover::before {
+    left: 100%;
+}
+
+.line-btn-large:hover {
+    background-color: #f0f0f0;
+    color: #06C755;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-notes {
+    background-color: var(--gray-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.reservation-notes h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.reservation-notes ul {
+    padding-left: 20px;
+}
+
+.reservation-notes ul li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.reservation-notes ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+/* Footer styles */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.footer-logo {
+    max-width: 300px;
+}
+
+.footer-logo .logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.footer-logo .logo-fallback {
+    height: 60px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #c4915c, #d4a373, #e9c46a);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    font-family: var(--heading-font);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.footer-contact h3,
+.footer-nav h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-contact h3::after,
+.footer-nav h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact p i {
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    margin-top: 25px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #444;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-nav ul li {
+    margin-bottom: 15px;
+}
+
+.footer-nav ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Scroll Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.scroll-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 163, 115, 0.7);
+}
+
+/* スマホでのタブ操作改善 */
+@media screen and (max-width: 768px) {
+    .menu-tab, .option-tab {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .menu-tab:active, .option-tab:active {
+        background-color: rgba(212, 163, 115, 0.2);
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+    .concept-title {
+        font-size: 2.7rem;
+    }
+    
+    .hero-section {
+        height: 280vh;
+        min-height: 1800px;
+    }
+    
+    .hero-content {
+        min-height: 200vh;
+        padding: 70px 50px;
+    }
+    
+    .main-logo,
+    .hero-logo .logo-fallback {
+        max-width: 350px;
+    }
+    
+    .hero-logo .logo-fallback {
+        height: 130px;
+        font-size: 2.6rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    section {
+        padding: 80px 0;
+    }
+
+    .hero-section {
+        height: 250vh;
+        min-height: 1500px;
+    }
+
+    .concept-title {
+        font-size: 2.4rem;
+    }
+
+    .hero-content {
+        padding: 60px 40px;
+        max-width: 95%;
+        min-height: 180vh;
+        gap: 40px;
+    }
+
+    .main-logo,
+    .hero-logo .logo-fallback {
+        max-width: 320px;
+    }
+
+    .hero-logo .logo-fallback {
+        height: 120px;
+        font-size: 2.3rem;
+    }
+
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 1.1rem;
+        line-height: 2;
+    }
+
+    .service-options,
+    .profile-container,
+    .app-card,
+    .reservation-container,
+    .philosophy-points,
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .app-card {
+        gap: 30px;
+    }
+
+    .app-card:nth-child(even) {
+        flex-direction: column !important;
+    }
+
+    .reservation-options,
+    .reservation-form {
+        width: 100%;
+    }
+
+    .integration-points {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .footer-logo, .footer-contact, .footer-nav {
+        margin-bottom: 40px;
+    }
+}
+
+/* スマホでのお客様の声最適化 */
+@media screen and (max-width: 768px) {
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .app-card {
+        margin-bottom: 60px;
+        padding: 40px 30px;
+    }
+    
+    .app-logo {
+        max-width: 240px;
+    }
+
+    .service-menu {
+        padding: 30px 20px;
+    }
+
+    .app-integration {
+        padding: 50px 30px;
+    }
+
+    .menu-tabs, .option-tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .menu-tab, .option-tab {
+        width: 100%;
+        text-align: left;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+    .menu-tab.active::after, .option-tab.active::after {
+        display: none;
+    }
+
+    .app-download {
+        flex-direction: column;
+    }
+
+    .app-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .testimonials-slider {
+        max-width: 100%;
+        min-height: 450px;
+        padding: 0 10px;
+    }
+    
+    .testimonial-content {
+        padding: 35px 25px;
+        margin-bottom: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .testimonial-content p {
+        font-size: 1.1rem;
+        line-height: 1.9;
+    }
+    
+    .testimonial-author {
+        margin-top: 35px;
+        padding: 15px 25px;
+        border-radius: 30px;
+    }
+    
+    .testimonial-author strong {
+        font-size: 1rem;
+        line-height: 1.4;
+        white-space: normal;
+    }
+    
+    .special-notice {
+        padding: 20px;
+    }
+    
+    .philosophy-points {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .philosophy-point {
+        padding: 25px 20px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .app-card {
+        margin-bottom: 40px;
+        padding: 30px 20px;
+    }
+    
+    .app-logo {
+        max-width: 200px;
+    }
+    
+    .app-details h3 {
+        font-size: 1.8rem;
+    }
+
+    .profile-image {
+        margin-bottom: 30px;
+    }
+
+    .service-option {
+        padding: 30px 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .integration-points {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-slider {
+        min-height: 480px;
+        padding: 0 5px;
+    }
+    
+    .testimonial-content {
+        padding: 30px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .testimonial-content p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    
+    .testimonial-author {
+        padding: 12px 20px;
+        max-width: 90%;
+        margin: 30px auto 0;
+    }
+    
+    .testimonial-author strong {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    .menu-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .price {
+        align-self: flex-end;
+    }
+    
+    .philosophy-points {
+        gap: 15px;
+    }
+    
+    .philosophy-point {
+        padding: 20px 15px;
+    }
+    
+    .philosophy-point i {
+        font-size: 2rem;
+    }
+    
+    .philosophy-point h4 {
+        font-size: 1.2rem;
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-option,
+.app-card,
+.testimonial,
+.philosophy-point {
+    animation: enhancedSlideInFromBottom 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes enhancedSlideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-color), #e9c46a, #f4d46b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background: linear-gradient(135deg, var(--primary-color), #e9c46a, #f4d46b);
+    }
+    50% {
+        background: linear-gradient(135deg, #f4d46b, var(--primary-color), #e9c46a);
+    }
+}
+
+/* セクションタイトルの色統一修正 */
+.section-header h2 .accent {
+    color: var(--primary-color) !important;
+}
+
+/* Services Section のタイトル色修正 */
+.services-section .section-header h2 .accent {
+    color: var(--primary-color) !important;
+}
+
+/* Apps Section のタイトル色修正 */
+.apps-section .section-header h2 .accent {
+    color: var(--primary-color) !important;
+}
+
+/* Testimonials Section のタイトル色修正 */
+.testimonials-section .section-header h2 .accent {
+    color: var(--primary-color) !important;
+}
+
+/* About Section のタイトル色修正 */
+.about-section .section-header h2 .accent {
+    color: var(--primary-color) !important;
+}
+
+/* Reservation Section のタイトル色修正 */
+.reservation-section .section-header h2 .accent {
+    color: var(--primary-color) !important;
+} 40px;
+    border: 3px solid rgba(212, 163, 115, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.concept-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(212, 163, 115, 0.05) 0%, 
+        transparent 25%, 
+        transparent 75%, 
+        rgba(212, 163, 115, 0.05) 100%);
+    border-radius: 22px;
+    pointer-events: none;
+}
+
+.concept-details.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.read-less-btn {
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+/* 予約ボタンの表示制御 - 改善点1の解決 */
+.main-reservation-btn {
+    padding: 22px 55px;
+    font-size: 1.2rem;
+    border-radius: 60px;
+    margin-top: 0;
+    flex-shrink: 0;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7);
+    animation: enhancedButtonPulse 5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color), #e9c46a);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+    display: block;
+}
+
+.reservation-in-details {
+    padding: 22px 55px;
+    font-size: 1.2rem;
+    border-radius: 60px;
+    margin-top: 40px;
+    flex-shrink: 0;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7);
+    animation: enhancedButtonPulse 5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color), #e9c46a);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+    display: block;
+}
+
+/* 詳細が表示されているときはメインボタンを隠す */
+.concept-details:not(.hidden) ~ .main-reservation-btn {
+    display: none;
+}
+
+@keyframes enhancedButtonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7);
+    }
+    50% { 
+        transform: scale(1.08);
+        box-shadow: 0 22px 60px rgba(212, 163, 115, 0.9);
+    }
+}
+
+.main-reservation-btn:hover,
+.reservation-in-details:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 25px 70px rgba(212, 163, 115, 0.9);
+    background: linear-gradient(135deg, #e9c46a, var(--primary-color));
+}
+
+.hero-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 85% 75%, rgba(212, 163, 115, 0.12) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(233, 196, 106, 0.08) 0%, transparent 30%);
+    animation: enhancedSparkle 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes enhancedSparkle {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(1);
+    }
+    33% { 
+        opacity: 0.8; 
+        transform: scale(1.1);
+    }
+    66% { 
+        opacity: 0.6; 
+        transform: scale(0.9);
+    }
+}
+
+/* スマホ専用のヒーローセクション調整 */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        height: 100vh;
+        min-height: 800px;
+    }
+    
+    .hero-content {
+        min-height: auto;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px 30px;
+        gap: 30px;
+        max-width: 95%;
+    }
+    
+    .concept-container {
+        gap: 25px;
+    }
+    
+    .concept-details {
+        padding: 40px 25px;
+        margin-top: 30px;
+    }
+    
+    .read-more-btn, .read-less-btn {
+        padding: 15px 35px;
+        font-size: 1rem;
+        min-width: 180px;
+    }
+    
+    .concept-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
+        margin-bottom: 0;
+    }
+    
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    
+    .main-reservation-btn,
+    .reservation-in-details {
+        padding: 16px 40px;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .main-logo,
+    .hero-logo .logo-fallback {
+        max-width: 250px;
+    }
+    
+    .hero-logo .logo-fallback {
+        height: 100px;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .hero-logo {
+        padding: 30px 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .main-logo,
+    .hero-logo .logo-fallback {
+        max-width: 220px;
+    }
+    
+    .hero-logo .logo-fallback {
+        height: 90px;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+    
+    .concept-title {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+    
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 18px;
+    }
+}
+
+/* Services Section styles */
+.services-section {
+    background-color: var(--gray-color);
+}
+
+.service-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.service-option {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service-option:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.service-option h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-option p {
+    text-align: left;
+    padding: 0 10px;
+    line-height: 1.8;
+}
+
+.service-features {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.service-features li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.service-features li i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.service-menu {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 60px;
+}
+
+.service-menu h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.menu-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-tab {
+    padding: 12px 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #777;
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: 25px 25px 0 0;
+}
+
+.menu-tab:hover {
+    color: var(--primary-color);
+    background-color: rgba(212, 163, 115, 0.1);
+}
+
+.menu-tab.active {
+    color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.menu-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* タブ機能のCSS強化 */
+.menu-content {
+    display: none !important;
+}
+
+.menu-content.active {
+    display: block !important;
+}
+
+.menu-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: #f5f5f5;
+    transform: translateX(5px);
+}
+
+.menu-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.menu-name h4 {
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.menu-item p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* 出張案内のスタイル */
+.special-notice {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
+    border-radius: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.special-notice h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.special-notice p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.special-notice .note {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.service-area {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 60px;
+}
+
+.service-area h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.area-map {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.area-info {
+    text-align: center;
+    color: #777;
+}
+
+.cta-box {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+}
+
+.cta-box h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta-box .btn-secondary {
+    border-color: white;
+    color: white;
+    margin-top: 20px;
+}
+
+.cta-box .btn-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Apps Section styles */
+.apps-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+}
+
+.apps-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a373, transparent);
+}
+
+.apps-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.app-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    gap: 60px;
+    background: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #d4a373, #e9c46a, #f4d46b);
+}
+
+.app-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+}
+
+.app-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.app-image {
+    flex: 1;
+    position: relative;
+    text-align: center;
+}
+
+.app-logo {
+    max-width: 280px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    background: white;
+    padding: 20px;
+}
+
+.app-logo:hover {
+    transform: scale(1.08) rotateY(5deg);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+.app-details {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.app-details h3 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+}
+
+.app-details h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a373, #e9c46a);
+    border-radius: 2px;
+}
+
+.app-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.app-features {
+    margin: 30px 0;
+}
+
+.app-features li {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: #555;
+}
+
+.app-features li i {
+    color: #d4a373;
+    margin-right: 15px;
+    margin-top: 5px;
+    font-size: 1.1rem;
+}
+
+.app-download {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.app-btn {
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #333, #444);
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.app-btn:hover::before {
+    left: 100%;
+}
+
+.app-btn i {
+    margin-right: 12px;
+    font-size: 1.3rem;
+}
+
+.app-btn:hover {
+    background: linear-gradient(135deg, #222, #333);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.app-integration {
+    background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
+    border-radius: 30px;
+    padding: 80px 60px;
+    text-align: center;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-integration::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 163, 115, 0.1) 0%, transparent 70%);
+    animation: integrationGlow 8s ease-in-out infinite;
+}
+
+@keyframes integrationGlow {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+}
+
+.app-integration h3 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    position: relative;
+    z-index: 2;
+}
+
+.app-integration p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.integration-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.point {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+}
+
+.point:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.point i {
+    font-size: 3rem;
+    color: #d4a373;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.point h4 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.point p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* About Section styles */
+.about-section {
+    background-color: var(--gray-color);
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.profile-image {
+    flex: 1;
+}
+
+.profile-image img {
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profile-content {
+    flex: 1;
+}
+
+.profile-content h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.profile-credentials {
+    margin-bottom: 20px;
+}
+
+.credential {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-message {
+    line-height: 1.8;
+    font-family: var(--serif-font);
+}
+
+.philosophy {
+    background-color: white;
+    border-radius: 10px;
+    padding: 60px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.philosophy h3 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.philosophy-points {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Philosophy Points Animation - 改善点2の解決 */
+.philosophy-point {
+    flex: 1;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-point::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(212, 163, 115, 0.05) 0%, 
+        rgba(233, 196, 106, 0.05) 50%, 
+        rgba(244, 212, 107, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 20px;
+}
+
+.philosophy-point:hover::before {
+    opacity: 1;
+}
+
+.philosophy-point:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(212, 163, 115, 0.2);
+    background: white;
+}
+
+.philosophy-point i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.philosophy-point:hover i {
+    transform: scale(1.2) rotateY(360deg);
+    color: #c99362;
+}
+
+.philosophy-point h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+}
+
+.philosophy-point:hover h4 {
+    color: var(--primary-color);
+}
+
+.philosophy-point p {
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease;
+}
+
+.philosophy-point:hover p {
+    color: #333;
+}
+
+/* Testimonials Section styles - 改善点1の解決 */
+.testimonials-section {
+    background-color: white;
+    position: relative;
+    padding: 120px 0;
+}
+
+.testimonials-slider {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 400px;
+}
+
+.testimonial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease;
+    padding: 0 20px;
+    transform: translateY(30px);
+}
+
+.testimonial.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.testimonial-content {
+    background-color: var(--gray-color);
+    padding: 40px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-content::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid var(--gray-color);
+}
+
+.testimonial-content p {
+    font-family: var(--serif-font);
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.9;
+    margin-bottom: 0;
+    color: #333;
+}
+
+.testimonial-author {
+    margin-top: 40px;
+    padding: 15px 25px;
+    background: white;
+    border-radius: 25px;
+    display: inline-block;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-author strong {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 15px;
+}
+
+.testimonial-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.testimonial-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.3);
+    border-color: rgba(212, 163, 115, 0.3);
+}
+
+.testimonial-dot:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Reservation Section styles - 改善点3&4の解決 */
+.reservation-section {
+    background-color: var(--gray-color);
+}
+
+.reservation-container {
+    display: flex;
+    gap: 50px;
+}
+
+.reservation-options,
+.reservation-form {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.option-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.option-tab {
+    flex: 1;
+    padding: 15px 0;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #777;
+    position: relative;
+}
+
+.option-tab.active {
+    color: var(--primary-color);
+}
+
+.option-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* 予約タブ機能のCSS強化 - 改善点4の解決 */
+.option-details {
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.option-details.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* 予約詳細のコンテンツが確実に表示されるように */
+.option-details h3,
+.option-details p,
+.option-details ul,
+.option-details .space-address {
+    visibility: inherit !important;
+    opacity: inherit !important;
+}
+
+.option-details ul li {
+    display: flex !important;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    visibility: inherit !important;
+}
+
+.option-details ul li i {
+    color: var(--primary-color) !important;
+    margin-right: 12px;
+    margin-top: 5px;
+    display: inline-block !important;
+}
+
+.space-address {
+    margin-top: 20px !important;
+    padding: 20px !important;
+    background-color: var(--secondary-color) !important;
+    border-radius: 10px !important;
+    display: block !important;
+}
+
+.space-address p {
+    margin-bottom: 10px !important;
+    display: block !important;
+}
+
+.space-address p i {
+    color: var(--primary-color) !important;
+    margin-right: 10px !important;
+    display: inline !important;
+}
+
+.option-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.preparation-list {
+    margin-top: 20px;
+}
+
+.preparation-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.preparation-list li i {
+    color: var(--primary-color);
+    margin-right: 12px;
+    margin-top: 5px;
+}
+
+.reservation-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.reservation-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top:
