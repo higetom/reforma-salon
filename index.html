@@ -19,6 +19,644 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- ①白い余白削除 & ②予約ページ美化 & ③アニメーション強化 -->
+    <style>
+        /* 白い余白を完全削除 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            position: relative;
+            top: 0;
+        }
+        
+        /* ナビゲーションの位置調整 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        /* 🌟 Re'formaの想いのアニメーション強化 */
+        .philosophy-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(212, 163, 115, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(233, 196, 106, 0.05) 0%, transparent 50%);
+            animation: philosophyGlow 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes philosophyGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        .philosophy h3 {
+            position: relative;
+            animation: titleSlideIn 1s ease-out;
+        }
+        
+        @keyframes titleSlideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .philosophy-point {
+            animation: pointFloatIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .philosophy-point:nth-child(1) { animation-delay: 0.2s; }
+        .philosophy-point:nth-child(2) { animation-delay: 0.4s; }
+        .philosophy-point:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes pointFloatIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .philosophy-point:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 163, 115, 0.2);
+        }
+        
+        .philosophy-point i {
+            animation: iconPulse 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .philosophy-point:hover i {
+            transform: scale(1.3) rotate(10deg);
+            color: #e9c46a;
+        }
+        
+        /* 🎨 サービス案内のアニメーション強化 */
+        .services-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(212, 163, 115, 0.03) 0%, 
+                transparent 25%, 
+                transparent 75%, 
+                rgba(212, 163, 115, 0.03) 100%);
+            animation: serviceWave 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes serviceWave {
+            0%, 100% { transform: translateX(-100px); }
+            50% { transform: translateX(100px); }
+        }
+        
+        .service-option {
+            animation: serviceSlideIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .service-option:nth-child(1) { animation-delay: 0.2s; }
+        .service-option:nth-child(2) { animation-delay: 0.4s; }
+        
+        @keyframes serviceSlideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .service-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 163, 115, 0.1), 
+                transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .service-option:hover::before {
+            left: 100%;
+        }
+        
+        .service-option:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .service-option:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+            background: linear-gradient(135deg, var(--primary-color), #e9c46a);
+        }
+        
+        .service-option:hover .service-icon i {
+            color: white;
+            animation: iconBounce 0.6s ease-in-out;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .service-features li {
+            animation: featurePopIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .service-features li:nth-child(1) { animation-delay: 0.1s; }
+        .service-features li:nth-child(2) { animation-delay: 0.2s; }
+        .service-features li:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes featurePopIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .service-option:hover .service-features li i {
+            animation: checkBounce 0.4s ease-in-out;
+            color: #e9c46a;
+        }
+        
+        @keyframes checkBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        /* ①矢印ボタンの見切れ修正 - さらに余白を拡大 */
+        .testimonials-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            /* 左右に十分な余白を追加してボタン用スペース確保 */
+            padding: 0 100px;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 600%; /* 6枚分 */
+        }
+
+        .testimonial-card {
+            flex: 0 0 16.666667%; /* 100% / 6 */
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            border-right: 1px solid #eee;
+            position: relative;
+        }
+
+        .testimonial-card:last-child {
+            border-right: none;
+        }
+
+        .testimonial-content {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            font-size: 2rem;
+            color: #d4a373;
+            opacity: 0.3;
+        }
+
+        .testimonial-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373, #e9c46a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .author-info strong {
+            display: block;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .author-info span {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        /* 矢印ボタンを完全に表示 - さらに内側に配置 */
+        .testimonial-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.9);
+            border: none;
+            color: white;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+        }
+
+        .testimonial-nav:hover {
+            background: #d4a373;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.6);
+        }
+
+        .testimonial-nav.prev {
+            left: 20px;  /* さらに内側に配置 */
+        }
+
+        .testimonial-nav.next {
+            right: 20px;  /* さらに内側に配置 */
+        }
+
+        .testimonial-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #d4a373;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: #d4a373;
+            transform: scale(1.1);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .testimonials-carousel {
+                padding: 0 80px;  /* モバイルでも十分な余白確保 */
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+                min-height: 350px;
+            }
+
+            .testimonial-content p {
+                font-size: 0.95rem;
+            }
+
+            .testimonial-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .testimonial-nav.prev {
+                left: 15px;
+            }
+
+            .testimonial-nav.next {
+                right: 15px;
+            }
+        }
+
+        /* ②LINEボタンのデザイン復活 */
+        .reservation-section .reservation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+        
+        .reservation-form-only {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reservation-form-only::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a373, #e9c46a, #f4d46b);
+        }
+        
+        .reservation-form-only h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .reservation-form-only h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4a373, #e9c46a);
+            border-radius: 2px;
+        }
+        
+        .reservation-intro {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            line-height: 1.8;
+        }
+        
+        .line-reservation-enhanced {
+            background: linear-gradient(135deg, #06C755 0%, #05B04A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .line-reservation-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #06C755, #05B04A, #06C755);
+            border-radius: 22px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .line-reservation-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(6, 199, 85, 0.3);
+        }
+        
+        .line-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: lineIconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes lineIconBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .line-reservation-enhanced h4 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .line-reservation-enhanced p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .line-btn-enhanced {
+            background: white;
+            color: #06C755;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .line-btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #06C755;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+        
+        .line-btn-enhanced:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .line-btn-enhanced:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .reservation-notes-enhanced {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid #d4a373;
+            position: relative;
+        }
+        
+        .reservation-notes-enhanced h4 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reservation-notes-enhanced h4 i {
+            color: #d4a373;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .reservation-notes-enhanced ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .reservation-notes-enhanced ul li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .reservation-notes-enhanced ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d4a373;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+    
+    <!-- 出張整体メニュー専用スタイル -->
+    <style>
+        .menu-item.trip-service {
+            background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
+            border-left: 4px solid #d4a373;
+            position: relative;
+        }
+        
+        .menu-item.trip-service .menu-name h4 {
+            color: #8B4513;
+            font-weight: 700;
+        }
+        
+        .trip-details {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .trip-details .detail-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .trip-details .detail-item strong {
+            min-width: 80px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .trip-notice {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            font-size: 0.9rem;
+            color: #bf360c;
+            font-weight: 500;
+        }
+        
+        .trip-notice i {
+            color: #ff9800;
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
     <!-- ナビゲーション -->
@@ -38,17 +676,17 @@
             
             <ul class="navbar-nav" id="navbar-nav">
                 <li><a href="#home">ホーム</a></li>
-                <li><a href="#services">サービス</a></li>
-                <li><a href="#apps">アプリ</a></li>
                 <li><a href="#about">Re'formaについて</a></li>
+                <li><a href="#services">サービス</a></li>
                 <li><a href="#testimonials">お客様の声</a></li>
                 <li><a href="#reservation">ご予約</a></li>
+                <li><a href="#apps">アプリ</a></li>
                 <li><a href="#reservation" class="reservation-btn">予約する</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- ヒーローセクション -->
+    <!-- ①ヒーローセクション（ホーム：ロゴとコンセプト） -->
     <section class="hero-section" id="home">
         <div class="hero-slider">
             <div class="hero-slide active">
@@ -102,7 +740,61 @@
         </div>
     </section>
 
-    <!-- サービスセクション -->
+    <!-- ②プロフィールセクション -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>あなたの身体と向き合う<span class="accent">プロフェッショナル</span></h2>
+            </div>
+            
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="/api/placeholder/400/500" alt="PT TOM プロフィール写真" />
+                </div>
+                <div class="profile-content">
+                    <h3>理学療法士</h3>
+                    <h2 class="profile-name">PT TOM</h2>
+                    <div class="profile-credentials">
+                        <span class="credential">理学療法士</span>
+                        <span class="credential">認定資格保有</span>
+                    </div>
+                    <div class="profile-message">
+                        <p>理学療法士として培った専門知識と経験を活かし、お一人おひとりの身体の特性に合わせたケアを提供しています。</p>
+                        <p>「痛みを取るだけでなく、なぜその痛みが生まれるのか」を根本から考え、持続可能な健康づくりをサポートします。</p>
+                        <p>あなたの身体が本来持つ力を引き出し、より良い生活へと導くお手伝いをさせていただきます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③Re'formaの想い -->
+    <section class="philosophy-section" style="background-color: white; padding: 100px 0;">
+        <div class="container">
+            <div class="philosophy">
+                <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem;">Re'formaの想い</h3>
+                <div class="philosophy-points">
+                    <div class="philosophy-point">
+                        <i class="fas fa-heart"></i>
+                        <h4>寄り添うケア</h4>
+                        <p>忙しい日常の中で、ゆっくりと自分と向き合う贅沢な時間を</p>
+                    </div>
+                    <div class="philosophy-point">
+                        <i class="fas fa-leaf"></i>
+                        <h4>根本改善</h4>
+                        <p>表面だけでなく、からだの内側から輝く健康美を目指します</p>
+                    </div>
+                    <div class="philosophy-point">
+                        <i class="fas fa-infinity"></i>
+                        <h4>持続可能</h4>
+                        <p>一時的な効果ではなく、長く続けられるケア方法をご提案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④出張サービス・サロン施術 -->
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-header">
@@ -137,249 +829,195 @@
                     </ul>
                 </div>
             </div>
-            
-            <!-- 施術メニュー部分の修正版 -->
-<div class="service-menu">
-    <h3>施術メニュー</h3>
-    <div class="menu-tabs">
-        <button class="menu-tab active" data-tab="bodycare">ボディケア</button>
-        <button class="menu-tab" data-tab="personal">野球動作指導</button>
-    </div>
-    
-    <!-- ボディケアメニュー -->
-    <div class="menu-content active" id="bodycare">
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>初回体験コース</h4>
-                <span class="price">¥5,500</span>
+        </div>
+    </section>
+
+    <!-- ⑤施術メニュー -->
+    <section class="menu-section" style="background-color: var(--gray-color); padding: 100px 0;">
+        <div class="container">
+            <div class="service-menu">
+                <h3>施術メニュー</h3>
+                <div class="menu-tabs">
+                    <button class="menu-tab active" data-tab="bodycare">ボディケア</button>
+                    <button class="menu-tab" data-tab="personal">野球動作指導</button>
+                    <button class="menu-tab" data-tab="trip">出張整体</button>
+                </div>
+                
+                <!-- ボディケアメニュー -->
+                <div class="menu-content active" id="bodycare">
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>初回体験コース</h4>
+                            <span class="price">¥5,500</span>
+                        </div>
+                        <p>30分 - カウンセリング+部分調整でまずはお試し</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>ベーシック整体コース</h4>
+                            <span class="price">¥8,000</span>
+                        </div>
+                        <p>45分 - 日常の疲労・不調のケアに。気になる箇所を中心に調整</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>スタンダード整体コース</h4>
+                            <span class="price">¥11,000</span>
+                        </div>
+                        <p>60分 - 姿勢・身体の使い方を見直す、根本改善型アプローチ</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>プレミアム整体コース</h4>
+                            <span class="price">¥18,000</span>
+                        </div>
+                        <p>90分 - 深層筋や全身の連動にアプローチする特別コース</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>スペシャル整体コース</h4>
+                            <span class="price">¥22,000</span>
+                        </div>
+                        <p>120分 - 全身の機能を総合的に整える120分</p>
+                    </div>
+                </div>
+                
+                <!-- 野球動作指導メニュー -->
+                <div class="menu-content" id="personal">
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>初回フォームチェック</h4>
+                            <span class="price">¥5,500</span>
+                        </div>
+                        <p>30分 - 投球または打撃フォームの簡易評価とフィードバック</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>ベーシック動作指導</h4>
+                            <span class="price">¥8,000</span>
+                        </div>
+                        <p>45分 - 投球または打撃フォームの改善と反復練習サポート</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>動作分析&指導コース</h4>
+                            <span class="price">¥11,000</span>
+                        </div>
+                        <p>60分 - 動作分析+身体評価+フォーム修正の60分集中型</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-name">
+                            <h4>トータルパフォーマンスコース</h4>
+                            <span class="price">¥18,000</span>
+                        </div>
+                        <p>90分 - 分析・指導・施術を統合した最上級のパフォーマンス向上支援</p>
+                    </div>
+                    
+                    <div class="special-notice">
+                        <h4>出張ご希望の方へ</h4>
+                        <p>これまでに施術を受けられた方を対象に、状況に応じて出張対応も承っております。体調やご事情により通うのが難しい方も、ぜひお気軽にご相談ください。</p>
+                        <p class="note">※エリアや時間帯によってはご希望に添えない場合がございます。</p>
+                    </div>
+                </div>
+                
+                <!-- 出張整体メニュー -->
+                <div class="menu-content" id="trip">
+                    <div class="menu-item trip-service">
+                        <div class="menu-name">
+                            <h4><i class="fas fa-home"></i> 出張整体 60分コース</h4>
+                            <span class="price">¥15,000</span>
+                        </div>
+                        <p>姿勢や身体の使い方を見直す、根本改善型のアプローチ</p>
+                        <div class="trip-details">
+                            <div class="detail-item">
+                                <strong>施術時間：</strong>
+                                <span>約60分</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>所要時間：</strong>
+                                <span>約90分（移動・準備含む）</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>内容：</strong>
+                                <span>お着替えや施術環境の準備を含め、ご自宅でもゆとりある対応を提供。</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item trip-service">
+                        <div class="menu-name">
+                            <h4><i class="fas fa-home"></i> 出張整体 90分コース</h4>
+                            <span class="price">¥22,000</span>
+                        </div>
+                        <p>深層筋や全身の運動にアプローチする特別コース</p>
+                        <div class="trip-details">
+                            <div class="detail-item">
+                                <strong>施術時間：</strong>
+                                <span>約90分</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>所要時間：</strong>
+                                <span>約120分（移動・準備含む）</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>内容：</strong>
+                                <span>環境調整・お着替えも含め、約2時間確保して丁寧に対応。</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item trip-service">
+                        <div class="menu-name">
+                            <h4><i class="fas fa-home"></i> 出張整体 120分コース</h4>
+                            <span class="price">¥28,000</span>
+                        </div>
+                        <p>全身の機能を総合的に整えるスペシャルコース</p>
+                        <div class="trip-details">
+                            <div class="detail-item">
+                                <strong>施術時間：</strong>
+                                <span>約120分</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>所要時間：</strong>
+                                <span>約150分（移動・準備含む）</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>内容：</strong>
+                                <span>訪問先でも丁寧な空間調整を含め、店舗施術と同等以上の内容を提供。</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trip-notice">
+                        <h4><i class="fas fa-info-circle"></i>出張整体について</h4>
+                        <p><strong>※対応エリア：</strong>坂戸市・鶴ヶ島市<br>
+                        <strong>※追加費用：</strong>高速道路や駐車場代が発生する場合は実費請求<br>
+                        <strong>※遠方対応：</strong>遠方はLINEにてご相談</p>
+                    </div>
+                </div>
             </div>
-            <p>30分 - カウンセリング+部分調整でまずはお試し</p>
         </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>ベーシック整体コース</h4>
-                <span class="price">¥8,000</span>
-            </div>
-            <p>45分 - 日常の疲労・不調のケアに。気になる箇所を中心に調整</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>スタンダード整体コース</h4>
-                <span class="price">¥11,000</span>
-            </div>
-            <p>60分 - 姿勢・身体の使い方を見直す、根本改善型アプローチ</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>プレミアム整体コース</h4>
-                <span class="price">¥18,000</span>
-            </div>
-            <p>90分 - 深層筋や全身の連動にアプローチする特別コース</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>スペシャル整体コース</h4>
-                <span class="price">¥22,000</span>
-            </div>
-            <p>120分 - 全身の機能を総合的に整える120分</p>
-        </div>
-    </div>
-    
-    <!-- 野球動作指導メニュー -->
-    <div class="menu-content" id="personal">
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>初回フォームチェック</h4>
-                <span class="price">¥5,500</span>
-            </div>
-            <p>30分 - 投球または打撃フォームの簡易評価とフィードバック</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>ベーシック動作指導</h4>
-                <span class="price">¥8,000</span>
-            </div>
-            <p>45分 - 投球または打撃フォームの改善と反復練習サポート</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>動作分析&指導コース</h4>
-                <span class="price">¥11,000</span>
-            </div>
-            <p>60分 - 動作分析+身体評価+フォーム修正の60分集中型</p>
-        </div>
-        <div class="menu-item">
-            <div class="menu-name">
-                <h4>トータルパフォーマンスコース</h4>
-                <span class="price">¥18,000</span>
-            </div>
-            <p>90分 - 分析・指導・施術を統合した最上級のパフォーマンス向上支援</p>
-        </div>
-        
-        <div class="special-notice">
-            <h4>出張ご希望の方へ</h4>
-            <p>これまでに施術を受けられた方を対象に、状況に応じて出張対応も承っております。体調やご事情により通うのが難しい方も、ぜひお気軽にご相談ください。</p>
-            <p class="note">※エリアや時間帯によってはご希望に添えない場合がございます。</p>
-        </div>
-    </div>
-</div>
+    </section>
 
-<style>
-/* 出張案内のスタイル */
-.special-notice {
-    margin-top: 40px;
-    padding: 30px;
-    background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
-    border-radius: 15px;
-    border-left: 4px solid var(--primary-color);
-}
-
-.special-notice h4 {
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.special-notice p {
-    color: #555;
-    line-height: 1.7;
-    margin-bottom: 10px;
-}
-
-.special-notice .note {
-    font-size: 0.9rem;
-    color: #777;
-    font-style: italic;
-    margin-bottom: 0;
-}
-
-/* メニュー項目のスタイル改善 */
-.menu-item {
-    margin-bottom: 25px;
-    padding: 20px;
-    background: #fafafa;
-    border-radius: 10px;
-    border-left: 3px solid var(--primary-color);
-    transition: all 0.3s ease;
-}
-
-.menu-item:hover {
-    background: #f5f5f5;
-    transform: translateX(5px);
-}
-
-.menu-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.menu-name h4 {
-    margin-bottom: 0;
-    font-size: 1.3rem;
-    color: #333;
-    font-weight: 600;
-}
-
-.price {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    background: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.menu-item p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 0;
-    font-size: 0.95rem;
-}
-
-/* タブのスタイル改善 */
-.menu-tab {
-    padding: 12px 25px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #777;
-    position: relative;
-    transition: all 0.3s ease;
-    border-radius: 25px 25px 0 0;
-}
-
-.menu-tab:hover {
-    color: var(--primary-color);
-    background-color: rgba(212, 163, 115, 0.1);
-}
-
-.menu-tab.active {
-    color: var(--primary-color);
-    background-color: white;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
-
-.menu-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary-color);
-}
-
-/* レスポンシブ対応 */
-@media screen and (max-width: 768px) {
-    .menu-tabs {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .menu-tab {
-        width: 100%;
-        text-align: left;
-        border-radius: 10px;
-        margin-bottom: 5px;
-    }
-    
-    .menu-tab.active::after {
-        display: none;
-    }
-    
-    .menu-name {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .price {
-        align-self: flex-end;
-    }
-    
-    .special-notice {
-        padding: 20px;
-    }
-}
-</style>
-            
+    <!-- ⑥対応エリア -->
+    <section class="area-section" style="background-color: white; padding: 100px 0;">
+        <div class="container">
             <div class="service-area">
                 <h3>対応エリア</h3>
                 <div class="area-map">
                     <img src="/api/placeholder/800/300" alt="対応エリア地図" />
                 </div>
                 <div class="area-info">
-                    <p><strong>対応エリア：</strong>○○市、△△市、□□区 など</p>
+                    <p><strong>対応エリア：</strong>坂戸市、鶴ヶ島市、川越市 など</p>
                     <p>※エリアにより出張料が異なります。詳しくはお問い合わせください。</p>
                 </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- ⑦お問い合わせ -->
+    <section class="contact-section" style="background-color: var(--gray-color); padding: 100px 0;">
+        <div class="container">
             <div class="cta-box">
                 <h3>ご希望や不安なことなど、お気軽にお問い合わせください。</h3>
                 <a href="#reservation" class="btn btn-secondary">お問い合わせ</a>
@@ -387,7 +1025,357 @@
         </div>
     </section>
 
-    <!-- アプリセクション -->
+    <!-- ⑧お客様の声セクション（横スクロール式に修正） -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>お客様の<span class="accent">声</span></h2>
+                <p>実際にRe'formaをご利用いただいた方々からのフィードバック</p>
+            </div>
+            
+            <!-- 新しい横スクロール式デザイン -->
+            <div class="testimonials-carousel">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- お客様の声カード -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「長年の肩こりが嘘のように楽になりました。TOMさんの施術は本当に丁寧で、アフターケアまでしっかりサポートしていただけます。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>30代女性</strong>
+                                <span>会社員</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>40代女性</strong>
+                                <span>主婦</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「理学療法士としての専門知識に基づいたアドバイスがとても参考になります。根本的な改善を実感できています。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>50代男性</strong>
+                                <span>自営業</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「熱心に何度も何度も向き合ってくれて、楽しい雰囲気でトレーニングに取り組めました。身体の使い方やセルフケアの方法をしっかり教えてもらい、自分でも意識してケアできるように。特に驚いたのは、球速が10キロ以上アップしたこと！」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-baseball-ball"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>20代男性</strong>
+                                <span>某野球チーム所属</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「初回の施術で『姿勢を整えると見た目がこんなに変わるんだ！』と感動しました。単にマッサージをするのではなく、正しい減量方法や日常生活での意識まで教えてもらえるので、無理なく綺麗を目指せます。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>20代女性</strong>
+                                <span>接客業</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「以前は歩くと膝や腰が痛くてつらかったのですが、施術と日常のアドバイスを受けてから徐々に楽になり、今では毎朝の散歩が日課に。年齢に関係なく信頼できる先生です。初めての方にも安心しておすすめできます。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <strong>60代女性</strong>
+                                <span>主婦</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ナビゲーションボタン -->
+                <button class="testimonial-nav prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-nav next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- インジケーター -->
+            <div class="testimonial-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+                <span class="indicator" data-slide="4"></span>
+                <span class="indicator" data-slide="5"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 横スクロール式お客様の声専用CSS -->
+    <style>
+        .testimonials-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 600%; /* 6枚分 */
+        }
+
+        .testimonial-card {
+            flex: 0 0 16.666667%; /* 100% / 6 */
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            border-right: 1px solid #eee;
+            position: relative;
+        }
+
+        .testimonial-card:last-child {
+            border-right: none;
+        }
+
+        .testimonial-content {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            font-size: 2rem;
+            color: #d4a373;
+            opacity: 0.3;
+        }
+
+        .testimonial-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            font-style: italic;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4a373, #e9c46a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .author-info strong {
+            display: block;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .author-info span {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .testimonial-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.9);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .testimonial-nav:hover {
+            background: #d4a373;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .testimonial-nav.prev {
+            left: -25px;
+        }
+
+        .testimonial-nav.next {
+            right: -25px;
+        }
+
+        .testimonial-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #d4a373;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: #d4a373;
+            transform: scale(1.1);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .testimonial-card {
+                padding: 30px 20px;
+                min-height: 350px;
+            }
+
+            .testimonial-content p {
+                font-size: 0.95rem;
+            }
+
+            .testimonial-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .testimonial-nav.prev {
+                left: -20px;
+            }
+
+            .testimonial-nav.next {
+                right: -20px;
+            }
+        }
+    </style>
+
+    <!-- ⑨ご予約セクション（簡素化・美化版） -->
+    <section class="reservation-section" id="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2>ご<span class="accent">予約</span></h2>
+                <p>あなたに合ったサービスとお時間をお選びください</p>
+            </div>
+            
+            <div class="reservation-container">
+                <div class="reservation-form-only">
+                    <h3>ご予約方法</h3>
+                    <p class="reservation-intro">LINE公式アカウントから簡単にご予約いただけます。<br>24時間受付中で、予約状況の確認や変更もスムーズです。</p>
+                    
+                    <div class="line-reservation-enhanced">
+                        <i class="fab fa-line line-icon"></i>
+                        <h4>LINE公式アカウント</h4>
+                        <p>24時間いつでも予約可能<br>予約状況の確認や変更も簡単にできます</p>
+                        <a href="https://line.me/R/ti/p/@051ctvyr" class="line-btn-enhanced" target="_blank">
+                            LINEで予約する
+                        </a>
+                    </div>
+                    
+                    <div class="reservation-notes-enhanced">
+                        <h4><i class="fas fa-info-circle"></i>ご予約時の注意事項</h4>
+                        <ul>
+                            <li>初回の方は、事前にカウンセリングのお時間をいただきます</li>
+                            <li>キャンセルは前日までにご連絡ください</li>
+                            <li>当日キャンセルの場合は、キャンセル料が発生する場合があります</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑩Re'formaアプリセクション -->
     <section class="apps-section" id="apps">
         <div class="container">
             <div class="section-header">
@@ -454,8 +1442,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- アプリ連携セクション -->
+    <!-- ⑪Re'formaとアプリ連携 -->
+    <section class="integration-section" style="background-color: var(--gray-color); padding: 100px 0;">
+        <div class="container">
             <div class="app-integration">
                 <h3>Re'formaとアプリの連携</h3>
                 <p>施術とアプリを組み合わせることで、さらに効果的なヘルスケアを実現します</p>
@@ -481,181 +1473,7 @@
         </div>
     </section>
 
-    <!-- Re'formaについてセクション -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>あなたの身体と向き合う<span class="accent">プロフェッショナル</span></h2>
-            </div>
-            
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="/api/placeholder/400/500" alt="PT TOM プロフィール写真" />
-                </div>
-                <div class="profile-content">
-                    <h3>理学療法士</h3>
-                    <h2 class="profile-name">PT TOM</h2>
-                    <div class="profile-credentials">
-                        <span class="credential">理学療法士</span>
-                        <span class="credential">認定資格保有</span>
-                    </div>
-                    <div class="profile-message">
-                        <p>理学療法士として培った専門知識と経験を活かし、お一人おひとりの身体の特性に合わせたケアを提供しています。</p>
-                        <p>「痛みを取るだけでなく、なぜその痛みが生まれるのか」を根本から考え、持続可能な健康づくりをサポートします。</p>
-                        <p>あなたの身体が本来持つ力を引き出し、より良い生活へと導くお手伝いをさせていただきます。</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="philosophy">
-                <h3>Re'formaの想い</h3>
-                <div class="philosophy-points">
-                    <div class="philosophy-point">
-                        <i class="fas fa-heart"></i>
-                        <h4>寄り添うケア</h4>
-                        <p>忙しい日常の中で、ゆっくりと自分と向き合う贅沢な時間を</p>
-                    </div>
-                    <div class="philosophy-point">
-                        <i class="fas fa-leaf"></i>
-                        <h4>根本改善</h4>
-                        <p>表面だけでなく、からだの内側から輝く健康美を目指します</p>
-                    </div>
-                    <div class="philosophy-point">
-                        <i class="fas fa-infinity"></i>
-                        <h4>持続可能</h4>
-                        <p>一時的な効果ではなく、長く続けられるケア方法をご提案</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- お客様の声セクション -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>お客様の<span class="accent">声</span></h2>
-                <p>実際にRe'formaをご利用いただいた方々からのフィードバック</p>
-            </div>
-            
-            <div class="testimonials-slider">
-                <div class="testimonial active">
-                    <div class="testimonial-content">
-                        <p>「長年の肩こりが嘘のように楽になりました。TOMさんの施術は本当に丁寧で、アフターケアまでしっかりサポートしていただけます。」</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>30代女性・会社員</strong>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>40代女性・主婦</strong>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>「理学療法士としての専門知識に基づいたアドバイスがとても参考になります。根本的な改善を実感できています。」</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>50代男性・自営業</strong>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-dots">
-                <span class="testimonial-dot active" data-slide="0"></span>
-                <span class="testimonial-dot" data-slide="1"></span>
-                <span class="testimonial-dot" data-slide="2"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- ご予約セクション -->
-    <section class="reservation-section" id="reservation">
-        <div class="container">
-            <div class="section-header">
-                <h2>ご<span class="accent">予約</span></h2>
-                <p>あなたに合ったサービスとお時間をお選びください</p>
-            </div>
-            
-            <div class="reservation-container">
-                <!-- この新しいコードに置き換え -->
-<div class="reservation-options">
-    <div class="tab-container">
-        <!-- ラジオボタン（非表示） -->
-        <input type="radio" id="home-tab" name="option-tabs" class="tab-radio" checked>
-        <label for="home-tab" class="tab-label">出張サービス</label>
-
-        <input type="radio" id="salon-tab" name="option-tabs" class="tab-radio">
-        <label for="salon-tab" class="tab-label">サロン施術</label>
-
-        <!-- タブコンテンツ -->
-        <div class="tab-content">
-            <!-- 出張サービス -->
-            <div id="home-panel" class="tab-panel">
-                <h3>出張サービス</h3>
-                <p>お客様のご自宅やご希望の場所での施術です。</p>
-                <ul class="preparation-list">
-                    <li>施術用のスペース（畳2畳程度）をご用意ください</li>
-                    <li>タオル類はこちらで準備いたします</li>
-                    <li>駐車スペースがあると助かります</li>
-                </ul>
-            </div>
-
-            <!-- サロン施術 -->
-            <div id="salon-panel" class="tab-panel">
-                <h3>サロン施術</h3>
-                <p>専用サロンスペースでの施術です。</p>
-                <div class="space-address">
-                    <p><i class="fas fa-map-marker-alt"></i>〒XXX-XXXX 住所詳細</p>
-                    <p><i class="fas fa-car"></i>駐車場：2台分完備</p>
-                    <p><i class="fas fa-train"></i>最寄り駅：○○駅より徒歩5分</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                
-                <div class="reservation-form">
-                    <h3>ご予約方法</h3>
-                    <p>以下のいずれかの方法でご予約いただけます。LINE公式アカウントからのご予約が便利です。</p>
-                    
-                    <div class="reservation-methods">
-                        <div class="reservation-method line-reservation">
-                            <i class="fab fa-line"></i>
-                            <h4>LINE公式アカウント</h4>
-                            <p>24時間いつでも予約可能。予約状況の確認や変更も簡単にできます。</p>
-                            <a href="https://line.me/R/ti/p/@051ctvyr" class="btn line-btn" target="_blank">LINEで予約</a>
-                        </div>
-                        
-                        <div class="reservation-method phone-reservation">
-                            <i class="fas fa-phone"></i>
-                            <h4>お電話でのご予約</h4>
-                            <p>営業時間内にお電話でご予約いただけます。</p>
-                            <p class="reception-hours">受付時間：10:00〜19:00（水曜定休）</p>
-                            <a href="tel:0120-XXX-XXX" class="btn btn-secondary">電話をかける</a>
-                        </div>
-                    </div>
-                    
-                    <div class="reservation-notes">
-                        <h4>ご予約時の注意事項</h4>
-                        <ul>
-                            <li>初回の方は、事前にカウンセリングのお時間をいただきます</li>
-                            <li>キャンセルは前日までにご連絡ください</li>
-                            <li>当日キャンセルの場合は、キャンセル料が発生する場合があります</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- フッター -->
+    <!-- ⑫フッター（黒帯のお問い合わせ・メニュー） -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -669,7 +1487,6 @@
                 <div class="footer-contact">
                     <h3>お問い合わせ</h3>
                     <p><i class="fab fa-line"></i>LINE: @051ctvyr</p>
-                    <p><i class="fas fa-phone"></i>TEL: 0120-XXX-XXX</p>
                     <p><i class="fas fa-clock"></i>営業時間: 10:00〜19:00（水曜定休）</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -682,11 +1499,11 @@
                     <h3>メニュー</h3>
                     <ul>
                         <li><a href="#home">ホーム</a></li>
-                        <li><a href="#services">サービス</a></li>
-                        <li><a href="#apps">アプリ</a></li>
                         <li><a href="#about">Re'formaについて</a></li>
+                        <li><a href="#services">サービス</a></li>
                         <li><a href="#testimonials">お客様の声</a></li>
                         <li><a href="#reservation">ご予約</a></li>
+                        <li><a href="#apps">アプリ</a></li>
                     </ul>
                 </div>
             </div>
@@ -703,6 +1520,55 @@
     </button>
 
     <!-- JavaScript -->
+    <script>
+        // お客様の声カルーセル機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('testimonialsTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentSlide = 0;
+            const totalSlides = 6;
+            
+            function updateCarousel() {
+                const translateX = -(currentSlide * (100 / totalSlides));
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // インジケーター更新
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+            
+            // ボタンイベント
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // インジケータークリック
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // 自動スライド（オプション）
+            setInterval(nextSlide, 5000);
+            
+            console.log('お客様の声カルーセル初期化完了');
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
