@@ -41,7 +41,7 @@ document.querySelectorAll('.navbar-nav a').forEach(link => {
     });
 });
 
-// もっと詳しくボタンの動作修正 - 改善点1の解決
+// もっと詳しくボタンの動作
 if (readMoreBtn && conceptDetails) {
     // 初期状態で詳細を非表示
     conceptDetails.classList.add('hidden');
@@ -64,7 +64,7 @@ if (readMoreBtn && conceptDetails) {
     });
 }
 
-// 閉じるボタンの動作修正 - 改善点1の解決
+// 閉じるボタンの動作
 if (readLessBtn && conceptDetails) {
     readLessBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -96,7 +96,7 @@ if (scrollTopBtn) {
     });
 }
 
-// サービスメニュータブの動作修正
+// サービスメニュータブの動作（こちらは正常動作）
 function initializeMenuTabs() {
     const menuTabs = document.querySelectorAll('.menu-tab');
     const menuContents = document.querySelectorAll('.menu-content');
@@ -148,97 +148,16 @@ function initializeMenuTabs() {
     }
 }
 
-// 予約オプションタブの動作修正 - 改善点3の完全解決
+// 🚫 予約オプションタブ機能を無効化（CSSのみで動作するため不要）
+/*
 function initializeOptionTabs() {
-    const optionTabs = document.querySelectorAll('.option-tab');
-    const optionDetails = document.querySelectorAll('.option-details');
-    
-    console.log('予約タブを初期化中...', optionTabs.length, 'タブ見つかりました');
-    console.log('予約詳細を確認中...', optionDetails.length, '詳細見つかりました');
-    
-    // 初期状態を確実に設定
-    function setInitialState() {
-        // 最初のタブ（出張サービス）をアクティブに設定
-        if (optionTabs.length > 0) {
-            optionTabs[0].classList.add('active');
-            const homeDetail = document.getElementById('home');
-            
-            if (homeDetail) {
-                homeDetail.classList.add('active');
-                homeDetail.style.display = 'block';
-                homeDetail.style.visibility = 'visible';
-                homeDetail.style.opacity = '1';
-                console.log('出張サービス初期状態設定完了');
-            }
-        }
-        
-        // その他の詳細を非表示
-        optionDetails.forEach((detail, index) => {
-            if (detail.id !== 'home') {
-                detail.classList.remove('active');
-                detail.style.display = 'none';
-                detail.style.visibility = 'hidden';
-                detail.style.opacity = '0';
-            }
-        });
-    }
-    
-    // タブクリック処理
-    optionTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetOption = tab.getAttribute('data-option');
-            console.log('予約タブクリック:', targetOption);
-            
-            // すべてのタブから active クラスを削除
-            optionTabs.forEach(t => t.classList.remove('active'));
-            
-            // クリックされたタブに active クラスを追加
-            tab.classList.add('active');
-            
-            // すべての詳細を一旦非表示
-            optionDetails.forEach(d => {
-                d.classList.remove('active');
-                d.style.display = 'none';
-                d.style.visibility = 'hidden';
-                d.style.opacity = '0';
-            });
-            
-            // 対応する詳細を表示
-            const targetDetail = document.getElementById(targetOption);
-            if (targetDetail) {
-                setTimeout(() => {
-                    targetDetail.classList.add('active');
-                    targetDetail.style.display = 'block';
-                    targetDetail.style.visibility = 'visible';
-                    targetDetail.style.opacity = '1';
-                    
-                    // 内部要素も確実に表示
-                    const innerElements = targetDetail.querySelectorAll('h3, p, ul, li, .space-address');
-                    innerElements.forEach(el => {
-                        el.style.display = el.tagName === 'LI' ? 'flex' : 'block';
-                        el.style.visibility = 'visible';
-                        el.style.opacity = '1';
-                    });
-                    
-                    console.log('詳細表示成功:', targetOption);
-                    
-                    // 出張サービスタブをクリックした場合の特別処理
-                    if (targetOption === 'home') {
-                        console.log('出張サービスタブがクリックされました');
-                    }
-                }, 50);
-            } else {
-                console.error('詳細が見つかりません:', targetOption);
-            }
-        });
-    });
-    
-    // 初期状態を設定
-    setTimeout(setInitialState, 100);
+    // この関数は無効化されました
+    // 予約セクションはCSSのみのタブ機能で動作します
+    console.log('予約タブ機能はCSSで制御されています');
 }
+*/
 
-// お客様の声スライダーの動作 - 改善点1の解決
+// お客様の声スライダーの動作
 let currentTestimonial = 0;
 let testimonialInterval;
 
@@ -255,26 +174,13 @@ function initializeTestimonials() {
     
     function showTestimonial(index) {
         // すべての証言とドットから active クラスを削除
-        testimonials.forEach((t, i) => {
-            t.classList.remove('active');
-            // 重なりを防ぐため、非アクティブなものは完全に非表示
-            if (i !== index) {
-                t.style.visibility = 'hidden';
-                t.style.opacity = '0';
-                t.style.zIndex = '1';
-            }
-        });
-        
+        testimonials.forEach(t => t.classList.remove('active'));
         testimonialDots.forEach(d => d.classList.remove('active'));
         
         // 指定されたインデックスの証言とドットに active クラスを追加
         if (testimonials[index] && testimonialDots[index]) {
-            setTimeout(() => {
-                testimonials[index].style.visibility = 'visible';
-                testimonials[index].style.zIndex = '10';
-                testimonials[index].classList.add('active');
-                testimonialDots[index].classList.add('active');
-            }, 100);
+            testimonials[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
         }
     }
     
@@ -296,21 +202,12 @@ function initializeTestimonials() {
     }
     
     function startAutoSlide() {
-        testimonialInterval = setInterval(autoSlideTestimonials, 6000); // 6秒間隔に変更
+        testimonialInterval = setInterval(autoSlideTestimonials, 5000);
     }
     
     // 初期表示
     showTestimonial(0);
     startAutoSlide();
-    
-    // 画面がアクティブでない時は自動スライドを停止
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            clearInterval(testimonialInterval);
-        } else {
-            startAutoSlide();
-        }
-    });
 }
 
 // スムーズスクロール機能
@@ -356,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 各機能を初期化
     initializeMenuTabs();
-    initializeOptionTabs();
+    // initializeOptionTabs(); // ← この行をコメントアウト（CSSで制御するため不要）
     initializeTestimonials();
     
     // ロゴ読み込みエラー時の処理
@@ -381,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     console.log('すべての初期化が完了しました');
+    console.log('予約タブはCSSのみで動作します（JavaScript不使用）');
 });
 
 // 画面リサイズ時の処理
@@ -421,3 +319,4 @@ window.addEventListener('error', (e) => {
 
 // デバッグ用
 console.log('Re\'forma JavaScript 読み込み完了');
+console.log('🎯 予約タブ機能: CSSのみで制御（JavaScript無効化済み）');
