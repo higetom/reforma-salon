@@ -19,646 +19,8 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- ①白い余白削除 & ②予約ページ美化 & ③アニメーション強化 -->
-    <style>
-        /* 白い余白を完全削除 */
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100%;
-            overflow-x: hidden;
-        }
-        
-        .hero-section {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-            position: relative;
-            top: 0;
-        }
-        
-        /* ナビゲーションの位置調整 */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        /* 🌟 Re'formaの想いのアニメーション強化 */
-        .philosophy-section {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .philosophy-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 20%, rgba(212, 163, 115, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(233, 196, 106, 0.05) 0%, transparent 50%);
-            animation: philosophyGlow 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes philosophyGlow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-        
-        .philosophy h3 {
-            position: relative;
-            animation: titleSlideIn 1s ease-out;
-        }
-        
-        @keyframes titleSlideIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .philosophy-point {
-            animation: pointFloatIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
-            position: relative;
-            transition: all 0.4s ease;
-        }
-        
-        .philosophy-point:nth-child(1) { animation-delay: 0.2s; }
-        .philosophy-point:nth-child(2) { animation-delay: 0.4s; }
-        .philosophy-point:nth-child(3) { animation-delay: 0.6s; }
-        
-        @keyframes pointFloatIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .philosophy-point:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(212, 163, 115, 0.2);
-        }
-        
-        .philosophy-point i {
-            animation: iconPulse 2s ease-in-out infinite;
-            transition: all 0.3s ease;
-        }
-        
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .philosophy-point:hover i {
-            transform: scale(1.3) rotate(10deg);
-            color: #e9c46a;
-        }
-        
-        /* 🎨 サービス案内のアニメーション強化 */
-        .services-section {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .services-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(212, 163, 115, 0.03) 0%, 
-                transparent 25%, 
-                transparent 75%, 
-                rgba(212, 163, 115, 0.03) 100%);
-            animation: serviceWave 6s ease-in-out infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes serviceWave {
-            0%, 100% { transform: translateX(-100px); }
-            50% { transform: translateX(100px); }
-        }
-        
-        .service-option {
-            animation: serviceSlideIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-50px);
-            position: relative;
-            transition: all 0.4s ease;
-            overflow: hidden;
-        }
-        
-        .service-option:nth-child(1) { animation-delay: 0.2s; }
-        .service-option:nth-child(2) { animation-delay: 0.4s; }
-        
-        @keyframes serviceSlideIn {
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .service-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(212, 163, 115, 0.1), 
-                transparent);
-            transition: left 0.8s ease;
-        }
-        
-        .service-option:hover::before {
-            left: 100%;
-        }
-        
-        .service-option:hover {
-            transform: translateY(-20px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .service-icon {
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        
-        .service-option:hover .service-icon {
-            transform: scale(1.2) rotate(10deg);
-            background: linear-gradient(135deg, var(--primary-color), #e9c46a);
-        }
-        
-        .service-option:hover .service-icon i {
-            color: white;
-            animation: iconBounce 0.6s ease-in-out;
-        }
-        
-        @keyframes iconBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        .service-features li {
-            animation: featurePopIn 0.5s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        
-        .service-features li:nth-child(1) { animation-delay: 0.1s; }
-        .service-features li:nth-child(2) { animation-delay: 0.2s; }
-        .service-features li:nth-child(3) { animation-delay: 0.3s; }
-        
-        @keyframes featurePopIn {
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .service-option:hover .service-features li i {
-            animation: checkBounce 0.4s ease-in-out;
-            color: #e9c46a;
-        }
-        
-        @keyframes checkBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-        }
-        
-        /* ①矢印ボタンの見切れ修正 - さらに余白を拡大 */
-        .testimonials-carousel {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            /* 左右に十分な余白を追加してボタン用スペース確保 */
-            padding: 0 100px;
-        }
-
-        .testimonials-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 600%; /* 6枚分 */
-        }
-
-        .testimonial-card {
-            flex: 0 0 16.666667%; /* 100% / 6 */
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 300px;
-            border-right: 1px solid #eee;
-            position: relative;
-        }
-
-        .testimonial-card:last-child {
-            border-right: none;
-        }
-
-        .testimonial-content {
-            flex-grow: 1;
-            position: relative;
-        }
-
-        .quote-icon {
-            position: absolute;
-            top: -10px;
-            left: 0;
-            font-size: 2rem;
-            color: #d4a373;
-            opacity: 0.3;
-        }
-
-        .testimonial-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-            font-style: italic;
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4a373, #e9c46a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .author-info strong {
-            display: block;
-            color: #333;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .author-info span {
-            display: block;
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 2px;
-        }
-
-        /* 矢印ボタンを完全に表示 - さらに内側に配置 */
-        .testimonial-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(212, 163, 115, 0.9);
-            border: none;
-            color: white;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
-        }
-
-        .testimonial-nav:hover {
-            background: #d4a373;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.6);
-        }
-
-        .testimonial-nav.prev {
-            left: 20px;  /* さらに内側に配置 */
-        }
-
-        .testimonial-nav.next {
-            right: 20px;  /* さらに内側に配置 */
-        }
-
-        .testimonial-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: #d4a373;
-            transform: scale(1.2);
-        }
-
-        .indicator:hover {
-            background: #d4a373;
-            transform: scale(1.1);
-        }
-
-        /* レスポンシブ対応 */
-        @media (max-width: 768px) {
-            .testimonials-carousel {
-                padding: 0 80px;  /* モバイルでも十分な余白確保 */
-            }
-            
-            .testimonial-card {
-                padding: 30px 20px;
-                min-height: 350px;
-            }
-
-            .testimonial-content p {
-                font-size: 0.95rem;
-            }
-
-            .testimonial-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .testimonial-nav.prev {
-                left: 15px;
-            }
-
-            .testimonial-nav.next {
-                right: 15px;
-            }
-        }
-
-        /* ②LINEボタンのデザイン復活 */
-        .reservation-section .reservation-container {
-            max-width: 800px;
-            margin: 0 auto;
-            justify-content: center;
-        }
-        
-        .reservation-form-only {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 20px;
-            padding: 60px 50px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .reservation-form-only::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #d4a373, #e9c46a, #f4d46b);
-        }
-        
-        .reservation-form-only h3 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .reservation-form-only h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #d4a373, #e9c46a);
-            border-radius: 2px;
-        }
-        
-        .reservation-intro {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 50px;
-            line-height: 1.8;
-        }
-        
-        .line-reservation-enhanced {
-            background: linear-gradient(135deg, #06C755 0%, #05B04A 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .line-reservation-enhanced::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #06C755, #05B04A, #06C755);
-            border-radius: 22px;
-            z-index: -1;
-            animation: borderGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes borderGlow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        .line-reservation-enhanced:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(6, 199, 85, 0.3);
-        }
-        
-        .line-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            animation: lineIconBounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes lineIconBounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .line-reservation-enhanced h4 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-        
-        .line-reservation-enhanced p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-        }
-        
-        .line-btn-enhanced {
-            background: white;
-            color: #06C755;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .line-btn-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: #06C755;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
-            z-index: -1;
-        }
-        
-        .line-btn-enhanced:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .line-btn-enhanced:hover {
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .reservation-notes-enhanced {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 40px;
-            border-radius: 15px;
-            border-left: 4px solid #d4a373;
-            position: relative;
-        }
-        
-        .reservation-notes-enhanced h4 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            display: flex;
-            align-items: center;
-        }
-        
-        .reservation-notes-enhanced h4 i {
-            color: #d4a373;
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .reservation-notes-enhanced ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .reservation-notes-enhanced ul li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        .reservation-notes-enhanced ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #d4a373;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-    </style>
-    
-    <!-- 出張整体メニュー専用スタイル -->
-    <style>
-        .menu-item.trip-service {
-            background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
-            border-left: 4px solid #d4a373;
-            position: relative;
-        }
-        
-        .menu-item.trip-service .menu-name h4 {
-            color: #8B4513;
-            font-weight: 700;
-        }
-        
-        .trip-details {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .trip-details .detail-item {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .trip-details .detail-item strong {
-            min-width: 80px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        
-        .trip-notice {
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-            border-radius: 10px;
-            border-left: 4px solid #ff9800;
-            font-size: 0.9rem;
-            color: #bf360c;
-            font-weight: 500;
-        }
-        
-        .trip-notice i {
-            color: #ff9800;
-            margin-right: 8px;
-        }
-    </style>
 </head>
-<body>
+<body style="margin: 0; padding: 0;">
     <!-- ナビゲーション -->
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -703,21 +65,16 @@
                     <div class="concept-container">
                         <h1 class="concept-title">整えて、育てて、共につくる。<br>あなたのからだの "再創造" を。</h1>
                         
-                        <div class="concept-brief">
-                            <p>ここは、身体と向き合うための、特別な場所。<br>
-                            Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
-                        </div>
-                        
-                        <button class="read-more-btn" id="readMoreBtn">
-                            <span>もっと詳しく</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        
                         <div class="concept-details" id="conceptDetails">
+                            <div class="concept-brief">
+                                <p>ここは、身体と向き合うための、特別な場所。<br>
+                                Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
+                            </div>
+                            
                             <div class="concept-description">
                                 <p>痛みや不調の奥にある本当の原因に向き合い、「どうすれば今よりも動きやすく、心地よく過ごせるか」を、一緒に考え、じっくりと対話を重ねていきましょう。</p>
-                                <p>そしてRe'formaは、施術だけで終わらないことを大切にしています。</p>
-                                <p>ご自身の"からだ"と工夫に対話し、セルフケアができる力を育むことも、当サロンの大切な役割です。</p>
+                                
+                                <p>Re'formaは、施術だけで終わらないことを大切にしています。ご自身の"からだ"との対話とセルフケアができる力を育むことも、当サロンの大切な役割です。</p>
                             </div>
                             
                             <div class="concept-additional">
@@ -726,11 +83,6 @@
                                 <p>ひとりでは辿り着けない、新たな自分へ。</p>
                                 <p>あなたの"からだの再創造"を、共に歩んでいきましょう。</p>
                             </div>
-                            
-                            <button class="read-less-btn" id="readLessBtn">
-                                <span>閉じる</span>
-                                <i class="fas fa-chevron-up"></i>
-                            </button>
                         </div>
                         
                         <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
@@ -1018,14 +370,46 @@
     <!-- ⑦お問い合わせ -->
     <section class="contact-section" style="background-color: var(--gray-color); padding: 100px 0;">
         <div class="container">
-            <div class="cta-box">
-                <h3>ご希望や不安なことなど、お気軽にお問い合わせください。</h3>
-                <a href="#reservation" class="btn btn-secondary">お問い合わせ</a>
+            <div class="section-header">
+                <h2>ご希望や不安なことなど、お気軽にお問い合わせください。</h2>
+            </div>
+            <div style="display: flex; justify-content: center; margin-top: 40px;">
+                <a href="#reservation" style="
+                    background: linear-gradient(135deg, #d4a373, #e9c46a);
+                    color: white;
+                    padding: 50px 60px;
+                    border-radius: 30px;
+                    text-align: center;
+                    text-decoration: none;
+                    box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7);
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    max-width: 400px;
+                    display: block;
+                    transition: all 0.4s ease;
+                ">
+                    <i class="fas fa-comments" style="
+                        font-size: 3rem;
+                        margin-bottom: 20px;
+                        display: block;
+                    "></i>
+                    <h3 style="
+                        font-size: 1.8rem;
+                        margin-bottom: 15px;
+                        color: white;
+                        font-weight: 700;
+                    ">お問い合わせ</h3>
+                    <p style="
+                        font-size: 1.1rem;
+                        color: rgba(255, 255, 255, 0.9);
+                        line-height: 1.6;
+                        margin-bottom: 0;
+                    ">あなたのお悩みや疑問に、丁寧にお答えいたします</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ⑧お客様の声セクション（横スクロール式に修正） -->
+    <!-- ⑧お客様の声セクション（横スクロール式・ドット表示のみ） -->
     <section class="testimonials-section" id="testimonials">
         <div class="container">
             <div class="section-header">
@@ -1033,7 +417,7 @@
                 <p>実際にRe'formaをご利用いただいた方々からのフィードバック</p>
             </div>
             
-            <!-- 新しい横スクロール式デザイン -->
+            <!-- 横スクロール式デザイン（矢印削除、ドットのみ） -->
             <div class="testimonials-carousel">
                 <div class="testimonials-track" id="testimonialsTrack">
                     <!-- お客様の声カード -->
@@ -1145,17 +529,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- ナビゲーションボタン -->
-                <button class="testimonial-nav prev" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="testimonial-nav next" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
 
-            <!-- インジケーター -->
+            <!-- インジケーター（ドット表示のみ） -->
             <div class="testimonial-indicators">
                 <span class="indicator active" data-slide="0"></span>
                 <span class="indicator" data-slide="1"></span>
@@ -1167,179 +543,6 @@
         </div>
     </section>
     
-    <!-- 横スクロール式お客様の声専用CSS -->
-    <style>
-        .testimonials-carousel {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonials-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 600%; /* 6枚分 */
-        }
-
-        .testimonial-card {
-            flex: 0 0 16.666667%; /* 100% / 6 */
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 300px;
-            border-right: 1px solid #eee;
-            position: relative;
-        }
-
-        .testimonial-card:last-child {
-            border-right: none;
-        }
-
-        .testimonial-content {
-            flex-grow: 1;
-            position: relative;
-        }
-
-        .quote-icon {
-            position: absolute;
-            top: -10px;
-            left: 0;
-            font-size: 2rem;
-            color: #d4a373;
-            opacity: 0.3;
-        }
-
-        .testimonial-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-            font-style: italic;
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d4a373, #e9c46a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .author-info strong {
-            display: block;
-            color: #333;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .author-info span {
-            display: block;
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 2px;
-        }
-
-        .testimonial-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(212, 163, 115, 0.9);
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .testimonial-nav:hover {
-            background: #d4a373;
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .testimonial-nav.prev {
-            left: -25px;
-        }
-
-        .testimonial-nav.next {
-            right: -25px;
-        }
-
-        .testimonial-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: #d4a373;
-            transform: scale(1.2);
-        }
-
-        .indicator:hover {
-            background: #d4a373;
-            transform: scale(1.1);
-        }
-
-        /* レスポンシブ対応 */
-        @media (max-width: 768px) {
-            .testimonial-card {
-                padding: 30px 20px;
-                min-height: 350px;
-            }
-
-            .testimonial-content p {
-                font-size: 0.95rem;
-            }
-
-            .testimonial-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-
-            .testimonial-nav.prev {
-                left: -20px;
-            }
-
-            .testimonial-nav.next {
-                right: -20px;
-            }
-        }
-    </style>
-
     <!-- ⑨ご予約セクション（簡素化・美化版） -->
     <section class="reservation-section" id="reservation">
         <div class="container">
@@ -1521,11 +724,9 @@
 
     <!-- JavaScript -->
     <script>
-        // お客様の声カルーセル機能
+        // お客様の声カルーセル機能（ドット表示のみ）
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.getElementById('testimonialsTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
             const indicators = document.querySelectorAll('.indicator');
             
             let currentSlide = 0;
@@ -1546,15 +747,6 @@
                 updateCarousel();
             }
             
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateCarousel();
-            }
-            
-            // ボタンイベント
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
             // インジケータークリック
             indicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
@@ -1566,7 +758,7 @@
             // 自動スライド（オプション）
             setInterval(nextSlide, 5000);
             
-            console.log('お客様の声カルーセル初期化完了');
+            console.log('お客様の声カルーセル初期化完了（ドット表示のみ）');
         });
     </script>
     <script src="script.js"></script>
