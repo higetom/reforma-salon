@@ -1,3 +1,21 @@
+/* 🚨 緊急修正：Hero Section背景を最上部で強制設定 */
+.hero-section,
+#home,
+section#home,
+.hero-section * {
+    background: #0a0a0a !important;
+    background-color: #0a0a0a !important;
+    background-image: none !important;
+}
+
+.hero-slider,
+.hero-slide,
+.hero-slide.active {
+    background: #0a0a0a !important;
+    background-color: #0a0a0a !important;
+    background-image: none !important;
+}
+
 .main-logo {
     max-width: 380px;
     height: auto;
@@ -53,6 +71,7 @@
     letter-spacing: 0.1em;
     line-height: 1.8;
     margin-bottom: 50px;
+    margin-top: 80px; /* ロゴとの間隔を広げる */
     color: white;
     text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
     text-align: center;
@@ -1184,9 +1203,56 @@
     color: var(--primary-color);
 }
 
-/* SNSリンクを完全削除 */
+/* SNSリンクスタイル */
 .social-links {
-    display: none !important;
+    display: flex !important;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), #e9c46a);
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 163, 115, 0.5);
+}
+
+.social-link i {
+    font-size: 1.2rem !important;
+    color: white !important;
+}
+
+/* LINE専用アイコンスタイル */
+.social-link.line-link {
+    background: #06C755;
+}
+
+.social-link.line-link:hover {
+    background: #05B04A;
+    box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4);
+}
+
+/* Instagram専用アイコンスタイル */
+.social-link.instagram-link {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+}
+
+.social-link.instagram-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
 }
 
 .footer-nav ul li {
@@ -1238,7 +1304,7 @@
     box-shadow: 0 6px 20px rgba(212, 163, 115, 0.7);
 }
 
-/* レスポンシブ調整 */
+/* 🎯 モバイル版改善CSS - 完全修正版 */
 @media screen and (max-width: 992px) {
     section {
         padding: 80px 0;
@@ -1322,6 +1388,7 @@
     }
 }
 
+/* 🎯 モバイル専用改善（768px以下） */
 @media screen and (max-width: 768px) {
     .section-header h2 {
         font-size: 2rem;
@@ -1336,13 +1403,15 @@
         min-height: auto;
         top: 50%;
         transform: translate(-50%, -50%);
-        padding: 40px 30px;
+        padding: 40px 20px; /* 左右の余白を減らす */
         gap: 30px;
         max-width: 95%;
     }
     
     .concept-container {
         gap: 25px;
+        max-width: 100%; /* 幅を広げる */
+        padding: 0 10px; /* 適切な余白 */
     }
     
     .concept-title {
@@ -1351,12 +1420,18 @@
         margin-bottom: 0;
     }
     
+    /* 🎯 重要：コンセプト文章の幅を大幅に改善 */
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
         font-size: 1rem;
         line-height: 1.8;
         margin-bottom: 20px;
+        max-width: 100% !important; /* 幅を最大に */
+        padding: 0 5px !important; /* 最小限の余白 */
+        text-align: left !important; /* 左寄せで読みやすく */
+        width: 100% !important;
+        box-sizing: border-box;
     }
     
     .hero-content .btn-primary {
@@ -1380,6 +1455,84 @@
         padding: 30px 0;
     }
 
+    /* 🎯 お問い合わせセクションの改行修正 */
+    .contact-section .section-header h2 {
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+
+    /* 🎯 LINE予約セクションの改善 */
+    .line-reservation-enhanced {
+        padding: 30px 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .line-reservation-enhanced h4 {
+        font-size: 1.5rem !important;
+        margin-bottom: 12px !important;
+        line-height: 1.4 !important;
+        /* 改行制御 */
+        white-space: nowrap !important;
+    }
+    
+    .line-reservation-enhanced p {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+        line-height: 1.6 !important;
+        word-break: keep-all !important;
+    }
+    
+    /* 🎯 LINEボタンの改行修正 */
+    .line-btn-enhanced {
+        padding: 12px 30px !important;
+        font-size: 1rem !important;
+        white-space: nowrap !important; /* 改行防止 */
+        display: inline-block !important;
+        min-width: 140px !important;
+        text-align: center !important;
+    }
+    
+    /* 🎯 予約注意事項の大幅改善 */
+    .reservation-notes-enhanced {
+        padding: 25px 15px !important; /* 左右余白を減らす */
+        margin-top: 25px !important;
+        border-radius: 10px;
+        overflow: hidden; /* はみ出し防止 */
+    }
+    
+    .reservation-notes-enhanced h4 {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+    }
+    
+    .reservation-notes-enhanced ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+    }
+    
+    .reservation-notes-enhanced ul li {
+        margin-bottom: 15px !important;
+        padding-left: 25px !important;
+        padding-right: 5px !important; /* 右端余白 */
+        line-height: 1.7 !important;
+        color: #555 !important;
+        font-size: 0.95rem !important;
+        text-align: left !important;
+        width: 100% !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        box-sizing: border-box;
+    }
+    
+    .reservation-notes-enhanced ul li::before {
+        left: 0 !important;
+        top: 2px !important;
+        font-size: 1.1rem !important;
+    }
+    
     .app-card {
         margin-bottom: 60px;
         padding: 40px 30px;
@@ -1504,9 +1657,28 @@
     }
 }
 
+/* 🎯 さらに小さな画面（576px以下）での調整 */
 @media screen and (max-width: 576px) {
     .section-header h2 {
         font-size: 1.8rem;
+    }
+
+    .hero-content {
+        padding: 30px 15px; /* さらに余白を削減 */
+    }
+    
+    .concept-container {
+        padding: 0 5px; /* 最小限の余白 */
+    }
+    
+    /* 🎯 コンセプト文章の幅をさらに最適化 */
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        padding: 0 0 !important; /* 余白を完全に削除 */
     }
 
     .main-logo,
@@ -1523,14 +1695,6 @@
     .concept-title {
         font-size: 1.6rem;
         line-height: 1.3;
-    }
-    
-    .concept-description p,
-    .concept-additional p,
-    .concept-brief p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        margin-bottom: 18px;
     }
 
     .app-card {
@@ -1609,6 +1773,16 @@
         font-size: 0.95rem;
         line-height: 1.6;
     }
+    
+    /* 🎯 予約注意事項をさらに最適化 */
+    .reservation-notes-enhanced {
+        padding: 20px 10px !important;
+    }
+    
+    .reservation-notes-enhanced ul li {
+        padding-left: 20px !important;
+        font-size: 0.9rem !important;
+    }
 }
 
 /* アニメーション効果 */
@@ -1658,28 +1832,6 @@
         background: linear-gradient(135deg, #f4d46b, var(--primary-color), #e9c46a);
     }
 }
-
-/* 不要なテキストを完全削除 */
-*:contains("brief") {
-    display: none !important;
-}
-
-*[class*=">"],
-*[id*=">"] {
-    display: none !important;
-}
-
-body::after {
-    content: "" !important;
-    display: none !important;
-}
-
-html:after,
-body:after {
-    content: "" !important;
-    display: none !important;
-    visibility: hidden !important;
-}/* Re'forma サロン - CSS完全版（アイコン表示完全対応版） */
 
 /* Base Styles */
 :root {
@@ -1836,7 +1988,7 @@ section {
     transform: translateY(-2px);
 }
 
-/* ナビゲーション基本設定 */
+/* ナビゲーション基本設定 - PC版で常時表示、モバイル版でハンバーガー */
 .navbar {
     position: fixed;
     top: 0;
@@ -1899,6 +2051,7 @@ section {
     padding: 6px 16px;
 }
 
+/* PC版：ナビゲーションを常時表示 */
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -1945,7 +2098,7 @@ section {
     transform: translateY(-2px);
 }
 
-/* ハンバーガーメニュー設定 */
+/* ハンバーガーメニュー：PC版では非表示 */
 .navbar-toggle {
     display: none;
     flex-direction: column;
@@ -1977,444 +2130,4 @@ section {
 
 .navbar-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
-}
-
-/* レスポンシブナビゲーション */
-@media screen and (max-width: 992px) {
-    .navbar-toggle {
-        display: flex;
-    }
-    
-    .navbar-nav {
-        display: none;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background-color: rgba(16, 21, 31, 0.98);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        flex-direction: column;
-        padding: 20px 0;
-        z-index: 999;
-    }
-
-    .navbar-nav.show {
-        display: flex;
-    }
-
-    .navbar-nav li {
-        margin: 10px 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .navbar-nav li a {
-        display: block;
-        padding: 15px 20px;
-        font-size: 1.1rem;
-    }
-}
-
-/* Hero Section - 以前の美しいデザイン完全復活 */
-.hero-section {
-    height: 300vh;
-    min-height: 2000px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.hero-slider {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 1;
-    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-}
-
-.hero-slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-.hero-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(212, 163, 115, 0.15) 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, rgba(233, 196, 106, 0.12) 1px, transparent 1px),
-        radial-gradient(circle at 40% 60%, rgba(212, 163, 115, 0.08) 1px, transparent 1px),
-        radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
-    background-size: 300px 300px, 250px 250px, 400px 400px, 350px 350px;
-    animation: enhancedParticleFloat 25s ease-in-out infinite;
-    z-index: 1;
-}
-
-@keyframes enhancedParticleFloat {
-    0%, 100% { 
-        transform: translate(0, 0) rotate(0deg); 
-        opacity: 0.7;
-    }
-    25% { 
-        transform: translate(30px, -30px) rotate(90deg); 
-        opacity: 1;
-    }
-    50% { 
-        transform: translate(-20px, 20px) rotate(180deg); 
-        opacity: 0.8;
-    }
-    75% { 
-        transform: translate(15px, -15px) rotate(270deg); 
-        opacity: 0.9;
-    }
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom, 
-        rgba(0, 0, 0, 0.92) 0%, 
-        rgba(0, 0, 0, 0.88) 25%, 
-        rgba(0, 0, 0, 0.85) 50%, 
-        rgba(0, 0, 0, 0.88) 75%, 
-        rgba(0, 0, 0, 0.92) 100%
-    );
-    z-index: 2;
-}
-
-.hero-content {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 3;
-    color: white;
-    max-width: 1000px;
-    width: 90%;
-    padding: 80px 60px;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
-    border-radius: 30px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-    letter-spacing: var(--elegant-spacing);
-    font-family: var(--concept-font);
-    min-height: 220vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 50px;
-    animation: enhancedContentFadeIn 2.5s ease-out;
-}
-
-@keyframes enhancedContentFadeIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 50px);
-        backdrop-filter: blur(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-        backdrop-filter: blur(20px);
-    }
-}
-
-.hero-logo {
-    text-align: center;
-    flex-shrink: 0;
-    padding: 50px 0;
-    animation: enhancedLogoFloat 8s ease-in-out infinite;
-}
-
-@keyframes enhancedLogoFloat {
-    0%, 100% { 
-        transform: translateY(0px) scale(1); 
-        filter: drop-shadow(0 15px 30px rgba(212, 163, 115, 0.3));
-    }
-    50% { 
-        transform: translateY(-15px) scale(1.02); 
-        filter: drop-shadow(0 20px 40px rgba(212, 163, 115, 0.5));
-    }
-}
-
-.main-logo {
-    max-width: 380px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(212, 163, 115, 0.4);
-    transition: all 0.4s ease;
-}
-
-/* モバイル画像読み込み強化対応 */
-.app-logo {
-    /* 既存のスタイルに追加 */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    will-change: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
-/* フォールバック画像のスタイル */
-.app-logo-fallback {
-    max-width: 280px;
-    height: 280px;
-    background: linear-gradient(135deg, #f4d46b, #e9c46a);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    transition: all 0.4s ease;
-}
-
-.app-logo-fallback i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    display: block;
-}
-
-.app-logo-fallback:hover {
-    transform: scale(1.08) rotateY(5deg);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-}
-
-/* モバイル専用調整 */
-@media screen and (max-width: 768px) {
-    .app-logo-fallback {
-        max-width: 240px;
-        height: 240px;
-        font-size: 1.2rem;
-    }
-    
-    .app-logo-fallback i {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-    }
-}
-
-/* iOS Safari 特別対応 */
-@supports (-webkit-touch-callout: none) {
-    .app-logo {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-/* 🎯 モバイル版改善CSS - styles.cssの最後に追加 */
-
-/* ①ホーム画面コンセプト文章の幅調整（モバイル専用） */
-@media screen and (max-width: 768px) {
-    .concept-description p,
-    .concept-additional p,
-    .concept-brief p {
-        font-size: 1rem;
-        line-height: 1.8;
-        margin-bottom: 20px;
-        /* 幅を広げて読みやすく */
-        max-width: 100% !important;
-        padding: 0 10px !important;
-        text-align: left !important; /* 左寄せで読みやすく */
-    }
-    
-    .concept-container {
-        gap: 25px;
-        padding: 0 20px; /* 適切な余白 */
-    }
-    
-    .concept-title {
-        font-size: 1.8rem;
-        line-height: 1.4;
-        margin-bottom: 0;
-        text-align: center; /* タイトルは中央 */
-    }
-}
-
-/* ②③お問い合わせとLINE予約の改行とレイアウト改善 */
-@media screen and (max-width: 768px) {
-    /* お問い合わせボックスの改行修正 */
-    .contact-section a p {
-        font-size: 1rem !important;
-        line-height: 1.8 !important;
-        /* 適切な改行のためのスタイル */
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-    }
-    
-    /* LINE予約セクション全体の改善 */
-    .line-reservation-enhanced {
-        padding: 30px 20px !important;
-        margin-bottom: 30px !important;
-    }
-    
-    .line-reservation-enhanced h4 {
-        font-size: 1.5rem !important;
-        margin-bottom: 12px !important;
-        line-height: 1.4 !important;
-    }
-    
-    .line-reservation-enhanced p {
-        font-size: 1rem !important;
-        margin-bottom: 20px !important;
-        line-height: 1.6 !important;
-        word-break: keep-all !important;
-    }
-    
-    /* LINEボタンの改行修正 */
-    .line-btn-enhanced {
-        padding: 12px 30px !important;
-        font-size: 1rem !important;
-        white-space: nowrap !important; /* 改行防止 */
-        display: inline-block !important;
-        min-width: 140px !important;
-        text-align: center !important;
-    }
-    
-    /* 予約注意事項の幅とレイアウト改善 */
-    .reservation-notes-enhanced {
-        padding: 25px 20px !important;
-        margin-top: 25px !important;
-    }
-    
-    .reservation-notes-enhanced h4 {
-        font-size: 1.2rem !important;
-        margin-bottom: 15px !important;
-        text-align: left !important;
-    }
-    
-    .reservation-notes-enhanced ul {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    
-    .reservation-notes-enhanced ul li {
-        margin-bottom: 15px !important;
-        padding-left: 25px !important;
-        line-height: 1.7 !important;
-        color: #555 !important;
-        font-size: 0.95rem !important;
-        text-align: left !important;
-        /* 幅を広げて読みやすく */
-        max-width: 100% !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-    }
-    
-    .reservation-notes-enhanced ul li::before {
-        left: 0 !important;
-        top: 2px !important;
-        font-size: 1.1rem !important;
-    }
-}
-
-/* モバイル専用：より小さな画面での調整 */
-@media screen and (max-width: 576px) {
-    .concept-description p,
-    .concept-additional p,
-    .concept-brief p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        padding: 0 5px !important;
-    }
-    
-    .line-reservation-enhanced {
-        padding: 25px 15px !important;
-    }
-    
-    .reservation-notes-enhanced {
-        padding: 20px 15px !important;
-    }
-    
-    .reservation-notes-enhanced ul li {
-        padding-left: 20px !important;
-        font-size: 0.9rem !important;
-    }
-}
-
-/* ④フッターInstagramアイコン追加 */
-.footer-contact .social-links {
-    display: flex !important; /* SNSリンクを再表示 */
-    gap: 15px;
-    margin-top: 20px;
-    justify-content: flex-start;
-}
-
-.social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--primary-color), #e9c46a);
-    color: white;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.social-link:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(212, 163, 115, 0.5);
-}
-
-.social-link i {
-    font-size: 1.2rem !important;
-    color: white !important;
-}
-
-/* LINE専用アイコンスタイル */
-.social-link.line-link {
-    background: #06C755;
-}
-
-.social-link.line-link:hover {
-    background: #05B04A;
-    box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4);
-}
-
-/* Instagram専用アイコンスタイル */
-.social-link.instagram-link {
-    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
-}
-
-.social-link.instagram-link:hover {
-    transform: translateY(-3px) scale(1.1);
-    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
 }
