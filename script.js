@@ -100,15 +100,6 @@ function initializeMenuTabs() {
     }
 }
 
-// 🚫 予約オプションタブ機能を無効化（CSSのみで動作するため不要）
-/*
-function initializeOptionTabs() {
-    // この関数は無効化されました
-    // 予約セクションはCSSのみのタブ機能で動作します
-    console.log('予約タブ機能はCSSで制御されています');
-}
-*/
-
 // お客様の声スライダーの動作（ドット表示のみ）
 let currentTestimonial = 0;
 let testimonialInterval;
@@ -207,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 各機能を初期化
     initializeMenuTabs();
-    // initializeOptionTabs(); // ← この行をコメントアウト（CSSで制御するため不要）
     initializeTestimonials();
     
     // ロゴ読み込みエラー時の処理
@@ -232,8 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     console.log('すべての初期化が完了しました');
-    console.log('予約タブはCSSのみで動作します（JavaScript不使用）');
-    console.log('お客様の声：ドット表示のみ（矢印削除済み）');
+    console.log('🎯 モバイル表示改善：ホーム画面コンセプト文章の幅調整完了');
+    console.log('🎯 改行修正：お問い合わせとLINE予約の体裁改善完了');
+    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加完了');
 });
 
 // 画面リサイズ時の処理
@@ -273,7 +264,10 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('Re\'forma JavaScript 読み込み完了');
-console.log('🎯 予約タブ機能: CSSのみで制御（JavaScript無効化済み）');
+console.log('Re\'forma JavaScript 読み込み完了（修正版）');
+console.log('🎯 修正完了項目:');
+console.log('  1. ホーム画面コンセプト文章の幅調整（モバイル専用CSS適用）');
+console.log('  2. お問い合わせ部分の改行修正（"お悩みや疑問に、<br>丁寧に〜"）');
+console.log('  3. LINE予約ボタンと注意事項の体裁改善');
+console.log('  4. フッターにInstagramアイコン追加完了');
 console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
-console.log('🎯 ホームコンセプト: 常時表示（ボタン削除済み）');
