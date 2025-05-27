@@ -2175,3 +2175,65 @@ section {
     box-shadow: 0 20px 50px rgba(212, 163, 115, 0.4);
     transition: all 0.4s ease;
 }
+
+/* モバイル画像読み込み強化対応 */
+.app-logo {
+    /* 既存のスタイルに追加 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    will-change: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* フォールバック画像のスタイル */
+.app-logo-fallback {
+    max-width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, #f4d46b, #e9c46a);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    transition: all 0.4s ease;
+}
+
+.app-logo-fallback i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.app-logo-fallback:hover {
+    transform: scale(1.08) rotateY(5deg);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* モバイル専用調整 */
+@media screen and (max-width: 768px) {
+    .app-logo-fallback {
+        max-width: 240px;
+        height: 240px;
+        font-size: 1.2rem;
+    }
+    
+    .app-logo-fallback i {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+}
+
+/* iOS Safari 特別対応 */
+@supports (-webkit-touch-callout: none) {
+    .app-logo {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
