@@ -2237,3 +2237,184 @@ section {
         transform: translate3d(0, 0, 0);
     }
 }
+/* 🎯 モバイル版改善CSS - styles.cssの最後に追加 */
+
+/* ①ホーム画面コンセプト文章の幅調整（モバイル専用） */
+@media screen and (max-width: 768px) {
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        /* 幅を広げて読みやすく */
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        text-align: left !important; /* 左寄せで読みやすく */
+    }
+    
+    .concept-container {
+        gap: 25px;
+        padding: 0 20px; /* 適切な余白 */
+    }
+    
+    .concept-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
+        margin-bottom: 0;
+        text-align: center; /* タイトルは中央 */
+    }
+}
+
+/* ②③お問い合わせとLINE予約の改行とレイアウト改善 */
+@media screen and (max-width: 768px) {
+    /* お問い合わせボックスの改行修正 */
+    .contact-section a p {
+        font-size: 1rem !important;
+        line-height: 1.8 !important;
+        /* 適切な改行のためのスタイル */
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* LINE予約セクション全体の改善 */
+    .line-reservation-enhanced {
+        padding: 30px 20px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .line-reservation-enhanced h4 {
+        font-size: 1.5rem !important;
+        margin-bottom: 12px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .line-reservation-enhanced p {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+        line-height: 1.6 !important;
+        word-break: keep-all !important;
+    }
+    
+    /* LINEボタンの改行修正 */
+    .line-btn-enhanced {
+        padding: 12px 30px !important;
+        font-size: 1rem !important;
+        white-space: nowrap !important; /* 改行防止 */
+        display: inline-block !important;
+        min-width: 140px !important;
+        text-align: center !important;
+    }
+    
+    /* 予約注意事項の幅とレイアウト改善 */
+    .reservation-notes-enhanced {
+        padding: 25px 20px !important;
+        margin-top: 25px !important;
+    }
+    
+    .reservation-notes-enhanced h4 {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+    }
+    
+    .reservation-notes-enhanced ul {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .reservation-notes-enhanced ul li {
+        margin-bottom: 15px !important;
+        padding-left: 25px !important;
+        line-height: 1.7 !important;
+        color: #555 !important;
+        font-size: 0.95rem !important;
+        text-align: left !important;
+        /* 幅を広げて読みやすく */
+        max-width: 100% !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .reservation-notes-enhanced ul li::before {
+        left: 0 !important;
+        top: 2px !important;
+        font-size: 1.1rem !important;
+    }
+}
+
+/* モバイル専用：より小さな画面での調整 */
+@media screen and (max-width: 576px) {
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        padding: 0 5px !important;
+    }
+    
+    .line-reservation-enhanced {
+        padding: 25px 15px !important;
+    }
+    
+    .reservation-notes-enhanced {
+        padding: 20px 15px !important;
+    }
+    
+    .reservation-notes-enhanced ul li {
+        padding-left: 20px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ④フッターInstagramアイコン追加 */
+.footer-contact .social-links {
+    display: flex !important; /* SNSリンクを再表示 */
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), #e9c46a);
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 163, 115, 0.5);
+}
+
+.social-link i {
+    font-size: 1.2rem !important;
+    color: white !important;
+}
+
+/* LINE専用アイコンスタイル */
+.social-link.line-link {
+    background: #06C755;
+}
+
+.social-link.line-link:hover {
+    background: #05B04A;
+    box-shadow: 0 8px 20px rgba(6, 199, 85, 0.4);
+}
+
+/* Instagram専用アイコンスタイル */
+.social-link.instagram-link {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+}
+
+.social-link.instagram-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
+}
