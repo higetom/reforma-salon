@@ -2,9 +2,6 @@
 const navbar = document.getElementById('navbar');
 const navbarToggle = document.getElementById('navbar-toggle');
 const navbarNav = document.getElementById('navbar-nav');
-const readMoreBtn = document.getElementById('readMoreBtn');
-const readLessBtn = document.getElementById('readLessBtn');
-const conceptDetails = document.getElementById('conceptDetails');
 const scrollTopBtn = document.getElementById('scrollTop');
 
 // ナビゲーションスクロール効果
@@ -40,51 +37,6 @@ document.querySelectorAll('.navbar-nav a').forEach(link => {
         }
     });
 });
-
-// もっと詳しくボタンの動作
-if (readMoreBtn && conceptDetails) {
-    // 初期状態で詳細を非表示
-    conceptDetails.classList.add('hidden');
-    
-    readMoreBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('もっと詳しくボタンがクリックされました');
-        
-        // 詳細を表示
-        conceptDetails.classList.remove('hidden');
-        readMoreBtn.style.display = 'none';
-        
-        // スムーズなスクロール
-        setTimeout(() => {
-            conceptDetails.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }, 300);
-    });
-}
-
-// 閉じるボタンの動作
-if (readLessBtn && conceptDetails) {
-    readLessBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('閉じるボタンがクリックされました');
-        
-        // 詳細を非表示
-        conceptDetails.classList.add('hidden');
-        
-        // もっと詳しくボタンを再表示
-        setTimeout(() => {
-            if (readMoreBtn) {
-                readMoreBtn.style.display = 'flex';
-                readMoreBtn.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
-            }
-        }, 500);
-    });
-}
 
 // スクロールトップボタンの動作
 if (scrollTopBtn) {
@@ -157,38 +109,38 @@ function initializeOptionTabs() {
 }
 */
 
-// お客様の声スライダーの動作
+// お客様の声スライダーの動作（ドット表示のみ）
 let currentTestimonial = 0;
 let testimonialInterval;
 
 function initializeTestimonials() {
-    const testimonials = document.querySelectorAll('.testimonial');
-    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    const track = document.getElementById('testimonialsTrack');
+    const indicators = document.querySelectorAll('.indicator');
     
-    if (testimonials.length === 0) {
+    if (!track || indicators.length === 0) {
         console.log('お客様の声要素が見つかりません');
         return;
     }
     
-    console.log('お客様の声を初期化中...', testimonials.length, '件見つかりました');
+    console.log('お客様の声を初期化中...', indicators.length, '件見つかりました');
     
-    function showTestimonial(index) {
-        // すべての証言とドットから active クラスを削除
-        testimonials.forEach(t => t.classList.remove('active'));
-        testimonialDots.forEach(d => d.classList.remove('active'));
+    const totalSlides = indicators.length;
+    
+    function updateCarousel() {
+        const translateX = -(currentTestimonial * (100 / totalSlides));
+        track.style.transform = `translateX(${translateX}%)`;
         
-        // 指定されたインデックスの証言とドットに active クラスを追加
-        if (testimonials[index] && testimonialDots[index]) {
-            testimonials[index].classList.add('active');
-            testimonialDots[index].classList.add('active');
-        }
+        // インジケーター更新
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentTestimonial);
+        });
     }
     
     // ドットクリック時の動作
-    testimonialDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
             currentTestimonial = index;
-            showTestimonial(currentTestimonial);
+            updateCarousel();
             // 自動スライドをリセット
             clearInterval(testimonialInterval);
             startAutoSlide();
@@ -197,8 +149,8 @@ function initializeTestimonials() {
     
     // 自動スライド機能
     function autoSlideTestimonials() {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
+        currentTestimonial = (currentTestimonial + 1) % totalSlides;
+        updateCarousel();
     }
     
     function startAutoSlide() {
@@ -206,8 +158,10 @@ function initializeTestimonials() {
     }
     
     // 初期表示
-    showTestimonial(0);
+    updateCarousel();
     startAutoSlide();
+    
+    console.log('お客様の声スライダー初期化完了（ドット表示のみ）');
 }
 
 // スムーズスクロール機能
@@ -279,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('すべての初期化が完了しました');
     console.log('予約タブはCSSのみで動作します（JavaScript不使用）');
+    console.log('お客様の声：ドット表示のみ（矢印削除済み）');
 });
 
 // 画面リサイズ時の処理
@@ -320,3 +275,5 @@ window.addEventListener('error', (e) => {
 // デバッグ用
 console.log('Re\'forma JavaScript 読み込み完了');
 console.log('🎯 予約タブ機能: CSSのみで制御（JavaScript無効化済み）');
+console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
+console.log('🎯 ホームコンセプト: 常時表示（ボタン削除済み）');
