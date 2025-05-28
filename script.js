@@ -13,12 +13,10 @@ window.addEventListener('scroll', () => {
     }
     
     // スクロールトップボタンの表示/非表示
-    if (scrollTopBtn) {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
+    if (scrollTopBtn && window.scrollY > 300) {
+        scrollTopBtn.classList.add('show');
+    } else if (scrollTopBtn) {
+        scrollTopBtn.classList.remove('show');
     }
 });
 
@@ -48,6 +46,46 @@ if (scrollTopBtn) {
             behavior: 'smooth'
         });
     });
+}
+
+// 🎯 ヒーローアニメーション：ロゴ表示 → 消失 → コンセプト表示 → ボタン表示
+function initializeHeroAnimations() {
+    const heroLogo = document.getElementById('hero-logo');
+    const conceptContainer = document.getElementById('concept-container');
+    const luxuryBtnContainer = document.getElementById('luxury-btn-container');
+
+    if (!heroLogo || !conceptContainer || !luxuryBtnContainer) {
+        console.error('🚨 アニメーション要素が見つかりません');
+        return;
+    }
+
+    console.log('🎯 ヒーローアニメーション開始');
+
+    // Phase 1: ロゴをフェードイン表示（0.5秒後）
+    setTimeout(() => {
+        heroLogo.classList.add('show');
+        console.log('✅ Phase 1: ロゴ表示開始');
+    }, 500);
+
+    // Phase 2: ロゴをフェードアウト（3秒後）
+    setTimeout(() => {
+        heroLogo.classList.add('hide');
+        console.log('✅ Phase 2: ロゴ消失開始');
+    }, 3000);
+
+    // Phase 3: コンセプトをフェードイン表示（4秒後）
+    setTimeout(() => {
+        conceptContainer.classList.add('show');
+        console.log('✅ Phase 3: コンセプト表示開始');
+    }, 4000);
+
+    // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
+    setTimeout(() => {
+        luxuryBtnContainer.classList.add('show');
+        console.log('✅ Phase 4: 豪華ボタン表示開始');
+    }, 6000);
+
+    console.log('🎯 アニメーションタイムライン設定完了');
 }
 
 // サービスメニュータブの動作（こちらは正常動作）
@@ -196,7 +234,10 @@ document.querySelectorAll('.fade-in-up, .service-option, .app-card, .philosophy-
 
 // ページ読み込み完了時の処理
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('ページ読み込み完了 - 初期化開始');
+    console.log('🎯 Re\'forma サイト初期化開始');
+    
+    // 🎯 ヒーローアニメーションを初期化（最重要）
+    initializeHeroAnimations();
     
     // 各機能を初期化
     initializeMenuTabs();
@@ -223,10 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    console.log('すべての初期化が完了しました');
-    console.log('🎯 修正完了：モバイル版コンセプト部分の左右余白を最適化');
-    console.log('🎯 PC版：完璧に維持（デザイン・機能すべて正常動作）');
-    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加済み');
+    console.log('🎯 アニメーション予定スケジュール:');
+    console.log('  0.5秒後: Re\'formaロゴがフェードイン表示');
+    console.log('  3.0秒後: ロゴがフェードアウト消失');
+    console.log('  4.0秒後: コンセプト全文がフェードイン表示');
+    console.log('  6.0秒後: 豪華な予約ボタンがフェードイン表示');
+    console.log('✅ すべての初期化が完了しました');
+    console.log('🎯 モバイル表示改善：ホーム画面コンセプト文章の幅調整完了');
+    console.log('🎯 改行修正：お問い合わせとLINE予約の体裁改善完了');
+    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加完了');
 });
 
 // 画面リサイズ時の処理
@@ -266,10 +312,10 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('Re\'forma JavaScript 読み込み完了（モバイル余白最適化版）');
-console.log('🎯 修正完了項目:');
-console.log('  1. モバイル版コンセプト文章の左右余白を大幅に削減');
-console.log('  2. 768px以下でhero-contentの幅を98%に拡大');
-console.log('  3. 576px以下でpadding・marginを最小限に調整');
-console.log('  4. PC版デザイン完全維持（一切変更なし）');
+console.log('🎯 Re\'forma JavaScript 読み込み完了（アニメーション修正版）');
+console.log('📱 モバイル対応: 文字切れ対策完了');
+console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト表示 → 豪華ボタン表示');
+console.log('📝 改行調整: 適切な箇所での改行統一');
+console.log('🎯 3ファイル構成: HTML + CSS + JS 分離完了');
+console.log('🎯 豪華ボタン: グラデーション + グロー効果 + パルスアニメーション');
 console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
