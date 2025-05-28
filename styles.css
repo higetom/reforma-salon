@@ -1678,7 +1678,68 @@ section#home,
     }
 }
 
-    /* 🎯 モバイル専用改善（768px以下） - 文字切れ完全修正版 */
+/* 🎯 モバイル版改善CSS - 完全修正版 */
+@media screen and (max-width: 992px) {
+    .navbar-toggle {
+        display: flex;
+    }
+    
+    .navbar-nav {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(16, 21, 31, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 999;
+    }
+
+    .navbar-nav.show {
+        display: flex;
+    }
+
+    .navbar-nav li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav li a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    .service-options,
+    .profile-container,
+    .philosophy-points {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .philosophy-points {
+        padding: 0 10px;
+    }
+    
+    .philosophy-point {
+        padding: 30px 20px;
+    }
+    
+    .philosophy-point i {
+        font-size: 3rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* 🎯 モバイル専用改善（768px以下） - 完全修正版 */
 @media screen and (max-width: 768px) {
     .section-header h2 {
         font-size: 2rem;
@@ -1687,6 +1748,174 @@ section#home,
     /* Contact sectionタイトルもモバイルで調整 */
     .contact-section .section-header h2 {
         font-size: 1.8rem !important;
+    }
+
+    .hero-section {
+        height: 100vh;
+        min-height: 800px;
+    }
+    
+    /* 🎯 ①ホーム画面の左寄り問題を修正 */
+    .hero-content {
+        min-height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px 15px !important;
+        gap: 30px;
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .concept-container {
+        gap: 25px;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        text-align: center !important;
+    }
+    
+    .concept-title {
+        font-size: 1.8rem;
+        line-height: 1.4;
+        margin-bottom: 0;
+        margin-top: 40px;
+        padding: 0 10px !important;
+        text-align: center !important;
+    }
+    
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 20px;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .luxury-reservation-btn {
+        padding: 20px 40px;
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .btn-icon {
+        font-size: 1.2rem;
+        margin-right: 8px;
+    }
+    
+    .main-logo,
+    .hero-logo .logo-fallback {
+        max-width: 250px;
+    }
+    
+    .hero-logo .logo-fallback {
+        height: 100px;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .hero-logo {
+        padding: 30px 0;
+    }
+
+    /* 🎯 ③予約注意事項の文字切れを完全修正 */
+    .line-reservation-enhanced {
+        padding: 25px 15px !important;
+        margin-bottom: 30px !important;
+        width: calc(100% - 30px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    .line-reservation-enhanced h4 {
+        font-size: 1.4rem !important;
+        margin-bottom: 12px !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        padding: 0 5px !important;
+    }
+    
+    .line-reservation-enhanced p {
+        font-size: 0.95rem !important;
+        margin-bottom: 20px !important;
+        line-height: 1.5 !important;
+        word-break: keep-all !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        padding: 0 5px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    .line-btn-enhanced {
+        padding: 12px 25px !important;
+        font-size: 0.95rem !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+        text-align: center !important;
+    }
+    
+    .reservation-notes-enhanced {
+        padding: 20px 15px !important;
+        margin-top: 25px !important;
+        border-radius: 10px;
+        overflow: visible !important;
+        width: calc(100% - 30px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    .reservation-notes-enhanced h4 {
+        font-size: 1.1rem !important;
+        margin-bottom: 15px !important;
+        text-align: left !important;
+        white-space: normal !important;
+        padding: 0 5px !important;
+    }
+    
+    .reservation-notes-enhanced ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* 🎯 ③注意事項リストの体裁を完全修正 */
+    .reservation-notes-enhanced ul li {
+        margin-bottom: 15px !important;
+        padding-left: 25px !important;
+        padding-right: 10px !important;
+        line-height: 1.7 !important;
+        color: #555 !important;
+        font-size: 0.9rem !important;
+        text-align: left !important;
+        width: calc(100% - 35px) !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        display: flex !important;
+        align-items: flex-start !important;
+    }
+    
+    .reservation-notes-enhanced ul li::before {
+        content: '✓' !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 2px !important;
+        color: #d4a373 !important;
+        font-weight: bold !important;
+        font-size: 1rem !important;
+        flex-shrink: 0 !important;
+        width: 20px !important;
+        text-align: center !important;
     }
 
     .hero-section {
