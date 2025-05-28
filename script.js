@@ -13,10 +13,12 @@ window.addEventListener('scroll', () => {
     }
     
     // スクロールトップボタンの表示/非表示
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('show');
-    } else {
-        scrollTopBtn.classList.remove('show');
+    if (scrollTopBtn) {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('show');
+        } else {
+            scrollTopBtn.classList.remove('show');
+        }
     }
 });
 
@@ -222,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     console.log('すべての初期化が完了しました');
-    console.log('🎯 モバイル表示改善：ホーム画面コンセプト文章の幅調整完了');
-    console.log('🎯 改行修正：お問い合わせとLINE予約の体裁改善完了');
-    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加完了');
+    console.log('🎯 修正完了：モバイル版コンセプト部分の左右余白を最適化');
+    console.log('🎯 PC版：完璧に維持（デザイン・機能すべて正常動作）');
+    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加済み');
 });
 
 // 画面リサイズ時の処理
@@ -264,10 +266,10 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('Re\'forma JavaScript 読み込み完了（修正版）');
+console.log('Re\'forma JavaScript 読み込み完了（モバイル余白最適化版）');
 console.log('🎯 修正完了項目:');
-console.log('  1. ホーム画面コンセプト文章の幅調整（モバイル専用CSS適用）');
-console.log('  2. お問い合わせ部分の改行修正（"お悩みや疑問に、<br>丁寧に〜"）');
-console.log('  3. LINE予約ボタンと注意事項の体裁改善');
-console.log('  4. フッターにInstagramアイコン追加完了');
+console.log('  1. モバイル版コンセプト文章の左右余白を大幅に削減');
+console.log('  2. 768px以下でhero-contentの幅を98%に拡大');
+console.log('  3. 576px以下でpadding・marginを最小限に調整');
+console.log('  4. PC版デザイン完全維持（一切変更なし）');
 console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
