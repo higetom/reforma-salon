@@ -19,60 +19,13 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- 🎯 強制表示用インラインCSS -->
-    <style>
-        .force-show-logo {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            max-width: 400px !important;
-            height: auto !important;
-            margin: 0 auto 40px auto !important;
-            border-radius: 20px !important;
-            box-shadow: 0 20px 50px rgba(212, 163, 115, 0.6) !important;
-        }
-        
-        .force-show-fallback {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            max-width: 400px !important;
-            height: 160px !important;
-            margin: 0 auto 40px auto !important;
-            background: linear-gradient(135deg, #1a2b4c 0%, #2c3e50 50%, #34495e 100%) !important;
-            border-radius: 25px !important;
-            color: white !important;
-            box-shadow: 0 20px 50px rgba(212, 163, 115, 0.6) !important;
-            border: 3px solid rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        .force-show-button {
-            display: inline-block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            padding: 22px 55px !important;
-            font-size: 1.2rem !important;
-            border-radius: 60px !important;
-            font-weight: 700 !important;
-            letter-spacing: 2.5px !important;
-            background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
-            color: white !important;
-            text-decoration: none !important;
-            box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7) !important;
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-            margin-top: 50px !important;
-            animation: enhancedButtonPulse 5s ease-in-out infinite !important;
-        }
-    </style>
 </head>
 <body style="margin: 0; padding: 0;">
     <!-- ナビゲーション -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#home" class="navbar-brand">
-                <img src="reforma-logo.png" alt="Re'forma ロゴ" class="logo" 
+                <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="logo" 
                      onerror="console.log('Logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="logo-fallback" style="display: none;">Re'forma</div>
             </a>
@@ -95,55 +48,56 @@
         </div>
     </nav>
 
-    <!-- 🎯 ヒーローセクション（完全修正版） -->
-    <section class="hero-section" id="home" style="background: #0a0a0a !important;">
-        <div class="hero-slider" style="background: #0a0a0a !important;">
-            <div class="hero-slide active" style="background: #0a0a0a !important;">
+    <!-- 🎯 ヒーローセクション（アニメーション付き：ロゴ→消える→コンセプト→ボタン） -->
+    <section class="hero-section" id="home" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
+        <div class="hero-slider" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
+            <div class="hero-slide active" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
                 <div class="overlay" style="background: rgba(0, 0, 0, 0.8) !important;"></div>
                 <div class="hero-content">
-                    
-                    <!-- 🎯 ロゴセクション - 完全強制表示 -->
-                    <div style="width: 100%; text-align: center; margin-bottom: 40px;">
-                        <!-- 画像ロゴ -->
-                        <img src="reforma-logo.png" 
-                             alt="Re'forma ロゴ" 
-                             class="force-show-logo"
-                             onload="console.log('✅ ロゴ読み込み成功'); this.style.display='block';"
-                             onerror="console.log('❌ ロゴ読み込み失敗'); this.style.display='none'; document.getElementById('logo-fallback-force').style.display='flex';">
-                        
-                        <!-- フォールバックロゴ -->
-                        <div id="logo-fallback-force" class="force-show-fallback" style="display: none;">
-                            <div style="font-size: 3.2rem; font-weight: 700; color: #d4a373; margin-bottom: 8px;">Re'forma</div>
-                            <div style="font-size: 1rem; color: rgba(255,255,255,0.9);">BODY REFORMATION SALON</div>
-                        </div>
+                    <!-- 🎯 Phase 1: ロゴが表示される（0.5秒後）-->
+                    <div class="hero-logo" id="hero-logo">
+                        <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
+                             onerror="console.log('Main logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">Re'forma</div>
                     </div>
                     
-                    <!-- コンセプト -->
-                    <div class="concept-container">
+                    <!-- 🎯 Phase 2: コンセプトが表示される（ロゴ消失後） -->
+                    <div class="concept-container" id="concept-container">
                         <h1 class="concept-title">整えて、育てて、共につくる。<br>あなたのからだの "再創造" を。</h1>
                         
-                        <div class="concept-details">
+                        <div class="concept-details" id="conceptDetails">
                             <div class="concept-brief">
-                                <p>ここは、身体と向き合うための、特別な場所。<br>
-                                Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
+                                <p>ここは、身体と向き合うための、特別な場所。</p>
+                                <p>Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、<br>
+                                あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
                             </div>
                             
                             <div class="concept-description">
-                                <p>痛みや不調の奥にある本当の原因に向き合い、「どうすれば今よりも動きやすく、心地よく過ごせるか」を、一緒に考え、じっくりと対話を重ねていきましょう。</p>
-                                <p>Re'formaは、施術だけで終わらないことを大切にしています。ご自身の"からだ"との対話とセルフケアができる力を育むことも、当サロンの大切な役割です。</p>
+                                <p>痛みや不調の奥にある本当の原因に向き合い、<br>
+                                「どうすれば今よりも動きやすく、心地よく過ごせるか」を、<br>
+                                一緒に考え、じっくりと対話を重ねていきましょう。</p>
+                                
+                                <p>Re'formaは、施術だけで終わらないことを大切にしています。<br>
+                                ご自身の"からだ"との対話とセルフケアができる力を育むことも、<br>
+                                当サロンの大切な役割です。</p>
                             </div>
                             
                             <div class="concept-additional">
                                 <p>あなた自身が、ご自身の"からだ"のプロになれるように——</p>
-                                <p>自分の感覚を信じ、整えられる力を身につけるための、<br>知識と習慣を、二人三脚で丁寧にサポートします。</p>
+                                
+                                <p>自分の感覚を信じ、整えられる力を身につけるための、<br>
+                                知識と習慣を、二人三脚で丁寧にサポートします。</p>
+                                
                                 <p>ひとりでは辿り着けない、新たな自分へ。</p>
+                                
                                 <p>あなたの"からだの再創造"を、共に歩んでいきましょう。</p>
                             </div>
                         </div>
                         
-                        <!-- 🎯 予約ボタン - 完全強制表示 -->
-                        <div style="text-align: center; width: 100%; margin-top: 50px;">
-                            <a href="#reservation" class="force-show-button">
+                        <!-- 🎯 Phase 3: 豪華な予約ボタンが表示される（コンセプト後）-->
+                        <div class="luxury-btn-container" id="luxury-btn-container">
+                            <a href="#reservation" class="luxury-reservation-btn">
+                                <i class="fas fa-calendar-check btn-icon"></i>
                                 ご予約はこちら
                             </a>
                         </div>
@@ -245,7 +199,7 @@
         </div>
     </section>
 
-    <!-- ⑤施術メニュー -->
+    <!-- ⑤施術メニュー（完全修正版） -->
     <section class="menu-section" style="background-color: var(--gray-color); padding: 100px 0;">
         <div class="container">
             <div class="service-menu">
@@ -333,7 +287,7 @@
                     </div>
                 </div>
                 
-                <!-- 出張整体メニュー -->
+                <!-- 出張整体メニュー（完全修正版） -->
                 <div class="menu-content" id="trip">
                     <div class="menu-item trip-service">
                         <div class="menu-name">
@@ -428,45 +382,17 @@
         </div>
     </section>
 
-    <!-- ⑦お問い合わせ（アニメーション追加版） -->
+    <!-- ⑦お問い合わせ（改行修正版） -->
     <section class="contact-section" style="background-color: var(--gray-color); padding: 100px 0;">
         <div class="container">
             <div class="section-header">
                 <h2>ご希望や不安なことなど、<br>お気軽にお問い合わせください。</h2>
             </div>
             <div style="display: flex; justify-content: center; margin-top: 40px;">
-                <a href="#reservation" style="
-                    background: linear-gradient(135deg, #d4a373, #e9c46a);
-                    color: white;
-                    padding: 50px 60px;
-                    border-radius: 30px;
-                    text-align: center;
-                    text-decoration: none;
-                    box-shadow: 0 18px 50px rgba(212, 163, 115, 0.7);
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                    max-width: 400px;
-                    display: block;
-                    transition: all 0.4s ease;
-                    animation: contactButtonPulse 4s ease-in-out infinite;
-                " onmouseover="this.style.transform='translateY(-5px) scale(1.05)'; this.style.boxShadow='0 25px 70px rgba(212, 163, 115, 0.8)';" 
-                   onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 18px 50px rgba(212, 163, 115, 0.7)';">
-                    <i class="fas fa-comments" style="
-                        font-size: 3rem;
-                        margin-bottom: 20px;
-                        display: block;
-                    "></i>
-                    <h3 style="
-                        font-size: 1.8rem;
-                        margin-bottom: 15px;
-                        color: white;
-                        font-weight: 700;
-                    ">お問い合わせ</h3>
-                    <p style="
-                        font-size: 1.1rem;
-                        color: rgba(255, 255, 255, 0.9);
-                        line-height: 1.6;
-                        margin-bottom: 0;
-                    ">あなたのお悩みや疑問に、<br>丁寧にお答えいたします</p>
+                <a href="#reservation" class="contact-btn">
+                    <i class="fas fa-comments" class="contact-icon"></i>
+                    <h3 class="contact-title">お問い合わせ</h3>
+                    <p class="contact-subtitle">あなたのお悩みや疑問に、<br>丁寧にお答えいたします</p>
                 </a>
             </div>
         </div>
@@ -621,7 +547,7 @@
                     
                     <div class="line-reservation-enhanced">
                         <i class="fab fa-line line-icon"></i>
-                        <h4>LINE公式アカウント</h4>
+                        <h4>LINE公式<br>アカウント</h4>
                         <p>24時間いつでも予約可能<br>予約状況の確認や変更も簡単にできます</p>
                         <a href="https://line.me/R/ti/p/@051ctvyr" class="line-btn-enhanced" target="_blank">
                             LINEで予約する
@@ -752,7 +678,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="reforma-logo.png" alt="Re'forma ロゴ" class="logo"
+                    <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="logo"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div class="logo-fallback" style="display: none;">Re'forma</div>
                     <p>整えて、育てて、共につくる。<br>あなたのからだの"再創造"を。</p>
@@ -798,29 +724,8 @@
 
     <!-- JavaScript -->
     <script>
-        // 🎯 ロゴとボタンのデバッグ用スクリプト
+        // お客様の声カルーセル機能（ドット表示のみ）
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎯 デバッグ開始');
-            
-            // ロゴの状態確認
-            const logoImg = document.querySelector('.force-show-logo');
-            const logoFallback = document.getElementById('logo-fallback-force');
-            const button = document.querySelector('.force-show-button');
-            
-            console.log('ロゴ画像:', logoImg);
-            console.log('フォールバックロゴ:', logoFallback);
-            console.log('予約ボタン:', button);
-            
-            // 強制的にフォールバックロゴを表示（画像が読み込めない場合のテスト）
-            setTimeout(() => {
-                if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
-                    console.log('❌ ロゴ画像が読み込めません - フォールバック表示');
-                    logoImg.style.display = 'none';
-                    logoFallback.style.display = 'flex';
-                }
-            }, 1000);
-            
-            // お客様の声カルーセル機能（ドット表示のみ）
             const track = document.getElementById('testimonialsTrack');
             const indicators = document.querySelectorAll('.indicator');
             
@@ -853,7 +758,7 @@
             // 自動スライド（オプション）
             setInterval(nextSlide, 5000);
             
-            console.log('✅ 初期化完了');
+            console.log('お客様の声カルーセル初期化完了（ドット表示のみ）');
         });
     </script>
     <script src="script.js"></script>
