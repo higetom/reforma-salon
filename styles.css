@@ -2970,3 +2970,30 @@ section#home,
   }
 }
 /* --- モバイル専用修正 end --- */
+/* === ✅ モバイル専用修正（@media以下に追加） === */
+@media (max-width: 768px) {
+
+  /* ロゴを表示させる */
+  .logo {
+    display: block !important;
+    max-width: 150px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  /* コンセプト文の位置調整 */
+  .hero-text {
+    padding-top: 80px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  /* ご予約ボタンの表示調整 */
+  .hero-button {
+    display: block !important;
+    margin: 40px auto 0 auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
