@@ -53,6 +53,46 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
+// 🎯 モバイル専用：要素を強制表示する関数
+function forceShowElementsOnMobile() {
+    if (!isMobile()) return;
+    
+    const heroLogo = document.getElementById('hero-logo');
+    const conceptContainer = document.getElementById('concept-container');
+    const luxuryBtnContainer = document.getElementById('luxury-btn-container');
+    
+    console.log('📱 モバイル：要素を強制表示開始');
+    
+    // ロゴを強制表示
+    if (heroLogo) {
+        heroLogo.style.opacity = '1';
+        heroLogo.style.visibility = 'visible';
+        heroLogo.style.display = 'flex';
+        heroLogo.classList.add('show');
+        console.log('✅ ロゴ強制表示完了');
+    }
+    
+    // コンセプトを強制表示
+    if (conceptContainer) {
+        conceptContainer.style.opacity = '1';
+        conceptContainer.style.visibility = 'visible';
+        conceptContainer.style.display = 'flex';
+        conceptContainer.classList.add('show');
+        console.log('✅ コンセプト強制表示完了');
+    }
+    
+    // ボタンを強制表示
+    if (luxuryBtnContainer) {
+        luxuryBtnContainer.style.opacity = '1';
+        luxuryBtnContainer.style.visibility = 'visible';
+        luxuryBtnContainer.style.display = 'flex';
+        luxuryBtnContainer.classList.add('show');
+        console.log('✅ ボタン強制表示完了');
+    }
+    
+    console.log('📱 モバイル：全要素表示完了');
+}
+
 // 🎯 ヒーローアニメーション：ロゴ表示 → 消失 → コンセプト表示 → ボタン表示（モバイル対応強化版）
 function initializeHeroAnimations() {
     const heroLogo = document.getElementById('hero-logo');
@@ -329,8 +369,24 @@ document.addEventListener('DOMContentLoaded', () => {
         isMobile: isMobile()
     });
     
-    // 🎯 ヒーローアニメーションを初期化（最重要・モバイル強化版）
-    initializeHeroAnimations();
+    // 🎯 モバイルの場合は要素を即座に表示
+    if (isMobile()) {
+        console.log('📱 モバイル検知：要素を即座に表示します');
+        forceShowElementsOnMobile();
+        
+        // 念のため少し遅らせても実行
+        setTimeout(() => {
+            forceShowElementsOnMobile();
+        }, 500);
+        
+        setTimeout(() => {
+            forceShowElementsOnMobile();
+        }, 1000);
+    } else {
+        // PCの場合は従来のアニメーション
+        console.log('💻 PC検知：アニメーション実行');
+        initializeHeroAnimations();
+    }
     
     // 各機能を初期化
     initializeMenuTabs();
@@ -345,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fallback = this.nextElementSibling;
             if (fallback && fallback.classList.contains('logo-fallback')) {
                 fallback.style.display = 'flex';
+                console.log('📱 Fallback logo displayed');
             }
         });
     });
@@ -357,20 +414,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    console.log('🎯 モバイル対応アニメーション予定スケジュール:');
-    if (isMobile()) {
-        console.log('📱 モバイル版タイミング:');
-        console.log('  0.8秒後: Re\'formaロゴがフェードイン表示');
-        console.log('  3.5秒後: ロゴがフェードアウト消失');
-        console.log('  4.5秒後: コンセプト全文がフェードイン表示');
-        console.log('  6.5秒後: 豪華な予約ボタンがフェードイン表示');
-    } else {
-        console.log('💻 PC版タイミング:');
-        console.log('  0.5秒後: Re\'formaロゴがフェードイン表示');
-        console.log('  3.0秒後: ロゴがフェードアウト消失');
-        console.log('  4.0秒後: コンセプト全文がフェードイン表示');
-        console.log('  6.0秒後: 豪華な予約ボタンがフェードイン表示');
-    }
     console.log('✅ すべての初期化が完了しました（モバイル対応強化版）');
 });
 
