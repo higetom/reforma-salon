@@ -2970,6 +2970,7 @@ section#home,
   }
 }
 /* --- モバイル専用修正 end --- */
+
 /* === ✅ モバイル専用修正（@media以下に追加） === */
 @media (max-width: 768px) {
 
@@ -3032,5 +3033,83 @@ section#home,
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+
+  .hero-content {
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  .hero-content h1,
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  #reservation-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  #reservation-button:hover {
+    background-color: #A0522D;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    background-color: black;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .hero-logo {
+    width: 80%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .concept-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    animation: fadeInText 2s ease-in-out 2s;
+  }
+
+  .reserve-button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    animation: fadeInButton 2s ease-in-out 4s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInButton {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
