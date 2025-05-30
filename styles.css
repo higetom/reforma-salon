@@ -2663,7 +2663,7 @@ section {
 /* 🎯 モバイル版問題修正（PC版には影響しない最小限追加） */
 @media screen and (max-width: 768px) {
     
-    /* ①ヒーローセクション - モバイル版完全修正 */
+    /* ①ヒーローセクション - モバイル版完全修正（アニメーション対応） */
     .hero-section {
         height: 100vh !important;
         min-height: 100vh !important;
@@ -2708,7 +2708,7 @@ section {
         z-index: 100 !important;
     }
     
-    /* ロゴ要素の強制表示 */
+    /* ロゴ要素の初期状態とアニメーション */
     .hero-logo {
         position: relative !important;
         top: auto !important;
@@ -2721,8 +2721,21 @@ section {
         align-items: center !important;
         justify-content: center !important;
         z-index: 101 !important;
-        opacity: 1 !important;
+        /* アニメーション用初期設定 */
+        opacity: 0 !important;
         visibility: visible !important;
+        transition: all 1.5s ease !important;
+    }
+    
+    .hero-logo.show {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .hero-logo.hide {
+        opacity: 0 !important;
+        transform: translateY(-30px) !important;
+        transition: all 1s ease !important;
     }
     
     .main-logo {
@@ -2731,7 +2744,6 @@ section {
         margin: 0 auto !important;
         display: block !important;
         visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .hero-logo .logo-fallback {
@@ -2743,10 +2755,9 @@ section {
         margin: 0 auto !important;
         display: flex !important;
         visibility: visible !important;
-        opacity: 1 !important;
     }
     
-    /* コンセプトコンテナの強制表示 */
+    /* コンセプトコンテナの初期状態とアニメーション */
     .concept-container {
         width: 100% !important;
         margin: 0 auto !important;
@@ -2759,11 +2770,19 @@ section {
         justify-content: center !important;
         box-sizing: border-box !important;
         z-index: 102 !important;
-        opacity: 1 !important;
+        /* アニメーション用初期設定 */
+        opacity: 0 !important;
         visibility: visible !important;
+        transform: translateY(30px) !important;
+        transition: all 1.5s ease !important;
     }
     
-    /* タイトルの強制表示 */
+    .concept-container.show {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* タイトルの確実な表示（最初の一文問題を解決） */
     .concept-title {
         font-size: 1.8rem !important;
         line-height: 1.4 !important;
@@ -2777,10 +2796,22 @@ section {
         text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9) !important;
         display: block !important;
         visibility: visible !important;
-        opacity: 1 !important;
+        /* 確実に表示するため */
+        position: relative !important;
+        z-index: 105 !important;
+        margin-top: 0 !important;
+        top: 0 !important;
     }
     
-    /* コンセプト文章の強制表示 */
+    /* コンセプト文章の確実な表示 */
+    .concept-description,
+    .concept-additional,
+    .concept-brief {
+        width: 100% !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
@@ -2798,10 +2829,11 @@ section {
         text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9) !important;
         display: block !important;
         visibility: visible !important;
-        opacity: 1 !important;
+        position: relative !important;
+        z-index: 104 !important;
     }
     
-    /* 豪華ボタンの強制表示 */
+    /* 豪華ボタンの初期状態とアニメーション */
     .luxury-btn-container {
         width: 100% !important;
         margin: 30px auto 0 auto !important;
@@ -2810,8 +2842,16 @@ section {
         justify-content: center !important;
         align-items: center !important;
         z-index: 103 !important;
-        opacity: 1 !important;
+        /* アニメーション用初期設定 */
+        opacity: 0 !important;
         visibility: visible !important;
+        transform: translateY(30px) !important;
+        transition: all 1.5s ease !important;
+    }
+    
+    .luxury-btn-container.show {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
     
     .luxury-reservation-btn {
@@ -2821,7 +2861,6 @@ section {
         margin: 0 auto !important;
         display: inline-block !important;
         visibility: visible !important;
-        opacity: 1 !important;
     }
     
     .btn-icon {
