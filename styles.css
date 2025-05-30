@@ -16,6 +16,87 @@ section#home,
     background-image: none !important;
 }
 
+/* 🎯 モバイル強制テスト - この設定でモバイルが赤背景になれば CSS は効いている */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        background: red !important;
+        background-color: red !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .hero-content {
+        background: blue !important;
+        padding: 20px !important;
+        border: 5px solid yellow !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 9999 !important;
+        width: 90% !important;
+        text-align: center !important;
+    }
+    
+    .hero-logo {
+        background: green !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+        opacity: 1 !important;
+        display: block !important;
+    }
+    
+    .main-logo,
+    .logo-fallback {
+        width: 200px !important;
+        height: 80px !important;
+        background: white !important;
+        color: black !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+    }
+    
+    .concept-container {
+        background: purple !important;
+        color: white !important;
+        padding: 20px !important;
+        opacity: 1 !important;
+        display: block !important;
+    }
+    
+    .concept-title,
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        color: white !important;
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .luxury-btn-container {
+        background: orange !important;
+        padding: 20px !important;
+        opacity: 1 !important;
+        display: block !important;
+    }
+    
+    .luxury-reservation-btn {
+        background: black !important;
+        color: white !important;
+        padding: 15px 30px !important;
+        display: inline-block !important;
+        text-decoration: none !important;
+        border-radius: 5px !important;
+    }
+}
+
 /* 🎯 ヒーローアニメーション：ロゴ → 消える → コンセプト → ボタン */
 .hero-logo {
     opacity: 0;
