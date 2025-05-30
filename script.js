@@ -60,61 +60,30 @@ function initializeHeroAnimations() {
     }
 
     console.log('🎯 ヒーローアニメーション開始');
-    
-    // モバイル判定
-    const isMobile = window.innerWidth <= 768;
-    
-    if (isMobile) {
-        console.log('📱 モバイル版：すべて即座に表示');
-        
-        // モバイル版：アニメーションなしで即座にすべて表示
-        heroLogo.style.opacity = '1';
-        heroLogo.style.visibility = 'visible';
-        heroLogo.style.display = 'flex';
+
+    // Phase 1: ロゴをフェードイン表示（0.5秒後）
+    setTimeout(() => {
         heroLogo.classList.add('show');
-        
-        conceptContainer.style.opacity = '1';
-        conceptContainer.style.visibility = 'visible';
-        conceptContainer.style.display = 'flex';
-        conceptContainer.style.transform = 'translateY(0)';
+        console.log('✅ Phase 1: ロゴ表示開始');
+    }, 500);
+
+    // Phase 2: ロゴをフェードアウト（3秒後）
+    setTimeout(() => {
+        heroLogo.classList.add('hide');
+        console.log('✅ Phase 2: ロゴ消失開始');
+    }, 3000);
+
+    // Phase 3: コンセプトをフェードイン表示（4秒後）
+    setTimeout(() => {
         conceptContainer.classList.add('show');
-        
-        luxuryBtnContainer.style.opacity = '1';
-        luxuryBtnContainer.style.visibility = 'visible';
-        luxuryBtnContainer.style.display = 'flex';
-        luxuryBtnContainer.style.transform = 'translateY(0)';
+        console.log('✅ Phase 3: コンセプト表示開始');
+    }, 4000);
+
+    // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
+    setTimeout(() => {
         luxuryBtnContainer.classList.add('show');
-        
-        console.log('✅ モバイル版：全要素を強制表示完了');
-        
-    } else {
-        console.log('💻 PC版：通常のアニメーション実行');
-        
-        // PC版：元の処理
-        // Phase 1: ロゴをフェードイン表示（0.5秒後）
-        setTimeout(() => {
-            heroLogo.classList.add('show');
-            console.log('✅ Phase 1: ロゴ表示開始');
-        }, 500);
-
-        // Phase 2: ロゴをフェードアウト（3秒後）
-        setTimeout(() => {
-            heroLogo.classList.add('hide');
-            console.log('✅ Phase 2: ロゴ消失開始');
-        }, 3000);
-
-        // Phase 3: コンセプトをフェードイン表示（4秒後）
-        setTimeout(() => {
-            conceptContainer.classList.add('show');
-            console.log('✅ Phase 3: コンセプト表示開始');
-        }, 4000);
-
-        // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
-        setTimeout(() => {
-            luxuryBtnContainer.classList.add('show');
-            console.log('✅ Phase 4: 豪華ボタン表示開始');
-        }, 6000);
-    }
+        console.log('✅ Phase 4: 豪華ボタン表示開始');
+    }, 6000);
 
     console.log('🎯 アニメーションタイムライン設定完了');
 }
