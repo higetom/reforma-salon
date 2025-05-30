@@ -48,11 +48,11 @@
         </div>
     </nav>
 
-    <!-- 🎯 ヒーローセクション（シンプル化・inline style削除） -->
-    <section class="hero-section" id="home">
-        <div class="hero-slider">
-            <div class="hero-slide active">
-                <div class="overlay"></div>
+    <!-- 🎯 ヒーローセクション（アニメーション付き：ロゴ→消える→コンセプト→ボタン） -->
+    <section class="hero-section" id="home" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
+        <div class="hero-slider" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
+            <div class="hero-slide active" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
+                <div class="overlay" style="background: rgba(0, 0, 0, 0.8) !important;"></div>
                 <div class="hero-content">
                     <!-- 🎯 Phase 1: ロゴが表示される（0.5秒後）-->
                     <div class="hero-logo" id="hero-logo">
@@ -723,6 +723,44 @@
     </button>
 
     <!-- JavaScript -->
+    <script>
+        // お客様の声カルーセル機能（ドット表示のみ）
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('testimonialsTrack');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentSlide = 0;
+            const totalSlides = 6;
+            
+            function updateCarousel() {
+                const translateX = -(currentSlide * (100 / totalSlides));
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // インジケーター更新
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }
+            
+            // インジケータークリック
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // 自動スライド（オプション）
+            setInterval(nextSlide, 5000);
+            
+            console.log('お客様の声カルーセル初期化完了（ドット表示のみ）');
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
