@@ -1700,19 +1700,26 @@ section {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        background: #0a0a0a !important;
+        background-color: #0a0a0a !important;
+        background-image: none !important;
     }
     
     .hero-content {
-        position: relative !important;
-        transform: none !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
         width: 100% !important;
         padding: 20px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
+        z-index: 100 !important;
     }
     
+    /* ロゴを確実に表示 */
     .hero-logo {
         position: relative !important;
         top: auto !important;
@@ -1720,43 +1727,75 @@ section {
         transform: none !important;
         margin: 0 auto 30px auto !important;
         width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     .main-logo,
     .hero-logo .logo-fallback {
         max-width: 250px !important;
         margin: 0 auto !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
+    /* コンセプトコンテナを確実に表示 */
     .concept-container {
         width: 100% !important;
         padding: 0 20px !important;
         margin: 0 auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
     }
     
+    /* タイトルを確実に表示（見切れ問題を解決） */
     .concept-title {
         font-size: 1.8rem !important;
         line-height: 1.4 !important;
-        margin-bottom: 20px !important;
+        margin: 0 auto 20px auto !important;
+        color: white !important;
+        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
     }
     
+    /* コンセプト文章を確実に表示 */
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
         font-size: 1rem !important;
         line-height: 1.7 !important;
         margin-bottom: 20px !important;
+        color: white !important;
+        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
     }
     
+    /* ボタンを確実に表示 */
     .luxury-btn-container {
         width: 100% !important;
         margin-top: 30px !important;
         text-align: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+        justify-content: center !important;
     }
     
     .luxury-reservation-btn {
         padding: 20px 40px !important;
         font-size: 1.1rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: inline-block !important;
     }
 }
         /* 🚨 緊急修正：Hero Section背景を最上部で強制設定 */
