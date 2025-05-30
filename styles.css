@@ -27,6 +27,10 @@ section#home,
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 20;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-logo.show {
@@ -90,6 +94,8 @@ section#home,
     opacity: 0;
     transform: translateY(30px);
     transition: all 1.5s ease;
+    position: relative;
+    z-index: 15;
 }
 
 .concept-container.show {
@@ -140,6 +146,8 @@ section#home,
     transform: translateY(30px);
     transition: all 1.5s ease;
     margin-top: 40px;
+    position: relative;
+    z-index: 10;
 }
 
 .luxury-btn-container.show {
@@ -450,7 +458,7 @@ section#home,
     transform: translateY(-10px);
 }
 
-/* 🎯 重要：philosophy アイコンの完全表示対応 */
+/* 🎯 重要：philosophy アイコンの完全表示対応（モバイル強化版） */
 .philosophy-point i {
     font-size: 2.5rem !important;
     color: var(--primary-color) !important;
@@ -466,6 +474,8 @@ section#home,
     -moz-osx-font-smoothing: grayscale;
     width: auto !important;
     height: auto !important;
+    text-align: center !important;
+    z-index: 10 !important;
 }
 
 .philosophy-point:hover i {
@@ -1637,7 +1647,7 @@ section#home,
         font-size: 1.8rem !important;
     }
 
-    /* 🎯 ヒーローセクション - モバイル完全対応（左寄り問題を根本解決） */
+    /* 🎯 ヒーローセクション - モバイル完全対応（表示不具合を根本解決） */
     .hero-section {
         height: 100vh !important;
         min-height: 100vh !important;
@@ -1648,7 +1658,19 @@ section#home,
         justify-content: center !important;
         position: relative !important;
         background: #0a0a0a !important;
+        background-color: #0a0a0a !important;
+        background-image: none !important;
         overflow: hidden !important;
+    }
+    
+    .hero-slider,
+    .hero-slide,
+    .hero-slide.active {
+        background: #0a0a0a !important;
+        background-color: #0a0a0a !important;
+        background-image: none !important;
+        width: 100% !important;
+        height: 100% !important;
     }
     
     .hero-content {
@@ -1668,9 +1690,10 @@ section#home,
         justify-content: center !important;
         text-align: center !important;
         box-sizing: border-box !important;
+        z-index: 5 !important;
     }
     
-    /* 🎯 ロゴ位置の完全中央配置 */
+    /* 🎯 ロゴ位置の完全中央配置（アニメーション対応） */
     .hero-logo {
         position: relative !important;
         top: auto !important;
@@ -1682,13 +1705,17 @@ section#home,
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        z-index: 25 !important;
+        opacity: 0 !important;
     }
     
     .hero-logo.show {
+        opacity: 1 !important;
         transform: none !important;
     }
     
     .hero-logo.hide {
+        opacity: 0 !important;
         transform: translateY(-30px) !important;
     }
     
@@ -1706,7 +1733,7 @@ section#home,
         letter-spacing: 2px !important;
     }
     
-    /* 🎯 コンセプトコンテナの完全中央配置 */
+    /* 🎯 コンセプトコンテナの完全中央配置（アニメーション対応） */
     .concept-container {
         width: 100% !important;
         max-width: 100% !important;
@@ -1719,6 +1746,12 @@ section#home,
         align-items: center !important;
         justify-content: center !important;
         box-sizing: border-box !important;
+        z-index: 20 !important;
+        opacity: 0 !important;
+    }
+    
+    .concept-container.show {
+        opacity: 1 !important;
     }
     
     /* 🎯 タイトルの完全中央配置とサイズ調整 */
@@ -1732,6 +1765,8 @@ section#home,
         max-width: 100% !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        color: white !important;
+        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9) !important;
     }
     
     /* 🎯 コンセプト文章の完全中央配置と文字切れ防止 */
@@ -1749,9 +1784,11 @@ section#home,
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
         white-space: normal !important;
+        color: white !important;
+        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9) !important;
     }
     
-    /* 🎯 豪華ボタンの完全中央配置 */
+    /* 🎯 豪華ボタンの完全中央配置（アニメーション対応） */
     .luxury-btn-container {
         width: 100% !important;
         margin: 30px auto 0 auto !important;
@@ -1759,6 +1796,12 @@ section#home,
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+        z-index: 15 !important;
+        opacity: 0 !important;
+    }
+    
+    .luxury-btn-container.show {
+        opacity: 1 !important;
     }
     
     .luxury-reservation-btn {
@@ -1772,6 +1815,81 @@ section#home,
     .btn-icon {
         font-size: 1.2rem !important;
         margin-right: 8px !important;
+    }
+
+    /* 🎯 Re'formaの想いセクション - モバイル完全対応（カラー・アニメーション復元） */
+    .philosophy-points {
+        gap: 40px;
+        padding: 0 10px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .philosophy-point {
+        padding: 25px 15px;
+        text-align: center !important;
+        background: white !important;
+        border-radius: 15px !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.4s ease !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+    
+    .philosophy-point:active {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3) !important;
+    }
+    
+    /* 🎯 重要：アイコンのモバイル完全対応 */
+    .philosophy-point i {
+        font-size: 2.8rem !important;
+        color: var(--primary-color) !important;
+        margin: 0 auto 20px auto !important;
+        display: block !important;
+        text-align: center !important;
+        position: relative !important;
+        transition: all 0.4s ease !important;
+        text-shadow: 0 4px 15px rgba(212, 163, 115, 0.4) !important;
+        line-height: 1 !important;
+        font-weight: 900 !important;
+        font-family: 'Font Awesome 6 Free' !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        width: auto !important;
+        height: auto !important;
+        z-index: 10 !important;
+    }
+    
+    .philosophy-point:active i {
+        transform: scale(1.1) !important;
+        color: #c99362 !important;
+        text-shadow: 0 6px 20px rgba(212, 163, 115, 0.6) !important;
+    }
+    
+    .philosophy-point h4 {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px !important;
+        color: var(--dark-color) !important;
+        font-weight: 600 !important;
+        transition: color 0.3s ease !important;
+    }
+    
+    .philosophy-point:active h4 {
+        color: var(--primary-color) !important;
+    }
+    
+    .philosophy-point p {
+        color: #666 !important;
+        line-height: 1.7 !important;
+        transition: color 0.3s ease !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .philosophy-point:active p {
+        color: #555 !important;
     }
 
     /* モバイル専用のSNSリンク調整 */
