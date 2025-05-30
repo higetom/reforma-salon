@@ -2913,3 +2913,40 @@ section#home,
         display: inline-block !important;
     }
 }
+
+/* ======= Mobile Specific Fixes (max-width: 768px) ======= */
+@media (max-width: 768px) {
+
+  /* Hero Section: logo visibility and layout */
+  .hero-logo {
+    display: block !important;
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  /* Hero Section: text visibility and spacing */
+  .hero-text {
+    display: block !important;
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  /* Hero Section: booking button visibility */
+  .hero-button {
+    display: inline-block !important;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  /* Reforma Section: restore color icons and animation */
+  .section-reforma img.icon {
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .section-reforma .animated {
+    animation: fadeInUp 1s ease-in-out;
+  }
+
+}
