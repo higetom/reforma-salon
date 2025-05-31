@@ -19,76 +19,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- 🎯 モバイル専用初期化スクリプト（PC版に影響なし） -->
-    <script>
-        // モバイル判定
-        function isMobileDeviceInitial() {
-            return window.innerWidth <= 768;
-        }
-        
-        // 🚨 重要：モバイル版のみ即座に初期化
-        if (isMobileDeviceInitial()) {
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('🎯 モバイル専用即座初期化開始');
-                
-                // 要素が読み込まれるまで待つ
-                function waitForElements() {
-                    const heroLogo = document.getElementById('hero-logo');
-                    const conceptContainer = document.getElementById('concept-container');
-                    const luxuryBtnContainer = document.getElementById('luxury-btn-container');
-                    
-                    if (heroLogo && conceptContainer && luxuryBtnContainer) {
-                        console.log('📱 モバイル要素確認完了');
-                        
-                        // 即座に非表示
-                        heroLogo.style.cssText = 'opacity: 0 !important; visibility: hidden !important; transition: none !important;';
-                        conceptContainer.style.cssText = 'opacity: 0 !important; visibility: hidden !important; transition: none !important;';
-                        luxuryBtnContainer.style.cssText = 'opacity: 0 !important; visibility: hidden !important; transition: none !important;';
-                        
-                        console.log('📱 モバイル専用初期化完了');
-                        
-                        // アニメーション開始
-                        startMobileAnimation(heroLogo, conceptContainer, luxuryBtnContainer);
-                    } else {
-                        // 要素がまだない場合は少し待つ
-                        setTimeout(waitForElements, 50);
-                    }
-                }
-                
-                waitForElements();
-            });
-        }
-        
-        // 🎯 モバイル専用アニメーション
-        function startMobileAnimation(heroLogo, conceptContainer, luxuryBtnContainer) {
-            console.log('🎯 モバイルアニメーション開始');
-            
-            // Phase 1: ロゴ表示（1秒後）
-            setTimeout(() => {
-                console.log('✅ Phase 1: ロゴ表示');
-                heroLogo.style.cssText = 'opacity: 1 !important; visibility: visible !important; transition: all 1s ease !important;';
-            }, 1000);
-            
-            // Phase 2: ロゴ消失（4秒後）
-            setTimeout(() => {
-                console.log('✅ Phase 2: ロゴ消失');
-                heroLogo.style.cssText = 'opacity: 0 !important; visibility: hidden !important; transition: all 1s ease !important;';
-            }, 4000);
-            
-            // Phase 3: コンセプト表示（5秒後）
-            setTimeout(() => {
-                console.log('✅ Phase 3: コンセプト表示');
-                conceptContainer.style.cssText = 'opacity: 1 !important; visibility: visible !important; transition: all 1s ease !important;';
-            }, 5000);
-            
-            // Phase 4: ボタン表示（7秒後）
-            setTimeout(() => {
-                console.log('✅ Phase 4: ボタン表示');
-                luxuryBtnContainer.style.cssText = 'opacity: 1 !important; visibility: visible !important; transition: all 1s ease !important;';
-            }, 7000);
-        }
-    </script>
 </head>
 <body style="margin: 0; padding: 0;">
     <!-- ナビゲーション -->
@@ -492,6 +422,24 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="author-info">
+                                <strong>30代女性</strong>
+                                <span>会社員</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
                                 <strong>40代女性</strong>
                                 <span>主婦</span>
                             </div>
@@ -816,21 +764,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-                                <strong>30代女性</strong>
-                                <span>会社員</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <p>「出張サービスがとても便利です。自宅でリラックスしながら施術を受けられるので、小さな子供がいる私にはとても助かります。」</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="author-info">
