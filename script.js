@@ -48,7 +48,12 @@ if (scrollTopBtn) {
     });
 }
 
-// 🎯 ヒーローアニメーション：ロゴ表示 → 消失 → コンセプト表示 → ボタン表示
+// 🎯 モバイル判定機能
+function isMobileDevice() {
+    return window.innerWidth <= 768;
+}
+
+// 🎯 ヒーローアニメーション：ロゴ表示 → 消失 → コンセプト表示 → ボタン表示（モバイル対応強化版）
 function initializeHeroAnimations() {
     const heroLogo = document.getElementById('hero-logo');
     const conceptContainer = document.getElementById('concept-container');
@@ -59,33 +64,82 @@ function initializeHeroAnimations() {
         return;
     }
 
-    console.log('🎯 ヒーローアニメーション開始');
+    console.log('🎯 ヒーローアニメーション開始（モバイル対応版）');
+    
+    // 🎯 初期状態を強制設定（モバイル対応）
+    if (isMobileDevice()) {
+        // モバイル版：すべて非表示からスタート
+        heroLogo.style.opacity = '0';
+        heroLogo.style.visibility = 'hidden';
+        conceptContainer.style.opacity = '0';
+        conceptContainer.style.visibility = 'hidden';
+        luxuryBtnContainer.style.opacity = '0';
+        luxuryBtnContainer.style.visibility = 'hidden';
+        
+        console.log('📱 モバイル版アニメーション初期化');
+        
+        // Phase 1: ロゴをフェードイン表示（0.5秒後）
+        setTimeout(() => {
+            heroLogo.style.opacity = '1';
+            heroLogo.style.visibility = 'visible';
+            heroLogo.classList.add('show');
+            console.log('✅ Phase 1: モバイル版ロゴ表示開始');
+        }, 500);
 
-    // Phase 1: ロゴをフェードイン表示（0.5秒後）
-    setTimeout(() => {
-        heroLogo.classList.add('show');
-        console.log('✅ Phase 1: ロゴ表示開始');
-    }, 500);
+        // Phase 2: ロゴをフェードアウト（3秒後）
+        setTimeout(() => {
+            heroLogo.style.opacity = '0';
+            heroLogo.style.visibility = 'hidden';
+            heroLogo.classList.add('hide');
+            console.log('✅ Phase 2: モバイル版ロゴ消失開始');
+        }, 3000);
 
-    // Phase 2: ロゴをフェードアウト（3秒後）
-    setTimeout(() => {
-        heroLogo.classList.add('hide');
-        console.log('✅ Phase 2: ロゴ消失開始');
-    }, 3000);
+        // Phase 3: コンセプト全文を同時表示（4秒後）
+        setTimeout(() => {
+            conceptContainer.style.opacity = '1';
+            conceptContainer.style.visibility = 'visible';
+            conceptContainer.classList.add('show');
+            console.log('✅ Phase 3: モバイル版コンセプト全文表示開始');
+        }, 4000);
 
-    // Phase 3: コンセプトをフェードイン表示（4秒後）
-    setTimeout(() => {
-        conceptContainer.classList.add('show');
-        console.log('✅ Phase 3: コンセプト表示開始');
-    }, 4000);
+        // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
+        setTimeout(() => {
+            luxuryBtnContainer.style.opacity = '1';
+            luxuryBtnContainer.style.visibility = 'visible';
+            luxuryBtnContainer.classList.add('show');
+            console.log('✅ Phase 4: モバイル版豪華ボタン表示開始');
+        }, 6000);
+        
+    } else {
+        // PC版：既存のアニメーション
+        console.log('💻 PC版アニメーション実行');
+        
+        // Phase 1: ロゴをフェードイン表示（0.5秒後）
+        setTimeout(() => {
+            heroLogo.classList.add('show');
+            console.log('✅ Phase 1: PC版ロゴ表示開始');
+        }, 500);
 
-    // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
-    setTimeout(() => {
-        luxuryBtnContainer.classList.add('show');
-        console.log('✅ Phase 4: 豪華ボタン表示開始');
-    }, 6000);
+        // Phase 2: ロゴをフェードアウト（3秒後）
+        setTimeout(() => {
+            heroLogo.classList.add('hide');
+            console.log('✅ Phase 2: PC版ロゴ消失開始');
+        }, 3000);
 
-    console.log('🎯 アニメーションタイムライン設定完了');
+        // Phase 3: コンセプトをフェードイン表示（4秒後）
+        setTimeout(() => {
+            conceptContainer.classList.add('show');
+            console.log('✅ Phase 3: PC版コンセプト表示開始');
+        }, 4000);
+
+        // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
+        setTimeout(() => {
+            luxuryBtnContainer.classList.add('show');
+            console.log('✅ Phase 4: PC版豪華ボタン表示開始');
+        }, 6000);
+    }
+
+    console.log('🎯 アニメーションタイムライン設定完了（デバイス別対応）');
 }
 
 // サービスメニュータブの動作（こちらは正常動作）
@@ -234,9 +288,16 @@ document.querySelectorAll('.fade-in-up, .service-option, .app-card, .philosophy-
 
 // ページ読み込み完了時の処理
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎯 Re\'forma サイト初期化開始');
+    console.log('🎯 Re\'forma サイト初期化開始（モバイル対応強化版）');
     
-    // 🎯 ヒーローアニメーションを初期化（最重要）
+    // デバイス判定
+    if (isMobileDevice()) {
+        console.log('📱 モバイルデバイスを検出');
+    } else {
+        console.log('💻 PCデバイスを検出');
+    }
+    
+    // 🎯 ヒーローアニメーションを初期化（最重要・モバイル対応強化）
     initializeHeroAnimations();
     
     // 各機能を初期化
@@ -264,15 +325,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    console.log('🎯 アニメーション予定スケジュール:');
+    console.log('🎯 モバイル対応アニメーション予定スケジュール:');
     console.log('  0.5秒後: Re\'formaロゴがフェードイン表示');
     console.log('  3.0秒後: ロゴがフェードアウト消失');
-    console.log('  4.0秒後: コンセプト全文がフェードイン表示');
+    console.log('  4.0秒後: コンセプト全文が同時表示');
     console.log('  6.0秒後: 豪華な予約ボタンがフェードイン表示');
-    console.log('✅ すべての初期化が完了しました');
-    console.log('🎯 モバイル表示改善：ホーム画面コンセプト文章の幅調整完了');
-    console.log('🎯 改行修正：お問い合わせとLINE予約の体裁改善完了');
-    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加完了');
+    console.log('✅ すべての初期化が完了しました（モバイル対応強化版）');
 });
 
 // 画面リサイズ時の処理
@@ -284,6 +342,9 @@ window.addEventListener('resize', () => {
             navbarNav.classList.remove('show');
         }
     }
+    
+    // リサイズ時にデバイス判定を再実行
+    console.log('🔄 画面リサイズ検出 - デバイス:', isMobileDevice() ? 'モバイル' : 'PC');
 });
 
 // パフォーマンス最適化: デバウンス関数
@@ -312,10 +373,7 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('🎯 Re\'forma JavaScript 読み込み完了（アニメーション修正版）');
-console.log('📱 モバイル対応: 文字切れ対策完了');
-console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト表示 → 豪華ボタン表示');
-console.log('📝 改行調整: 適切な箇所での改行統一');
-console.log('🎯 3ファイル構成: HTML + CSS + JS 分離完了');
-console.log('🎯 豪華ボタン: グラデーション + グロー効果 + パルスアニメーション');
-console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
+console.log('🎯 Re\'forma JavaScript 読み込み完了（モバイル対応アニメーション修正版）');
+console.log('📱 モバイル対応強化: デバイス別アニメーション制御');
+console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト同時表示 → 豪華ボタン表示');
+console.log('🎯 モバイル版: 強制的な表示制御でアニメーション確実実行');
