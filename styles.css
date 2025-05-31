@@ -3150,7 +3150,7 @@ section#home,
         height: 100% !important;
     }
     
-    /* ヒーローコンテンツの配置（固定は削除） */
+    /* ヒーローコンテンツの配置 */
     .hero-content {
         position: absolute !important;
         top: 50% !important;
@@ -3183,19 +3183,11 @@ section#home,
         display: block !important;
     }
     
+    /* 🚨 オレンジボックス削除：logo-fallbackを非表示 */
     .hero-logo .logo-fallback {
-        max-width: 250px !important;
-        width: 250px !important;
-        height: 100px !important;
-        margin: 0 auto !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        font-size: 1.8rem !important;
-        letter-spacing: 2px !important;
-        background: linear-gradient(135deg, #c4915c, #d4a373, #e9c46a, #f4d46b) !important;
-        border-radius: 25px !important;
-        color: white !important;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
     
     /* コンセプトコンテナ正常表示 */
@@ -3259,5 +3251,80 @@ section#home,
     .btn-icon {
         font-size: 1.2rem !important;
         margin-right: 8px !important;
+    }
+    
+    /* 🎯 Re'formaの想いセクション - モバイル完全対応 */
+    .philosophy-points {
+        gap: 40px;
+        padding: 0 10px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .philosophy-point {
+        padding: 25px 15px;
+        text-align: center !important;
+        background: white !important;
+        border-radius: 15px !important;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.4s ease !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+    
+    .philosophy-point:active {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3) !important;
+    }
+    
+    /* 🎯 重要：アイコンのモバイル完全対応 */
+    .philosophy-point i {
+        font-size: 2.8rem !important;
+        color: var(--primary-color) !important;
+        margin: 0 auto 20px auto !important;
+        display: block !important;
+        text-align: center !important;
+        position: relative !important;
+        transition: all 0.4s ease !important;
+        text-shadow: 0 4px 15px rgba(212, 163, 115, 0.4) !important;
+        line-height: 1 !important;
+        font-weight: 900 !important;
+        font-family: 'Font Awesome 6 Free' !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        width: auto !important;
+        height: auto !important;
+        z-index: 10 !important;
+    }
+    
+    .philosophy-point:active i {
+        transform: scale(1.1) !important;
+        color: #c99362 !important;
+        text-shadow: 0 6px 20px rgba(212, 163, 115, 0.6) !important;
+    }
+    
+    .philosophy-point h4 {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px !important;
+        color: var(--dark-color) !important;
+        font-weight: 600 !important;
+        transition: color 0.3s ease !important;
+    }
+    
+    .philosophy-point:active h4 {
+        color: var(--primary-color) !important;
+    }
+    
+    .philosophy-point p {
+        color: #666 !important;
+        line-height: 1.7 !important;
+        transition: color 0.3s ease !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .philosophy-point:active p {
+        color: #555 !important;
     }
 }
