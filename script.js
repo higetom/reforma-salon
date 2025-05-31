@@ -53,7 +53,7 @@ function isMobileDevice() {
     return window.innerWidth <= 768;
 }
 
-// 🎯 ヒーローアニメーション：ロゴ表示 → 消失 → コンセプト表示 → ボタン表示（モバイル対応強化版）
+// 🚨 重要：モバイル版ヒーローアニメーション完全修正版
 function initializeHeroAnimations() {
     const heroLogo = document.getElementById('hero-logo');
     const conceptContainer = document.getElementById('concept-container');
@@ -64,50 +64,59 @@ function initializeHeroAnimations() {
         return;
     }
 
-    console.log('🎯 ヒーローアニメーション開始（モバイル対応版）');
+    console.log('🎯 ヒーローアニメーション開始（モバイル対応強化版）');
     
-    // 🎯 初期状態を強制設定（モバイル対応）
     if (isMobileDevice()) {
-        // モバイル版：すべて非表示からスタート
+        console.log('📱 モバイル版：強制アニメーション実行');
+        
+        // 🎯 初期状態：すべて非表示
         heroLogo.style.opacity = '0';
         heroLogo.style.visibility = 'hidden';
+        heroLogo.style.display = 'flex';
+        
         conceptContainer.style.opacity = '0';
         conceptContainer.style.visibility = 'hidden';
+        conceptContainer.style.display = 'flex';
+        
         luxuryBtnContainer.style.opacity = '0';
         luxuryBtnContainer.style.visibility = 'hidden';
+        luxuryBtnContainer.style.display = 'flex';
         
-        console.log('📱 モバイル版アニメーション初期化');
-        
-        // Phase 1: ロゴをフェードイン表示（0.5秒後）
+        // 🎯 Phase 1: ロゴ表示（0.5秒後）
         setTimeout(() => {
+            console.log('✅ Phase 1: モバイル版ロゴ表示開始');
             heroLogo.style.opacity = '1';
             heroLogo.style.visibility = 'visible';
+            heroLogo.style.transform = 'none';
             heroLogo.classList.add('show');
-            console.log('✅ Phase 1: モバイル版ロゴ表示開始');
         }, 500);
 
-        // Phase 2: ロゴをフェードアウト（3秒後）
+        // 🎯 Phase 2: ロゴ消失（3秒後）
         setTimeout(() => {
+            console.log('✅ Phase 2: モバイル版ロゴ消失開始');
             heroLogo.style.opacity = '0';
             heroLogo.style.visibility = 'hidden';
+            heroLogo.style.transform = 'translateY(-30px)';
+            heroLogo.classList.remove('show');
             heroLogo.classList.add('hide');
-            console.log('✅ Phase 2: モバイル版ロゴ消失開始');
         }, 3000);
 
-        // Phase 3: コンセプト全文を同時表示（4秒後）
+        // 🎯 Phase 3: コンセプト表示（4秒後）
         setTimeout(() => {
+            console.log('✅ Phase 3: モバイル版コンセプト表示開始');
             conceptContainer.style.opacity = '1';
             conceptContainer.style.visibility = 'visible';
+            conceptContainer.style.transform = 'none';
             conceptContainer.classList.add('show');
-            console.log('✅ Phase 3: モバイル版コンセプト全文表示開始');
         }, 4000);
 
-        // Phase 4: 豪華ボタンをフェードイン表示（6秒後）
+        // 🎯 Phase 4: ボタン表示（6秒後）
         setTimeout(() => {
+            console.log('✅ Phase 4: モバイル版ボタン表示開始');
             luxuryBtnContainer.style.opacity = '1';
             luxuryBtnContainer.style.visibility = 'visible';
+            luxuryBtnContainer.style.transform = 'none';
             luxuryBtnContainer.classList.add('show');
-            console.log('✅ Phase 4: モバイル版豪華ボタン表示開始');
         }, 6000);
         
     } else {
@@ -286,13 +295,13 @@ document.querySelectorAll('.fade-in-up, .service-option, .app-card, .philosophy-
     observer.observe(el);
 });
 
-// ページ読み込み完了時の処理
+// 🚨 重要：ページ読み込み完了時の処理（モバイルアニメーション強化版）
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎯 Re\'forma サイト初期化開始（モバイル対応強化版）');
+    console.log('🎯 Re\'forma サイト初期化開始（モバイルアニメーション修正版）');
     
     // デバイス判定
     if (isMobileDevice()) {
-        console.log('📱 モバイルデバイスを検出');
+        console.log('📱 モバイルデバイスを検出 - 強制アニメーション実行');
     } else {
         console.log('💻 PCデバイスを検出');
     }
@@ -330,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('  3.0秒後: ロゴがフェードアウト消失');
     console.log('  4.0秒後: コンセプト全文が同時表示');
     console.log('  6.0秒後: 豪華な予約ボタンがフェードイン表示');
-    console.log('✅ すべての初期化が完了しました（モバイル対応強化版）');
+    console.log('✅ すべての初期化が完了しました（モバイルアニメーション修正版）');
 });
 
 // 画面リサイズ時の処理
@@ -373,7 +382,7 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('🎯 Re\'forma JavaScript 読み込み完了（モバイル対応アニメーション修正版）');
-console.log('📱 モバイル対応強化: デバイス別アニメーション制御');
+console.log('🎯 Re\'forma JavaScript 読み込み完了（モバイルアニメーション修正版）');
+console.log('📱 モバイル対応強化: 強制的なアニメーション実行');
 console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト同時表示 → 豪華ボタン表示');
-console.log('🎯 モバイル版: 強制的な表示制御でアニメーション確実実行');
+console.log('🚨 重要修正: モバイル版でstyle直接操作による確実なアニメーション実行');
