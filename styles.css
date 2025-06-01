@@ -1977,11 +1977,9 @@ section#home,
     
     /* 🚨 【最重要】ヒーローセクション内でのみナビのロゴを非表示 */
     .navbar-brand {
-        opacity: 0 !important;
-        visibility: hidden !important;
-        transform: scale(0) !important;
-        transition: all 0.3s ease !important;
-    }
+     display: none !important;
+}
+ 
     
     /* スクロール後はナビを正常表示 */
     .navbar.scrolled .navbar-brand {
