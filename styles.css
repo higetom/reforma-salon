@@ -2829,13 +2829,13 @@ section#home,
         z-index: 100 !important;
     }
     
-    /* 🎯 ロゴ位置修正（アニメーション完全対応） */
+    /* 🎯 ロゴ位置修正（画面中央・やや下側配置） */
     .hero-logo {
         position: relative !important;
         top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin: 40px auto 50px auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 60px auto 50px auto !important;
         text-align: center !important;
         width: 100% !important;
         display: flex !important;
@@ -2848,12 +2848,12 @@ section#home,
     
     .hero-logo.show {
         opacity: 1 !important;
-        transform: none !important;
+        transform: translateX(-50%) !important;
     }
     
     .hero-logo.hide {
         opacity: 0 !important;
-        transform: translateY(-30px) !important;
+        transform: translateX(-50%) translateY(-30px) !important;
     }
     
     .main-logo,
@@ -2862,12 +2862,19 @@ section#home,
         width: 200px !important;
         margin: 0 auto !important;
         display: block !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
     }
     
     .hero-logo .logo-fallback {
         height: 80px !important;
         font-size: 1.4rem !important;
         letter-spacing: 1px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
     }
     
     /* 🎯 コンセプトコンテナ完全修正（全文表示対応） */
@@ -3015,6 +3022,10 @@ section#home,
     .hero-content {
         padding: 20px 10px 40px 10px !important;
         min-height: calc(100vh - 140px) !important;
+    }
+    
+    .hero-logo {
+        margin: 50px auto 40px auto !important;
     }
     
     .concept-container {
