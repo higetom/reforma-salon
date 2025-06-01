@@ -2798,25 +2798,35 @@ section#home,
 
 /* 🎯 モバイル版修正（PC版は一切変更しない） */
 @media screen and (max-width: 768px) {
-    /* 🚨 ヒーローセクション内の全ロゴを一旦非表示 */
-    .hero-section img,
-    .hero-section .logo-fallback,
-    .hero-slide img,
-    .hero-slide .logo-fallback,
-    .hero-content img,
-    .hero-content .logo-fallback {
+    /* 🚨 最強の偽物ロゴ削除（全方位対応） */
+    .hero-section *:not(.hero-logo):not(.hero-logo *):not(.concept-container):not(.concept-container *):not(.luxury-btn-container):not(.luxury-btn-container *) {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
     }
     
-    /* 🎯 正しいロゴのみを表示（.hero-logo内のみ） */
-    .hero-logo img,
-    .hero-logo .logo-fallback,
-    .hero-logo .main-logo {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
+    /* 🚨 右側に現れる偽物を強制削除 */
+    .hero-content > div:not(.hero-logo):not(.concept-container):not(.luxury-btn-container),
+    .hero-slide > div:not(.hero-logo):not(.concept-container):not(.luxury-btn-container),
+    .hero-section > div:not(.hero-content) {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    
+    /* 🚨 "Re'for" などの部分テキストを削除 */
+    .hero-section *[class*="reforma"]:not(.hero-logo *),
+    .hero-section *[class*="logo"]:not(.hero-logo *) {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
     
     /* 🎯 ヒーローセクション完全修正：アニメーション対応スクロール版 */
@@ -2857,14 +2867,14 @@ section#home,
         left: auto !important;
         right: auto !important;
         transform: none !important;
-        margin: 80px auto 60px auto !important;
+        margin: 100px auto 80px auto !important;
         text-align: center !important;
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 350px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        z-index: 1000 !important;
+        z-index: 2000 !important;
         opacity: 0 !important;
         flex-shrink: 0 !important;
         order: 1 !important;
@@ -2883,8 +2893,8 @@ section#home,
     /* 🎯 正しいロゴ画像の中央配置 */
     .hero-logo .main-logo,
     .hero-logo .logo-fallback {
-        max-width: 220px !important;
-        width: 220px !important;
+        max-width: 250px !important;
+        width: 250px !important;
         height: auto !important;
         margin: 0 auto !important;
         display: block !important;
@@ -2892,11 +2902,12 @@ section#home,
         left: auto !important;
         right: auto !important;
         transform: none !important;
+        z-index: 2001 !important;
     }
     
     .hero-logo .logo-fallback {
-        height: 90px !important;
-        font-size: 1.5rem !important;
+        height: 100px !important;
+        font-size: 1.6rem !important;
         letter-spacing: 1px !important;
         margin: 0 auto !important;
         position: relative !important;
@@ -2917,7 +2928,7 @@ section#home,
         align-items: center !important;
         justify-content: flex-start !important;
         box-sizing: border-box !important;
-        z-index: 150 !important;
+        z-index: 1500 !important;
         opacity: 0 !important;
         flex-grow: 1 !important;
         min-height: auto !important;
@@ -3001,7 +3012,7 @@ section#home,
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        z-index: 100 !important;
+        z-index: 1000 !important;
         opacity: 0 !important;
         flex-shrink: 0 !important;
         padding: 0 15px !important;
@@ -3054,8 +3065,8 @@ section#home,
     }
     
     .hero-logo {
-        margin: 70px auto 50px auto !important;
-        max-width: 250px !important;
+        margin: 80px auto 60px auto !important;
+        max-width: 300px !important;
     }
     
     .concept-container {
@@ -3077,13 +3088,13 @@ section#home,
     
     .hero-logo .main-logo,
     .hero-logo .logo-fallback {
-        max-width: 180px !important;
-        width: 180px !important;
+        max-width: 200px !important;
+        width: 200px !important;
     }
     
     .hero-logo .logo-fallback {
-        height: 70px !important;
-        font-size: 1.2rem !important;
+        height: 80px !important;
+        font-size: 1.3rem !important;
     }
     
     .luxury-reservation-btn {
