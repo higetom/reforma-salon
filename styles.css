@@ -2798,19 +2798,25 @@ section#home,
 
 /* 🎯 モバイル版修正（PC版は一切変更しない） */
 @media screen and (max-width: 768px) {
-    /* 🚨 偽物ロゴを完全削除 */
-    .hero-content > *:not(.hero-logo):not(.concept-container):not(.luxury-btn-container) {
-        display: none !important;
-    }
-    
-    /* 🚨 重複ロゴを強制非表示 */
-    .hero-slide .logo-fallback:not(.hero-logo .logo-fallback),
-    .hero-slide .main-logo:not(.hero-logo .main-logo),
-    .hero-content .logo-fallback:not(.hero-logo .logo-fallback),
-    .hero-content .main-logo:not(.hero-logo .main-logo) {
+    /* 🚨 ヒーローセクション内の全ロゴを一旦非表示 */
+    .hero-section img,
+    .hero-section .logo-fallback,
+    .hero-slide img,
+    .hero-slide .logo-fallback,
+    .hero-content img,
+    .hero-content .logo-fallback {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
+    }
+    
+    /* 🎯 正しいロゴのみを表示（.hero-logo内のみ） */
+    .hero-logo img,
+    .hero-logo .logo-fallback,
+    .hero-logo .main-logo {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
     
     /* 🎯 ヒーローセクション完全修正：アニメーション対応スクロール版 */
@@ -2851,7 +2857,7 @@ section#home,
         left: auto !important;
         right: auto !important;
         transform: none !important;
-        margin: 60px auto 50px auto !important;
+        margin: 80px auto 60px auto !important;
         text-align: center !important;
         width: 100% !important;
         max-width: 300px !important;
@@ -2861,6 +2867,7 @@ section#home,
         z-index: 1000 !important;
         opacity: 0 !important;
         flex-shrink: 0 !important;
+        order: 1 !important;
     }
     
     .hero-logo.show {
@@ -2876,8 +2883,9 @@ section#home,
     /* 🎯 正しいロゴ画像の中央配置 */
     .hero-logo .main-logo,
     .hero-logo .logo-fallback {
-        max-width: 200px !important;
-        width: 200px !important;
+        max-width: 220px !important;
+        width: 220px !important;
+        height: auto !important;
         margin: 0 auto !important;
         display: block !important;
         position: relative !important;
@@ -2887,8 +2895,8 @@ section#home,
     }
     
     .hero-logo .logo-fallback {
-        height: 80px !important;
-        font-size: 1.4rem !important;
+        height: 90px !important;
+        font-size: 1.5rem !important;
         letter-spacing: 1px !important;
         margin: 0 auto !important;
         position: relative !important;
@@ -2913,6 +2921,7 @@ section#home,
         opacity: 0 !important;
         flex-grow: 1 !important;
         min-height: auto !important;
+        order: 2 !important;
     }
     
     .concept-container.show {
@@ -2997,6 +3006,7 @@ section#home,
         flex-shrink: 0 !important;
         padding: 0 15px !important;
         box-sizing: border-box !important;
+        order: 3 !important;
     }
     
     .luxury-btn-container.show {
@@ -3044,7 +3054,7 @@ section#home,
     }
     
     .hero-logo {
-        margin: 50px auto 40px auto !important;
+        margin: 70px auto 50px auto !important;
         max-width: 250px !important;
     }
     
