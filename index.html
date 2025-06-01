@@ -50,58 +50,53 @@
 
     <!-- 🎯 ヒーローセクション（アニメーション付き：ロゴ→消える→コンセプト→ボタン） -->
     <section class="hero-section" id="home" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
-        <div class="hero-slider" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
-            <div class="hero-slide active" style="background: #0a0a0a !important; background-color: #0a0a0a !important;">
-                <div class="overlay" style="background: rgba(0, 0, 0, 0.8) !important;"></div>
-                <div class="hero-content">
-                    <!-- 🎯 Phase 1: ロゴが表示される（0.5秒後）-->
-                    <div class="hero-logo" id="hero-logo">
-                        <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
-                             onerror="console.log('Main logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="logo-fallback" style="display: none;">Re'forma</div>
+        <div class="hero-content">
+            <!-- 🎯 Phase 1: 正しいロゴが表示される（0.5秒後）-->
+            <div class="hero-logo" id="hero-logo">
+                <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
+                     onerror="console.log('Main logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-fallback" style="display: none;">Re'forma</div>
+            </div>
+            
+            <!-- 🎯 Phase 2: コンセプトが表示される（ロゴ消失後） -->
+            <div class="concept-container" id="concept-container">
+                <h1 class="concept-title">整えて、育てて、共につくる。<br>あなたのからだの "再創造" を。</h1>
+                
+                <div class="concept-details" id="conceptDetails">
+                    <div class="concept-brief">
+                        <p>ここは、身体と向き合うための、特別な場所。</p>
+                        <p>Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、<br>
+                        あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
                     </div>
                     
-                    <!-- 🎯 Phase 2: コンセプトが表示される（ロゴ消失後） -->
-                    <div class="concept-container" id="concept-container">
-                        <h1 class="concept-title">整えて、育てて、共につくる。<br>あなたのからだの "再創造" を。</h1>
+                    <div class="concept-description">
+                        <p>痛みや不調の奥にある本当の原因に向き合い、<br>
+                        「どうすれば今よりも動きやすく、心地よく過ごせるか」を、<br>
+                        一緒に考え、じっくりと対話を重ねていきましょう。</p>
                         
-                        <div class="concept-details" id="conceptDetails">
-                            <div class="concept-brief">
-                                <p>ここは、身体と向き合うための、特別な場所。</p>
-                                <p>Re'forma（リフォルマ）では、理学療法士としての知識と経験を活かし、<br>
-                                あなたと共に"からだ"を見つめ、育て、再び創り上げていく空間を目指しています。</p>
-                            </div>
-                            
-                            <div class="concept-description">
-                                <p>痛みや不調の奥にある本当の原因に向き合い、<br>
-                                「どうすれば今よりも動きやすく、心地よく過ごせるか」を、<br>
-                                一緒に考え、じっくりと対話を重ねていきましょう。</p>
-                                
-                                <p>Re'formaは、施術だけで終わらないことを大切にしています。<br>
-                                ご自身の"からだ"との対話とセルフケアができる力を育むことも、<br>
-                                当サロンの大切な役割です。</p>
-                            </div>
-                            
-                            <div class="concept-additional">
-                                <p>あなた自身が、ご自身の"からだ"のプロになれるように——</p>
-                                
-                                <p>自分の感覚を信じ、整えられる力を身につけるための、<br>
-                                知識と習慣を、二人三脚で丁寧にサポートします。</p>
-                                
-                                <p>ひとりでは辿り着けない、新たな自分へ。</p>
-                                
-                                <p>あなたの"からだの再創造"を、共に歩んでいきましょう。</p>
-                            </div>
-                        </div>
-                        
-                        <!-- 🎯 Phase 3: 豪華な予約ボタンが表示される（コンセプト後）-->
-                        <div class="luxury-btn-container" id="luxury-btn-container">
-                            <a href="#reservation" class="luxury-reservation-btn">
-                                <i class="fas fa-calendar-check btn-icon"></i>
-                                ご予約はこちら
-                            </a>
-                        </div>
+                        <p>Re'formaは、施術だけで終わらないことを大切にしています。<br>
+                        ご自身の"からだ"との対話とセルフケアができる力を育むことも、<br>
+                        当サロンの大切な役割です。</p>
                     </div>
+                    
+                    <div class="concept-additional">
+                        <p>あなた自身が、ご自身の"からだ"のプロになれるように——</p>
+                        
+                        <p>自分の感覚を信じ、整えられる力を身につけるための、<br>
+                        知識と習慣を、二人三脚で丁寧にサポートします。</p>
+                        
+                        <p>ひとりでは辿り着けない、新たな自分へ。</p>
+                        
+                        <p>あなたの"からだの再創造"を、共に歩んでいきましょう。</p>
+                    </div>
+                </div>
+                
+                <!-- 🎯 Phase 3: 豪華な予約ボタンが表示される（コンセプト後）-->
+                <div class="luxury-btn-container" id="luxury-btn-container">
+                    <a href="#reservation" class="luxury-reservation-btn">
+                        <i class="fas fa-calendar-check btn-icon"></i>
+                        ご予約はこちら
+                    </a>
                 </div>
             </div>
         </div>
