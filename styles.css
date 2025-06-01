@@ -2347,6 +2347,7 @@ section#home,
     overflow: visible;
     z-index: 2;
 }
+
 .contact-btn {
     background: linear-gradient(135deg, #d4a373, #e9c46a);
     color: white;
@@ -2424,6 +2425,7 @@ section#home,
     font-size: 2rem !important; /* 他のセクションと統一 */
     line-height: 1.3;
 }
+
 .service-menu {
     background-color: white;
     border-radius: 10px;
@@ -2757,270 +2759,96 @@ section#home,
     padding: 15px 30px;
     background: linear-gradient(135deg, #333, #444);
     color: white;
-    border-radius:
-
-/* 🎯 ②Re'formaの想いセクション - アイコン表示修正（モバイル専用追加CSS） */
-/* 既存のstyles.cssの最後に追加してください */
-
-/* PC版・モバイル版共通でアイコンを確実に表示 */
-.philosophy-point i {
-    font-size: 2.5rem !important;
-    color: #d4a373 !important;
-    margin: 0 auto 20px auto !important;
-    display: block !important;
-    text-align: center !important;
-    font-weight: 900 !important;
-    font-family: 'Font Awesome 6 Free' !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    line-height: 1 !important;
-    width: auto !important;
-    height: auto !important;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
 }
 
-/* モバイル版でのアイコン強化表示 */
-@media screen and (max-width: 768px) {
-    .philosophy-point i {
-        font-size: 2.8rem !important;
-        color: #d4a373 !important;
-        display: block !important;
-        text-align: center !important;
-        margin: 0 auto 20px auto !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+.app-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
-/* 🎯 ①ヒーローセクション - モバイル完全修正（追加CSS） */
-/* 既存のstyles.cssの最後に追加してください */
+.app-btn:hover::before {
+    left: 100%;
+}
 
+.app-btn i {
+    margin-right: 12px;
+    font-size: 1.3rem;
+}
+
+.app-btn:hover {
+    background: linear-gradient(135deg, #222, #333);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* 🎯 モバイル版修正（PC版は一切変更しない） */
 @media screen and (max-width: 768px) {
-    /* ヒーローセクション全体の高さとスクロール調整 */
+    /* 問題1: ヒーローセクションのコンセプト文章見切れ修正 */
     .hero-section {
-        height: 100vh !important;
+        height: auto !important;
         min-height: 100vh !important;
-        max-height: 100vh !important;
         overflow-y: auto !important;
-        overflow-x: hidden !important;
-        position: relative !important;
-        display: flex !important;
-        align-items: flex-start !important;
-        justify-content: center !important;
-        padding-top: 80px !important;
-        box-sizing: border-box !important;
+        padding: 80px 0 60px 0 !important;
     }
     
-    /* ヒーローコンテンツを縦スクロール可能に */
     .hero-content {
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: calc(100vh - 80px) !important;
-        padding: 40px 20px 60px 20px !important;
-        margin: 0 !important;
+        padding: 20px 15px 40px 15px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        text-align: center !important;
-        box-sizing: border-box !important;
-        z-index: 100 !important;
-        overflow: visible !important;
-    }
-    
-    /* ロゴ位置調整 */
-    .hero-logo {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin: 20px auto 40px auto !important;
-        text-align: center !important;
-        width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        z-index: 200 !important;
-        opacity: 0 !important;
-        flex-shrink: 0 !important;
-    }
-    
-    .hero-logo.show {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-    
-    .hero-logo.hide {
-        opacity: 0 !important;
-        transform: translateY(-30px) !important;
-    }
-    
-    /* ロゴサイズ調整 */
-    .main-logo,
-    .hero-logo .logo-fallback {
-        max-width: 200px !important;
-        width: 200px !important;
-        margin: 0 auto !important;
-        display: block !important;
-    }
-    
-    .hero-logo .logo-fallback {
-        height: 80px !important;
-        font-size: 1.5rem !important;
-        letter-spacing: 1px !important;
-    }
-    
-    /* コンセプトコンテナ - スクロール対応 */
-    .concept-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-        padding: 0 15px !important;
-        gap: 30px !important;
-        text-align: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        box-sizing: border-box !important;
-        z-index: 150 !important;
-        opacity: 0 !important;
-        flex-grow: 1 !important;
         min-height: auto !important;
     }
     
-    .concept-container.show {
-        opacity: 1 !important;
-    }
-    
-    /* タイトル調整 */
-    .concept-title {
-        font-size: 1.6rem !important;
-        line-height: 1.4 !important;
-        margin: 0 auto 25px auto !important;
-        padding: 0 10px !important;
-        text-align: center !important;
+    .concept-container {
         width: 100% !important;
-        max-width: 100% !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        color: white !important;
-        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        display: block !important;
-        box-sizing: border-box !important;
-    }
-    
-    /* コンセプト文章群 - 全て確実に表示 */
-    .concept-details {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        margin-bottom: 30px !important;
-    }
-    
-    .concept-brief,
-    .concept-description,
-    .concept-additional {
-        width: 100% !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .concept-description p,
-    .concept-additional p,
-    .concept-brief p {
-        font-size: 0.9rem !important;
-        line-height: 1.6 !important;
-        margin: 0 auto 15px auto !important;
-        padding: 0 10px !important;
-        text-align: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        color: white !important;
-        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        display: block !important;
-    }
-    
-    /* 豪華ボタン位置調整 */
-    .luxury-btn-container {
-        width: 100% !important;
-        margin: 30px auto 40px auto !important;
-        text-align: center !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        z-index: 100 !important;
-        opacity: 0 !important;
-        flex-shrink: 0 !important;
-    }
-    
-    .luxury-btn-container.show {
-        opacity: 1 !important;
-    }
-    
-    .luxury-reservation-btn {
-        padding: 18px 35px !important;
-        font-size: 1rem !important;
-        letter-spacing: 1px !important;
+        padding: 0 15px !important;
+        gap: 20px !important;
         margin: 0 auto !important;
-        display: inline-block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        white-space: nowrap !important;
-    }
-    
-    .btn-icon {
-        font-size: 1.1rem !important;
-        margin-right: 6px !important;
-    }
-}
-
-/* さらに小さい画面での調整 */
-@media screen and (max-width: 576px) {
-    .hero-content {
-        padding: 30px 15px 50px 15px !important;
-        min-height: calc(100vh - 80px) !important;
-    }
-    
-    .main-logo,
-    .hero-logo .logo-fallback {
-        max-width: 180px !important;
-        width: 180px !important;
-    }
-    
-    .hero-logo .logo-fallback {
-        height: 70px !important;
-        font-size: 1.3rem !important;
-    }
-    
-    .concept-title {
-        font-size: 1.4rem !important;
-        line-height: 1.3 !important;
-        margin-bottom: 20px !important;
     }
     
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
         font-size: 0.85rem !important;
-        line-height: 1.5 !important;
+        line-height: 1.6 !important;
+        word-wrap: break-word !important;
+        overflow: visible !important;
         margin-bottom: 12px !important;
+        white-space: normal !important;
+        text-overflow: clip !important;
     }
     
-    .luxury-reservation-btn {
-        padding: 16px 30px !important;
-        font-size: 0.95rem !important;
+    /* 問題2: Re'formaの想いアイコン表示修正 */
+    .philosophy-point i {
+        font-size: 2.8rem !important;
+        color: #d4a373 !important;
+        display: block !important;
+        font-family: 'Font Awesome 6 Free' !important;
+        font-weight: 900 !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 }
