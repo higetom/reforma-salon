@@ -329,6 +329,16 @@ section#home {
     align-items: center;
 }
 
+/* PC版では元の位置に */
+@media screen and (min-width: 769px) {
+    .hero-logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
 .hero-logo.show {
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -2014,14 +2024,15 @@ section#home {
         position: relative !important;
     }
 
-   /* 🎯 本物ロゴを中央に1つだけ表示（黄色四角なし） */
+
+/* 🎯 本物ロゴを画面中央に強制配置 */
 .hero-logo {
-    position: absolute !important;
+    position: fixed !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    margin-bottom: 60px !important;
-    z-index: 20 !important;
+    margin-bottom: 0 !important;
+    z-index: 1000 !important;
     width: 100% !important;
     display: flex !important;
     justify-content: center !important;
