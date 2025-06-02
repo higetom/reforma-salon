@@ -1948,6 +1948,45 @@ section#home,
         font-size: 1.8rem !important;
     }
 
+/* 🎯 モバイル版のみでテキスト調整（PC版は一切変更しない） */
+@media screen and (max-width: 768px) {
+    
+    /* タイトルのモバイル最適化 */
+    .concept-title {
+        font-size: 1.7rem !important;
+        line-height: 1.4 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    
+    /* コンセプト文章のモバイル最適化 */
+    .concept-brief p,
+    .concept-description p,
+    .concept-additional p {
+        font-size: 1rem !important;
+        line-height: 1.8 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+        padding: 0 10px !important;
+    }
+    
+    /* 自然な改行のための幅調整 */
+    .concept-container {
+        max-width: 90% !important;
+        padding: 0 20px !important;
+    }
+    
+    /* 文章間のスペース調整 */
+    .concept-details {
+        gap: 20px !important;
+    }
+    
+}
+
     /* 🎯 ヒーローセクション - モバイル完全対応（1つのロゴのみ中央配置） */
     .hero-section {
         height: auto !important;
@@ -1983,10 +2022,8 @@ section#home,
     
     /* スクロール後はナビを正常表示 */
     .navbar.scrolled .navbar-brand {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: scale(1) !important;
-    }
+    display: none !important;
+}
     
     .hero-content {
         position: relative !important;
