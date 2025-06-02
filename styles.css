@@ -440,30 +440,6 @@ section#home {
     margin-right: auto;
 }
 
-/* モバイル版：改行を最適化して読みやすく */
-@media screen and (max-width: 768px) {
-    .concept-description p,
-    .concept-additional p,
-    .concept-brief p {
-        font-size: 0.9rem !important;
-        line-height: 1.7 !important;
-        margin: 0 auto 15px auto !important;
-        padding: 0 5px !important;
-        text-align: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        color: white !important;
-        text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9) !important;
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-}
-
 .luxury-btn-container {
     opacity: 0;
     transform: translateY(30px);
@@ -1924,17 +1900,30 @@ section#home {
     }
 }
 
-/* モバイル版レスポンシブ（768px以下） */
+/* モバイル版レスポンシブ（768px以下） - 修正版 */
 @media screen and (max-width: 768px) {
-    /* 🚨 モバイル版のみ：ナビのロゴを非表示 */
+    /* 🎯 モバイル版：ナビのロゴを表示に戻す */
     .navbar-brand {
-        display: none !important;
+        display: flex !important; /* ロゴを表示 */
     }
     
-    /* 🚨 ヒーローセクション内の偽物ロゴも完全削除 */
+    /* 🚨 ヒーローセクション内の偽物ロゴは完全削除 */
     .hero-section .navbar-brand,
     .hero-section .navbar .logo,
     .hero-section .navbar .logo-fallback {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+    
+    /* 🎯 黄色い四角（Re'fo）を完全削除 */
+    .hero-logo .logo-fallback::after,
+    .hero-logo::after,
+    .main-logo::after,
+    .hero-section .logo-fallback,
+    .hero-section .main-logo {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
@@ -1998,7 +1987,7 @@ section#home {
         position: relative !important;
     }
 
-    /* 🎯 本物ロゴを中央に1つだけ表示 */
+    /* 🎯 本物ロゴを中央に1つだけ表示（黄色四角なし） */
     .hero-logo {
         position: relative !important;
         top: auto !important;
@@ -2020,16 +2009,17 @@ section#home {
         transform: translateY(-50px) !important;
     }
 
-    .main-logo,
-    .hero-logo .logo-fallback {
+    /* 🎯 メインロゴのみ表示、フォールバック非表示 */
+    .main-logo {
         max-width: 280px !important;
         width: 280px !important;
+        display: block !important;
     }
     
     .hero-logo .logo-fallback {
-        height: 100px !important;
-        font-size: 2rem !important;
-        letter-spacing: 2px !important;
+        display: none !important; /* 黄色四角を完全非表示 */
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
 
     .concept-container {
@@ -2045,7 +2035,6 @@ section#home {
         margin-top: 0 !important;
     }
 
-    /* 🎯 文章改行7箇所修正 */
     .concept-description p,
     .concept-additional p,
     .concept-brief p {
@@ -2065,37 +2054,6 @@ section#home {
         display: block !important;
         opacity: 1 !important;
         visibility: visible !important;
-    }
-
-    /* 🎯 具体的な改行箇所の指定 */
-    .concept-brief p:first-child::after {
-        content: "\A";
-        white-space: pre;
-    }
-
-    .concept-description p:first-child::after {
-        content: "\A";
-        white-space: pre;
-    }
-
-    .concept-description p:nth-child(2)::after {
-        content: "\A";
-        white-space: pre;
-    }
-
-    .concept-additional p:first-child::after {
-        content: "\A";
-        white-space: pre;
-    }
-
-    .concept-additional p:nth-child(2)::after {
-        content: "\A";
-        white-space: pre;
-    }
-
-    .concept-additional p:nth-child(4)::after {
-        content: "\A";
-        white-space: pre;
     }
 
     .luxury-reservation-btn {
