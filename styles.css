@@ -440,6 +440,17 @@ section#home {
     margin-right: auto;
 }
 
+/* PC版（769px以上）でヒーローセクションのコンセプト文章を左揃え＋改行間隔調整 */
+@media screen and (min-width: 769px) {
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        text-align: left !important;
+        margin-bottom: 35px !important;
+        line-height: 2.4 !important;
+    }
+}
+
 .luxury-btn-container {
     opacity: 0;
     transform: translateY(30px);
@@ -780,6 +791,15 @@ section#home {
     line-height: 1.7;
     transition: color 0.3s ease;
     text-align: left; /* 説明文のみ左詰め */
+}
+
+/* PC版（769px以上）で想いの説明文を左揃えに */
+@media screen and (min-width: 769px) {
+    .philosophy-point p {
+        text-align: left;
+        padding-left: 0;
+        margin-left: 0;
+    }
 }
 
 .philosophy-point:hover p {
