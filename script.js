@@ -100,13 +100,18 @@ function initializeMenuTabs() {
     menuTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
             const targetId = tab.getAttribute('data-tab');
             console.log('メニュータブクリック:', targetId);
             
             // すべてのタブから active クラスを削除
             menuTabs.forEach(t => t.classList.remove('active'));
             // すべてのコンテンツから active クラスを削除
-            menuContents.forEach(c => c.classList.remove('active'));
+            menuContents.forEach(c => {
+                c.classList.remove('active');
+                c.style.display = 'none';
+            });
             
             // クリックされたタブに active クラスを追加
             tab.classList.add('active');
@@ -115,28 +120,19 @@ function initializeMenuTabs() {
             const targetContent = document.getElementById(targetId);
             if (targetContent) {
                 targetContent.classList.add('active');
+                targetContent.style.display = 'block !important';
                 console.log('コンテンツ表示成功:', targetId);
-                
-                // 強制的にコンテンツを表示（フォールバック）
-                targetContent.style.display = 'block';
-                
-                // 他のコンテンツを非表示
-                menuContents.forEach(c => {
-                    if (c.id !== targetId) {
-                        c.style.display = 'none';
-                    }
-                });
             } else {
                 console.error('コンテンツが見つかりません:', targetId);
             }
         });
     });
     
-    // 初期状態の設定
+    // 初期状態の強制設定
     const firstTab = document.querySelector('.menu-tab.active');
     const firstContent = document.querySelector('.menu-content.active');
     if (firstTab && firstContent) {
-        firstContent.style.display = 'block';
+        firstContent.style.display = 'block !important';
         console.log('メニュー初期状態設定完了');
     }
 }
