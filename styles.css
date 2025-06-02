@@ -2043,6 +2043,7 @@ section#home {
     transform: none !important;
     animation: none !important;
     transition: opacity 1s ease !important;
+    pointer-events: none !important;
 }
 
 /* アニメーション状態も強制設定 */
