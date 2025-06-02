@@ -2828,16 +2828,10 @@ section#home,
     }
 }
 
-/* 🚨🚨🚨 最終修正：モバイル版ロゴ完全中央配置+改行修正（最優先） */
+/* 🚨🚨🚨 最終修正：モバイル版完全解決（最優先） */
 @media screen and (max-width: 768px) {
-    /* 🚨 ナビの偽ロゴを完全削除 */
-    .navbar-brand {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-    }
-    
-    /* 🚨 右側の謎の偽ロゴも完全削除 */
+    /* 🚨 全ての偽ロゴを完全削除（強化版） */
+    .navbar-brand,
     .navbar-brand *,
     .navbar .logo,
     .navbar .logo-fallback,
@@ -2846,6 +2840,17 @@ section#home,
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+    
+    /* 🚨 ナビバー右上の謎ロゴも完全削除 */
+    .navbar::after,
+    .navbar::before,
+    .navbar *:not(.navbar-toggle):not(.navbar-nav):not(.navbar-nav *) {
+        display: none !important;
     }
     
     /* ヒーローセクション全体をリセット */
@@ -2854,7 +2859,8 @@ section#home,
         align-items: center !important;
         justify-content: center !important;
         min-height: 100vh !important;
-        padding: 0 !important;
+        padding: 80px 0 60px 0 !important;
+        position: relative !important;
     }
     
     .hero-content {
@@ -2866,17 +2872,18 @@ section#home,
         justify-content: center !important;
         text-align: center !important;
         margin: 0 auto !important;
-        padding: 20px !important;
+        padding: 20px 15px !important;
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
+        gap: 25px !important;
     }
     
-    /* ロゴを確実に中央配置（最優先） */
+    /* 🎯 本物ロゴを確実に中央配置 */
     .hero-logo {
         width: 100% !important;
-        max-width: 350px !important;
+        max-width: 320px !important;
         margin: 0 auto !important;
         display: flex !important;
         justify-content: center !important;
@@ -2888,62 +2895,68 @@ section#home,
         right: auto !important;
         transform: none !important;
         order: 1 !important;
+        z-index: 50 !important;
     }
     
     .hero-logo .main-logo,
     .hero-logo .logo-fallback {
-        width: 280px !important;
-        max-width: 280px !important;
+        width: 260px !important;
+        max-width: 260px !important;
         margin: 0 auto !important;
         display: block !important;
         text-align: center !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
     }
     
     .hero-logo .logo-fallback {
-        height: 110px !important;
-        font-size: 1.9rem !important;
+        height: 100px !important;
+        font-size: 1.8rem !important;
         margin: 0 auto !important;
     }
     
-    /* コンセプト部分 */
+    /* 🎯 コンセプト部分の位置調整 */
     .concept-container {
         width: 100% !important;
-        margin: 40px auto 0 auto !important;
+        margin: 20px auto 0 auto !important;
         text-align: center !important;
         order: 2 !important;
         padding: 0 15px !important;
+        max-width: 95% !important;
     }
     
-    /* 🎯 改行修正：タイトルのモバイル最適化 */
+    /* 🎯 改行修正：タイトルを一文ごとに自然改行 */
     .concept-title {
-        font-size: 1.7rem !important;
-        line-height: 1.4 !important;
+        font-size: 1.6rem !important;
+        line-height: 1.5 !important;
         text-align: center !important;
-        margin: 0 auto 30px auto !important;
+        margin: 0 auto 25px auto !important;
+        padding: 0 5px !important;
         word-break: keep-all !important;
         overflow-wrap: break-word !important;
-        hyphens: auto !important;
-        padding: 0 10px !important;
-    }
-    
-    /* 🎯 改行修正：コンセプト文章のモバイル最適化 */
-    .concept-brief p,
-    .concept-description p,
-    .concept-additional p {
-        font-size: 1rem !important;
-        line-height: 1.8 !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-        hyphens: auto !important;
-        text-align: center !important;
-        margin-bottom: 20px !important;
-        padding: 0 10px !important;
         white-space: normal !important;
     }
     
-    /* 🎯 改行修正：自然な改行のための幅調整 */
+    /* 🎯 改行修正：コンセプト文章を一文ごとに改行 */
+    .concept-brief p,
+    .concept-description p,
+    .concept-additional p {
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        text-align: center !important;
+        margin-bottom: 18px !important;
+        padding: 0 5px !important;
+        white-space: normal !important;
+        max-width: 100% !important;
+    }
+    
+    /* 🎯 文章間のスペース調整 */
     .concept-details {
-        gap: 20px !important;
+        gap: 15px !important;
         width: 100% !important;
     }
     
@@ -2954,21 +2967,29 @@ section#home,
         margin-bottom: 0 !important;
     }
     
-    /* 豪華ボタン */
+    /* 🎯 予約ボタンの位置修正（上に移動） */
     .luxury-btn-container {
         width: 100% !important;
-        margin: 40px auto 0 auto !important;
+        margin: 25px auto 0 auto !important;
         text-align: center !important;
         display: flex !important;
         justify-content: center !important;
         order: 3 !important;
+        padding: 0 15px !important;
     }
     
     .luxury-reservation-btn {
         margin: 0 auto !important;
         display: inline-block !important;
-        padding: 18px 35px !important;
-        font-size: 1.05rem !important;
-        letter-spacing: 1.2px !important;
+        padding: 16px 30px !important;
+        font-size: 1rem !important;
+        letter-spacing: 1px !important;
+        max-width: 85% !important;
+        white-space: nowrap !important;
+    }
+    
+    .btn-icon {
+        font-size: 1rem !important;
+        margin-right: 6px !important;
     }
 }
