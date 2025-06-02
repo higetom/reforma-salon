@@ -2761,3 +2761,69 @@ section#home,
         background: linear-gradient(135deg, #f4d46b, var(--primary-color), #e9c46a);
     }
 }
+
+/* 🚨 PC版：豪華ボタンを確実に中央配置 */
+.luxury-btn-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 40px auto 0 auto !important;
+}
+
+/* 🚨 モバイル版緊急修正：本物ロゴを完全中央配置 */
+@media screen and (max-width: 768px) {
+    /* ヒーローセクション全体の中央配置強化 */
+    .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 auto !important;
+        padding: 20px 15px !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* 本物ロゴの完全中央配置 */
+    .hero-logo {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        order: 1 !important;
+    }
+    
+    /* ロゴ画像自体の中央配置 */
+    .hero-logo .main-logo,
+    .hero-logo .logo-fallback {
+        margin: 0 auto !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    /* コンセプトコンテナの順序調整 */
+    .concept-container {
+        order: 2 !important;
+        margin-top: 30px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* 豪華ボタンの順序調整 */
+    .luxury-btn-container {
+        order: 3 !important;
+        margin-top: 30px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+}
