@@ -2014,19 +2014,19 @@ section#home {
         position: relative !important;
     }
 
-    /* 🎯 本物ロゴを中央に1つだけ表示（黄色四角なし） */
-    .hero-logo {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        margin-bottom: 60px !important;
-        z-index: 20 !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
+   /* 🎯 本物ロゴを中央に1つだけ表示（黄色四角なし） */
+.hero-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin-bottom: 60px !important;
+    z-index: 20 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
 
     .hero-logo.show {
         transform: none !important;
