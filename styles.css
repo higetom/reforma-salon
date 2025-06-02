@@ -1918,17 +1918,24 @@ section#home {
         left: -9999px !important;
     }
     
-    /* 🎯 黄色い四角（Re'fo）を完全削除 */
-    .hero-logo .logo-fallback::after,
-    .hero-logo::after,
-    .main-logo::after,
-    .hero-section .logo-fallback,
-    .hero-section .main-logo {
+    /* 🎯 黄色い四角（フォールバック）のみ削除、本物ロゴは保持 */
+    .hero-logo .logo-fallback,
+    .hero-section .logo-fallback {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
         position: absolute !important;
         left: -9999px !important;
+    }
+    
+    /* 🎯 本物ロゴは表示する */
+    .hero-logo .main-logo,
+    .hero-section .main-logo {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: static !important;
+        left: auto !important;
     }
     
     .navbar-toggle {
