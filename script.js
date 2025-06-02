@@ -67,11 +67,12 @@ function initializeHeroAnimations() {
         console.log('✅ Phase 1: ロゴ表示開始');
     }, 500);
 
-    // Phase 2: ロゴをフェードアウト（3秒後）
-    setTimeout(() => {
-        heroLogo.classList.add('hide');
-        console.log('✅ Phase 2: ロゴ消失開始');
-    }, 3000);
+    // Phase 2: ロゴをゆっくりとフェードアウト（3秒後）
+setTimeout(() => {
+    heroLogo.style.transition = 'opacity 1.8s ease-out, transform 1.8s ease-out';
+    heroLogo.classList.add('hide');
+    console.log('✅ Phase 2: ロゴゆっくり消失開始');
+}, 3000);
 
     // Phase 3: コンセプトをフェードイン表示（4秒後）
     setTimeout(() => {
