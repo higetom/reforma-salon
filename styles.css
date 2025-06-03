@@ -1296,6 +1296,85 @@ section#home {
     }
 }
 
+/* 🎯 Re'Formaが大切にしていること - 階層デザイン追加 */
+
+.gentle-main-text {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 8px !important;
+}
+
+.gentle-sub-text {
+    font-size: 0.9rem !important;
+    font-weight: 400 !important;
+    color: #666 !important;
+    line-height: 1.5 !important;
+    font-style: italic !important;
+    padding-left: 15px !important;
+    position: relative !important;
+    margin-top: 5px !important;
+}
+
+.gentle-sub-text::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 8px !important;
+    height: 1px !important;
+    background: #d4a373 !important;
+}
+
+/* タブレット対応 */
+@media screen and (max-width: 992px) {
+    .gentle-main-text {
+        font-size: 0.95rem !important;
+    }
+    
+    .gentle-sub-text {
+        font-size: 0.85rem !important;
+        padding-left: 12px !important;
+    }
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .gentle-main-text {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .gentle-sub-text {
+        font-size: 0.8rem !important;
+        padding-left: 10px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .gentle-sub-text::before {
+        width: 6px !important;
+    }
+}
+
+/* さらに小さな画面対応 */
+@media screen and (max-width: 480px) {
+    .gentle-main-text {
+        font-size: 0.85rem !important;
+    }
+    
+    .gentle-sub-text {
+        font-size: 0.75rem !important;
+        padding-left: 8px !important;
+    }
+    
+    .gentle-sub-text::before {
+        width: 5px !important;
+    }
+}
+
 /* モバイル対応強化 - 美しいカードデザイン維持 */
 @media screen and (max-width: 768px) {
     .profile-header-section {
