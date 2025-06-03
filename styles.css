@@ -765,6 +765,547 @@ section#home {
     border-left: 3px solid #d4a373;
 }
 
+/* 🎯 温かみメッセージセクション - Re'formaプロフィール後に追加 */
+.gentle-message-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 80px 0;
+    position: relative;
+}
+
+.gentle-message-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a373, transparent);
+}
+
+.gentle-message-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gentle-message-box {
+    background: white;
+    border-radius: 25px;
+    padding: 60px 50px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+.gentle-message-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #d4a373, #e9c46a, #f4d46b);
+}
+
+.gentle-heart-icon {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.gentle-heart-icon i {
+    font-size: 3rem;
+    color: #d4a373;
+    opacity: 0.8;
+    animation: gentleHeartBeat 2s ease-in-out infinite;
+}
+
+@keyframes gentleHeartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.gentle-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    font-weight: 600;
+    position: relative;
+}
+
+.gentle-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a373, #e9c46a);
+    border-radius: 2px;
+}
+
+.gentle-content {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gentle-content p {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #555;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.gentle-content p:last-child {
+    font-size: 1.1rem;
+    color: #333;
+    background: linear-gradient(135deg, #faedcd, #e9edc9);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #d4a373;
+    margin-top: 30px;
+}
+
+.gentle-approach-points {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 40px 35px;
+    margin-bottom: 50px;
+    border: 1px solid #e9ecef;
+}
+
+.gentle-approach-title {
+    font-size: 1.4rem;
+    color: #d4a373;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.gentle-list {
+    list-style: none;
+    padding: 0;
+}
+
+.gentle-list li {
+    margin-bottom: 18px;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid #d4a373;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gentle-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+}
+
+/* 🎯 チェックマーク間隔調整 - Re'formaでできること */
+.gentle-list li::before {
+    content: '✓ '; /* スペース追加 */
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* 幅を広げる */
+    height: 24px;
+    background: #d4a373;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding-left: 2px; /* テキスト位置微調整 */
+}
+
+.gentle-list li {
+    margin-bottom: 18px;
+    padding: 15px 20px 15px 35px; /* 左パディング増加 */
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid #d4a373;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* 🎯 FAQアコーディオン機能 */
+.faq-item {
+    margin-bottom: 15px; /* 間隔調整 */
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #e9c46a;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0; /* マージン削除 */
+    font-weight: 600;
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.faq-question:hover {
+    background: #f8f9fa;
+    color: #d4a373;
+}
+
+/* 🎯 アコーディオン矢印アイコン */
+.faq-question::after {
+    content: '▼';
+    font-size: 0.8rem;
+    color: #d4a373;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.faq-question.active::after {
+    transform: rotate(180deg);
+}
+
+/* 🎯 回答部分（アコーディオン） */
+.faq-answer {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 0;
+    padding: 0 25px 25px 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.faq-answer.active {
+    max-height: 200px; /* 十分な高さ */
+    opacity: 1;
+    padding: 0 25px 25px 25px;
+}
+
+/* 🎯 モバイル対応 - チェックマーク調整 */
+@media screen and (max-width: 768px) {
+    .gentle-list li {
+        padding: 12px 15px 12px 40px; /* モバイル用パディング調整 */
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+    
+    .gentle-list li::before {
+        width: 28px; /* モバイル用幅調整 */
+        left: -1px;
+    }
+    
+    .faq-question {
+        font-size: 1rem;
+        padding: 20px;
+    }
+    
+    .faq-answer {
+        font-size: 0.95rem;
+        padding: 0 20px 20px 20px;
+    }
+    
+    .faq-answer.active {
+        padding: 0 20px 20px 20px;
+    }
+}
+
+/* 🎯 さらに小さな画面対応 */
+@media screen and (max-width: 480px) {
+    .gentle-list li {
+        padding: 10px 12px 10px 35px;
+        font-size: 0.9rem;
+    }
+    
+    .gentle-list li::before {
+        width: 26px;
+        font-size: 0.7rem;
+    }
+    
+    .faq-question {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer {
+        padding: 0 15px 15px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer.active {
+        padding: 0 15px 15px 15px;
+    }
+}
+
+.faq-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    padding: 40px 35px;
+    margin-bottom: 50px;
+    border: 1px solid #e9ecef;
+}
+
+.faq-title {
+    font-size: 1.4rem;
+    color: #d4a373;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.faq-item {
+    margin-bottom: 25px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #e9c46a;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.faq-answer {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.final-message {
+    text-align: center;
+    background: linear-gradient(135deg, #faedcd 0%, #e9edc9 100%);
+    border-radius: 20px;
+    padding: 40px 30px;
+    border: 2px solid rgba(212, 163, 115, 0.2);
+    position: relative;
+}
+
+.final-message::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #d4a373, #e9c46a, #d4a373);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.final-message p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.final-message p:last-child {
+    margin-bottom: 0;
+}
+
+.final-message .highlight {
+    font-size: 1.2rem;
+    color: #d4a373;
+    font-weight: 600;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.2);
+}
+
+/* タブレット対応 */
+@media screen and (max-width: 992px) {
+    .gentle-message-section {
+        padding: 60px 0;
+    }
+    
+    .gentle-message-box {
+        padding: 50px 40px;
+    }
+    
+    .gentle-title {
+        font-size: 2rem;
+    }
+    
+    .gentle-content p {
+        font-size: 1.1rem;
+    }
+    
+    .gentle-approach-points,
+    .faq-section {
+        padding: 35px 30px;
+    }
+    
+    .final-message {
+        padding: 35px 25px;
+    }
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .gentle-message-section {
+        padding: 50px 0;
+    }
+    
+    .gentle-message-container {
+        padding: 0 15px;
+    }
+    
+    .gentle-message-box {
+        padding: 40px 25px;
+        border-radius: 20px;
+    }
+    
+    .gentle-title {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+    }
+    
+    .gentle-content p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+    
+    .gentle-approach-points,
+    .faq-section {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .gentle-approach-title,
+    .faq-title {
+        font-size: 1.3rem;
+    }
+    
+    .gentle-list li {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+    
+    .faq-item {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .faq-question {
+        font-size: 1rem;
+    }
+    
+    .faq-answer {
+        font-size: 0.95rem;
+    }
+    
+    .final-message {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+    
+    .final-message p {
+        font-size: 1rem;
+    }
+    
+    .final-message .highlight {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+}
+
+/* さらに小さな画面対応 */
+@media screen and (max-width: 480px) {
+    .gentle-message-section {
+        padding: 40px 0;
+    }
+    
+    .gentle-message-container {
+        padding: 0 10px;
+    }
+    
+    .gentle-message-box {
+        padding: 30px 20px;
+    }
+    
+    .gentle-title {
+        font-size: 1.6rem;
+    }
+    
+    .gentle-heart-icon i {
+        font-size: 2.5rem;
+    }
+    
+    .gentle-content p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .gentle-approach-points,
+    .faq-section {
+        padding: 25px 15px;
+    }
+    
+    .gentle-list li {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-item {
+        padding: 15px;
+    }
+    
+    .final-message {
+        padding: 25px 15px;
+    }
+    
+    .final-message .highlight {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}
+
 /* モバイル対応強化 - 美しいカードデザイン維持 */
 @media screen and (max-width: 768px) {
     .profile-header-section {
