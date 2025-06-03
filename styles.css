@@ -674,6 +674,117 @@ section#home {
     background-color: var(--gray-color);
 }
 
+/* Enhanced Profile Section - 新しいプロフィールスタイル */
+.profile-container-enhanced {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.profile-header-section {
+    background: linear-gradient(135deg, #d4a373 0%, #e9c46a 100%);
+    color: white;
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.profile-name-enhanced {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.profile-tagline-enhanced {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+.profile-mission-enhanced {
+    background: rgba(255,255,255,0.15);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.experience-grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 50px 40px;
+}
+
+.experience-card-enhanced {
+    background: #f8f9fa;
+    padding: 30px 25px;
+    border-radius: 15px;
+    border-left: 4px solid #d4a373;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.experience-card-enhanced:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.experience-icon-enhanced {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.experience-title-enhanced {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.experience-description-enhanced {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.experience-insight-enhanced {
+    background: linear-gradient(135deg, #faedcd, #e9edc9);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #555;
+    font-style: italic;
+    border-left: 3px solid #d4a373;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .profile-header-section {
+        padding: 40px 20px;
+    }
+    
+    .profile-name-enhanced {
+        font-size: 2rem;
+    }
+    
+    .experience-grid-section {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    
+    .profile-container-enhanced {
+        margin: 10px;
+    }
+}
+
 .profile-container {
     display: flex;
     align-items: center;
@@ -1948,15 +2059,43 @@ section#home {
         left: -9999px !important;
     }
     
-    /* 🎯 黄色い四角（フォールバック）のみ削除、本物ロゴは保持 */
-    .hero-logo .logo-fallback,
-    .hero-section .logo-fallback {
+   /* 🚨 PC版でも偽物ロゴを強制的に完全削除 */
+.hero-logo .logo-fallback,
+.hero-section .logo-fallback {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* PC版（769px以上）でも偽物ロゴを確実に非表示 */
+@media screen and (min-width: 769px) {
+    .hero-logo .logo-fallback {
         display: none !important;
         opacity: 0 !important;
         visibility: hidden !important;
         position: absolute !important;
         left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
     }
+    
+    /* 本物ロゴは確実に表示 */
+    .hero-logo .main-logo {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: static !important;
+        left: auto !important;
+        max-width: 380px !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}
     
     /* 🎯 本物ロゴは表示する */
     .hero-logo .main-logo,
