@@ -56,10 +56,9 @@
                 <div class="hero-content">
                     <!-- 🎯 Phase 1: ロゴが表示される（0.5秒後）-->
                     <div class="hero-logo" id="hero-logo">
-                        <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
-                             onerror="console.log('Main logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="logo-fallback" style="display: none;">Re'forma</div>
-                    </div>
+    <img src="./reforma-logo.png" alt="Re'forma ロゴ" class="main-logo" 
+         onerror="console.log('Main logo failed to load');">
+</div>
                     
                     <!-- 🎯 Phase 2: コンセプトが表示される（ロゴ消失後） -->
                     <div class="concept-container" id="concept-container">
@@ -108,24 +107,46 @@
                 <h2>変わりたい想いに、<span class="accent">そっと寄り添います</span></h2>
             </div>
             
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="/api/placeholder/400/500" alt="PT TOM プロフィール写真" />
-                </div>
-                <div class="profile-content">
-                    <h3>理学療法士</h3>
-                    <h2 class="profile-name">PT TOM</h2>
-                    <div class="profile-credentials">
-                        <span class="credential">理学療法士</span>
-                        <span class="credential">認定資格保有</span>
-                    </div>
-                    <div class="profile-message">
-                        <p>理学療法士として培った専門知識と経験を活かし、お一人おひとりの身体の特性に合わせたケアを提供しています。</p>
-                        <p>「痛みを取るだけでなく、なぜその痛みが生まれるのか」を根本から考え、持続可能な健康づくりをサポートします。</p>
-                        <p>あなたの身体が本来持つ力を引き出し、より良い生活へと導くお手伝いをさせていただきます。</p>
-                    </div>
-                </div>
-            </div>
+            <div class="profile-container-enhanced">
+    <div class="profile-header-section">
+        <h2 class="profile-name-enhanced">TOMO</h2>
+        <p class="profile-tagline-enhanced">多様な現場での経験を活かす理学療法士</p>
+        <div class="profile-mission-enhanced">
+            病院だけでは学べない、リアルな生活に寄り添う視点で<br>
+            あなたの「からだ」と真摯に向き合います
+        </div>
+    </div>
+    
+    <div class="experience-grid-section">
+        <div class="experience-card-enhanced">
+            <div class="experience-icon-enhanced">🏥</div>
+            <h3 class="experience-title-enhanced">医療・介護現場</h3>
+            <p class="experience-description-enhanced">大学病院、訪問リハビリ、デイサービスでの経験</p>
+            <div class="experience-insight-enhanced">「急性期から生活期まで、様々なステージでの身体の変化を学べました」</div>
+        </div>
+        
+        <div class="experience-card-enhanced">
+            <div class="experience-icon-enhanced">⚾</div>
+            <h3 class="experience-title-enhanced">スポーツ現場</h3>
+            <p class="experience-description-enhanced">大学野球でのトレーナー経験、都市対抗野球出場選手の指導</p>
+            <div class="experience-insight-enhanced">「競技復帰とパフォーマンス向上の両立を追求する現場を経験」</div>
+        </div>
+        
+        <div class="experience-card-enhanced">
+            <div class="experience-icon-enhanced">🔬</div>
+            <h3 class="experience-title-enhanced">研究分野</h3>
+            <p class="experience-description-enhanced">介護予防研究への参加</p>
+            <div class="experience-insight-enhanced">「科学的根拠を大切にする姿勢を学び、論文執筆にも携わりました」</div>
+        </div>
+        
+        <div class="experience-card-enhanced">
+            <div class="experience-icon-enhanced">💪</div>
+            <h3 class="experience-title-enhanced">美容・ダイエット指導</h3>
+            <p class="experience-description-enhanced">個人レッスンでの美容・ダイエットサポート</p>
+            <div class="experience-insight-enhanced">「見た目の変化と健康の両立を目指す方々との関わりから多くを学びました」</div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
