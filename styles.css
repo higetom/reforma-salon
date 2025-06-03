@@ -4120,3 +4120,227 @@ section#home {
         line-height: 1.5 !important;
     }
 }
+
+    .reservation-notes-enhanced ul li {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* 🎯 モバイル版のみ文章調整CSS - PC版は一切変更なし */
+
+/* モバイル版（768px以下）のみ適用 */
+@media screen and (max-width: 768px) {
+    
+    /* ①「変わりたい想いに、そっと寄り添います」の改行調整 */
+    .about-section .section-header h2 {
+        line-height: 1.4 !important;
+    }
+    
+    .about-section .section-header h2 .accent::before {
+        content: "\A" !important;
+        white-space: pre !important;
+    }
+    
+    /* ②プロフィールミッション文を左詰めに */
+    .profile-mission-enhanced {
+        text-align: left !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* ③④⑤経験カードの説明文改行調整 */
+    .experience-card-enhanced:nth-child(2) .experience-description-enhanced {
+        line-height: 1.6 !important;
+    }
+    
+    .experience-card-enhanced:nth-child(2) .experience-description-enhanced::after {
+        content: "大学野球でのトレーナー経験、\A都市対抗野球出場選手の指導" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .experience-card-enhanced:nth-child(2) .experience-description-enhanced {
+        font-size: 0 !important;
+    }
+    
+    .experience-card-enhanced:nth-child(2) .experience-insight-enhanced::before {
+        content: "「傷害予防と競技力向上を両立する、\Aパフォーマンス理論に基づいた支援を提供」" !important;
+        white-space: pre-line !important;
+        display: block !important;
+        font-size: 0.9rem !important;
+        color: #555 !important;
+        font-style: italic !important;
+        background: linear-gradient(135deg, #faedcd, #e9edc9) !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+        border-left: 3px solid #d4a373 !important;
+        line-height: 1.4 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .experience-card-enhanced:nth-child(2) .experience-insight-enhanced {
+        font-size: 0 !important;
+    }
+    
+    .experience-card-enhanced:nth-child(4) .experience-description-enhanced::after {
+        content: "個人レッスンでの美容・\Aダイエットサポート" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .experience-card-enhanced:nth-child(4) .experience-description-enhanced {
+        font-size: 0 !important;
+    }
+    
+    /* ⑥⑦温かみメッセージセクションの改行調整 */
+    .gentle-content p:nth-child(2)::after {
+        content: "Re'formaでは、まず丁寧にお話をうかがい、\Aあなたに合ったアプローチを\A一緒に探していきます。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .gentle-content p:nth-child(2) {
+        font-size: 0 !important;
+    }
+    
+    .gentle-content p:nth-child(3)::after {
+        content: "初回の施術で\A「これなら変われそう」と\A前向きな気持ちになられる方が多くいらっしゃいます。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .gentle-content p:nth-child(3) {
+        font-size: 0 !important;
+    }
+    
+    /* ⑧⑨最終メッセージの改行調整 */
+    .final-message p:nth-child(1)::after {
+        content: "今の状態が\A「当たり前」になっていませんか？" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .final-message p:nth-child(1) {
+        font-size: 0 !important;
+    }
+    
+    .final-message .highlight::after {
+        content: "Re'formaは、あなたのペースで\A一緒に進んでいきます。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .final-message .highlight {
+        font-size: 0 !important;
+    }
+    
+    /* ⑩⑪独自価値セクションヘッダーの改行調整 */
+    .unique-value-section .section-header h2::after {
+        content: "Re'formaだから\Aこそできる価値" !important;
+        white-space: pre-line !important;
+        display: block !important;
+        font-size: 2.2rem !important;
+        color: #1a1a1a !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .unique-value-section .section-header h2 {
+        font-size: 0 !important;
+    }
+    
+    .unique-value-section .section-header p::after {
+        content: "一般的な施術とは一線を画す、\A私たちの独自アプローチ" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .unique-value-section .section-header p {
+        font-size: 0 !important;
+    }
+    
+    /* ⑫時間比較説明文を左詰めに */
+    .value-point.time-quality .value-content p:first-of-type {
+        text-align: left !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* ⑬お客様の声の改行調整 */
+    .conclusion-text:not(.special)::after {
+        content: "そう感じていただける理由が、\Aここにはあります。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .conclusion-text:not(.special) {
+        font-size: 0 !important;
+    }
+    
+    /* ⑭⑮心身統合セクションの調整 */
+    .value-point.mind-body .value-content h3::after {
+        content: "からだと、こころの両方に寄り添う\A新しいサポート" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .value-point.mind-body .value-content h3 {
+        font-size: 0 !important;
+    }
+    
+    .value-point.mind-body .value-content p:first-of-type {
+        text-align: left !important;
+        line-height: 1.7 !important;
+    }
+    
+    /* ⑯CBT理論ベースの3つのチェック項目を左詰めに */
+    .evidence-points {
+        text-align: left !important;
+    }
+    
+    .evidence-item {
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+    
+    /* ⑰心身統合結論の改行調整 */
+    .conclusion-text.special::after {
+        content: "\"からだ\"と\"こころ\"、\A両方に寄り添える。\ARe'Formaだからこそできる、新しいサポートのかたちです。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+        font-style: italic !important;
+    }
+    
+    .conclusion-text.special {
+        font-size: 0 !important;
+    }
+    
+    /* ⑱⑲予防セクションの改行調整 */
+    .value-point.prevention .value-content h3::after {
+        content: "未来への、\Aささやかな思いやり" !important;
+        white-space: pre-line !important;
+        display: block !important;
+    }
+    
+    .value-point.prevention .value-content h3 {
+        font-size: 0 !important;
+    }
+    
+    .prevention-message p:nth-child(2)::after {
+        content: "予防は、未来の自分のため。\Aそして何より、大切な人に心配をかけないための、\Aささやかな思いやりでもあります。" !important;
+        white-space: pre-line !important;
+        display: block !important;
+        font-weight: normal !important;
+    }
+    
+    .prevention-message p:nth-child(2) {
+        font-size: 0 !important;
+    }
+    
+    /* 強調部分のスタイルを再適用 */
+    .prevention-message p:nth-child(2)::after strong {
+        font-weight: 600 !important;
+        color: #d4a373 !important;
+        background: linear-gradient(135deg, #faedcd, #e9edc9) !important;
+        padding: 3px 8px !important;
+        border-radius: 5px !important;
+    }
+}
