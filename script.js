@@ -68,11 +68,11 @@ function initializeHeroAnimations() {
     }, 500);
 
     // Phase 2: ロゴをゆっくりとフェードアウト（3秒後）
-setTimeout(() => {
-    heroLogo.style.transition = 'opacity 1.8s ease-out, transform 1.8s ease-out';
-    heroLogo.classList.add('hide');
-    console.log('✅ Phase 2: ロゴゆっくり消失開始');
-}, 3000);
+    setTimeout(() => {
+        heroLogo.style.transition = 'opacity 1.8s ease-out, transform 1.8s ease-out';
+        heroLogo.classList.add('hide');
+        console.log('✅ Phase 2: ロゴゆっくり消失開始');
+    }, 3000);
 
     // Phase 3: コンセプトをフェードイン表示（4秒後）
     setTimeout(() => {
@@ -192,6 +192,110 @@ function initializeTestimonials() {
     console.log('お客様の声スライダー初期化完了（ドット表示のみ）');
 }
 
+// 🎯 FAQアコーディオン機能の初期化
+function initializeFAQAccordion() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    if (faqQuestions.length === 0) {
+        console.log('FAQ要素が見つかりません');
+        return;
+    }
+    
+    console.log('FAQアコーディオンを初期化中...', faqQuestions.length, '個のFAQ見つかりました');
+    
+    faqQuestions.forEach((question, index) => {
+        // 対応する回答要素を取得
+        const answer = question.nextElementSibling;
+        
+        if (!answer || !answer.classList.contains('faq-answer')) {
+            console.error('FAQ回答要素が見つかりません:', index);
+            return;
+        }
+        
+        // 初期状態：全て閉じる
+        answer.classList.remove('active');
+        question.classList.remove('active');
+        
+        // クリックイベント追加
+        question.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('FAQ質問がクリックされました:', index);
+            
+            // 現在の状態を取得
+            const isActive = answer.classList.contains('active');
+            
+            // 現在のFAQの状態を切り替え
+            if (isActive) {
+                // 閉じる
+                answer.classList.remove('active');
+                question.classList.remove('active');
+                console.log('FAQ閉じました:', index);
+            } else {
+                // 開く
+                answer.classList.add('active');
+                question.classList.add('active');
+                console.log('FAQ開きました:', index);
+            }
+        });
+        
+        // キーボードアクセシビリティ
+        question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                question.click();
+            }
+        });
+        
+        // タブインデックス設定
+        question.setAttribute('tabindex', '0');
+        question.setAttribute('role', 'button');
+        question.setAttribute('aria-expanded', 'false');
+        
+        console.log('FAQ初期化完了:', index);
+    });
+    
+    console.log('✅ FAQアコーディオン初期化完了');
+}
+
+// 🎯 温かみメッセージセクションの機能初期化
+function initializeGentleMessageFeatures() {
+    console.log('🎯 温かみメッセージセクション機能を初期化中...');
+    
+    // FAQアコーディオン初期化
+    initializeFAQAccordion();
+    
+    // チェックリストアニメーション（オプション）
+    const gentleListItems = document.querySelectorAll('.gentle-list li');
+    if (gentleListItems.length > 0) {
+        console.log('チェックリスト項目:', gentleListItems.length, '個見つかりました');
+        
+        // スクロール連動アニメーション
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        gentleListItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.5s ease';
+            observer.observe(item);
+        });
+    }
+    
+    console.log('✅ 温かみメッセージセクション機能初期化完了');
+}
+
 // スムーズスクロール機能
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -240,6 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeMenuTabs();
     initializeTestimonials();
     
+    // 🎯 温かみメッセージセクション機能初期化
+    initializeGentleMessageFeatures();
+    
     // ロゴ読み込みエラー時の処理
     const logos = document.querySelectorAll('img[src*="reforma-logo"]');
     logos.forEach(logo => {
@@ -267,9 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('  4.0秒後: コンセプト全文がフェードイン表示');
     console.log('  6.0秒後: 豪華な予約ボタンがフェードイン表示');
     console.log('✅ すべての初期化が完了しました');
-    console.log('🎯 モバイル表示改善：ホーム画面コンセプト文章の幅調整完了');
-    console.log('🎯 改行修正：お問い合わせとLINE予約の体裁改善完了');
-    console.log('🎯 Instagram追加：フッターにInstagramアイコン追加完了');
+    console.log('🎯 FAQアコーディオン機能追加完了');
 });
 
 // 画面リサイズ時の処理
@@ -309,10 +414,8 @@ window.addEventListener('error', (e) => {
 });
 
 // デバッグ用
-console.log('🎯 Re\'forma JavaScript 読み込み完了（アニメーション修正版）');
+console.log('🎯 Re\'forma JavaScript 読み込み完了（FAQアコーディオン対応版）');
 console.log('📱 モバイル対応: 文字切れ対策完了');
 console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト表示 → 豪華ボタン表示');
-console.log('📝 改行調整: 適切な箇所での改行統一');
-console.log('🎯 3ファイル構成: HTML + CSS + JS 分離完了');
-console.log('🎯 豪華ボタン: グラデーション + グロー効果 + パルスアニメーション');
-console.log('🎯 お客様の声: ドット表示のみ（矢印ボタン削除済み）');
+console.log('🎯 FAQアコーディオン: Q常時表示、Aクリックで開閉');
+console.log('🎯 チェックマーク: ✓ 間隔調整完了');
