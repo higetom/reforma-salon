@@ -765,7 +765,7 @@ section#home {
     border-left: 3px solid #d4a373;
 }
 
-/* モバイル対応 */
+/* モバイル対応強化 - 美しいカードデザイン維持 */
 @media screen and (max-width: 768px) {
     .profile-header-section {
         padding: 40px 20px;
@@ -777,11 +777,88 @@ section#home {
     
     .experience-grid-section {
         grid-template-columns: 1fr;
-        padding: 40px 20px;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+    
+    .experience-card-enhanced {
+        background: #f8f9fa;
+        padding: 25px 20px;
+        border-radius: 15px;
+        border-left: 4px solid #d4a373;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+    
+    .experience-card-enhanced:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        background: white;
+    }
+    
+    .experience-icon-enhanced {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+        display: block;
+    }
+    
+    .experience-title-enhanced {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .experience-description-enhanced {
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .experience-insight-enhanced {
+        background: linear-gradient(135deg, #faedcd, #e9edc9);
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        color: #555;
+        font-style: italic;
+        border-left: 3px solid #d4a373;
+        line-height: 1.4;
     }
     
     .profile-container-enhanced {
         margin: 10px;
+        border-radius: 15px;
+    }
+}
+
+/* さらに小さな画面対応 */
+@media screen and (max-width: 480px) {
+    .experience-grid-section {
+        padding: 20px 15px;
+        gap: 15px;
+    }
+    
+    .experience-card-enhanced {
+        padding: 20px 15px;
+    }
+    
+    .experience-icon-enhanced {
+        font-size: 2rem;
+    }
+    
+    .experience-title-enhanced {
+        font-size: 1.1rem;
+    }
+    
+    .experience-description-enhanced {
+        font-size: 0.9rem;
+    }
+    
+    .experience-insight-enhanced {
+        font-size: 0.85rem;
+        padding: 10px;
     }
 }
 
