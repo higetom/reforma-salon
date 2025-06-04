@@ -419,3 +419,208 @@ console.log('📱 モバイル対応: 文字切れ対策完了');
 console.log('✨ アニメーション: ロゴ表示 → 消失 → コンセプト表示 → 豪華ボタン表示');
 console.log('🎯 FAQアコーディオン: Q常時表示、Aクリックで開閉');
 console.log('🎯 チェックマーク: ✓ 間隔調整完了');
+
+// 🎯 Perfect Coming Soon - 完璧1回再生制御システム
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎯 Perfect Coming Soon システム初期化開始');
+    
+    // すべてのComing Soon動画要素を取得
+    const videoContainers = document.querySelectorAll('.coming-soon-video-bg');
+    const videos = document.querySelectorAll('.coming-soon-video-bg video');
+    
+    if (videoContainers.length === 0 || videos.length === 0) {
+        console.log('ℹ️ Coming Soon要素が見つかりません（正常：動画なしページ）');
+        return;
+    }
+    
+    console.log(`🎬 Coming Soon動画: ${videos.length}個見つかりました`);
+    
+    // 各動画の再生状態を管理
+    const playbackState = new Map();
+    
+    // 🎯 動画の初期設定（最重要）
+    videos.forEach((video, index) => {
+        // 必須属性設定
+        video.pause();
+        video.currentTime = 0;
+        video.loop = false; // 🎯 ループ無効（1回のみ）
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'metadata'; // パフォーマンス最適化
+        
+        // 再生状態を初期化
+        playbackState.set(video, {
+            hasPlayed: false,
+            isVisible: false,
+            container: videoContainers[index],
+            playStartTime: null
+        });
+        
+        // 🎯 動画再生開始時
+        video.addEventListener('play', function() {
+            const state = playbackState.get(video);
+            state.playStartTime = Date.now();
+            console.log(`🎬 動画${index + 1} 再生開始`);
+        });
+        
+        // 🎯 動画終了時のイベント（最重要）
+        video.addEventListener('ended', function() {
+            console.log(`✅ 動画${index + 1} 再生完了`);
+            const state = playbackState.get(video);
+            const container = state.container;
+            
+            // 再生完了のマーク
+            container.classList.add('played');
+            
+            // 2秒後に完全フェードアウト
+            setTimeout(() => {
+                container.classList.add('finished');
+                console.log(`🎯 動画${index + 1} フェードアウト開始`);
+                
+                // さらに1秒後に完全除去
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    console.log(`👻 動画${index + 1} 完全非表示`);
+                }, 1000);
+            }, 2000);
+        });
+        
+        // 🎯 エラーハンドリング
+        video.addEventListener('error', function(e) {
+            console.error(`❌ 動画${index + 1} エラー:`, e);
+            const state = playbackState.get(video);
+            const container = state.container;
+            container.style.display = 'none'; // エラー時は非表示
+        });
+        
+        // 🎯 読み込み完了時
+        video.addEventListener('loadedmetadata', function() {
+            console.log(`📝 動画${index + 1} メタデータ読み込み完了 (${video.duration.toFixed(1)}秒)`);
+        });
+        
+        console.log(`⚙️ 動画${index + 1} 初期化完了`);
+    });
+    
+    // 🎯 Intersection Observer でスクロール監視（高精度）
+    const observerOptions = {
+        threshold: [0.2, 0.5, 0.8], // 複数閾値で精密監視
+        rootMargin: '0px 0px -30px 0px' // 少し早めに発火
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // アプリカード全体が対象
+            if (!entry.target.classList.contains('app-card-coming-soon')) {
+                return;
+            }
+            
+            const videoContainer = entry.target.querySelector('.coming-soon-video-bg');
+            const video = entry.target.querySelector('.coming-soon-video-bg video');
+            
+            if (!video || !videoContainer) return;
+            
+            const state = playbackState.get(video);
+            if (!state) return;
+            
+            // 🎯 交差率に応じた処理
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5 && !state.hasPlayed) {
+                // 50%以上表示されて、まだ再生していない場合
+                console.log(`👁️ アプリセクション50%到達 - Coming Soon準備開始`);
+                
+                // 表示開始
+                videoContainer.classList.add('show');
+                state.isVisible = true;
+                
+                // 🎯 少し遅延してから再生開始（滑らかな体験）
+                setTimeout(() => {
+                    if (state.isVisible && !state.hasPlayed) {
+                        video.currentTime = 0;
+                        video.play().then(() => {
+                            console.log(`🎬 Coming Soon動画再生開始！`);
+                            state.hasPlayed = true;
+                        }).catch(error => {
+                            console.error('❌ 動画再生エラー:', error);
+                            // エラー時は非表示
+                            videoContainer.style.display = 'none';
+                        });
+                    }
+                }, 200); // 200ms遅延
+                
+            } else if (!entry.isIntersecting && state.isVisible && !state.hasPlayed) {
+                // 🎯 再生前にセクションから離れた場合のクリーンアップ
+                console.log(`📤 セクション離脱 - 再生キャンセル`);
+                videoContainer.classList.remove('show');
+                video.pause();
+                video.currentTime = 0;
+                state.isVisible = false;
+            }
+        });
+    }, observerOptions);
+    
+    // 🎯 すべてのアプリカードを監視開始
+    const appCards = document.querySelectorAll('.app-card-coming-soon');
+    appCards.forEach((card, index) => {
+        observer.observe(card);
+        console.log(`🔍 アプリカード${index + 1} 監視開始`);
+    });
+    
+    // 🎯 ページ可視性変更時の制御（タブ切り替え等）
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            // ページが非表示になったら動画を停止
+            videos.forEach((video, index) => {
+                if (!video.paused) {
+                    video.pause();
+                    console.log(`⏸️ ページ非表示により動画${index + 1}停止`);
+                }
+            });
+        }
+    });
+    
+    // 🎯 モバイル向け touch start 最適化
+    if ('ontouchstart' in window) {
+        console.log('📱 モバイルデバイス検出 - タッチ最適化適用');
+        
+        videos.forEach(video => {
+            // モバイルでの自動再生準備
+            video.setAttribute('webkit-playsinline', 'true');
+            video.setAttribute('playsinline', 'true');
+        });
+    }
+    
+    // 🎯 パフォーマンス監視
+    let performanceWarned = false;
+    const checkPerformance = () => {
+        if (!performanceWarned && performance.memory) {
+            const memoryUsage = performance.memory.usedJSHeapSize / 1024 / 1024;
+            if (memoryUsage > 100) { // 100MB超
+                console.warn(`⚠️ メモリ使用量注意: ${memoryUsage.toFixed(1)}MB`);
+                performanceWarned = true;
+            }
+        }
+    };
+    
+    // 🎯 ページ離脱時のクリーンアップ
+    window.addEventListener('beforeunload', function() {
+        videos.forEach((video, index) => {
+            video.pause();
+            video.currentTime = 0;
+            video.src = ''; // メモリ解放
+        });
+        console.log('🧹 ページ離脱 - Coming Soon動画完全クリーンアップ');
+    });
+    
+    // 🎯 デバッグ情報出力
+    console.log('✅ Perfect Coming Soon システム初期化完了');
+    console.log('📊 動作仕様:');
+    console.log('  🎯 スクロールでアプリセクション50%到達時に再生開始');
+    console.log('  🔄 1回のみ再生（ループなし）');
+    console.log('  🎨 完璧クロマキー処理で緑色除去');
+    console.log('  📱 モバイル縦長画面完全対応');
+    console.log('  💬 Coming Soonテキスト最前面表示');
+    console.log('  🎭 再生終了後は2秒でフェードアウト');
+    
+    // パフォーマンス監視開始
+    setInterval(checkPerformance, 5000);
+});
