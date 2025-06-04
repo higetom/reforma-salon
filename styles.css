@@ -4718,3 +4718,73 @@ section#home {
     border: 3px solid blue !important;
 }
 */
+
+/* 🎯 モバイル専用：Coming Soon動画の表示修正 */
+
+@media screen and (max-width: 768px) {
+    
+    /* 🎯 モバイルで動画全体が見えるように修正 */
+    .coming-soon-video-bg video {
+        /* ズームを解除して全体表示 */
+        min-width: 100% !important;
+        min-height: 100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        
+        /* 動画を縮小してコンテナ内に収める */
+        object-fit: contain !important; /* coverからcontainに変更 */
+        object-position: center center !important;
+        
+        /* 変形をリセット */
+        transform: none !important;
+        top: 0 !important;
+        left: 0 !important;
+        
+        /* クロマキー処理はそのまま */
+        filter: 
+            contrast(1.9) 
+            saturate(0.12)
+            brightness(1.45)
+            hue-rotate(-77deg)
+            drop-shadow(0 0 35px rgba(255,255,255,0.7)) !important;
+    }
+    
+    /* 🎯 動画コンテナも調整 */
+    .coming-soon-video-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        border-radius: 20px !important;
+        z-index: 25 !important;
+    }
+    
+    /* 🎯 アプリカード内でのバランス調整 */
+    .app-card-coming-soon {
+        position: relative !important;
+        overflow: hidden !important;
+        min-height: 400px !important; /* 最小の高さを確保 */
+    }
+}
+
+/* さらに小さな画面用（480px以下）*/
+@media screen and (max-width: 480px) {
+    .coming-soon-video-bg video {
+        /* 小画面では更に縮小 */
+        object-fit: contain !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(0.9) !important; /* 少し縮小 */
+        transform-origin: center center !important;
+    }
+    
+    .app-card-coming-soon {
+        min-height: 350px !important;
+    }
+}
