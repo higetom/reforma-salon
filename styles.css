@@ -4464,13 +4464,16 @@ section#home {
     transform: translate(-50%, -50%);
     object-fit: cover;
     
-    /* 🎯 完璧なクロマキー処理 */
+    .coming-soon-video-bg video {
+    /* 🎯 自然な色味保持クロマキー処理 */
     filter: 
-        contrast(1.8) 
-        saturate(0.15) 
-        brightness(1.4)
-        hue-rotate(-75deg)
-        drop-shadow(0 0 30px rgba(255,255,255,0.6));
+        contrast(1.1) 
+        saturate(1.2) 
+        brightness(1.0)
+        hue-rotate(0deg);
+    
+    /* 🎯 緑背景のみ除去 */
+    mix-blend-mode: multiply;
     
     /* 🎯 緑色完全除去マスク */
     -webkit-mask: 
@@ -4628,19 +4631,20 @@ section#home {
     }
     
     .coming-soon-video-bg video {
-        /* 🎯 モバイル用縦長最適化 */
-        object-fit: cover;
-        object-position: center center;
-        min-width: 130%;
-        min-height: 130%;
+    /* 🎯 モバイル用：アプリロゴ位置に最適化 */
+    object-fit: cover;
+object-position: center center;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
         
         /* 🎯 モバイル用クロマキー強化 */
         filter: 
-            contrast(1.9) 
-            saturate(0.12)
-            brightness(1.45)
-            hue-rotate(-77deg)
-            drop-shadow(0 0 35px rgba(255,255,255,0.7));
+    contrast(1.1) 
+    saturate(1.2)
+    brightness(1.0)
+    hue-rotate(0deg);
     }
     
     .app-card-coming-soon {
@@ -4726,12 +4730,13 @@ section#home {
     /* 🎯 モバイルで動画全体が見えるように修正 */
     .coming-soon-video-bg video {
         /* ズームを解除して全体表示 */
-        min-width: 100% !important;
-        min-height: 100% !important;
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        max-height: 100% !important;
+        .coming-soon-video-bg video {
+    min-width: 120%;
+    min-height: 120%;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
         
         /* 動画を縮小してコンテナ内に収める */
         object-fit: contain !important; /* coverからcontainに変更 */
@@ -4773,16 +4778,64 @@ section#home {
     }
 }
 
+/* 🎯 モバイル版Coming Soon動画：アプリロゴ位置最適化 */
+@media screen and (max-width: 768px) {
+    .coming-soon-video-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 280px !important;
+        z-index: 25 !important;
+        border-radius: 20px !important;
+    }
+    
+    .app-image {
+        height: 280px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        z-index: 20 !important;
+    }
+    
+    .app-card-coming-soon .app-image {
+        height: 280px !important;
+    }
+}
+
 /* さらに小さな画面用（480px以下）*/
 @media screen and (max-width: 480px) {
-    .coming-soon-video-bg video {
-        /* 小画面では更に縮小 */
-        object-fit: contain !important;
-        width: 100% !important;
-        height: 100% !important;
-        transform: scale(0.9) !important; /* 少し縮小 */
-        transform-origin: center center !important;
+   
+
+/* 🎯 代替手法：CSS カラーキーイング */
+@supports (backdrop-filter: blur(1px)) {
+    .coming-soon-video-bg {
+        /* 背景で緑色をカバー */
+        background: white;
     }
+    
+    .coming-soon-video-bg video {
+        /* 高度な合成モード */
+        mix-blend-mode: multiply;
+        filter: 
+            contrast(1.1)
+            saturate(1.5)        /* 最大の黄色保持 */
+            brightness(1.0);
+    }
+}
+
+/* 🎯 デバッグ用（一時的にコメントアウト可能） */
+/*
+.coming-soon-video-bg {
+    border: 2px solid red !important;
+}
+.coming-soon-video-bg video {
+    border: 2px solid blue !important;
+}
+*/
     
     .app-card-coming-soon {
         min-height: 350px !important;
