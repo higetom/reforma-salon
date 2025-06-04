@@ -4388,3 +4388,45 @@ section#home {
         display: none !important;
     }
 }
+
+/* 🎯 PC・モバイル基本設定（追加必要） */
+.pc-only {
+    display: block !important;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+/* モバイル版のみ表示（768px以下） */
+@media screen and (max-width: 768px) {
+    .pc-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* テキスト専用クラス */
+    .pc-text {
+        display: none !important;
+    }
+    
+    .mobile-text {
+        display: block !important;
+        text-align: left !important;
+        line-height: 1.7 !important;
+    }
+}
+
+/* PC版でのテキスト専用クラス */
+@media screen and (min-width: 769px) {
+    .pc-text {
+        display: block !important;
+    }
+    
+    .mobile-text {
+        display: none !important;
+    }
+}
