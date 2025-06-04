@@ -4431,19 +4431,26 @@ section#home {
     }
 }
 
-/* 🎯 Coming Soon クロマキー + z-index 修正版 */
+/* 🎯 Perfect Coming Soon - 完璧クロマキー + 1回再生版 */
 
-/* Coming Soon 動画背景（最前面表示 + クロマキー処理） */
+/* Coming Soon 動画背景（完璧クロマキー処理） */
 .coming-soon-video-bg {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 25; /* 🎯 最前面に表示 */
+    z-index: 25; /* 🎯 アプリロゴより前面、テキストより背面 */
     overflow: hidden;
     border-radius: 25px;
     pointer-events: none;
+    opacity: 0; /* 🎯 初期は非表示 */
+    transition: opacity 0.5s ease;
+}
+
+/* スクロール時に表示 */
+.coming-soon-video-bg.show {
+    opacity: 1;
 }
 
 .coming-soon-video-bg video {
@@ -4455,41 +4462,61 @@ section#home {
     width: auto;
     height: auto;
     transform: translate(-50%, -50%);
-    opacity: 0.9; /* 🎯 少し透明度を上げて見やすく */
     object-fit: cover;
     
-    /* 🎯 クロマキー処理: 緑色を透明化 */
+    /* 🎯 完璧なクロマキー処理 */
     filter: 
-        contrast(1.2) 
-        saturate(1.5)
-        hue-rotate(10deg);
+        contrast(1.8) 
+        saturate(0.15) 
+        brightness(1.4)
+        hue-rotate(-75deg)
+        drop-shadow(0 0 30px rgba(255,255,255,0.6));
     
-    /* 🎯 グリーンスクリーン除去のための追加処理 */
-    mix-blend-mode: multiply;
-    
-    /* 🎯 緑色範囲を透明化するマスク効果 */
+    /* 🎯 緑色完全除去マスク */
     -webkit-mask: 
-        radial-gradient(circle, transparent 40%, black 45%),
-        linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        radial-gradient(circle at center, 
+            rgba(255,255,255,1) 25%, 
+            rgba(255,255,255,0.9) 50%, 
+            rgba(255,255,255,0.6) 70%,
+            rgba(0,0,0,0) 85%
+        );
     mask: 
-        radial-gradient(circle, transparent 40%, black 45%),
-        linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-    -webkit-mask-composite: intersect;
-    mask-composite: intersect;
+        radial-gradient(circle at center, 
+            rgba(255,255,255,1) 25%, 
+            rgba(255,255,255,0.9) 50%, 
+            rgba(255,255,255,0.6) 70%,
+            rgba(0,0,0,0) 85%
+        );
+    
+    /* 🎯 ブレンドモード追加 */
+    mix-blend-mode: screen;
 }
 
-/* 🎯 より強力なクロマキー処理（Webkit系ブラウザ対応） */
+/* 🎯 ブラウザ別最適化 */
 @supports (-webkit-backdrop-filter: blur(1px)) {
     .coming-soon-video-bg video {
         filter: 
-            contrast(1.3) 
-            saturate(2.0)
-            brightness(1.1)
-            hue-rotate(15deg)
-            drop-shadow(0 0 10px rgba(255,255,255,0.3));
+            contrast(2.0) 
+            saturate(0.1)
+            brightness(1.5)
+            hue-rotate(-80deg)
+            drop-shadow(0 0 40px rgba(255,255,255,0.8));
     }
 }
 
+/* Firefox専用 */
+@-moz-document url-prefix() {
+    .coming-soon-video-bg video {
+        filter: 
+            contrast(2.2) 
+            saturate(0.05)
+            brightness(1.6)
+            hue-rotate(-85deg);
+        mix-blend-mode: lighten;
+    }
+}
+
+/* 🎯 微細オーバーレイ */
 .video-overlay-subtle {
     position: absolute;
     top: 0;
@@ -4497,25 +4524,26 @@ section#home {
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(212, 163, 115, 0.15) 0%, 
-        rgba(233, 196, 106, 0.08) 50%, 
-        rgba(244, 212, 107, 0.15) 100%);
-    z-index: 26; /* 🎯 動画の上に配置 */
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.03) 50%, 
+        rgba(255, 255, 255, 0.08) 100%);
+    z-index: 26; /* 🎯 動画より前面 */
     pointer-events: none;
+    border-radius: 25px;
 }
 
-/* Coming Soonカードスタイル（z-index調整） */
+/* Coming Soonカードスタイル */
 .app-card-coming-soon {
     position: relative;
     overflow: hidden;
-    z-index: 5; /* 🎯 ベースレイヤー */
+    z-index: 5;
 }
 
-/* コンテンツを動画の上に表示 */
+/* 🎯 アプリロゴとコンテンツ（動画より背面） */
 .app-card-coming-soon .app-image,
 .app-card-coming-soon .app-details {
     position: relative;
-    z-index: 10; /* 🎯 動画より背面 */
+    z-index: 20; /* 🎯 動画より背面、でも見える */
 }
 
 /* 🎯 Coming Soon テキストを最前面に */
@@ -4526,47 +4554,51 @@ section#home {
     margin-top: 30px;
     border-left: 4px solid var(--primary-color);
     position: relative;
-    z-index: 30; /* 🎯 すべての要素より前面 */
-    backdrop-filter: blur(2px); /* 🎯 背景をぼかして見やすく */
-    border: 2px solid rgba(255, 255, 255, 0.8); /* 🎯 枠線で強調 */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* 🎯 影で浮き上がらせる */
+    z-index: 50; /* 🎯 最前面表示 */
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
 }
 
 .coming-soon-text {
     display: flex;
     align-items: center;
-    font-weight: 700; /* 🎯 フォント太くして見やすく */
+    font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 10px;
-    font-size: 1.2rem; /* 🎯 文字サイズ大きく */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* 🎯 文字に影追加 */
+    font-size: 1.2rem;
+    text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 51;
 }
 
 .coming-soon-text i {
     margin-right: 10px;
-    font-size: 1.3rem; /* 🎯 アイコン大きく */
+    font-size: 1.3rem;
     animation: iconPulse 2s ease-in-out infinite;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); /* 🎯 アイコンに影 */
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.5));
 }
 
 @keyframes iconPulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.15); } /* 🎯 アニメーション強化 */
+    50% { opacity: 0.8; transform: scale(1.1); }
 }
 
 .coming-soon-note {
-    color: #333; /* 🎯 文字色濃く */
+    color: #111;
     line-height: 1.6;
     margin: 0;
-    font-size: 1.05rem; /* 🎯 文字サイズ調整 */
-    font-weight: 500; /* 🎯 フォント少し太く */
-    text-shadow: 0.5px 0.5px 1px rgba(255, 255, 255, 0.6); /* 🎯 読みやすさ向上 */
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 51;
 }
 
 /* 🎯 アプリロゴのz-index調整 */
 .app-logo {
     position: relative;
-    z-index: 8; /* 🎯 動画より背面 */
+    z-index: 15; /* 🎯 動画より背面 */
     max-width: 280px;
     height: auto;
     border-radius: 20px;
@@ -4576,12 +4608,45 @@ section#home {
     padding: 20px;
 }
 
-/* 🎯 モバイル対応でのz-index調整 */
+/* 🎯 1回だけ再生用のクラス */
+.coming-soon-video-bg.played {
+    opacity: 0.7;
+    transition: opacity 1s ease 1s; /* 1秒後にフェード開始 */
+}
+
+.coming-soon-video-bg.finished {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+/* 🎯 モバイル対応（完璧な縦長表示） */
 @media screen and (max-width: 768px) {
+    .coming-soon-video-bg {
+        border-radius: 20px;
+        z-index: 25;
+    }
+    
+    .coming-soon-video-bg video {
+        /* 🎯 モバイル用縦長最適化 */
+        object-fit: cover;
+        object-position: center center;
+        min-width: 130%;
+        min-height: 130%;
+        
+        /* 🎯 モバイル用クロマキー強化 */
+        filter: 
+            contrast(1.9) 
+            saturate(0.12)
+            brightness(1.45)
+            hue-rotate(-77deg)
+            drop-shadow(0 0 35px rgba(255,255,255,0.7));
+    }
+    
     .app-card-coming-soon {
         flex-direction: column !important;
-        gap: 40px;
-        padding: 40px 25px;
+        gap: 30px;
+        padding: 35px 20px;
         text-align: center;
         z-index: 5;
     }
@@ -4593,84 +4658,63 @@ section#home {
     .coming-soon-simple {
         padding: 20px;
         text-align: center;
-        z-index: 30; /* 🎯 モバイルでも最前面 */
+        z-index: 50;
+        margin-top: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.95);
     }
     
     .coming-soon-text {
         justify-content: center;
         font-size: 1.1rem;
+        z-index: 51;
     }
     
-    .coming-soon-video-bg {
-        z-index: 25; /* 🎯 モバイルでも動画は前面 */
+    .coming-soon-note {
+        z-index: 51;
     }
     
     .video-overlay-subtle {
-        z-index: 26; /* 🎯 オーバーレイも調整 */
+        z-index: 26;
+        border-radius: 20px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .coming-soon-simple {
-        padding: 15px;
-        z-index: 30;
-    }
-    
-    .coming-soon-text {
-        font-size: 1rem;
-    }
-    
-    .coming-soon-note {
-        font-size: 0.95rem;
-    }
-}
-
-/* 🎯 Firefox対応のクロマキー処理 */
-@-moz-document url-prefix() {
     .coming-soon-video-bg video {
+        min-width: 160%;
+        min-height: 160%;
+        
+        /* 🎯 小画面用クロマキー調整 */
         filter: 
-            contrast(1.4) 
-            saturate(1.8)
-            brightness(1.2)
-            hue-rotate(20deg);
-        mix-blend-mode: screen;
-    }
-}
-
-/* モバイル対応 */
-@media screen and (max-width: 768px) {
-    .app-card-coming-soon {
-        flex-direction: column !important;
-        gap: 40px;
-        padding: 40px 25px;
-        text-align: center;
+            contrast(2.0) 
+            saturate(0.08)
+            brightness(1.5)
+            hue-rotate(-80deg)
+            drop-shadow(0 0 40px rgba(255,255,255,0.8));
     }
     
-    .app-card-coming-soon:nth-child(even) {
-        flex-direction: column !important;
-    }
-    
-    .coming-soon-simple {
-        padding: 20px;
-        text-align: center;
-    }
-    
-    .coming-soon-text {
-        justify-content: center;
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
     .coming-soon-simple {
         padding: 15px;
+        z-index: 50;
     }
     
     .coming-soon-text {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        z-index: 51;
     }
     
     .coming-soon-note {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        z-index: 51;
     }
 }
+
+/* 🎯 デバッグ用（本番では削除可能） */
+/* 
+.coming-soon-video-bg {
+    border: 3px solid red !important;
+}
+.coming-soon-simple {
+    border: 3px solid blue !important;
+}
+*/
