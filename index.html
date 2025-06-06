@@ -234,22 +234,31 @@
             transition: max-height 0.6s ease-in;
         }
         
-        /* 🎯 モバイル対応 */
+        /* 🎯 モバイル対応 - 左右余白を最小限に＋読みやすさ最優先 */
         @media screen and (max-width: 768px) {
             .accordion-section {
                 padding: 60px 0;
             }
             
             .accordion-container {
-                padding: 0 15px;
+                padding: 0 10px; /* 15px → 10px に縮小 */
+            }
+            
+            .accordion-header {
+                margin-bottom: 40px;
+                padding: 0 5px; /* 左右余白を最小限に */
             }
             
             .accordion-header h2 {
                 font-size: 2rem;
             }
             
+            .accordion-item {
+                margin: 0 5px 15px 5px; /* 左右マージンを最小限に */
+            }
+            
             .accordion-trigger {
-                padding: 20px 20px;
+                padding: 15px 15px; /* 20px → 15px に縮小 */
             }
             
             .accordion-icon span {
@@ -257,17 +266,189 @@
             }
             
             .accordion-content-inner {
-                padding: 0 20px 25px 20px;
+                padding: 0 15px 20px 15px; /* 左右パディングを縮小 */
             }
             
             .accordion-content-inner h3 {
                 font-size: 1.6rem;
-                margin-top: 30px;
+                margin-top: 25px; /* 30px → 25px に縮小 */
+                margin-bottom: 25px;
+                padding: 0 5px; /* 左右余白を最小限に */
+            }
+            
+            /* 🎯 モバイル専用：コンテンツエリアの余白を大幅削減 */
+            .profile-container-enhanced,
+            .unique-value-section,
+            .gentle-message-section,
+            .service-options,
+            .service-menu,
+            .apps-section,
+            .reservation-section {
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* 🎯 プロフィールセクション専用調整 */
+            .profile-header-section {
+                padding: 30px 15px; /* 40px → 30px, 20px → 15px */
+                margin: 0;
+            }
+            
+            .experience-grid-section {
+                padding: 20px 10px; /* 30px → 20px, 20px → 10px */
+                gap: 15px; /* 20px → 15px */
+            }
+            
+            .experience-card-enhanced {
+                padding: 20px 12px; /* 25px → 20px, 20px → 12px */
+                margin: 0; /* 外側マージンを削除 */
+            }
+            
+            /* 🎯 独自価値セクション専用調整 */
+            .value-point {
+                margin: 0 5px 30px 5px; /* 左右マージンを最小限に */
+                padding: 25px 15px; /* 40px → 25px, 25px → 15px */
+            }
+            
+            .value-content p {
+                padding: 0 5px; /* 文字エリアの左右余白を最小限に */
+                text-align: left;
+                line-height: 1.6;
+            }
+            
+            /* 🎯 温かみメッセージセクション専用調整 */
+            .gentle-message-container {
+                padding: 0 5px; /* 15px → 5px */
+            }
+            
+            .gentle-message-box {
+                padding: 30px 15px; /* 40px → 30px, 25px → 15px */
+                margin: 0;
+            }
+            
+            .gentle-content p {
+                padding: 0 5px; /* 文字の左右余白を最小限に */
+                text-align: left;
+                line-height: 1.7;
+            }
+            
+            .gentle-approach-points {
+                padding: 20px 10px; /* 30px → 20px, 20px → 10px */
+                margin: 20px 0; /* 25px → 20px */
+            }
+            
+            .gentle-list li {
+                padding: 10px 10px 10px 35px; /* 12px → 10px */
+                margin-bottom: 12px; /* 15px → 12px */
+            }
+            
+            /* 🎯 サービス・メニューセクション専用調整 */
+            .service-option {
+                padding: 25px 15px; /* 30px → 25px, 20px → 15px */
+                margin: 0 5px 20px 5px; /* 左右マージンを最小限に */
+            }
+            
+            .service-menu {
+                padding: 30px 15px; /* より余白を削減 */
+                margin: 0 5px; /* 左右マージンを最小限に */
+            }
+            
+            .menu-item {
+                padding: 15px 12px; /* 20px → 15px, より余白を削減 */
+                margin-bottom: 15px; /* 25px → 15px */
+            }
+            
+            /* 🎯 アプリセクション専用調整 */
+            .app-card {
+                padding: 25px 15px; /* 35px → 25px, 20px → 15px */
+                margin: 0 5px 25px 5px; /* 左右マージンを最小限に */
+            }
+            
+            .app-details h3 {
+                padding: 0 5px; /* 左右余白を最小限に */
+            }
+            
+            .app-description {
+                padding: 0 5px; /* 文字エリアの左右余白を最小限に */
+                text-align: left;
+            }
+            
+            /* 🎯 予約セクション専用調整 */
+            .reservation-form-only {
+                padding: 40px 15px; /* 60px → 40px, 50px → 15px */
+                margin: 0 5px; /* 左右マージンを最小限に */
+            }
+            
+            .line-reservation-enhanced {
+                padding: 25px 15px; /* 30px → 25px, 20px → 15px */
+            }
+            
+            .reservation-notes-enhanced {
+                padding: 20px 15px; /* 30px → 20px, 20px → 15px */
+            }
+            
+            /* 🎯 お客様の声セクション専用調整 */
+            .testimonials-carousel {
+                padding: 0 5px; /* 10px → 5px */
+                margin: 0 5px; /* 左右マージンを最小限に */
+            }
+            
+            .testimonial-card {
+                padding: 25px 15px; /* より余白を削減 */
             }
             
             .expand-concept-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
+                margin: 30px 10px; /* 左右マージンを調整 */
+            }
+        }
+        
+        /* 🎯 さらに小さな画面（480px以下）でより積極的な余白削減 */
+        @media screen and (max-width: 480px) {
+            .accordion-container {
+                padding: 0 5px; /* さらに縮小 */
+            }
+            
+            .accordion-item {
+                margin: 0 2px 12px 2px; /* さらに左右マージンを縮小 */
+            }
+            
+            .accordion-trigger {
+                padding: 12px 10px; /* さらに縮小 */
+            }
+            
+            .accordion-content-inner {
+                padding: 0 10px 15px 10px; /* さらに左右パディングを縮小 */
+            }
+            
+            .accordion-content-inner h3 {
+                padding: 0 2px; /* さらに左右余白を縮小 */
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            
+            /* 全コンテンツエリアをさらに縮小 */
+            .profile-container-enhanced,
+            .unique-value-section,
+            .gentle-message-section,
+            .service-options,
+            .service-menu,
+            .apps-section,
+            .reservation-section {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+            
+            .gentle-message-container,
+            .value-point,
+            .service-option,
+            .app-card,
+            .reservation-form-only {
+                margin-left: 2px !important;
+                margin-right: 2px !important;
             }
         }
     </style>
