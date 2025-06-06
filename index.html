@@ -406,7 +406,336 @@
             }
         }
         
-        /* 🎯 さらに小さな画面（480px以下）でより積極的な余白削減 */
+        /* 🎯 文章読みやすさ完全最適化CSS */
+        
+        /* PC版（769px以上）の文章最適化 */
+        @media screen and (min-width: 769px) {
+            /* プロフィールセクションの文章最適化 */
+            .profile-mission-enhanced {
+                font-size: 1.15rem !important;
+                line-height: 2.0 !important;
+                letter-spacing: 0.02em !important;
+                text-align: left !important;
+                max-width: 600px !important;
+                margin: 0 auto !important;
+            }
+            
+            .experience-description-enhanced {
+                font-size: 1.05rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .experience-insight-enhanced {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+            }
+            
+            /* 独自価値セクションの文章最適化 */
+            .value-content p {
+                font-size: 1.1rem !important;
+                line-height: 1.9 !important;
+                letter-spacing: 0.02em !important;
+                margin-bottom: 20px !important;
+                text-align: left !important;
+            }
+            
+            .customer-voice-enhanced p {
+                font-size: 1.2rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+            }
+            
+            .conclusion-text {
+                font-size: 1.15rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.02em !important;
+                text-align: center !important;
+            }
+            
+            /* 温かみメッセージセクションの文章最適化 */
+            .gentle-content p {
+                font-size: 1.15rem !important;
+                line-height: 2.0 !important;
+                letter-spacing: 0.02em !important;
+                margin-bottom: 25px !important;
+                text-align: left !important;
+                max-width: 800px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .gentle-main-text {
+                font-size: 1.05rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                font-weight: 600 !important;
+            }
+            
+            .gentle-sub-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                margin-top: 8px !important;
+            }
+            
+            /* サービス・メニューセクションの文章最適化 */
+            .service-option p {
+                font-size: 1.05rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            .menu-item p {
+                font-size: 1.0rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+            }
+            
+            /* アプリセクションの文章最適化 */
+            .app-description {
+                font-size: 1.1rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.02em !important;
+                text-align: left !important;
+            }
+            
+            .app-features li {
+                font-size: 1.0rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+            }
+            
+            /* お客様の声の文章最適化 */
+            .testimonial-content p {
+                font-size: 1.05rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            /* 予約セクションの文章最適化 */
+            .reservation-intro {
+                font-size: 1.15rem !important;
+                line-height: 1.9 !important;
+                letter-spacing: 0.02em !important;
+                text-align: center !important;
+            }
+            
+            .line-reservation-enhanced p {
+                font-size: 1.1rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+            }
+        }
+        
+        /* モバイル版（768px以下）の文章最適化 */
+        @media screen and (max-width: 768px) {
+            /* プロフィールセクションの文章最適化 */
+            .profile-mission-enhanced {
+                font-size: 1.0rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 15px !important;
+            }
+            
+            .experience-description-enhanced {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            .experience-insight-enhanced {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            /* 独自価値セクションの文章最適化 */
+            .value-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+                margin-bottom: 15px !important;
+                text-align: left !important;
+                padding: 0 3px !important;
+            }
+            
+            .customer-voice-enhanced p {
+                font-size: 1.0rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: center !important;
+            }
+            
+            .conclusion-text {
+                font-size: 1.0rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: center !important;
+                padding: 15px !important;
+            }
+            
+            /* 温かみメッセージセクションの文章最適化 */
+            .gentle-content p {
+                font-size: 1.0rem !important;
+                line-height: 1.8 !important;
+                letter-spacing: 0.01em !important;
+                margin-bottom: 20px !important;
+                text-align: left !important;
+                padding: 0 3px !important;
+            }
+            
+            .gentle-main-text {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                font-weight: 600 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .gentle-sub-text {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+                letter-spacing: 0.005em !important;
+                margin-top: 5px !important;
+                padding-left: 8px !important;
+            }
+            
+            /* サービス・メニューセクションの文章最適化 */
+            .service-option p {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 0 5px !important;
+            }
+            
+            .menu-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            /* アプリセクションの文章最適化 */
+            .app-description {
+                font-size: 1.0rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 0 5px !important;
+            }
+            
+            .app-features li {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+            }
+            
+            /* お客様の声の文章最適化 */
+            .testimonial-content p {
+                font-size: 0.95rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 0 5px !important;
+            }
+            
+            /* 予約セクションの文章最適化 */
+            .reservation-intro {
+                font-size: 1.0rem !important;
+                line-height: 1.7 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 0 5px !important;
+            }
+            
+            .line-reservation-enhanced p {
+                font-size: 1.0rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: center !important;
+            }
+            
+            /* FAQ回答の文章最適化 */
+            .faq-answer {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.01em !important;
+                text-align: left !important;
+                padding: 0 15px 15px 15px !important;
+            }
+        }
+        
+        /* 🎯 さらに小さな画面（480px以下）の文章最適化 */
+        @media screen and (max-width: 480px) {
+            .gentle-content p,
+            .value-content p,
+            .app-description,
+            .service-option p,
+            .testimonial-content p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                letter-spacing: 0.005em !important;
+                padding: 0 2px !important;
+            }
+            
+            .gentle-main-text {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .gentle-sub-text {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+                padding-left: 6px !important;
+            }
+            
+            .conclusion-text {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+                padding: 12px !important;
+            }
+        }
+        
+        /* 🎯 重要キーワードの視覚的強調 */
+        .gentle-content strong,
+        .value-content strong,
+        .conclusion-text strong,
+        .prevention-message strong {
+            color: #d4a373 !important;
+            font-weight: 700 !important;
+            background: linear-gradient(135deg, rgba(250, 237, 205, 0.8), rgba(233, 237, 201, 0.8)) !important;
+            padding: 2px 6px !important;
+            border-radius: 4px !important;
+            letter-spacing: 0.01em !important;
+        }
+        
+        /* 🎯 段落間の適切な余白設定 */
+        .accordion-content-inner p + p {
+            margin-top: 20px !important;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .accordion-content-inner p + p {
+                margin-top: 15px !important;
+            }
+        }
+        
+        /* 🎯 読みやすさのためのテキスト影効果 */
+        .gentle-content p,
+        .value-content p,
+        .conclusion-text {
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+        }
         @media screen and (max-width: 480px) {
             .accordion-container {
                 padding: 0 5px; /* さらに縮小 */
@@ -621,7 +950,7 @@
                                 </div>
                                 <div class="value-content">
                                     <h3>しっかり時間をかけて、あなたと向き合います</h3>
-                                    <p>一般的な施術では、時間や内容に制限があることも少なくありません。Re'Formaでは、しっかり時間をかけて、あなたの身体と暮らしに向き合います。</p>
+                                    <p>一般的な施術では、時間や内容に制限があることも<br class="mobile-only">少なくありません。<br>Re'Formaでは、しっかり時間をかけて、<br class="mobile-only">あなたの身体と暮らしに向き合います。</p>
                                     
                                     <div class="time-comparison">
                                         <div class="time-item general">
@@ -656,14 +985,14 @@
                                 </div>
                                 <div class="value-content">
                                     <h3>からだと、こころの両方に寄り添う<br>新しいサポート</h3>
-                                    <p>身体と心のバランスが整って、はじめて"本当の意味での健康"になる。Re'formaでは、施術とともに「こころ」と向き合う時間も大切にしています。</p>
+                                    <p>身体と心のバランスが整って、<br class="mobile-only">はじめて"本当の意味での健康"になる。<br>Re'formaでは、施術とともに<br class="mobile-only">「こころ」と向き合う時間も<br class="mobile-only">大切にしています。</p>
                                     
                                     <div class="app-integration-highlight">
                                         <div class="app-header">
                                             <i class="fas fa-mobile-alt app-icon"></i>
                                             <h4>自社開発アプリ『こころノート』との連携</h4>
                                         </div>
-                                        <p>身体のケアに加えて、誰にも言えない悩みやモヤモヤを、そっと書き出せる安心の場をご提案しています。</p>
+                                        <p>身体のケアに加えて、<br class="mobile-only">誰にも言えない悩みやモヤモヤを、<br class="mobile-only">そっと書き出せる<br class="mobile-only">安心の場をご提案しています。</p>
                                         
                                         <div class="cbt-evidence">
                                             <div class="evidence-badge">
@@ -751,11 +1080,11 @@
                                         <p>「どこに行っても良くならない」<br>
                                         そんな声を多くの方から聞いてきました。</p>
                                         
-                                        <p>Re'formaでは、まず丁寧にお話をうかがい、<br>あなたに合ったアプローチを一緒に探していきます。</p>
+                                        <p>Re'formaでは、まず丁寧にお話をうかがい、<br class="pc-only">あなたに合ったアプローチを<br class="mobile-only">一緒に探していきます。</p>
                                         
-                                        <p>初回の施術で<strong>「これなら変われそう」</strong>と<br>前向きな気持ちになられる方が多くいらっしゃいます。</p>
+                                        <p>初回の施術で<br class="mobile-only"><strong>「これなら変われそう」</strong>と<br>前向きな気持ちになられる方が<br class="mobile-only">多くいらっしゃいます。</p>
                                         
-                                        <p>Re'Formaが大切にしていることは、お客様一人ひとりに合った方法を見つけることです。急がず、焦らず、あなたのペースで進んでいきましょう。</p>
+                                        <p>Re'Formaが大切にしていることは、<br class="mobile-only">お客様一人ひとりに合った方法を<br class="mobile-only">見つけることです。<br>急がず、焦らず、<br class="mobile-only">あなたのペースで進んでいきましょう。</p>
                                     </div>
                                     
                                     <div class="gentle-approach-points">
@@ -805,9 +1134,9 @@
                                     </div>
                                     
                                     <div class="final-message">
-                                        <p>今の状態が「当たり前」になっていませんか？</p>
-                                        <p>少しでも楽になりたいと思ったその気持ち、大切にしてください。</p>
-                                        <div class="highlight">Re'formaは、あなたのペースで一緒に進んでいきます。</div>
+                                        <p>今の状態が<br class="mobile-only">「当たり前」になっていませんか？</p>
+                                        <p>少しでも楽になりたいと思った<br class="mobile-only">その気持ち、<br class="mobile-only">大切にしてください。</p>
+                                        <div class="highlight">Re'formaは、<br class="mobile-only">あなたのペースで<br class="mobile-only">一緒に進んでいきます。</div>
                                     </div>
                                 </div>
                             </div>
