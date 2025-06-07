@@ -1,3 +1,4 @@
+
 /* Base Styles */
 :root {
     --primary-color: #d4a373;
@@ -4789,3 +4790,52 @@ section#home {
     border: 3px solid blue !important;
 }
 */
+
+/* 🎯 モバイル余白最適化 - 追加CSS */
+@media screen and (max-width: 768px) {
+    .accordion-container {
+        padding: 0 8px !important;
+    }
+    
+    .accordion-item {
+        margin: 0 4px 15px 4px !important;
+    }
+    
+    .accordion-trigger {
+        padding: 18px 16px !important;
+    }
+    
+    .accordion-content-inner {
+        padding: 0 16px 20px 16px !important;
+    }
+    
+    .accordion-content-inner h3 {
+        padding: 0 8px !important;
+    }
+    
+    .expand-concept-btn {
+        margin: 30px 8px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .accordion-container {
+        padding: 0 4px !important;
+    }
+    
+    .accordion-item {
+        margin: 0 2px 12px 2px !important;
+    }
+    
+    .accordion-trigger {
+        padding: 15px 12px !important;
+    }
+    
+    .accordion-content-inner {
+        padding: 0 12px 15px 12px !important;
+    }
+    
+    .accordion-content-inner h3 {
+        padding: 0 4px !important;
+    }
+}
