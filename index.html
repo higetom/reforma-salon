@@ -2411,7 +2411,7 @@
             console.log('✅ 追従CTAボタン制御機能初期化完了');
         }
 
-        // 🎯 美しい固定「閉じる」ボタン機能（改良版）
+        // 🎯 美しい固定「閉じる」ボタン機能（確実なスクロール修正版）
         function closeAccordion(button) {
             const accordionItem = button.closest('.accordion-item');
             const accordionTrigger = accordionItem.querySelector('.accordion-trigger');
@@ -2435,30 +2435,27 @@
                 
             }, 200); // 余韻を持たせる
             
-            // 🎯 完全に閉じてからRe'formaメニューの位置に戻る
+            // 🎯 確実にRe'formaメニューヘッダーの位置に戻る
             setTimeout(() => {
-                const menuHeader = document.querySelector('.accordion-header');
-                if (menuHeader) {
-                    const rect = menuHeader.getBoundingClientRect();
-                    const offset = window.pageYOffset + rect.top - 100; // ナビバー分考慮
+                // アコーディオンセクション全体の上部を取得
+                const accordionSection = document.getElementById('accordion');
+                if (accordionSection) {
+                    const sectionTop = accordionSection.offsetTop;
                     
                     window.scrollTo({ 
-                        top: offset, 
+                        top: sectionTop - 80, // ナビゲーションバーの高さを考慮
                         behavior: 'smooth' 
                     });
+                    console.log('✨ Re\'formaメニューの位置に戻りました');
                 } else {
-                    // フォールバック：アコーディオンセクションの上部に戻る
-                    const accordionSection = document.querySelector('.accordion-section');
-                    if (accordionSection) {
-                        const rect = accordionSection.getBoundingClientRect();
-                        const offset = window.pageYOffset + rect.top - 100;
-                        window.scrollTo({ 
-                            top: offset, 
-                            behavior: 'smooth' 
-                        });
-                    }
+                    // さらなるフォールバック
+                    window.scrollTo({ 
+                        top: 800, // 大体のメニュー位置
+                        behavior: 'smooth' 
+                    });
+                    console.log('✨ フォールバック位置に戻りました');
                 }
-            }, 1000); // アニメーション完了後
+            }, 1200); // アニメーション完了を確実に待つ
             
             console.log('✨ アコーディオンを美しく閉じました');
         }
