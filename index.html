@@ -541,229 +541,235 @@
             transition: max-height 0.6s ease-in;
         }
         
-        /* 🎯 モバイル対応 - 左右余白を最小限に＋読みやすさ最優先 */
-        @media screen and (max-width: 768px) {
+
+/* 🎯 モバイル余白問題 最終解決版 - 超高優先度 */
+@media screen and (max-width: 768px) {
+    /* 🔥 最高優先度で余白を強制的に最小化 */
+    body {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .container {
+        padding: 0 3px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    /* アコーディオン全体 */
     .accordion-section {
-        padding: 60px 0;
+        padding: 60px 0 !important;
+        margin: 0 !important;
     }
     
     .accordion-container {
-        padding: 0 5px; /* 10px → 5px に縮小 */
+        padding: 0 3px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
     }
     
     .accordion-header {
-        margin-bottom: 40px;
-        padding: 0 0px; /* 5px → 0px に縮小 */
+        padding: 0 5px !important;
+        margin-bottom: 30px !important;
     }
     
+    /* アコーディオンアイテム */
     .accordion-item {
-        margin: 0 0px 15px 0px; /* 5px → 0px に縮小 */
-    }
-            
-            .accordion-header {
-                margin-bottom: 40px;
-                padding: 0 5px; /* 左右余白を最小限に */
-            }
-            
-            .accordion-header h2 {
-                font-size: 2rem;
-            }
-            
-            .accordion-item {
-                margin: 0 5px 15px 5px; /* 左右マージンを最小限に */
-            }
-            
-            .accordion-trigger {
-                padding: 15px 15px; /* 20px → 15px に縮小 */
-            }
-            
-            .accordion-icon span {
-                font-size: 1.1rem;
-            }
-            
-            .accordion-content-inner {
-                padding: 0 15px 20px 15px; /* 左右パディングを縮小 */
-            }
-            
-            .accordion-content-inner h3 {
-                font-size: 1.6rem;
-                margin-top: 25px; /* 30px → 25px に縮小 */
-                margin-bottom: 25px;
-                padding: 0 5px; /* 左右余白を最小限に */
-            }
-            
-            .expand-concept-btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-                margin: 30px 10px; /* 左右マージンを調整 */
-            }
-        }
-        
-        @media screen and (max-width: 480px) {
-            .accordion-container {
-                padding: 0 5px; /* さらに縮小 */
-            }
-            
-            .accordion-item {
-                margin: 0 2px 12px 2px; /* さらに左右マージンを縮小 */
-            }
-            
-            .accordion-trigger {
-                padding: 12px 10px; /* さらに縮小 */
-            }
-            
-            .accordion-content-inner {
-                padding: 0 10px 15px 10px; /* さらに左右パディングを縮小 */
-            }
-            
-            .accordion-content-inner h3 {
-                padding: 0 2px; /* さらに左右余白を縮小 */
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-        }
-/* 🎯 モバイル余白完全最適化 - 最終修正版 */
-@media screen and (max-width: 768px) {
-    /* 全体コンテナの余白を最小化 */
-    .accordion-container {
-        padding: 0 2px !important;
-        margin: 0 !important;
+        margin: 0 2px 10px 2px !important;
+        padding: 0 !important;
+        width: calc(100% - 4px) !important;
+        box-sizing: border-box !important;
     }
     
-    /* アコーディオンアイテムの余白を最小化 */
-    .accordion-item {
-        margin: 0 1px 12px 1px !important;
-        border-radius: 12px !important;
-    }
-    
-    /* アコーディオントリガーの余白調整 */
+    /* アコーディオントリガー */
     .accordion-trigger {
-        padding: 12px 8px !important;
+        padding: 15px 10px !important;
         margin: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     
-    /* アコーディオンコンテンツの余白最小化 */
+    .accordion-icon span {
+        font-size: 1rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* アコーディオンコンテンツ */
     .accordion-content-inner {
-        padding: 0 8px 15px 8px !important;
+        padding: 0 10px 15px 10px !important;
         margin: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     
-    /* 見出しの余白調整 */
     .accordion-content-inner h3 {
-        padding: 0 4px !important;
-        margin: 20px 0 15px 0 !important;
-        font-size: 1.5rem !important;
+        padding: 0 5px !important;
+        margin: 15px 0 10px 0 !important;
+        font-size: 1.4rem !important;
         line-height: 1.3 !important;
     }
     
-    /* 各セクションの余白最小化 */
+    /* 各セクションコンテナ */
+    .unique-value-section .container,
+    .gentle-message-container,
+    .apps-container,
+    .reservation-container {
+        padding: 0 3px !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    /* 価値ポイントカード */
+    .value-point {
+        margin: 0 2px 25px 2px !important;
+        padding: 20px 10px !important;
+        width: calc(100% - 4px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    .value-content p {
+        margin-bottom: 10px !important;
+        line-height: 1.4 !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* 温かみメッセージボックス */
+    .gentle-message-box {
+        margin: 0 2px !important;
+        padding: 20px 10px !important;
+        width: calc(100% - 4px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    .gentle-content p {
+        margin-bottom: 10px !important;
+        line-height: 1.4 !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* アプリカード */
+    .app-card {
+        margin: 0 2px 25px 2px !important;
+        padding: 20px 10px !important;
+        width: calc(100% - 4px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    .app-description {
+        margin-bottom: 10px !important;
+        line-height: 1.4 !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* アプリ連携ハイライト */
+    .app-integration-highlight {
+        padding: 15px 10px !important;
+        margin: 15px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* CBTエビデンス */
+    .cbt-evidence {
+        padding: 15px 10px !important;
+        margin-top: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .evidence-item {
+        padding: 8px !important;
+        margin-bottom: 8px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* 時間比較 */
+    .time-comparison {
+        padding: 15px 5px !important;
+        margin: 15px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* お客様の声 */
+    .customer-voice-enhanced {
+        padding: 15px 10px !important;
+        margin: 15px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* 結論テキスト */
+    .conclusion-text {
+        padding: 10px !important;
+        margin-top: 15px !important;
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* リスト項目 */
+    .gentle-list li {
+        padding: 10px 15px 10px 30px !important;
+        margin-bottom: 8px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* メニュー項目 */
+    .menu-item {
+        margin-bottom: 15px !important;
+        padding: 15px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .menu-name {
+        margin-bottom: 8px !important;
+    }
+    
+    .menu-item p {
+        margin-bottom: 8px !important;
+        line-height: 1.4 !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* さらに小さな画面（480px以下） */
+@media screen and (max-width: 480px) {
+    .container,
+    .accordion-container,
     .unique-value-section .container,
     .gentle-message-container,
     .apps-container {
         padding: 0 2px !important;
-        margin: 0 !important;
     }
     
-    /* 価値ポイントカードの余白最小化 */
-    .value-point {
-        margin: 0 1px 30px 1px !important;
-        padding: 25px 12px !important;
-    }
-    
-    /* 温かみメッセージボックスの余白最小化 */
-    .gentle-message-box {
-        margin: 0 1px !important;
-        padding: 25px 12px !important;
-    }
-    
-    /* アプリカードの余白最小化 */
-    .app-card {
-        margin: 0 1px 30px 1px !important;
-        padding: 25px 12px !important;
-    }
-    
-    /* アプリ連携ハイライトの余白調整 */
-    .app-integration-highlight {
-        padding: 20px 12px !important;
-        margin: 20px 0 !important;
-    }
-    
-    /* テキストの行間調整 */
-    .value-content p,
-    .gentle-content p,
-    .app-description,
-    .gentle-list li {
-        line-height: 1.5 !important;
-        margin-bottom: 12px !important;
-    }
-    
-    /* CBTエビデンスの余白調整 */
-    .cbt-evidence {
-        padding: 15px 12px !important;
-        margin-top: 15px !important;
-    }
-    
-    /* 科学的根拠バッジの調整 */
-    .evidence-badge {
-        padding: 8px 12px !important;
-        margin-bottom: 12px !important;
-    }
-    
-    /* エビデンス項目の余白調整 */
-    .evidence-item {
-        padding: 8px !important;
-        margin-bottom: 10px !important;
-        font-size: 0.9rem !important;
-    }
-    
-    /* お客様の声の余白調整 */
-    .customer-voice-enhanced {
-        padding: 15px 12px !important;
-        margin: 15px 0 !important;
-    }
-    
-    /* 時間比較の余白調整 */
-    .time-comparison {
-        padding: 15px 8px !important;
-        margin: 15px 0 !important;
-    }
-    
-    /* 結論テキストの余白調整 */
-    .conclusion-text {
-        padding: 12px !important;
-        margin-top: 15px !important;
-        font-size: 1rem !important;
-    }
-}
-
-/* さらに小さな画面対応（480px以下） */
-@media screen and (max-width: 480px) {
-    .accordion-container {
-        padding: 0 1px !important;
-    }
-    
-    .accordion-item {
-        margin: 0 0px 10px 0px !important;
-    }
-    
-    .accordion-trigger {
-        padding: 10px 6px !important;
-    }
-    
-    .accordion-content-inner {
-        padding: 0 6px 12px 6px !important;
-    }
-    
+    .accordion-item,
     .value-point,
     .gentle-message-box,
     .app-card {
-        margin: 0 0px 25px 0px !important;
-        padding: 20px 8px !important;
+        margin: 0 1px 20px 1px !important;
+        padding: 15px 8px !important;
+        width: calc(100% - 2px) !important;
     }
     
-    .app-integration-highlight,
-    .cbt-evidence {
-        padding: 15px 8px !important;
+    .accordion-trigger {
+        padding: 12px 8px !important;
+    }
+    
+    .accordion-content-inner {
+        padding: 0 8px 12px 8px !important;
+    }
+    
+    .accordion-content-inner h3 {
+        font-size: 1.3rem !important;
+        margin: 12px 0 8px 0 !important;
     }
 }
 
