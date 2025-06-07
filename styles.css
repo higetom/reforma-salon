@@ -5642,3 +5642,130 @@ section#home {
 .accordion-content.closing {
     transition: max-height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
+
+/* 🎯 モバイル版美しい固定「閉じる」ボタン - 最高優先度 */
+@media screen and (max-width: 768px) {
+    .accordion-close-btn {
+        position: sticky !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 1000 !important;
+        margin: 20px auto 0 !important;
+        width: fit-content !important;
+        
+        /* 美しいグラデーションボタン */
+        background: linear-gradient(135deg, rgba(212, 163, 115, 0.95) 0%, rgba(233, 196, 106, 0.95) 100%) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        
+        /* エレガントなデザイン */
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 40px !important;
+        padding: 12px 24px !important;
+        
+        /* タイポグラフィ */
+        color: white !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        text-decoration: none !important;
+        
+        /* 影とエフェクト */
+        box-shadow: 
+            0 8px 32px rgba(212, 163, 115, 0.4),
+            0 4px 16px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        
+        /* スムーズなトランジション */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer !important;
+        outline: none !important;
+        
+        /* フレックスボックス設定 */
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        
+        /* 微細なアニメーション */
+        animation: gentleFloat 4s ease-in-out infinite !important;
+    }
+    
+    .accordion-close-btn:hover {
+        background: linear-gradient(135deg, rgba(201, 147, 98, 0.98) 0%, rgba(212, 163, 115, 0.98) 100%) !important;
+        transform: translateX(-50%) translateY(-2px) scale(1.02) !important;
+        
+        box-shadow: 
+            0 12px 48px rgba(212, 163, 115, 0.6),
+            0 8px 24px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        letter-spacing: 1px !important;
+    }
+    
+    .accordion-close-btn:active {
+        transform: translateX(-50%) translateY(-1px) scale(1.01) !important;
+        transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    .accordion-close-btn i {
+        margin-right: 6px !important;
+        font-size: 0.9rem !important;
+        opacity: 0.9 !important;
+        transition: all 0.3s ease !important;
+        color: white !important;
+    }
+    
+    .accordion-close-btn:hover i {
+        opacity: 1 !important;
+        transform: rotate(-90deg) !important;
+    }
+    
+    .accordion-close-btn span {
+        color: white !important;
+        font-weight: 600 !important;
+    }
+    
+    /* 🎯 美しいフェードイン表示 - モバイル版 */
+    .accordion-close-btn {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.4s ease, visibility 0.4s ease, all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    .accordion-item.active .accordion-close-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* 🎯 アクセシビリティ対応 */
+    .accordion-close-btn:focus {
+        outline: 3px solid rgba(212, 163, 115, 0.5) !important;
+        outline-offset: 3px !important;
+    }
+}
+
+/* さらに小さな画面対応（480px以下） */
+@media screen and (max-width: 480px) {
+    .accordion-close-btn {
+        bottom: 10px !important;
+        padding: 10px 20px !important;
+        font-size: 0.85rem !important;
+        margin: 15px auto 0 !important;
+        border-radius: 35px !important;
+    }
+    
+    .accordion-close-btn i {
+        font-size: 0.8rem !important;
+        margin-right: 5px !important;
+    }
+}
+
+/* 🎯 浮遊アニメーション定義（念のため再定義） */
+@keyframes gentleFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-2px); }
+}
