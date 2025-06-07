@@ -5499,3 +5499,146 @@ section#home {
         line-height: 1.5 !important;
     }
 }
+
+/* 🎯 プロ仕様 - 美しい固定「閉じる」ボタン */
+.accordion-close-btn {
+    position: sticky;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    margin: 30px auto 0;
+    width: fit-content;
+    
+    /* 美しいグラデーションボタン */
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.95) 0%, rgba(233, 196, 106, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    /* エレガントなデザイン */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 12px 24px;
+    
+    /* タイポグラフィ */
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    
+    /* 影とエフェクト */
+    box-shadow: 
+        0 8px 32px rgba(212, 163, 115, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    /* スムーズなトランジション */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    
+    /* 微細なアニメーション */
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-2px); }
+}
+
+.accordion-close-btn:hover {
+    /* ホバー時の美しい変化 */
+    background: linear-gradient(135deg, rgba(201, 147, 98, 0.98) 0%, rgba(212, 163, 115, 0.98) 100%);
+    transform: translateX(-50%) translateY(-4px) scale(1.05);
+    
+    box-shadow: 
+        0 12px 48px rgba(212, 163, 115, 0.6),
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    
+    border-color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.accordion-close-btn:active {
+    /* クリック時の繊細なフィードバック */
+    transform: translateX(-50%) translateY(-2px) scale(1.02);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-close-btn i {
+    margin-right: 8px;
+    font-size: 1rem;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.accordion-close-btn:hover i {
+    opacity: 1;
+    transform: rotate(-90deg);
+}
+
+/* 🎯 美しいフェードイン表示 */
+.accordion-close-btn {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-close-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 🎯 モバイル最適化 */
+@media screen and (max-width: 768px) {
+    .accordion-close-btn {
+        bottom: 15px;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        margin: 20px auto 0;
+        
+        /* モバイル用の控えめな影 */
+        box-shadow: 
+            0 6px 24px rgba(212, 163, 115, 0.3),
+            0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .accordion-close-btn:hover {
+        transform: translateX(-50%) translateY(-2px) scale(1.02);
+        
+        box-shadow: 
+            0 8px 32px rgba(212, 163, 115, 0.4),
+            0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .accordion-close-btn {
+        bottom: 10px;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        margin: 15px auto 0;
+        border-radius: 40px;
+    }
+}
+
+/* 🎯 アクセシビリティ対応 */
+.accordion-close-btn:focus {
+    outline: 3px solid rgba(212, 163, 115, 0.5);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accordion-close-btn {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* 🎯 美しいクロージングアニメーション */
+.accordion-content.closing {
+    transition: max-height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
