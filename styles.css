@@ -2324,10 +2324,10 @@ section#home {
     }
 }
 
-/* モバイル対応強化 - 美しいカードデザイン維持 */
+/* 🎯 モバイル対応（768px以下）- 美しいカードデザイン維持 */
 @media screen and (max-width: 768px) {
     .profile-header-section {
-        padding: 40px 20px;
+        padding: 40px 8px !important;
     }
     
     .profile-name-enhanced {
@@ -2335,14 +2335,12 @@ section#home {
     }
     
     .experience-grid-section {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-        gap: 20px;
+        padding: 30px 8px 20px 8px !important;
     }
     
     .experience-card-enhanced {
         background: #f8f9fa;
-        padding: 25px 20px;
+        padding: 25px 8px;
         border-radius: 15px;
         border-left: 4px solid #d4a373;
         box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -2387,7 +2385,7 @@ section#home {
     }
     
     .profile-container-enhanced {
-        margin: 10px;
+        margin: 5px;
         border-radius: 15px;
     }
 }
@@ -2395,12 +2393,12 @@ section#home {
 /* さらに小さな画面対応 */
 @media screen and (max-width: 480px) {
     .experience-grid-section {
-        padding: 20px 15px;
+        padding: 20px 5px;
         gap: 15px;
     }
     
     .experience-card-enhanced {
-        padding: 20px 15px;
+        padding: 20px 5px;
     }
     
     .experience-icon-enhanced {
