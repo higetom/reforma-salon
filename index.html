@@ -1265,6 +1265,8 @@
                                 <p>お客様のご自宅やご希望の場所まで出張いたします。慣れ親しんだ環境でリラックスして施術を受けていただけます。</p>
                                 <ul class="service-features">
                                     <li><i class="fas fa-check"></i>専用機材持参</li>
+<li><i class="fas fa-check"></i>移動時間不要</li>
+                                    <li><i class="fas fa-check"></i>完全プライベート</li>
                                 </ul>
                             </div>
                             
@@ -2433,15 +2435,29 @@
                 
             }, 200); // 余韻を持たせる
             
-            // 🎯 完全に閉じてから適切な位置にスクロール
+            // 🎯 完全に閉じてからRe'formaメニューの位置に戻る
             setTimeout(() => {
-                const rect = accordionTrigger.getBoundingClientRect();
-                const offset = window.pageYOffset + rect.top - 100; // ナビバー分考慮
-                
-                window.scrollTo({ 
-                    top: offset, 
-                    behavior: 'smooth' 
-                });
+                const menuHeader = document.querySelector('.accordion-header');
+                if (menuHeader) {
+                    const rect = menuHeader.getBoundingClientRect();
+                    const offset = window.pageYOffset + rect.top - 100; // ナビバー分考慮
+                    
+                    window.scrollTo({ 
+                        top: offset, 
+                        behavior: 'smooth' 
+                    });
+                } else {
+                    // フォールバック：アコーディオンセクションの上部に戻る
+                    const accordionSection = document.querySelector('.accordion-section');
+                    if (accordionSection) {
+                        const rect = accordionSection.getBoundingClientRect();
+                        const offset = window.pageYOffset + rect.top - 100;
+                        window.scrollTo({ 
+                            top: offset, 
+                            behavior: 'smooth' 
+                        });
+                    }
+                }
             }, 1000); // アニメーション完了後
             
             console.log('✨ アコーディオンを美しく閉じました');
@@ -2625,6 +2641,3 @@
         console.log('🎨 Re\'formaブランドデザイン統一');
     </script>
 </body>
-</html>>完全プライベート空間</li>
-                                    <li><i class="fas fa-check"></i>移動時間不要</li>
-                                    <li><i class="fas fa-check"></i
