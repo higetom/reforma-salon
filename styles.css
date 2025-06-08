@@ -7047,3 +7047,515 @@ section#home {
         padding: 20px 10px !important;
     }
 }
+
+/* 🎯 PC版：重複要素非表示＋時間の強調表示 */
+@media screen and (min-width: 769px) {
+    /* 重複する詳細情報を非表示 */
+    .premium-service .time-price-row,
+    .premium-service .content-section {
+        display: none !important;
+    }
+    
+    /* PC版：時間部分を強調表示 */
+    .premium-service .detail-value {
+        font-weight: 700 !important;
+        color: #d4a373 !important;
+        font-size: 1.1rem !important;
+        background: linear-gradient(135deg, #faedcd, #e9edc9) !important;
+        padding: 4px 12px !important;
+        border-radius: 15px !important;
+        display: inline-block !important;
+        border: 1px solid rgba(212, 163, 115, 0.3) !important;
+        box-shadow: 0 2px 8px rgba(212, 163, 115, 0.2) !important;
+    }
+    
+    /* PC版：ラベル部分も調整 */
+    .premium-service .detail-label {
+        font-weight: 600 !important;
+        color: #d4a373 !important;
+    }
+}
+
+/* 🎯 モバイル版：時間ボタンの色を料金と同系色に変更 */
+@media screen and (max-width: 768px) {
+    /* 時間ボタンを料金と同系色の薄い版に変更 */
+    .time-badge {
+        background: linear-gradient(135deg, #e8d4c0, #f0e2d3) !important;
+        color: #8b5a3c !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(184, 133, 79, 0.3) !important;
+        text-shadow: none !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+    }
+    
+    /* 料金ボタンはそのまま維持 */
+    .price-badge {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* 内容ラベルも同系色に調整 */
+    .content-label {
+        color: white !important;
+        background: linear-gradient(135deg, #c99362, #d4a373) !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        padding: 6px 15px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 2px 8px rgba(212, 163, 115, 0.3) !important;
+        display: inline-block !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* 🎯 さらに小さな画面でも同様の調整 */
+@media screen and (max-width: 480px) {
+    .time-badge {
+        font-size: 0.9rem !important;
+        padding: 8px 15px !important;
+        background: linear-gradient(135deg, #e8d4c0, #f0e2d3) !important;
+        color: #8b5a3c !important;
+    }
+    
+    .price-badge {
+        font-size: 0.9rem !important;
+        padding: 8px 15px !important;
+    }
+}
+
+/* 🎯 PC版：全メニュー統一デザイン（白ボタン＋オレンジ文字） */
+@media screen and (min-width: 769px) {
+    /* 重複する詳細情報を非表示 */
+    .premium-service .time-price-row,
+    .premium-service .content-section {
+        display: none !important;
+    }
+    
+    /* 🎯 統一デザイン：時間ボタン（PC版全メニュー共通） */
+    .premium-service .detail-value,
+    .trip-service .detail-item span,
+    .premium-service .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.2rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        display: inline-block !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* PC版：ラベル部分は普通の黒字 */
+    .premium-service .detail-label,
+    .trip-service .detail-item strong {
+        font-weight: 600 !important;
+        color: #333 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* 🎯 出張整体の統一デザイン適用 */
+    .trip-service .detail-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .trip-service .detail-item strong {
+        color: #333 !important;
+        min-width: 100px !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+    }
+    
+    .trip-service .detail-item span {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.2rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 出張整体の価格ボタンも統一 */
+    .trip-service .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.3rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 プレミアムサービスの価格ボタンも統一 */
+    .premium-service .menu-name .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.3rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 メニュー名の位置調整 */
+    .premium-service .menu-name,
+    .trip-service .menu-name {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 20px !important;
+        border-bottom: 2px solid rgba(212, 163, 115, 0.2) !important;
+        padding-bottom: 15px !important;
+    }
+    
+    .premium-service .menu-name h4,
+    .trip-service .menu-name h4 {
+        margin-bottom: 0 !important;
+        font-size: 1.4rem !important;
+        color: #2c1810 !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    
+    .premium-service .menu-name h4 i,
+    .trip-service .menu-name h4 i {
+        color: var(--primary-color) !important;
+        font-size: 1.2rem !important;
+    }
+}
+
+/* 🎯 モバイル版は既存の設定を維持 */
+@media screen and (max-width: 768px) {
+    /* 時間ボタンを料金と同系色の薄い版に維持 */
+    .time-badge {
+        background: linear-gradient(135deg, #e8d4c0, #f0e2d3) !important;
+        color: #8b5a3c !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(184, 133, 79, 0.3) !important;
+        text-shadow: none !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+    }
+    
+    /* 料金ボタンはそのまま維持 */
+    .price-badge {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* 🎯 内容ラベルを普通の黒字に変更 */
+    .content-label {
+        color: #333 !important;
+        background: transparent !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        display: inline !important;
+        margin-bottom: 5px !important;
+        border: none !important;
+    }
+    
+    .content-text {
+        color: #444 !important;
+        line-height: 1.5 !important;
+        font-size: 0.95rem !important;
+        font-weight: 400 !important;
+        text-align: left !important;
+        margin-bottom: 0 !important;
+        margin-top: 5px !important;
+    }
+}
+
+/* 🎯 モバイル版ヒーローセクション：想いの部分を中央揃えに修正 */
+@media screen and (max-width: 768px) {
+    /* ヒーローセクションの想い部分のみ中央揃え */
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+}
+
+/* 🎯 PC版：内容ボタンを削除してシンプルな黒字テキストに */
+@media screen and (min-width: 769px) {
+    /* 重複する詳細情報を非表示 */
+    .premium-service .time-price-row,
+    .premium-service .content-section {
+        display: none !important;
+    }
+    
+    /* 🎯 統一デザイン：時間と値段のボタン（白＋オレンジ） */
+    .premium-service .detail-value,
+    .trip-service .detail-item span,
+    .premium-service .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.2rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        display: inline-block !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 PC版：ラベル部分をシンプルな黒字に */
+    .premium-service .detail-label,
+    .trip-service .detail-item strong {
+        font-weight: 600 !important;
+        color: #333 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        font-size: 1rem !important;
+    }
+    
+    /* 🎯 内容行の2つ目（内容詳細）をシンプルな黒字テキストに */
+    .premium-service .detail-row:nth-child(2) .detail-value,
+    .trip-service .detail-item:nth-child(3) span {
+        font-weight: 400 !important;
+        color: #444 !important;
+        font-size: 1rem !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        letter-spacing: normal !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* 🎯 出張整体の統一デザイン適用 */
+    .trip-service .detail-item {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .trip-service .detail-item strong {
+        color: #333 !important;
+        min-width: 100px !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* 🎯 出張整体の内容詳細もシンプルに */
+    .trip-service .detail-item:last-child span {
+        font-weight: 400 !important;
+        color: #444 !important;
+        font-size: 1rem !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        letter-spacing: normal !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* 🎯 出張整体の価格ボタンは統一デザイン維持 */
+    .trip-service .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.3rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 プレミアムサービスの価格ボタンも統一 */
+    .premium-service .menu-name .price {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1.3rem !important;
+        background: white !important;
+        padding: 8px 20px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        border: 2px solid rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+    }
+    
+    /* 🎯 メニュー名の位置調整 */
+    .premium-service .menu-name,
+    .trip-service .menu-name {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 20px !important;
+        border-bottom: 2px solid rgba(212, 163, 115, 0.2) !important;
+        padding-bottom: 15px !important;
+    }
+    
+    .premium-service .menu-name h4,
+    .trip-service .menu-name h4 {
+        margin-bottom: 0 !important;
+        font-size: 1.4rem !important;
+        color: #2c1810 !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    
+    .premium-service .menu-name h4 i,
+    .trip-service .menu-name h4 i {
+        color: var(--primary-color) !important;
+        font-size: 1.2rem !important;
+    }
+}
+
+/* 🎯 モバイル版：美しい統一デザイン */
+@media screen and (max-width: 768px) {
+    /* 時間ボタンを料金と同系色の薄い版に維持 */
+    .time-badge {
+        background: linear-gradient(135deg, #e8d4c0, #f0e2d3) !important;
+        color: #8b5a3c !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(184, 133, 79, 0.3) !important;
+        text-shadow: none !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+    }
+    
+    /* 料金ボタンはそのまま維持 */
+    .price-badge {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 18px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* 🎯 内容ラベルを普通の黒字に変更 */
+    .content-label {
+        color: #333 !important;
+        background: transparent !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        display: inline !important;
+        margin-bottom: 5px !important;
+        border: none !important;
+    }
+    
+    .content-text {
+        color: #444 !important;
+        line-height: 1.5 !important;
+        font-size: 0.95rem !important;
+        font-weight: 400 !important;
+        text-align: left !important;
+        margin-bottom: 0 !important;
+        margin-top: 5px !important;
+    }
+    
+    /* 🎯 出張整体のモバイル版も統一 */
+    .trip-service .detail-item span {
+        font-weight: 400 !important;
+        color: #444 !important;
+        font-size: 0.95rem !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* 出張整体の時間と価格は白ボタン維持（PCと同様） */
+    .trip-service .detail-item:nth-child(1) span,
+    .trip-service .detail-item:nth-child(2) span {
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
+        font-size: 1rem !important;
+        background: white !important;
+        padding: 6px 15px !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+        box-shadow: 0 3px 12px rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        display: inline-block !important;
+    }
+}
+
+/* 🎯 さらに小さな画面対応 */
+@media screen and (max-width: 480px) {
+    .time-badge,
+    .price-badge {
+        font-size: 0.9rem !important;
+        padding: 8px 15px !important;
+    }
+    
+    .content-label {
+        font-size: 0.85rem !important;
+    }
+    
+    .content-text {
+        font-size: 0.9rem !important;
+    }
+}
