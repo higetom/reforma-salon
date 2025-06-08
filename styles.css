@@ -6542,3 +6542,257 @@ section#home {
         font-size: 0.95rem !important;
     }
 }
+
+/* 🎯 モバイル版プレミアムメニュー - 余白最適化＆美しいデザイン */
+@media screen and (max-width: 768px) {
+    /* メニューコンテンツ全体の最適化 */
+    .menu-content.active {
+        display: block !important;
+        padding: 5px !important;
+        background: transparent !important;
+        margin-top: 10px !important;
+    }
+    
+    /* プレミアムサービスカード - コンパクト美化版 */
+    .premium-service {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f3e8 100%) !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+        border-radius: 15px !important;
+        margin: 0 2px 15px 2px !important;
+        padding: 15px 12px !important;
+        box-shadow: 0 8px 25px rgba(212, 163, 115, 0.15) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* 上部装飾ライン */
+    .premium-service::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 3px !important;
+        background: linear-gradient(90deg, #d4a373, #e9c46a, #f4d46b) !important;
+    }
+    
+    /* メニュー名とアイコン - コンパクト化 */
+    .premium-service .menu-name {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 12px !important;
+        border-bottom: 1px solid rgba(212, 163, 115, 0.15) !important;
+        padding-bottom: 12px !important;
+    }
+    
+    .premium-service .menu-name h4 {
+        font-size: 1.2rem !important;
+        color: #2c1810 !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        line-height: 1.2 !important;
+        flex: 1 !important;
+    }
+    
+    .premium-service .menu-name h4 i {
+        color: #d4a373 !important;
+        font-size: 1.1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* 価格表示 - コンパクト高級版 */
+    .premium-service .price {
+        font-weight: 700 !important;
+        color: white !important;
+        font-size: 1.1rem !important;
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        padding: 8px 16px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* サービス詳細 - コンパクト化 */
+    .service-details {
+        margin: 15px 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    .detail-row {
+        margin-bottom: 10px !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+    
+    .detail-row:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .detail-label {
+        color: white !important;
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        font-weight: 600 !important;
+        font-size: 0.85rem !important;
+        padding: 6px 12px !important;
+        border-radius: 15px !important;
+        box-shadow: 0 2px 8px rgba(212, 163, 115, 0.3) !important;
+        flex-shrink: 0 !important;
+        min-width: 80px !important;
+        text-align: center !important;
+    }
+    
+    .detail-value {
+        color: #444 !important;
+        line-height: 1.4 !important;
+        font-size: 0.95rem !important;
+        font-weight: 500 !important;
+        flex: 1 !important;
+        margin-top: 2px !important;
+    }
+    
+    /* サービス説明 - コンパクト化 */
+    .service-description {
+        background: linear-gradient(135deg, #f0f8ff, #e6f3ff) !important;
+        padding: 12px !important;
+        border-radius: 10px !important;
+        margin-top: 12px !important;
+        border-left: 3px solid #4a90e2 !important;
+        box-shadow: 0 3px 12px rgba(74, 144, 226, 0.1) !important;
+    }
+    
+    .service-description p {
+        margin: 0 !important;
+        color: #2c5282 !important;
+        line-height: 1.5 !important;
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        font-style: italic !important;
+    }
+    
+    /* メニュータブの調整 */
+    .menu-tabs {
+        gap: 8px !important;
+        margin-bottom: 15px !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .menu-tab {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        padding: 10px 16px !important;
+        border-radius: 20px !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        border: none !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .menu-tab.active {
+        background: linear-gradient(135deg, #b8854f, #c99362) !important;
+        transform: translateY(-1px) scale(1.02) !important;
+        box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4) !important;
+    }
+    
+    .menu-tab:not(.active) {
+        background: linear-gradient(135deg, #e8e8e8, #f0f0f0) !important;
+        color: #666 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        text-shadow: none !important;
+    }
+    
+    /* メニューセクション全体の調整 */
+    .service-menu {
+        padding: 25px 15px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .service-menu h3 {
+        font-size: 1.4rem !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }
+}
+
+/* 🎯 さらに小さな画面対応（480px以下） */
+@media screen and (max-width: 480px) {
+    .premium-service {
+        margin: 0 1px 12px 1px !important;
+        padding: 12px 10px !important;
+    }
+    
+    .premium-service .menu-name h4 {
+        font-size: 1.1rem !important;
+    }
+    
+    .premium-service .price {
+        font-size: 1rem !important;
+        padding: 6px 14px !important;
+    }
+    
+    .detail-label {
+        font-size: 0.8rem !important;
+        padding: 5px 10px !important;
+        min-width: 75px !important;
+    }
+    
+    .detail-value {
+        font-size: 0.9rem !important;
+    }
+    
+    .service-description {
+        padding: 10px !important;
+    }
+    
+    .service-description p {
+        font-size: 0.85rem !important;
+    }
+    
+    .menu-tab {
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .service-menu {
+        padding: 20px 10px !important;
+    }
+}
+
+/* 🎯 極小画面対応（360px以下） */
+@media screen and (max-width: 360px) {
+    .premium-service {
+        padding: 10px 8px !important;
+    }
+    
+    .premium-service .menu-name h4 {
+        font-size: 1rem !important;
+    }
+    
+    .premium-service .price {
+        font-size: 0.95rem !important;
+        padding: 5px 12px !important;
+    }
+    
+    .detail-label {
+        font-size: 0.75rem !important;
+        min-width: 70px !important;
+    }
+    
+    .detail-value {
+        font-size: 0.85rem !important;
+    }
+}
