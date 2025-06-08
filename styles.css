@@ -5933,3 +5933,78 @@ section#home {
         padding: 0 15px !important;
     }
 }
+
+/* 🎯 モバイル版テキスト配置統一 - タイトルは中央、本文は左詰め */
+@media screen and (max-width: 768px) {
+    
+    /* ヒーローセクション本文を左詰め */
+    .concept-description p,
+    .concept-additional p,
+    .concept-brief p {
+        text-align: left !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+    
+    /* アコーディオン内の本文を左詰め */
+    .accordion-content-inner p,
+    .value-content p,
+    .gentle-content p,
+    .app-description,
+    .experience-description-enhanced,
+    .experience-insight-enhanced,
+    .menu-item p,
+    .trip-details,
+    .testimonial-content p {
+        text-align: left !important;
+    }
+    
+    /* プロフィール本文を左詰め */
+    .profile-tagline-enhanced,
+    .profile-mission-enhanced {
+        text-align: left !important;
+    }
+    
+    /* フッター本文を左詰め */
+    .footer-logo p,
+    .footer-contact p,
+    .footer-nav ul li {
+        text-align: left !important;
+    }
+    
+    /* リスト項目を左詰め */
+    .gentle-list li,
+    .service-features li,
+    .app-features li,
+    .evidence-item {
+        text-align: left !important;
+    }
+    
+    /* 画像セクション説明文を左詰め */
+    .slide-caption p {
+        text-align: left !important;
+    }
+    
+    /* 各種説明文を左詰め */
+    .reservation-intro,
+    .final-message p,
+    .conclusion-text,
+    .prevention-message p {
+        text-align: left !important;
+    }
+    
+    /* タイトル類は中央揃えを維持 */
+    h1, h2, h3, h4, h5, h6,
+    .section-header h2,
+    .section-header p,
+    .accordion-header h2,
+    .accordion-header p,
+    .concept-title,
+    .gentle-title,
+    .profile-name-enhanced,
+    .experience-title-enhanced {
+        text-align: center !important;
+    }
+}
