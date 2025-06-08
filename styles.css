@@ -6008,3 +6008,308 @@ section#home {
         text-align: center !important;
     }
 }
+
+/* 🎯 安全性重視項目を赤色に変更（より目立つように） */
+.safety-priority-item {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%) !important;
+    border-left: 4px solid #dc2626 !important;
+    border: 2px solid rgba(220, 38, 38, 0.1) !important;
+    box-shadow: 0 3px 12px rgba(220, 38, 38, 0.08) !important;
+}
+
+.safety-priority-item::before {
+    background: #dc2626 !important;
+    content: '⚠️' !important;
+}
+
+.safety-priority-item:hover {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.15) !important;
+    border-color: rgba(220, 38, 38, 0.2) !important;
+}
+
+.safety-main-text {
+    color: #991b1b !important;
+}
+
+.safety-sub-text {
+    color: #dc2626 !important;
+}
+
+.safety-sub-text::before {
+    background: #dc2626 !important;
+}
+
+/* 🎯 FAQアコーディオンの灰色演出を削除 */
+.faq-item {
+    background: white !important;
+    border-left: 4px solid #e9c46a !important;
+    border-radius: 15px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #f3f4f6 !important;
+}
+
+.faq-question {
+    background: white !important;
+    color: #333 !important;
+}
+
+.faq-question:hover {
+    background: white !important;
+    color: #d4a373 !important;
+}
+
+.faq-question.active {
+    background: white !important;
+    border-bottom: none !important;
+}
+
+.faq-answer {
+    background: white !important;
+}
+
+.faq-answer.active {
+    background: white !important;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .faq-item {
+        background: white !important;
+        border-left: 4px solid #e9c46a !important;
+    }
+    
+    .faq-question {
+        background: white !important;
+    }
+    
+    .faq-question:hover {
+        background: white !important;
+    }
+    
+    .faq-answer {
+        background: white !important;
+    }
+}
+
+/* 🎯 FAQアコーディオンの四角い枠を削除 */
+.faq-item {
+    background: transparent !important;
+    border: none !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin-bottom: 20px !important;
+    overflow: visible !important;
+}
+
+.faq-question {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 15px 0 !important;
+    color: #333 !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.faq-question:hover {
+    background: transparent !important;
+    color: #d4a373 !important;
+}
+
+.faq-question.active {
+    background: transparent !important;
+    border-bottom: 1px solid #d4a373 !important;
+    color: #d4a373 !important;
+}
+
+.faq-question::after {
+    color: #d4a373 !important;
+}
+
+.faq-answer {
+    background: transparent !important;
+    border: none !important;
+    color: #666 !important;
+    line-height: 1.7 !important;
+    margin-bottom: 0 !important;
+    padding: 15px 0 0 0 !important;
+}
+
+.faq-answer.active {
+    background: transparent !important;
+    padding: 15px 0 0 0 !important;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .faq-item {
+        background: transparent !important;
+        border: none !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .faq-question {
+        background: transparent !important;
+        padding: 12px 0 !important;
+        font-size: 1rem !important;
+    }
+    
+    .faq-answer {
+        background: transparent !important;
+        padding: 12px 0 0 0 !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .faq-answer.active {
+        padding: 12px 0 0 0 !important;
+    }
+}
+
+/* 🎯 プレミアムメニュー表示スタイル - 整体・野球動作指導用 */
+.premium-service {
+    background: linear-gradient(135deg, #f4ead5, #f8f3e8) !important;
+    border: 1px solid #e8dcc6;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(212, 163, 115, 0.15);
+    transition: all 0.3s ease;
+}
+
+.premium-service:hover {
+    background: linear-gradient(135deg, #f0e6d1, #f4ead5) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(212, 163, 115, 0.25);
+}
+
+.premium-service .menu-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(212, 163, 115, 0.2);
+    padding-bottom: 15px;
+}
+
+.premium-service .menu-name h4 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+    color: #2c1810;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.premium-service .menu-name h4 i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.premium-service .price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    background: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
+    border: 2px solid rgba(212, 163, 115, 0.2);
+}
+
+.service-details {
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.detail-row {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 8px 0;
+}
+
+.detail-label {
+    color: var(--primary-color);
+    min-width: 100px;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.detail-value {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.service-description {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.service-description p {
+    margin: 0;
+    color: #444;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .premium-service {
+        padding: 25px 20px;
+        margin-bottom: 25px;
+    }
+    
+    .premium-service .menu-name {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .premium-service .menu-name h4 {
+        font-size: 1.3rem;
+    }
+    
+    .premium-service .price {
+        align-self: flex-end;
+        font-size: 1.2rem;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .detail-label {
+        min-width: auto;
+        font-size: 0.95rem;
+    }
+    
+    .detail-value {
+        font-size: 0.95rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .premium-service {
+        padding: 20px 15px;
+    }
+    
+    .premium-service .menu-name h4 {
+        font-size: 1.2rem;
+    }
+    
+    .premium-service .price {
+        font-size: 1.1rem;
+        padding: 6px 15px;
+    }
+}
