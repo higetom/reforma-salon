@@ -7559,3 +7559,80 @@ section#home {
         font-size: 0.9rem !important;
     }
 }
+
+/* 🎯 モバイル版：出張整体の時間・値段ボタンを統一デザインに */
+@media screen and (max-width: 768px) {
+    /* 🎯 出張整体の時間ボタンを統一（薄いベージュ系） */
+    .trip-service .detail-item:nth-child(1) span,
+    .trip-service .detail-item:nth-child(2) span {
+        background: linear-gradient(135deg, #e8d4c0, #f0e2d3) !important;
+        color: #8b5a3c !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        padding: 8px 16px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(184, 133, 79, 0.3) !important;
+        border: 1px solid rgba(212, 163, 115, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        display: inline-block !important;
+        text-shadow: none !important;
+    }
+    
+    /* 🎯 出張整体の価格ボタンを統一（オレンジグラデーション） */
+    .trip-service .price {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 8px 16px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        border: none !important;
+    }
+    
+    /* 🎯 出張整体の内容部分はシンプルな黒字のまま維持 */
+    .trip-service .detail-item:last-child span {
+        font-weight: 400 !important;
+        color: #444 !important;
+        font-size: 0.95rem !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        line-height: 1.5 !important;
+        letter-spacing: normal !important;
+        text-shadow: none !important;
+    }
+    
+    /* 🎯 出張整体のメニュー名部分の価格ボタンも統一 */
+    .trip-service .menu-name .price {
+        background: linear-gradient(135deg, #d4a373, #e9c46a) !important;
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        padding: 8px 16px !important;
+        border-radius: 25px !important;
+        box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        letter-spacing: 0.5px !important;
+        border: none !important;
+    }
+}
+
+/* 🎯 さらに小さな画面でも同様の統一 */
+@media screen and (max-width: 480px) {
+    .trip-service .detail-item:nth-child(1) span,
+    .trip-service .detail-item:nth-child(2) span {
+        font-size: 0.9rem !important;
+        padding: 6px 14px !important;
+    }
+    
+    .trip-service .price,
+    .trip-service .menu-name .price {
+        font-size: 1rem !important;
+        padding: 6px 14px !important;
+    }
+}
