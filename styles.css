@@ -5892,3 +5892,44 @@ section#home {
         font-size: 0.8rem !important;
     }
 }
+/* 🎯 モバイル版フッター中央寄せ調整 */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+    }
+    
+    .footer-logo,
+    .footer-contact,
+    .footer-nav {
+        max-width: 100% !important;
+        margin-bottom: 30px !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .footer-contact p,
+    .footer-nav ul li {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    
+    .social-links {
+        justify-content: center !important;
+        display: flex !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-content {
+        padding: 0 15px !important;
+    }
+}
