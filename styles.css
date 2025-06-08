@@ -7636,3 +7636,31 @@ section#home {
         padding: 6px 14px !important;
     }
 }
+
+/* 🎯 モバイル対応（768px以下） */
+@media screen and (max-width: 768px) {
+    .cbt-evidence h5 {
+        font-size: 1.3rem !important;
+        color: #2c5282 !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }
+    
+    /* 🎯 モバイル版：CBT理論ベースの改行修正 */
+    .cbt-evidence h5 {
+        line-height: 1.4 !important;
+    }
+    
+    .cbt-evidence h5::after {
+        content: "認知行動療法（CBT）\A理論ベース" !important;
+        white-space: pre-line !important;
+        display: block !important;
+        font-size: 1.3rem !important;
+        color: #2c5282 !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .cbt-evidence h5 {
+        font-size: 0 !important; /* 元テキストを非表示 */
+    }
